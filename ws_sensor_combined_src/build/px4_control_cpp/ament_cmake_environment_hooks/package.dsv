@@ -1,0 +1,4 @@
+source;share/px4_control_cpp/local_setup.bash
+source;share/px4_control_cpp/local_setup.dsv
+source;share/px4_control_cpp/local_setup.sh
+source;share/px4_control_cpp/local_setup.zsh

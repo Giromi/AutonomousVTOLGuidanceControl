@@ -1,0 +1,5 @@
+[ 20%] Built target frame_transforms
+[ 60%] Built target sensor_combined_listener
+[ 60%] Built target vehicle_gps_position_listener
+[ 70%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/examples/offboard/offboard_control.cpp.o[0m
+[ 90%] Built target debug_vect_advertiser

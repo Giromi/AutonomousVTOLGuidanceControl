@@ -1,0 +1,8 @@
+[ 14%] Built target frame_transforms
+[ 28%] Built target debug_vect_advertiser
+[ 42%] Built target vehicle_gps_position_listener
+[ 57%] Built target sensor_combined_listener
+[ 64%] [32mBuilding CXX object CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o[0m
+[ 71%] [32m[1mLinking CXX shared library libDubins.so[0m
+[ 71%] Built target Dubins
+[ 78%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m

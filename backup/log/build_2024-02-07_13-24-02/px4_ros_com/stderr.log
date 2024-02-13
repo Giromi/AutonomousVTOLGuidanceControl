@@ -1,0 +1,4 @@
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/main/key_event_pub.cpp:[m[K In function ‘[01m[Kvoid threadFunction(int)[m[K’:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/main/key_event_pub.cpp:11:25:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kid[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+   11 | void threadFunction([01;35m[Kint id[m[K) {
+      |                     [01;35m[K~~~~^~[m[K

@@ -1,0 +1,54 @@
+[3.576s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control': PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/prefix_override:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/px4_control build --build-base /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build install --record /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log --single-version-externally-managed
+[4.251s] running egg_info
+[4.252s] creating ../../build/px4_control/px4_control.egg-info
+[4.310s] writing ../../build/px4_control/px4_control.egg-info/PKG-INFO
+[4.312s] writing dependency_links to ../../build/px4_control/px4_control.egg-info/dependency_links.txt
+[4.313s] writing entry points to ../../build/px4_control/px4_control.egg-info/entry_points.txt
+[4.313s] writing requirements to ../../build/px4_control/px4_control.egg-info/requires.txt
+[4.314s] writing top-level names to ../../build/px4_control/px4_control.egg-info/top_level.txt
+[4.316s] writing manifest file '../../build/px4_control/px4_control.egg-info/SOURCES.txt'
+[4.423s] reading manifest file '../../build/px4_control/px4_control.egg-info/SOURCES.txt'
+[4.425s] writing manifest file '../../build/px4_control/px4_control.egg-info/SOURCES.txt'
+[4.426s] running build
+[4.426s] running build_py
+[4.426s] creating /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build
+[4.426s] creating /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib
+[4.426s] creating /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control
+[4.427s] copying px4_control/__init__.py -> /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control
+[4.427s] copying px4_control/publisher_member_function.py -> /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control
+[4.428s] copying px4_control/subscriber_member_function.py -> /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control
+[4.428s] running install
+[4.452s] /home/giromi/.local/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[4.453s] !!
+[4.453s] 
+[4.453s]         ********************************************************************************
+[4.454s]         Please avoid running ``setup.py`` directly.
+[4.454s]         Instead, use pypa/build, pypa/installer or other
+[4.454s]         standards-based tools.
+[4.454s] 
+[4.454s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[4.455s]         ********************************************************************************
+[4.455s] 
+[4.455s] !!
+[4.455s]   self.initialize_options()
+[4.467s] running install_lib
+[4.522s] creating /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control
+[4.523s] copying /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control/__init__.py -> /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control
+[4.523s] copying /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control/publisher_member_function.py -> /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control
+[4.524s] copying /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control/subscriber_member_function.py -> /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control
+[4.526s] byte-compiling /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control/__init__.py to __init__.cpython-310.pyc
+[4.526s] byte-compiling /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control/publisher_member_function.py to publisher_member_function.cpython-310.pyc
+[4.528s] byte-compiling /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control/subscriber_member_function.py to subscriber_member_function.cpython-310.pyc
+[4.529s] running install_data
+[4.580s] creating /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/ament_index
+[4.581s] creating /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/ament_index/resource_index
+[4.581s] creating /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/ament_index/resource_index/packages
+[4.582s] copying resource/px4_control -> /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/ament_index/resource_index/packages
+[4.582s] copying package.xml -> /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control
+[4.582s] running install_egg_info
+[4.640s] Copying ../../build/px4_control/px4_control.egg-info to /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control-0.0.0-py3.10.egg-info
+[4.642s] running install_scripts
+[5.106s] Installing listener script to /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/px4_control
+[5.106s] Installing talker script to /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/px4_control
+[5.107s] writing list of installed files to '/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log'
+[5.221s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control' returned '0': PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/prefix_override:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/px4_control build --build-base /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build install --record /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log --single-version-externally-managed

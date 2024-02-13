@@ -1,0 +1,80 @@
+[1.213s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'px4_control_cpp']
+[1.213s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['px4_control_cpp'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f1a96c28340>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f1a9761fd30>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f1a9761fd30>>)
+[1.281s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.281s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.281s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.281s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.281s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.281s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.281s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp'
+[1.281s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.281s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.281s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.281s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.281s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.282s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.282s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.282s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.282s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.300s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_cmake' and name 'px4_control_cpp'
+[1.300s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.300s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.300s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.300s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.300s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.410s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.411s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.448s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 11 installed packages in /home/giromi/Repos/ws_sensor_combined_src/install
+[1.466s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/giromi/Repos/ros2_ws/install
+[1.484s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 276 installed packages in /opt/ros/humble
+[1.486s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.587s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'cmake_args' from command line to 'None'
+[1.587s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'cmake_target' from command line to 'None'
+[1.587s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.587s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[1.587s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[1.588s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[1.588s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[1.588s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[1.588s] Level 5:colcon.colcon_core.verb:set package 'px4_control_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.588s] DEBUG:colcon.colcon_core.verb:Building package 'px4_control_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp', 'symlink_install': False, 'test_result_base': None}
+[1.607s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.637s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.637s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp' with build type 'ament_cmake'
+[1.638s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp'
+[1.659s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.660s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.660s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.753s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp -- -j8 -l8
+[3.091s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp -- -j8 -l8
+[3.144s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_control_cpp)
+[3.165s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp' for CMake module files
+[3.166s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp' for CMake config files
+[3.166s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/bin'
+[3.166s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/lib/pkgconfig/px4_control_cpp.pc'
+[3.167s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/lib/python3.10/site-packages'
+[3.167s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/bin'
+[3.187s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/share/px4_control_cpp/package.ps1'
+[3.188s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/share/px4_control_cpp/package.dsv'
+[3.189s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/share/px4_control_cpp/package.sh'
+[3.190s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/share/px4_control_cpp/package.bash'
+[3.190s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/share/px4_control_cpp/package.zsh'
+[3.191s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/px4_control_cpp/share/colcon-core/packages/px4_control_cpp)
+[3.202s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.202s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.202s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '2'
+[3.202s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.226s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.226s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.226s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.235s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.256s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/local_setup.ps1'
+[3.257s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/_local_setup_util_ps1.py'
+[3.258s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/setup.ps1'
+[3.278s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/local_setup.sh'
+[3.279s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/_local_setup_util_sh.py'
+[3.280s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/setup.sh'
+[3.299s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/local_setup.bash'
+[3.300s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/setup.bash'
+[3.320s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/local_setup.zsh'
+[3.320s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/install/setup.zsh'

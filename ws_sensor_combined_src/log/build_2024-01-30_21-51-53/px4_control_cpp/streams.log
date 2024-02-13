@@ -1,0 +1,12 @@
+[0.083s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp -- -j8 -l8
+[0.128s] [ 25%] [32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o[0m
+[0.133s] [ 75%] Built target talker
+[0.448s] In file included from [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/src/subscriber_member_function.cpp:4[m[K:
+[0.448s] [01m[K/usr/include/mavsdk/plugins/action/action.h:16:10:[m[K [01;31m[Kfatal error: [m[Kplugin_base.h: No such file or directory
+[0.449s]    16 | #include [01;31m[K"plugin_base.h"[m[K
+[0.449s]       |          [01;31m[K^~~~~~~~~~~~~~~[m[K
+[0.449s] compilation terminated.
+[0.452s] gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o] Error 1
+[0.453s] gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/listener.dir/all] Error 2
+[0.453s] gmake: *** [Makefile:146: all] Error 2
+[0.455s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp -- -j8 -l8

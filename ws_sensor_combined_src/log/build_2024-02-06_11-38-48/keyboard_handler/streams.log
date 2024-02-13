@@ -1,0 +1,34 @@
+[0.164s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/keyboard_handler -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/keyboard_handler
+[1.498s] -- The C compiler identification is GNU 11.4.0
+[2.301s] -- The CXX compiler identification is GNU 11.4.0
+[2.480s] -- Detecting C compiler ABI info
+[2.919s] -- Detecting C compiler ABI info - done
+[2.932s] -- Check for working C compiler: /usr/bin/cc - skipped
+[2.933s] -- Detecting C compile features
+[2.941s] -- Detecting C compile features - done
+[2.988s] -- Detecting CXX compiler ABI info
+[3.309s] -- Detecting CXX compiler ABI info - done
+[3.322s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[3.323s] -- Detecting CXX compile features
+[3.323s] -- Detecting CXX compile features - done
+[3.385s] -- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)
+[4.061s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[4.437s] [31mCMake Error at CMakeLists.txt:14 (find_package):
+[4.437s]   By not providing "Findncurses.cmake" in CMAKE_MODULE_PATH this project has
+[4.437s]   asked CMake to find a package configuration file provided by "ncurses", but
+[4.437s]   CMake did not find one.
+[4.438s] 
+[4.438s]   Could not find a package configuration file provided by "ncurses" with any
+[4.438s]   of the following names:
+[4.438s] 
+[4.438s]     ncursesConfig.cmake
+[4.438s]     ncurses-config.cmake
+[4.439s] 
+[4.439s]   Add the installation prefix of "ncurses" to CMAKE_PREFIX_PATH or set
+[4.439s]   "ncurses_DIR" to a directory containing one of the above files.  If
+[4.439s]   "ncurses" provides a separate development package or SDK, be sure it has
+[4.439s]   been installed.
+[4.440s] 
+[4.440s] [0m
+[4.440s] -- Configuring incomplete, errors occurred!
+[4.445s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/keyboard_handler -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/keyboard_handler

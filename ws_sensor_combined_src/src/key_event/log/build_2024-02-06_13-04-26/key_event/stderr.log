@@ -1,0 +1,7 @@
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_event.cpp:3:10:[m[K [01;31m[Kfatal error: [m[Kgeometry_msgs/twist.hpp: No such file or directory
+    3 | #include [01;31m[K<geometry_msgs/twist.hpp>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/key_event.dir/build.make:76: CMakeFiles/key_event.dir/src/key_event.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/key_event.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

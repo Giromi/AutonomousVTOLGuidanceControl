@@ -1,0 +1,8 @@
+/usr/bin/ld: libOffboardControl.so: undefined reference to `Dubins::Dubins(std::array<double, 3ul>, std::array<double, 3ul>, double)'
+/usr/bin/ld: libOffboardControl.so: undefined reference to `Dubins::path_sample_many(double, int (*)(double*, double, void*), void*)'
+/usr/bin/ld: libOffboardControl.so: undefined reference to `OffboardControl::_dubins_path_points'
+/usr/bin/ld: libOffboardControl.so: undefined reference to `Dubins::shortest_path()'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/offboard_control.dir/build.make:184: offboard_control] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:305: CMakeFiles/offboard_control.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,11 @@
+[0.253s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.341s] [ 14%] Built target frame_transforms
+[0.349s] [ 35%] Built target Dubins
+[0.350s] [ 42%] Built target vehicle_gps_position_listener
+[0.354s] [ 57%] Built target sensor_combined_listener
+[0.359s] [ 71%] Built target debug_vect_advertiser
+[0.367s] [ 78%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[16.034s] gmake[2]: *** [CMakeFiles/OffboardControl.dir/build.make:76: CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o] Interrupt
+[16.034s] gmake[1]: *** [CMakeFiles/Makefile2:175: CMakeFiles/OffboardControl.dir/all] Interrupt
+[16.035s] gmake: *** [Makefile:146: all] Interrupt
+[16.100s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '-2': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8

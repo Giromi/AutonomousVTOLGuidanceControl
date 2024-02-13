@@ -1,0 +1,32 @@
+[0.118s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/key_event -- -j8 -l8
+[0.160s] [ 16%] [32mBuilding CXX object CMakeFiles/key_input.dir/src/key_input.cpp.o[0m
+[0.161s] [ 50%] Built target key_event
+[0.167s] [ 66%] [32mBuilding CXX object CMakeFiles/key_publisher.dir/src/key_publisher.cpp.o[0m
+[6.457s] [ 83%] [32m[1mLinking CXX executable key_publisher[0m
+[6.769s] [ 83%] Built target key_publisher
+[12.159s] [100%] [32m[1mLinking CXX executable key_input[0m
+[12.769s] [100%] Built target key_input
+[12.777s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/key_event -- -j8 -l8
+[12.814s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/key_event
+[12.819s] -- Install configuration: ""
+[12.819s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_event
+[12.820s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_input
+[12.826s] -- Set non-toolchain portion of runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_input" to ""
+[12.827s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_publisher
+[12.829s] -- Set non-toolchain portion of runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_publisher" to ""
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/package_run_dependencies/key_event
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/parent_prefix_path/key_event
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.sh
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.dsv
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.sh
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.dsv
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.bash
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.sh
+[12.829s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.zsh
+[12.830s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.dsv
+[12.830s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/package.dsv
+[12.830s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/packages/key_event
+[12.830s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig.cmake
+[12.830s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig-version.cmake
+[12.830s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/package.xml
+[12.831s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/key_event

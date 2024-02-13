@@ -1,0 +1,74 @@
+[0.147s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp
+[0.410s] -- The C compiler identification is GNU 11.4.0
+[0.559s] -- The CXX compiler identification is GNU 11.4.0
+[0.575s] -- Detecting C compiler ABI info
+[0.727s] -- Detecting C compiler ABI info - done
+[0.742s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.742s] -- Detecting C compile features
+[0.743s] -- Detecting C compile features - done
+[0.750s] -- Detecting CXX compiler ABI info
+[0.936s] -- Detecting CXX compiler ABI info - done
+[0.958s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.959s] -- Detecting CXX compile features
+[0.960s] -- Detecting CXX compile features - done
+[0.963s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.006s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[1.008s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[2.152s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[2.407s] -- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+[2.503s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.511s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.530s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.563s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.609s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.771s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.776s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.261s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[3.340s] -- Found FastRTPS: /opt/ros/humble/include  
+[3.454s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.473s] -- Looking for pthread.h
+[3.741s] -- Looking for pthread.h - found
+[3.741s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.927s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[3.930s] -- Found Threads: TRUE  
+[4.416s] -- Found px4_ros2_cpp: 0.0.1 (/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake)
+[4.590s] -- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.814s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.817s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.817s] -- Configured cppcheck include dirs: /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor/include
+[4.818s] -- Configured cppcheck exclude dirs and/or files: 
+[4.819s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[4.820s] -- Configured cpplint exclude dirs and/or files: 
+[4.822s] -- Added test 'lint_cmake' to check CMake code style
+[4.828s] -- Added test 'uncrustify' to check C / C++ code style
+[4.828s] -- Configured uncrustify additional arguments: 
+[4.828s] -- Added test 'xmllint' to check XML markup files
+[4.852s] -- Configuring done
+[4.876s] -- Generating done
+[4.881s] -- Build files have been written to: /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp
+[4.908s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp
+[4.912s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp -- -j8 -l8
+[5.043s] [ 50%] [32mBuilding CXX object CMakeFiles/example_mode_with_executor.dir/src/main.cpp.o[0m
+[17.115s] [100%] [32m[1mLinking CXX executable example_mode_with_executor[0m
+[19.073s] [100%] Built target example_mode_with_executor
+[19.097s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp -- -j8 -l8
+[19.151s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp
+[19.171s] -- Install configuration: ""
+[19.171s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib/example_mode_with_executor_cpp/example_mode_with_executor
+[19.173s] -- Set runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib/example_mode_with_executor_cpp/example_mode_with_executor" to ""
+[19.173s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/ament_index/resource_index/package_run_dependencies/example_mode_with_executor_cpp
+[19.174s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/ament_index/resource_index/parent_prefix_path/example_mode_with_executor_cpp
+[19.174s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/ament_prefix_path.sh
+[19.174s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/ament_prefix_path.dsv
+[19.175s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/path.sh
+[19.175s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/path.dsv
+[19.175s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.bash
+[19.176s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.sh
+[19.177s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.zsh
+[19.177s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.dsv
+[19.178s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.dsv
+[19.178s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/ament_index/resource_index/packages/example_mode_with_executor_cpp
+[19.179s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/cmake/example_mode_with_executor_cppConfig.cmake
+[19.179s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/cmake/example_mode_with_executor_cppConfig-version.cmake
+[19.179s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.xml
+[19.184s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp

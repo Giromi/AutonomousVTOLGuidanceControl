@@ -1,0 +1,18 @@
+[0.246s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.328s] [ 16%] Built target frame_transforms
+[0.333s] [ 33%] Built target debug_vect_advertiser
+[0.335s] [ 50%] Built target vehicle_gps_position_listener
+[0.337s] [ 66%] Built target sensor_combined_listener
+[0.345s] [ 75%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[6.818s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:[m[K In lambda function:
+[6.819s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:61:96:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K}[m[K’ token
+[6.820s]    61 |                         << "==================================================="   << std::endl
+[6.820s]       |                                                                                                [01;31m[K^[m[K
+[6.821s]       |                                                                                                [32m[K;[m[K
+[6.821s]    62 | 
+[6.821s]    63 |                 [32m[K}[m[K);
+[6.821s]       |                 [32m[K~[m[K                                                                               
+[13.729s] gmake[2]: *** [CMakeFiles/OffboardControl.dir/build.make:76: CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o] Error 1
+[13.730s] gmake[1]: *** [CMakeFiles/Makefile2:173: CMakeFiles/OffboardControl.dir/all] Error 2
+[13.730s] gmake: *** [Makefile:146: all] Error 2
+[13.733s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '2': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8

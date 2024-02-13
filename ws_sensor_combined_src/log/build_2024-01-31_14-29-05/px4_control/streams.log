@@ -1,0 +1,40 @@
+[2.918s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control': PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/prefix_override:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/px4_control build --build-base /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build install --record /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log --single-version-externally-managed
+[3.525s] running egg_info
+[3.585s] writing ../../build/px4_control/px4_control.egg-info/PKG-INFO
+[3.670s] writing dependency_links to ../../build/px4_control/px4_control.egg-info/dependency_links.txt
+[3.671s] writing entry points to ../../build/px4_control/px4_control.egg-info/entry_points.txt
+[3.671s] writing requirements to ../../build/px4_control/px4_control.egg-info/requires.txt
+[3.671s] writing top-level names to ../../build/px4_control/px4_control.egg-info/top_level.txt
+[3.761s] reading manifest file '../../build/px4_control/px4_control.egg-info/SOURCES.txt'
+[3.780s] writing manifest file '../../build/px4_control/px4_control.egg-info/SOURCES.txt'
+[3.781s] running build
+[3.781s] running build_py
+[3.793s] copying px4_control/__init__.py -> /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control
+[3.793s] copying px4_control/publisher_member_function.py -> /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control
+[3.990s] copying px4_control/subscriber_member_function.py -> /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build/lib/px4_control
+[4.058s] running install
+[4.178s] /home/giromi/.local/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[4.178s] !!
+[4.178s] 
+[4.178s]         ********************************************************************************
+[4.178s]         Please avoid running ``setup.py`` directly.
+[4.178s]         Instead, use pypa/build, pypa/installer or other
+[4.178s]         standards-based tools.
+[4.178s] 
+[4.178s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[4.179s]         ********************************************************************************
+[4.179s] 
+[4.179s] !!
+[4.179s]   self.initialize_options()
+[4.196s] running install_lib
+[4.288s] running install_data
+[4.330s] copying resource/px4_control -> /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/ament_index/resource_index/packages
+[4.330s] copying package.xml -> /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control
+[4.331s] running install_egg_info
+[4.384s] removing '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control-0.0.0-py3.10.egg-info' (and everything under it)
+[4.386s] Copying ../../build/px4_control/px4_control.egg-info to /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control-0.0.0-py3.10.egg-info
+[4.452s] running install_scripts
+[4.853s] Installing listener script to /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/px4_control
+[4.864s] Installing talker script to /home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/px4_control
+[4.865s] writing list of installed files to '/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log'
+[4.929s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control' returned '0': PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/prefix_override:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/px4_control build --build-base /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build install --record /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log --single-version-externally-managed

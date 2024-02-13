@@ -1,0 +1,10 @@
+[ 66%] Built target key_event
+[ 66%] Built target key_sub
+[ 83%] [32mBuilding CXX object CMakeFiles/key_pub.dir/src/key_pub.cpp.o[0m
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_pub.cpp:[m[K In constructor ‘[01m[KKeyPublisher::KeyPublisher()[m[K’:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_pub.cpp:32:50:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KKeyPublisher[m[K’ does not have any field named ‘[01m[Kis_running[m[K’
+   32 |     KeyPublisher() : Node("keyboard_publisher"), [01;31m[Kis_running[m[K(true) {
+      |                                                  [01;31m[K^~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/key_pub.dir/build.make:76: CMakeFiles/key_pub.dir/src/key_pub.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/key_pub.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

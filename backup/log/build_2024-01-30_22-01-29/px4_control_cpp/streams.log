@@ -1,0 +1,22 @@
+[0.083s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp -- -j8 -l8
+[0.104s] -- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.245s] -- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+[0.274s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.276s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.282s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.294s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.310s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.371s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.373s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.503s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.672s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:77 (message):
+[0.673s]   ament_target_dependencies() the passed package name 'MAVSDK::mavsdk' was
+[0.673s]   not found before
+[0.673s] Call Stack (most recent call first):
+[0.673s]   CMakeLists.txt:22 (ament_target_dependencies)
+[0.673s] 
+[0.673s] [0m
+[0.673s] -- Configuring incomplete, errors occurred!
+[0.673s] See also "/home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp/CMakeFiles/CMakeOutput.log".
+[0.679s] gmake: *** [Makefile:308: cmake_check_build_system] Error 1
+[0.681s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_control_cpp -- -j8 -l8

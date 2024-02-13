@@ -1,0 +1,265 @@
+[0.187s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.220s] -- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.685s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[0.756s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.768s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.785s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.818s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.870s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.903s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.907s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.148s] -- Found px4_msgs: 2.0.1 (/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/cmake)
+[1.235s] -- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+[1.370s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.373s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.653s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.985s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[2.230s] -- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.394s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.407s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.410s] -- Configured cppcheck include dirs: /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include;$<BUILD_INTERFACE:/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com>
+[2.410s] -- Configured cppcheck exclude dirs and/or files: 
+[2.419s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.419s] -- Configured cpplint exclude dirs and/or files: 
+[2.420s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.424s] -- Added test 'lint_cmake' to check CMake code style
+[2.426s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.437s] -- Added test 'uncrustify' to check C / C++ code style
+[2.437s] -- Configured uncrustify additional arguments: 
+[2.440s] -- Added test 'xmllint' to check XML markup files
+[2.443s] -- Configuring done (2.2s)
+[2.884s] -- Generating done (0.4s)
+[2.890s] -- Build files have been written to: /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+[2.949s] [  7%] [32mBuilding CXX object CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o[0m
+[2.977s] [ 21%] Built target frame_transforms
+[3.006s] [ 35%] Built target sensor_combined_listener
+[3.011s] [ 50%] Built target vehicle_gps_position_listener
+[3.027s] [ 57%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[3.034s] [ 71%] Built target debug_vect_advertiser
+[3.243s] In file included from [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:22[m[K:
+[3.243s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/Dubins.hpp:129:2:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
+[3.243s]   129 | }
+[3.244s]       |  [01;31m[K^[m[K
+[3.244s]       |  [32m[K;[m[K
+[3.244s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:39:5:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kint Dubins::cal_LSL(double*)[m[K’
+[3.244s]    39 | int [01;31m[KDubins[m[K::cal_LSL(double out[3]) {
+[3.244s]       |     [01;31m[K^~~~~~[m[K
+[3.244s] In file included from [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:22[m[K:
+[3.244s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/Dubins.hpp:117:9:[m[K [01;36m[Knote: [m[Kcandidate is: ‘[01m[Kint Dubins::cal_LSL()[m[K’
+[3.244s]   117 |     int [01;36m[Kcal_LSL[m[K(void);
+[3.245s]       |         [01;36m[K^~~~~~~[m[K
+[3.245s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/Dubins.hpp:60:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass Dubins[m[K’ defined here
+[3.245s]    60 | class [01;36m[KDubins[m[K
+[3.245s]       |       [01;36m[K^~~~~~[m[K
+[3.246s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K In function ‘[01m[Kint dubins_RSR(DubinsIntermediateResults*, double*)[m[K’:
+[3.246s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:62:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kmod2pi[m[K’ was not declared in this scope
+[3.246s]    62 |         out[0] = [01;31m[Kmod2pi[m[K(in->alpha - tmp1);
+[3.246s]       |                  [01;31m[K^~~~~~[m[K
+[3.249s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K In function ‘[01m[Kint dubins_LSR(DubinsIntermediateResults*, double*)[m[K’:
+[3.249s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:76:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kmod2pi[m[K’ was not declared in this scope
+[3.249s]    76 |         out[0] = [01;31m[Kmod2pi[m[K(tmp0 - in->alpha);
+[3.249s]       |                  [01;31m[K^~~~~~[m[K
+[3.253s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K In function ‘[01m[Kint dubins_RSL(DubinsIntermediateResults*, double*)[m[K’:
+[3.253s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:90:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kmod2pi[m[K’ was not declared in this scope
+[3.254s]    90 |         out[0] = [01;31m[Kmod2pi[m[K(in->alpha - tmp0);
+[3.254s]       |                  [01;31m[K^~~~~~[m[K
+[3.259s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K In function ‘[01m[Kint dubins_RLR(DubinsIntermediateResults*, double*)[m[K’:
+[3.260s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:103:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kmod2pi[m[K’ was not declared in this scope
+[3.260s]   103 |         double p = [01;31m[Kmod2pi[m[K((2*M_PI) - acos(tmp0) );
+[3.260s]       |                    [01;31m[K^~~~~~[m[K
+[3.260s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K At global scope:
+[3.260s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:113:5:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kint Dubins::dubins_LRL(DubinsIntermediateResults*, double*)[m[K’
+[3.260s]   113 | int [01;31m[KDubins[m[K::dubins_LRL(DubinsIntermediateResults* in, double out[3])
+[3.260s]       |     [01;31m[K^~~~~~[m[K
+[3.261s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:113:5:[m[K [01;36m[Knote: [m[Kno functions named ‘[01m[Kint Dubins::dubins_LRL(DubinsIntermediateResults*, double*)[m[K’
+[3.261s] In file included from [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:22[m[K:
+[3.261s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/Dubins.hpp:60:7:[m[K [01;36m[Knote: [m[K‘[01m[Kclass Dubins[m[K’ defined here
+[3.261s]    60 | class [01;36m[KDubins[m[K
+[3.261s]       |       [01;36m[K^~~~~~[m[K
+[3.261s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:128:48:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPathType[m[K’ has not been declared
+[3.261s]   128 | int dubins_word(DubinsIntermediateResults* in, [01;31m[KDubinsPathType[m[K pathType, double out[3])
+[3.261s]       |                                                [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.262s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K In function ‘[01m[Kint dubins_word(DubinsIntermediateResults*, int, double*)[m[K’:
+[3.262s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:133:10:[m[K [01;31m[Kerror: [m[K‘[01m[KLSL[m[K’ was not declared in this scope
+[3.262s]   133 |     case [01;31m[KLSL[m[K:
+[3.262s]       |          [01;31m[K^~~[m[K
+[3.275s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:134:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kdubins_LSL[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_RSL[m[K’?
+[3.275s]   134 |         result = [01;31m[Kdubins_LSL[m[K(in, out);
+[3.276s]       |                  [01;31m[K^~~~~~~~~~[m[K
+[3.276s]       |                  [32m[Kdubins_RSL[m[K
+[3.278s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:136:10:[m[K [01;31m[Kerror: [m[K‘[01m[KRSL[m[K’ was not declared in this scope
+[3.279s]   136 |     case [01;31m[KRSL[m[K:
+[3.279s]       |          [01;31m[K^~~[m[K
+[3.281s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:139:10:[m[K [01;31m[Kerror: [m[K‘[01m[KLSR[m[K’ was not declared in this scope
+[3.281s]   139 |     case [01;31m[KLSR[m[K:
+[3.282s]       |          [01;31m[K^~~[m[K
+[3.284s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:142:10:[m[K [01;31m[Kerror: [m[K‘[01m[KRSR[m[K’ was not declared in this scope
+[3.284s]   142 |     case [01;31m[KRSR[m[K:
+[3.284s]       |          [01;31m[K^~~[m[K
+[3.288s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:145:10:[m[K [01;31m[Kerror: [m[K‘[01m[KLRL[m[K’ was not declared in this scope
+[3.288s]   145 |     case [01;31m[KLRL[m[K:
+[3.288s]       |          [01;31m[K^~~[m[K
+[3.291s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:146:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kdubins_LRL[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_RSL[m[K’?
+[3.291s]   146 |         result = [01;31m[Kdubins_LRL[m[K(in, out);
+[3.292s]       |                  [01;31m[K^~~~~~~~~~[m[K
+[3.292s]       |                  [32m[Kdubins_RSL[m[K
+[3.294s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:148:10:[m[K [01;31m[Kerror: [m[K‘[01m[KRLR[m[K’ was not declared in this scope
+[3.294s]   148 |     case [01;31m[KRLR[m[K:
+[3.294s]       |          [01;31m[K^~~[m[K
+[3.297s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K At global scope:
+[3.297s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:158:26:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[KDubins[m[K’?
+[3.297s]   158 | int dubins_shortest_path([01;31m[KDubinsPath[m[K* path, double q0[3], double q1[3], double rho)
+[3.298s]       |                          [01;31m[K^~~~~~~~~~[m[K
+[3.298s]       |                          [32m[KDubins[m[K
+[3.300s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:158:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.300s]   158 | int dubins_shortest_path(DubinsPath* [01;31m[Kpath[m[K, double q0[3], double q1[3], double rho)
+[3.300s]       |                                      [01;31m[K^~~~[m[K
+[3.300s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:158:44:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.300s]   158 | int dubins_shortest_path(DubinsPath* path, [01;31m[Kdouble[m[K q0[3], double q1[3], double rho)
+[3.300s]       |                                            [01;31m[K^~~~~~[m[K
+[3.301s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:158:58:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.301s]   158 | int dubins_shortest_path(DubinsPath* path, double q0[3], [01;31m[Kdouble[m[K q1[3], double rho)
+[3.301s]       |                                                          [01;31m[K^~~~~~[m[K
+[3.301s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:158:72:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.301s]   158 | int dubins_shortest_path(DubinsPath* path, double q0[3], double q1[3], [01;31m[Kdouble[m[K rho)
+[3.301s]       |                                                                        [01;31m[K^~~~~~[m[K
+[3.308s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:158:82:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.308s]   158 | int dubins_shortest_path(DubinsPath* path, double q0[3], double q1[3], double rho[01;31m[K)[m[K
+[3.309s]       |                                                                                  [01;31m[K^[m[K
+[3.311s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:198:17:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.312s]   198 | int dubins_path([01;31m[KDubinsPath[m[K* path, double q0[3], double q1[3], double rho, DubinsPathType pathType)
+[3.312s]       |                 [01;31m[K^~~~~~~~~~[m[K
+[3.312s]       |                 [32m[Kdubins_path[m[K
+[3.314s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:198:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.315s]   198 | int dubins_path(DubinsPath* [01;31m[Kpath[m[K, double q0[3], double q1[3], double rho, DubinsPathType pathType)
+[3.315s]       |                             [01;31m[K^~~~[m[K
+[3.315s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:198:35:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.315s]   198 | int dubins_path(DubinsPath* path, [01;31m[Kdouble[m[K q0[3], double q1[3], double rho, DubinsPathType pathType)
+[3.315s]       |                                   [01;31m[K^~~~~~[m[K
+[3.315s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:198:49:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.315s]   198 | int dubins_path(DubinsPath* path, double q0[3], [01;31m[Kdouble[m[K q1[3], double rho, DubinsPathType pathType)
+[3.315s]       |                                                 [01;31m[K^~~~~~[m[K
+[3.316s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:198:63:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.316s]   198 | int dubins_path(DubinsPath* path, double q0[3], double q1[3], [01;31m[Kdouble[m[K rho, DubinsPathType pathType)
+[3.316s]       |                                                               [01;31m[K^~~~~~[m[K
+[3.319s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:198:75:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPathType[m[K’ was not declared in this scope
+[3.319s]   198 | int dubins_path(DubinsPath* path, double q0[3], double q1[3], double rho, [01;31m[KDubinsPathType[m[K pathType)
+[3.319s]       |                                                                           [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.320s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:198:98:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.320s]   198 | int dubins_path(DubinsPath* path, double q0[3], double q1[3], double rho, DubinsPathType pathType[01;31m[K)[m[K
+[3.320s]       |                                                                                                  [01;31m[K^[m[K
+[3.323s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:221:31:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.323s]   221 | double dubins_segment_length( [01;31m[KDubinsPath[m[K* path, int i )
+[3.323s]       |                               [01;31m[K^~~~~~~~~~[m[K
+[3.323s]       |                               [32m[Kdubins_path[m[K
+[3.326s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:221:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.326s]   221 | double dubins_segment_length( DubinsPath* [01;31m[Kpath[m[K, int i )
+[3.326s]       |                                           [01;31m[K^~~~[m[K
+[3.326s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:221:49:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kint[m[K’
+[3.326s]   221 | double dubins_segment_length( DubinsPath* path, [01;31m[Kint[m[K i )
+[3.326s]       |                                                 [01;31m[K^~~[m[K
+[3.326s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:221:55:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.327s]   221 | double dubins_segment_length( DubinsPath* path, int i [01;31m[K)[m[K
+[3.327s]       |                                                       [01;31m[K^[m[K
+[3.329s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:230:42:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.330s]   230 | double dubins_segment_length_normalized( [01;31m[KDubinsPath[m[K* path, int i )
+[3.330s]       |                                          [01;31m[K^~~~~~~~~~[m[K
+[3.330s]       |                                          [32m[Kdubins_path[m[K
+[3.333s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:230:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.333s]   230 | double dubins_segment_length_normalized( DubinsPath* [01;31m[Kpath[m[K, int i )
+[3.334s]       |                                                      [01;31m[K^~~~[m[K
+[3.334s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:230:60:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kint[m[K’
+[3.334s]   230 | double dubins_segment_length_normalized( DubinsPath* path, [01;31m[Kint[m[K i )
+[3.334s]       |                                                            [01;31m[K^~~[m[K
+[3.334s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:230:66:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.335s]   230 | double dubins_segment_length_normalized( DubinsPath* path, int i [01;31m[K)[m[K
+[3.335s]       |                                                                  [01;31m[K^[m[K
+[3.335s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:239:1:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPathType[m[K’ does not name a type
+[3.335s]   239 | [01;31m[KDubinsPathType[m[K dubins_path_type( DubinsPath* path )
+[3.335s]       | [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.339s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:268:25:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.339s]   268 | int dubins_path_sample( [01;31m[KDubinsPath[m[K* path, double t, double q[3] )
+[3.340s]       |                         [01;31m[K^~~~~~~~~~[m[K
+[3.340s]       |                         [32m[Kdubins_path[m[K
+[3.342s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:268:37:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.342s]   268 | int dubins_path_sample( DubinsPath* [01;31m[Kpath[m[K, double t, double q[3] )
+[3.343s]       |                                     [01;31m[K^~~~[m[K
+[3.343s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:268:43:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.343s]   268 | int dubins_path_sample( DubinsPath* path, [01;31m[Kdouble[m[K t, double q[3] )
+[3.343s]       |                                           [01;31m[K^~~~~~[m[K
+[3.343s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:268:53:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.343s]   268 | int dubins_path_sample( DubinsPath* path, double t, [01;31m[Kdouble[m[K q[3] )
+[3.344s]       |                                                     [01;31m[K^~~~~~[m[K
+[3.344s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:268:65:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.344s]   268 | int dubins_path_sample( DubinsPath* path, double t, double q[3] [01;31m[K)[m[K
+[3.344s]       |                                                                 [01;31m[K^[m[K
+[3.347s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:310:29:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.347s]   310 | int dubins_path_sample_many([01;31m[KDubinsPath[m[K* path, double stepSize,
+[3.347s]       |                             [01;31m[K^~~~~~~~~~[m[K
+[3.347s]       |                             [32m[Kdubins_path[m[K
+[3.350s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:310:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.350s]   310 | int dubins_path_sample_many(DubinsPath* [01;31m[Kpath[m[K, double stepSize,
+[3.350s]       |                                         [01;31m[K^~~~[m[K
+[3.350s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:310:47:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.350s]   310 | int dubins_path_sample_many(DubinsPath* path, [01;31m[Kdouble[m[K stepSize,
+[3.350s]       |                                               [01;31m[K^~~~~~[m[K
+[3.351s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:311:56:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kcb[m[K’
+[3.351s]   311 |                             DubinsPathSamplingCallback [01;31m[Kcb[m[K, void* user_data)
+[3.351s]       |                                                        [01;31m[K^~[m[K
+[3.351s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:311:60:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kvoid[m[K’
+[3.351s]   311 |                             DubinsPathSamplingCallback cb, [01;31m[Kvoid[m[K* user_data)
+[3.351s]       |                                                            [01;31m[K^~~~[m[K
+[3.351s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:311:75:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.351s]   311 |                             DubinsPathSamplingCallback cb, void* user_data[01;31m[K)[m[K
+[3.351s]       |                                                                           [01;31m[K^[m[K
+[3.354s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:328:27:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.354s]   328 | int dubins_path_endpoint( [01;31m[KDubinsPath[m[K* path, double q[3] )
+[3.354s]       |                           [01;31m[K^~~~~~~~~~[m[K
+[3.354s]       |                           [32m[Kdubins_path[m[K
+[3.357s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:328:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.358s]   328 | int dubins_path_endpoint( DubinsPath* [01;31m[Kpath[m[K, double q[3] )
+[3.358s]       |                                       [01;31m[K^~~~[m[K
+[3.358s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:328:45:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.358s]   328 | int dubins_path_endpoint( DubinsPath* path, [01;31m[Kdouble[m[K q[3] )
+[3.358s]       |                                             [01;31m[K^~~~~~[m[K
+[3.359s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:328:57:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.359s]   328 | int dubins_path_endpoint( DubinsPath* path, double q[3] [01;31m[K)[m[K
+[3.359s]       |                                                         [01;31m[K^[m[K
+[3.361s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:333:29:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.361s]   333 | int dubins_extract_subpath( [01;31m[KDubinsPath[m[K* path, double t, DubinsPath* newpath )
+[3.362s]       |                             [01;31m[K^~~~~~~~~~[m[K
+[3.362s]       |                             [32m[Kdubins_path[m[K
+[3.364s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:333:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kpath[m[K’ was not declared in this scope
+[3.364s]   333 | int dubins_extract_subpath( DubinsPath* [01;31m[Kpath[m[K, double t, DubinsPath* newpath )
+[3.364s]       |                                         [01;31m[K^~~~[m[K
+[3.365s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:333:47:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[Kdouble[m[K’
+[3.365s]   333 | int dubins_extract_subpath( DubinsPath* path, [01;31m[Kdouble[m[K t, DubinsPath* newpath )
+[3.365s]       |                                               [01;31m[K^~~~~~[m[K
+[3.367s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:333:57:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPath[m[K’ was not declared in this scope; did you mean ‘[01m[Kdubins_path[m[K’?
+[3.367s]   333 | int dubins_extract_subpath( DubinsPath* path, double t, [01;31m[KDubinsPath[m[K* newpath )
+[3.367s]       |                                                         [01;31m[K^~~~~~~~~~[m[K
+[3.367s]       |                                                         [32m[Kdubins_path[m[K
+[3.371s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:333:69:[m[K [01;31m[Kerror: [m[K‘[01m[Knewpath[m[K’ was not declared in this scope
+[3.371s]   333 | int dubins_extract_subpath( DubinsPath* path, double t, DubinsPath* [01;31m[Knewpath[m[K )
+[3.371s]       |                                                                     [01;31m[K^~~~~~~[m[K
+[3.371s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:333:77:[m[K [01;31m[Kerror: [m[Kexpression list treated as compound expression in initializer [[01;31m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-fpermissive-fpermissive]8;;[m[K]
+[3.371s]   333 | int dubins_extract_subpath( DubinsPath* path, double t, DubinsPath* newpath [01;31m[K)[m[K
+[3.371s]       |                                                                             [01;31m[K^[m[K
+[3.375s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K In function ‘[01m[Kint dubins_intermediate_results(DubinsIntermediateResults*, double*, double*, double)[m[K’:
+[3.376s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:372:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kmod2pi[m[K’ was not declared in this scope
+[3.376s]   372 |         theta = [01;31m[Kmod2pi[m[K(atan2( dy, dx ));
+[3.376s]       |                 [01;31m[K^~~~~~[m[K
+[3.379s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:374:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kmod2pi[m[K’ was not declared in this scope
+[3.379s]   374 |     alpha = [01;31m[Kmod2pi[m[K(q0[2] - theta);
+[3.380s]       |             [01;31m[K^~~~~~[m[K
+[3.380s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:[m[K At global scope:
+[3.380s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp:391:48:[m[K [01;31m[Kerror: [m[K‘[01m[KDubinsPathType[m[K’ has not been declared
+[3.381s]   391 | int dubins_word(DubinsIntermediateResults* in, [01;31m[KDubinsPathType[m[K pathType, double out[3]);
+[3.381s]       |                                                [01;31m[K^~~~~~~~~~~~~~[m[K
+[3.457s] gmake[2]: *** [CMakeFiles/Dubins.dir/build.make:76: CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o] Error 1
+[3.458s] gmake[1]: *** [CMakeFiles/Makefile2:201: CMakeFiles/Dubins.dir/all] Error 2
+[3.458s] gmake[1]: *** Waiting for unfinished jobs....
+[23.822s] [ 78%] [32m[1mLinking CXX shared library libOffboardControl.so[0m
+[25.869s] [ 78%] Built target OffboardControl
+[25.871s] gmake: *** [Makefile:146: all] Error 2
+[25.875s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '2': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8

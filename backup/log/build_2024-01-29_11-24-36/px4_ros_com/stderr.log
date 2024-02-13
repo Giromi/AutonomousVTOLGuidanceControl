@@ -1,0 +1,14 @@
+In file included from [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/examples/offboard/main.cpp:1[m[K:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/examples/offboard/offboard_control.hpp:2:10:[m[K [01;31m[Kfatal error: [m[Kpx4_msgs/msg/offboard_control_mode.hpp: No such file or directory
+    2 | #include [01;31m[K<px4_msgs/msg/offboard_control_mode.hpp>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+gmake[2]: *** [CMakeFiles/main.dir/build.make:76: CMakeFiles/main.dir/src/examples/offboard/main.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:251: CMakeFiles/main.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/offboard_control.dir/build.make:159: offboard_control] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:277: CMakeFiles/offboard_control.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

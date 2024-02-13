@@ -1,0 +1,30 @@
+name: Build publish debian packages
+
+on:
+  release:
+    types: [published]
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    name: Build debian packages
+    strategy:
+      matrix:
+        platform: [linux/amd64, linux/arm64]
+        distro:
+          - ubuntu: jammy
+            ros2: humble
+          - ubuntu: jammy
+            ros2: rolling
+          - ubuntu: focal
+            ros2: foxy
+
+    uses: Auterion/ros-debian-workflow/.github/workflows/build-ros-debian.yml@main
+    with:
+      platform: ${{ matrix.platform }}
+      ubuntu-distro: ${{ matrix.distro.ubuntu }}
+      ros2-distro: ${{ matrix.distro.ros2 }}
+      source-prefix: px4_ros2_cpp
+    secrets: inherit

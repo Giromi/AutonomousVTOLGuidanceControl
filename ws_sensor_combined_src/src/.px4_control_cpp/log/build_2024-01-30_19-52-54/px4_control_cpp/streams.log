@@ -1,0 +1,40 @@
+[0.109s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp -- -j8 -l8
+[0.139s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.310s] -- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+[0.346s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.349s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.357s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.370s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.388s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.461s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.463s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.616s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.819s] -- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.902s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.916s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.916s] -- Configured cppcheck include dirs: 
+[0.916s] -- Configured cppcheck exclude dirs and/or files: 
+[0.929s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[0.929s] -- Configured cpplint exclude dirs and/or files: 
+[0.931s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.937s] -- Added test 'lint_cmake' to check CMake code style
+[0.939s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.951s] -- Added test 'uncrustify' to check C / C++ code style
+[0.951s] -- Configured uncrustify additional arguments: 
+[0.953s] -- Added test 'xmllint' to check XML markup files
+[0.954s] -- Configuring done
+[0.972s] -- Generating done
+[0.975s] -- Build files have been written to: /home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp
+[1.006s] [35m[1mConsolidate compiler generated dependencies of target listener[0m
+[1.006s] [35m[1mConsolidate compiler generated dependencies of target talker[0m
+[1.027s] [ 50%] Built target talker
+[1.027s] [ 75%] [32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o[0m
+[1.407s] In file included from [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/src/subscriber_member_function.cpp:4[m[K:
+[1.407s] [01m[K/usr/include/mavsdk/plugins/action/action.h:16:10:[m[K [01;31m[Kfatal error: [m[Kplugin_base.h: No such file or directory
+[1.407s]    16 | #include [01;31m[K"plugin_base.h"[m[K
+[1.407s]       |          [01;31m[K^~~~~~~~~~~~~~~[m[K
+[1.407s] compilation terminated.
+[1.411s] gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o] Error 1
+[1.411s] gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/listener.dir/all] Error 2
+[1.412s] gmake: *** [Makefile:146: all] Error 2
+[1.415s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/build/px4_control_cpp -- -j8 -l8

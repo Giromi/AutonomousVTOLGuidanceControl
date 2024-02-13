@@ -1,0 +1,4 @@
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_publisher.cpp:[m[K In lambda function:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_publisher.cpp:39:35:[m[K [01;35m[Kwarning: [m[Kunknown escape sequence: '\('
+   39 |                      std::cout << [01;35m[K"Really Want? Press q to quit one more\n\(if you don't, push any key)"[m[K << std::endl;
+      |                                   [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
