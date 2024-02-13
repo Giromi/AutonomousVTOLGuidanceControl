@@ -24,6 +24,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(px4_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(mavros_msgs REQUIRED)
 
 #################
 # Setup targets #
@@ -34,6 +35,7 @@ include_directories(include)
 add_library(frame_transforms SHARED src/lib/frame_transforms.cpp)
 add_library(OffboardControl SHARED src/lib/OffboardControl.cpp)
 add_library(Dubins SHARED src/lib/Dubins.cpp)
+add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
 
 
 # Function to setup ament dependencies for targets
@@ -45,13 +47,14 @@ function(setup_target target_name)
     geometry_msgs
     sensor_msgs
     std_msgs
+    mavros_msgs
   )
 endfunction()
 
 # ament_target_dependencies(frame_transforms Eigen3 geometry_msgs sensor_msgs)
 # ament_target_dependencies(OffboardControl rclcpp px4_msgs)
 
-foreach(lib frame_transforms OffboardControl Dubins)
+foreach(lib frame_transforms OffboardControl Dubins ServoControlPublisher)
   setup_target(${lib})
   target_include_directories(${lib} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}>
@@ -76,6 +79,7 @@ set(EXECUTABLES
   main/offboard_control
   main/key_event_pub
   main/key_event_sub
+  main/pwm_aux_output
 )
 
 foreach(exec ${EXECUTABLES})
@@ -84,8 +88,10 @@ foreach(exec ${EXECUTABLES})
   setup_target(${exec_name})
   if("${exec_name}" STREQUAL "offboard_control")
       target_link_libraries(${exec_name} OffboardControl Dubins)
-  elseif("${exec_name}" STREQUAL "key_event_pub" OR "${exec_name}" STREQUAL "key_event_sub")
-      target_link_libraries(${exec_name} frame_transforms)
+  # elseif("${exec_name}" STREQUAL "key_event_pub" OR "${exec_name}" STREQUAL "key_event_sub")
+  #     target_link_libraries(${exec_name} frame_transforms)
+  elseif("${exec_name}" STREQUAL "pwm_aux_output")
+      target_link_libraries(${exec_name} ServoControlPublisher frame_transforms)
   endif()
   install(TARGETS ${exec_name} DESTINATION lib/${PROJECT_NAME})
 endforeach()
@@ -146,6 +152,14 @@ install(TARGETS OffboardControl
 
 install(TARGETS Dubins
   EXPORT export_Dubins
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
+)
+
+install(TARGETS ServoControlPublisher
+  EXPORT export_ServoControlPublisher
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin

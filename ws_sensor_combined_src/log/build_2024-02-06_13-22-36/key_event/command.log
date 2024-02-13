@@ -1,2 +1,0 @@
-Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/key_event -- -j8 -l8
-Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event' returned '-2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/key_event -- -j8 -l8

@@ -1,9 +1,1 @@
-/*!
-\defgroup setpoint_types Setpoint Types
-\ingroup control
-*/
-
-/*!
-\defgroup setpoint_types_experimental Experimental
-\ingroup setpoint_types
-*/
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4-ros2-interface-lib/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/groups.dox

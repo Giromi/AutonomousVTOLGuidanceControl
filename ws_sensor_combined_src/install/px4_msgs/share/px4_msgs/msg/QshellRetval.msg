@@ -1,3 +1,1 @@
-uint64 timestamp		# time since system start (microseconds)
-int32 return_value
-uint32 return_sequence
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs/msg/QshellRetval.msg

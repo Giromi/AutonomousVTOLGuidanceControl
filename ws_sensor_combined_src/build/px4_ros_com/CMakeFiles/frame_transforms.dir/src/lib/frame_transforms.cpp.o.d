@@ -1,7 +1,7 @@
 CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o: \
- /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/frame_transforms.cpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/frame_transforms.cpp \
  /usr/include/stdc-predef.h \
- /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/frame_transforms.h \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/frame_transforms.h \
  /usr/include/eigen3/Eigen/Eigen /usr/include/eigen3/Eigen/Dense \
  /usr/include/eigen3/Eigen/Core \
  /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \

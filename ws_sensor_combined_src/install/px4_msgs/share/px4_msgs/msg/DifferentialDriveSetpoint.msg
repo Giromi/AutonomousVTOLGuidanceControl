@@ -1,4 +1,1 @@
-uint64 timestamp # time since system start (microseconds)
-
-float32 speed # [m/s] collective roll-off speed in body x-axis
-float32 yaw_rate # [rad/s] yaw rate
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs/msg/DifferentialDriveSetpoint.msg

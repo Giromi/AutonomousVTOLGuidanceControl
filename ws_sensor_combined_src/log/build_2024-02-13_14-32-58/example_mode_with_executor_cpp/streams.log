@@ -1,0 +1,73 @@
+[0.101s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp
+[0.188s] -- The C compiler identification is GNU 11.4.0
+[0.304s] -- The CXX compiler identification is GNU 11.4.0
+[0.333s] -- Detecting C compiler ABI info
+[0.463s] -- Detecting C compiler ABI info - done
+[0.487s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.488s] -- Detecting C compile features
+[0.488s] -- Detecting C compile features - done
+[0.503s] -- Detecting CXX compiler ABI info
+[0.643s] -- Detecting CXX compiler ABI info - done
+[0.662s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.662s] -- Detecting CXX compile features
+[0.663s] -- Detecting CXX compile features - done
+[0.666s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.680s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[0.684s] -- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.584s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[1.725s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.785s] -- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+[1.899s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.912s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.936s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.976s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.034s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.241s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[2.248s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.459s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[2.520s] -- Found FastRTPS: /opt/ros/humble/include  
+[2.623s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.643s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.749s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.751s] -- Found Threads: TRUE  
+[3.240s] -- Found px4_ros2_cpp: 0.0.1 (/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake)
+[3.405s] -- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[3.572s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.574s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.574s] -- Configured cppcheck include dirs: /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor/include
+[3.574s] -- Configured cppcheck exclude dirs and/or files: 
+[3.576s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.576s] -- Configured cpplint exclude dirs and/or files: 
+[3.577s] -- Added test 'lint_cmake' to check CMake code style
+[3.579s] -- Added test 'uncrustify' to check C / C++ code style
+[3.579s] -- Configured uncrustify additional arguments: 
+[3.579s] -- Added test 'xmllint' to check XML markup files
+[3.585s] -- Configuring done (3.5s)
+[3.601s] -- Generating done (0.0s)
+[3.605s] -- Build files have been written to: /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp
+[3.621s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp
+[3.624s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp -- -j8 -l8
+[3.683s] [ 50%] [32mBuilding CXX object CMakeFiles/example_mode_with_executor.dir/src/main.cpp.o[0m
+[11.653s] [100%] [32m[1mLinking CXX executable example_mode_with_executor[0m
+[12.835s] [100%] Built target example_mode_with_executor
+[12.947s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp -- -j8 -l8
+[12.975s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp
+[12.982s] -- Install configuration: ""
+[12.982s] -- Execute custom install script
+[12.983s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib/example_mode_with_executor_cpp/example_mode_with_executor
+[12.991s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/ament_index/resource_index/package_run_dependencies/example_mode_with_executor_cpp
+[12.997s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/ament_index/resource_index/parent_prefix_path/example_mode_with_executor_cpp
+[13.004s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/ament_prefix_path.sh
+[13.010s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/ament_prefix_path.dsv
+[13.016s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/path.sh
+[13.022s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/environment/path.dsv
+[13.028s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.bash
+[13.033s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.sh
+[13.039s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.zsh
+[13.045s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/local_setup.dsv
+[13.051s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.dsv
+[13.057s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/ament_index/resource_index/packages/example_mode_with_executor_cpp
+[13.063s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/cmake/example_mode_with_executor_cppConfig.cmake
+[13.068s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/cmake/example_mode_with_executor_cppConfig-version.cmake
+[13.074s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.xml
+[13.082s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_with_executor_cpp

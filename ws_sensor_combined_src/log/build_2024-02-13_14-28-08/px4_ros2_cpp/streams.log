@@ -1,0 +1,18 @@
+[0.179s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros2_cpp': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros2_cpp -- -j8 -l8
+[0.212s] [  5%] Built target gtest_main
+[0.217s] [ 10%] Built target integration_utils
+[0.217s] [ 16%] Built target gtest
+[0.252s] [ 67%] Built target px4_ros2_cpp
+[0.278s] [ 70%] [32m[1mLinking CXX executable px4_ros2_cpp_unit_tests[0m
+[0.282s] [ 72%] [32m[1mLinking CXX executable integration_tests[0m
+[0.297s] /usr/bin/ld: gtest/libgtest.a: error adding symbols: archive has no index; run ranlib to add one
+[0.298s] collect2: error: ld returned 1 exit status
+[0.299s] gmake[2]: *** [CMakeFiles/px4_ros2_cpp_unit_tests.dir/build.make:210: px4_ros2_cpp_unit_tests] Error 1
+[0.299s] gmake[1]: *** [CMakeFiles/Makefile2:244: CMakeFiles/px4_ros2_cpp_unit_tests.dir/all] Error 2
+[0.299s] gmake[1]: *** Waiting for unfinished jobs....
+[0.388s] /usr/bin/ld: gtest/libgtest.a: error adding symbols: archive has no index; run ranlib to add one
+[0.392s] collect2: error: ld returned 1 exit status
+[0.393s] gmake[2]: *** [CMakeFiles/integration_tests.dir/build.make:243: integration_tests] Error 1
+[0.393s] gmake[1]: *** [CMakeFiles/Makefile2:216: CMakeFiles/integration_tests.dir/all] Error 2
+[0.393s] gmake: *** [Makefile:146: all] Error 2
+[0.395s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros2_cpp' returned '2': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros2_cpp -- -j8 -l8

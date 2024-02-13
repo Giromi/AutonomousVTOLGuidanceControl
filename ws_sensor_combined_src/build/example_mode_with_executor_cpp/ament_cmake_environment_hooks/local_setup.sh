@@ -2,7 +2,7 @@
 
 # since this file is sourced use either the provided AMENT_CURRENT_PREFIX
 # or fall back to the destination set at configure time
-: ${AMENT_CURRENT_PREFIX:="/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp"}
+: ${AMENT_CURRENT_PREFIX:="/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp"}
 if [ ! -d "$AMENT_CURRENT_PREFIX" ]; then
   if [ -z "$COLCON_CURRENT_PREFIX" ]; then
     echo "The compile time prefix path '$AMENT_CURRENT_PREFIX' doesn't " \

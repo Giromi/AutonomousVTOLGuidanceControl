@@ -54,10 +54,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com
+CMAKE_SOURCE_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+CMAKE_BINARY_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -66,12 +66,14 @@ CMAKE_BINARY_DIR = /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
 all: CMakeFiles/frame_transforms.dir/all
 all: CMakeFiles/OffboardControl.dir/all
 all: CMakeFiles/Dubins.dir/all
+all: CMakeFiles/ServoControlPublisher.dir/all
 all: CMakeFiles/sensor_combined_listener.dir/all
 all: CMakeFiles/vehicle_gps_position_listener.dir/all
 all: CMakeFiles/debug_vect_advertiser.dir/all
 all: CMakeFiles/offboard_control.dir/all
 all: CMakeFiles/key_event_pub.dir/all
 all: CMakeFiles/key_event_sub.dir/all
+all: CMakeFiles/pwm_aux_output.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -84,12 +86,14 @@ clean: CMakeFiles/px4_ros_com_uninstall.dir/clean
 clean: CMakeFiles/frame_transforms.dir/clean
 clean: CMakeFiles/OffboardControl.dir/clean
 clean: CMakeFiles/Dubins.dir/clean
+clean: CMakeFiles/ServoControlPublisher.dir/clean
 clean: CMakeFiles/sensor_combined_listener.dir/clean
 clean: CMakeFiles/vehicle_gps_position_listener.dir/clean
 clean: CMakeFiles/debug_vect_advertiser.dir/clean
 clean: CMakeFiles/offboard_control.dir/clean
 clean: CMakeFiles/key_event_pub.dir/clean
 clean: CMakeFiles/key_event_sub.dir/clean
+clean: CMakeFiles/pwm_aux_output.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -99,14 +103,14 @@ clean: CMakeFiles/key_event_sub.dir/clean
 CMakeFiles/uninstall.dir/all: CMakeFiles/px4_ros_com_uninstall.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num= "Built target uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num= "Built target uninstall"
 .PHONY : CMakeFiles/uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/uninstall.dir/rule
 
 # Convenience name for target.
@@ -125,14 +129,14 @@ CMakeFiles/uninstall.dir/clean:
 CMakeFiles/px4_ros_com_uninstall.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/px4_ros_com_uninstall.dir/build.make CMakeFiles/px4_ros_com_uninstall.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/px4_ros_com_uninstall.dir/build.make CMakeFiles/px4_ros_com_uninstall.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num= "Built target px4_ros_com_uninstall"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num= "Built target px4_ros_com_uninstall"
 .PHONY : CMakeFiles/px4_ros_com_uninstall.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/px4_ros_com_uninstall.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/px4_ros_com_uninstall.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/px4_ros_com_uninstall.dir/rule
 
 # Convenience name for target.
@@ -151,14 +155,14 @@ CMakeFiles/px4_ros_com_uninstall.dir/clean:
 CMakeFiles/frame_transforms.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/frame_transforms.dir/build.make CMakeFiles/frame_transforms.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/frame_transforms.dir/build.make CMakeFiles/frame_transforms.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=7,8 "Built target frame_transforms"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=9,10 "Built target frame_transforms"
 .PHONY : CMakeFiles/frame_transforms.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/frame_transforms.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/frame_transforms.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/frame_transforms.dir/rule
 
 # Convenience name for target.
@@ -177,14 +181,14 @@ CMakeFiles/frame_transforms.dir/clean:
 CMakeFiles/OffboardControl.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OffboardControl.dir/build.make CMakeFiles/OffboardControl.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OffboardControl.dir/build.make CMakeFiles/OffboardControl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=3,4 "Built target OffboardControl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=3,4 "Built target OffboardControl"
 .PHONY : CMakeFiles/OffboardControl.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/OffboardControl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/OffboardControl.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/OffboardControl.dir/rule
 
 # Convenience name for target.
@@ -203,14 +207,14 @@ CMakeFiles/OffboardControl.dir/clean:
 CMakeFiles/Dubins.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Dubins.dir/build.make CMakeFiles/Dubins.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Dubins.dir/build.make CMakeFiles/Dubins.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=1,2 "Built target Dubins"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=1,2 "Built target Dubins"
 .PHONY : CMakeFiles/Dubins.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Dubins.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Dubins.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/Dubins.dir/rule
 
 # Convenience name for target.
@@ -223,20 +227,46 @@ CMakeFiles/Dubins.dir/clean:
 .PHONY : CMakeFiles/Dubins.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/ServoControlPublisher.dir
+
+# All Build rule for target.
+CMakeFiles/ServoControlPublisher.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServoControlPublisher.dir/build.make CMakeFiles/ServoControlPublisher.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServoControlPublisher.dir/build.make CMakeFiles/ServoControlPublisher.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=5,6 "Built target ServoControlPublisher"
+.PHONY : CMakeFiles/ServoControlPublisher.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ServoControlPublisher.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ServoControlPublisher.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+.PHONY : CMakeFiles/ServoControlPublisher.dir/rule
+
+# Convenience name for target.
+ServoControlPublisher: CMakeFiles/ServoControlPublisher.dir/rule
+.PHONY : ServoControlPublisher
+
+# clean rule for target.
+CMakeFiles/ServoControlPublisher.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServoControlPublisher.dir/build.make CMakeFiles/ServoControlPublisher.dir/clean
+.PHONY : CMakeFiles/ServoControlPublisher.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/sensor_combined_listener.dir
 
 # All Build rule for target.
 CMakeFiles/sensor_combined_listener.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sensor_combined_listener.dir/build.make CMakeFiles/sensor_combined_listener.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sensor_combined_listener.dir/build.make CMakeFiles/sensor_combined_listener.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=15,16 "Built target sensor_combined_listener"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=19,20 "Built target sensor_combined_listener"
 .PHONY : CMakeFiles/sensor_combined_listener.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sensor_combined_listener.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sensor_combined_listener.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/sensor_combined_listener.dir/rule
 
 # Convenience name for target.
@@ -255,14 +285,14 @@ CMakeFiles/sensor_combined_listener.dir/clean:
 CMakeFiles/vehicle_gps_position_listener.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_gps_position_listener.dir/build.make CMakeFiles/vehicle_gps_position_listener.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_gps_position_listener.dir/build.make CMakeFiles/vehicle_gps_position_listener.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=17,18 "Built target vehicle_gps_position_listener"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=21,22 "Built target vehicle_gps_position_listener"
 .PHONY : CMakeFiles/vehicle_gps_position_listener.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vehicle_gps_position_listener.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vehicle_gps_position_listener.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/vehicle_gps_position_listener.dir/rule
 
 # Convenience name for target.
@@ -281,14 +311,14 @@ CMakeFiles/vehicle_gps_position_listener.dir/clean:
 CMakeFiles/debug_vect_advertiser.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_vect_advertiser.dir/build.make CMakeFiles/debug_vect_advertiser.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/debug_vect_advertiser.dir/build.make CMakeFiles/debug_vect_advertiser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=5,6 "Built target debug_vect_advertiser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=7,8 "Built target debug_vect_advertiser"
 .PHONY : CMakeFiles/debug_vect_advertiser.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/debug_vect_advertiser.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/debug_vect_advertiser.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/debug_vect_advertiser.dir/rule
 
 # Convenience name for target.
@@ -308,14 +338,14 @@ CMakeFiles/offboard_control.dir/all: CMakeFiles/OffboardControl.dir/all
 CMakeFiles/offboard_control.dir/all: CMakeFiles/Dubins.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/offboard_control.dir/build.make CMakeFiles/offboard_control.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/offboard_control.dir/build.make CMakeFiles/offboard_control.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=13,14 "Built target offboard_control"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=15,16 "Built target offboard_control"
 .PHONY : CMakeFiles/offboard_control.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/offboard_control.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/offboard_control.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/offboard_control.dir/rule
 
 # Convenience name for target.
@@ -331,17 +361,17 @@ CMakeFiles/offboard_control.dir/clean:
 # Target rules for target CMakeFiles/key_event_pub.dir
 
 # All Build rule for target.
-CMakeFiles/key_event_pub.dir/all: CMakeFiles/frame_transforms.dir/all
+CMakeFiles/key_event_pub.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/key_event_pub.dir/build.make CMakeFiles/key_event_pub.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/key_event_pub.dir/build.make CMakeFiles/key_event_pub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=9,10 "Built target key_event_pub"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=11,12 "Built target key_event_pub"
 .PHONY : CMakeFiles/key_event_pub.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/key_event_pub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/key_event_pub.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/key_event_pub.dir/rule
 
 # Convenience name for target.
@@ -357,17 +387,17 @@ CMakeFiles/key_event_pub.dir/clean:
 # Target rules for target CMakeFiles/key_event_sub.dir
 
 # All Build rule for target.
-CMakeFiles/key_event_sub.dir/all: CMakeFiles/frame_transforms.dir/all
+CMakeFiles/key_event_sub.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/key_event_sub.dir/build.make CMakeFiles/key_event_sub.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/key_event_sub.dir/build.make CMakeFiles/key_event_sub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=11,12 "Built target key_event_sub"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=13,14 "Built target key_event_sub"
 .PHONY : CMakeFiles/key_event_sub.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/key_event_sub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/key_event_sub.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : CMakeFiles/key_event_sub.dir/rule
 
 # Convenience name for target.
@@ -378,6 +408,33 @@ key_event_sub: CMakeFiles/key_event_sub.dir/rule
 CMakeFiles/key_event_sub.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/key_event_sub.dir/build.make CMakeFiles/key_event_sub.dir/clean
 .PHONY : CMakeFiles/key_event_sub.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/pwm_aux_output.dir
+
+# All Build rule for target.
+CMakeFiles/pwm_aux_output.dir/all: CMakeFiles/frame_transforms.dir/all
+CMakeFiles/pwm_aux_output.dir/all: CMakeFiles/ServoControlPublisher.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=17,18 "Built target pwm_aux_output"
+.PHONY : CMakeFiles/pwm_aux_output.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/pwm_aux_output.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/pwm_aux_output.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+.PHONY : CMakeFiles/pwm_aux_output.dir/rule
+
+# Convenience name for target.
+pwm_aux_output: CMakeFiles/pwm_aux_output.dir/rule
+.PHONY : pwm_aux_output
+
+# clean rule for target.
+CMakeFiles/pwm_aux_output.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/clean
+.PHONY : CMakeFiles/pwm_aux_output.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

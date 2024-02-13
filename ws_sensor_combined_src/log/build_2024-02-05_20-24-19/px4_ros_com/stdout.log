@@ -1,7 +1,0 @@
-[ 14%] Built target Dubins
-[ 42%] Built target debug_vect_advertiser
-[ 42%] Built target frame_transforms
-[ 57%] Built target sensor_combined_listener
-[ 71%] Built target vehicle_gps_position_listener
-[ 85%] Built target OffboardControl
-[ 92%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/offboard/offboard_control.cpp.o[0m

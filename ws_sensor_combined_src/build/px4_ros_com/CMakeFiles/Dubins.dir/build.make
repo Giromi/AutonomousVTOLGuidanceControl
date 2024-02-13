@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com
+CMAKE_SOURCE_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+CMAKE_BINARY_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Dubins.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/Dubins.dir/progress.make
 include CMakeFiles/Dubins.dir/flags.make
 
 CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o: CMakeFiles/Dubins.dir/flags.make
-CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o: /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp
+CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o: /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp
 CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o: CMakeFiles/Dubins.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o -MF CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o.d -o CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o -c /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o -MF CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o.d -o CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o -c /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp
 
 CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp > CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp > CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.i
 
 CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp -o CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/Dubins.cpp -o CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.s
 
 # Object files for target Dubins
 Dubins_OBJECTS = \
@@ -93,31 +93,24 @@ Dubins_EXTERNAL_OBJECTS =
 libDubins.so: CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o
 libDubins.so: CMakeFiles/Dubins.dir/build.make
 libDubins.so: /opt/ros/humble/lib/librclcpp.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_c.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_cpp.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_c.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_cpp.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_cpp.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_py.so
-libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
-libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
-libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
-libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_cpp.so
-libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_c.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_c.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_cpp.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_cpp.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_py.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_fastrtps_c.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_introspection_c.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_introspection_cpp.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_cpp.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_generator_py.so
 libDubins.so: /opt/ros/humble/lib/liblibstatistics_collector.so
 libDubins.so: /opt/ros/humble/lib/librcl.so
 libDubins.so: /opt/ros/humble/lib/librmw_implementation.so
 libDubins.so: /opt/ros/humble/lib/libament_index_cpp.so
 libDubins.so: /opt/ros/humble/lib/librcl_logging_spdlog.so
 libDubins.so: /opt/ros/humble/lib/librcl_logging_interface.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_c.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_cpp.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_py.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so
-libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so
 libDubins.so: /opt/ros/humble/lib/librcl_yaml_param_parser.so
 libDubins.so: /opt/ros/humble/lib/libyaml.so
 libDubins.so: /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_c.so
@@ -137,49 +130,80 @@ libDubins.so: /opt/ros/humble/lib/libstatistics_msgs__rosidl_generator_py.so
 libDubins.so: /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_c.so
 libDubins.so: /opt/ros/humble/lib/libstatistics_msgs__rosidl_generator_c.so
 libDubins.so: /opt/ros/humble/lib/libtracetools.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_c.so
-libDubins.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_c.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_c.so
+libDubins.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_c.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_c.so
 libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_c.so
 libDubins.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_c.so
-libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
-libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
-libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
-libDubins.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
-libDubins.so: /opt/ros/humble/lib/libfastcdr.so.1.0.24
-libDubins.so: /opt/ros/humble/lib/librmw.so
+libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_introspection_c.so
 libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
 libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
 libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_c.so
+libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
+libDubins.so: /opt/ros/humble/lib/libfastcdr.so.1.0.24
+libDubins.so: /opt/ros/humble/lib/librmw.so
+libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_cpp.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_introspection_cpp.so
 libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
 libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
 libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_cpp.so
 libDubins.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_cpp.so
 libDubins.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
-libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
-libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
-libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
-libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
-libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
-libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
-libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
-libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
-libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
-libDubins.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_cpp.so
 libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
 libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_cpp.so
 libDubins.so: /opt/ros/humble/lib/librosidl_typesupport_cpp.so
+libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_py.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_generator_py.so
+libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
+libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
+libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_generator_py.so
+libDubins.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_c.so
+libDubins.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_generator_c.so
 libDubins.so: /opt/ros/humble/lib/librosidl_typesupport_c.so
 libDubins.so: /opt/ros/humble/lib/librcpputils.so
 libDubins.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libDubins.so: /opt/ros/humble/lib/librcutils.so
 libDubins.so: CMakeFiles/Dubins.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libDubins.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libDubins.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Dubins.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -191,6 +215,6 @@ CMakeFiles/Dubins.dir/clean:
 .PHONY : CMakeFiles/Dubins.dir/clean
 
 CMakeFiles/Dubins.dir/depend:
-	cd /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles/Dubins.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles/Dubins.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/Dubins.dir/depend
 

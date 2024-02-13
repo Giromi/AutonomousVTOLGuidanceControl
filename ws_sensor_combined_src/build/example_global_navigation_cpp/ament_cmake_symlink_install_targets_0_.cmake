@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_global_navigation_cpp/example_global_navigation" "TARGETS" "example_global_navigation" "DESTINATION" "lib/example_global_navigation_cpp")

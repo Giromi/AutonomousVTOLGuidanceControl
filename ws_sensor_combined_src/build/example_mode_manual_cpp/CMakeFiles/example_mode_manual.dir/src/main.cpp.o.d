@@ -1,5 +1,5 @@
 CMakeFiles/example_mode_manual.dir/src/main.cpp.o: \
- /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual/src/main.cpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual/src/main.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/11/csignal \
@@ -599,50 +599,50 @@ CMakeFiles/example_mode_manual.dir/src/main.cpp.o: \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/thread_safe_synchronization.hpp \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/detail/write_preferring_read_write_lock.hpp \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_template.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual/include/mode.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/mode.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/mode_completed.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/mode_completed__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/mode_completed__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/mode_completed__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_control_mode.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_status.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_status__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_status__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_status__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/health_and_arming_checks.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/arming_check_reply.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_reply__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/event__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_reply__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_reply__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/event__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/arming_check_request.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_request__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_request__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_request__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/requirement_flags.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/events.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/overrides.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/config_overrides.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/config_overrides__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/config_overrides__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/config_overrides__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/manual_control_input.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/manual_control_setpoint.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/manual_control_setpoint__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/manual_control_setpoint__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/manual_control_setpoint__traits.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/context.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/setpoint_base.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental/rates.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_rates_setpoint.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_rates_setpoint__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_rates_setpoint__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_rates_setpoint__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual/include/mode.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/mode.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/mode_completed.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/mode_completed__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/mode_completed__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/mode_completed__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_control_mode.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_status.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_status__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_status__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_status__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/health_and_arming_checks.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/arming_check_reply.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_reply__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/event__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_reply__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_reply__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/event__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/arming_check_request.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_request__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_request__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/arming_check_request__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/requirement_flags.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/events.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/overrides.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/config_overrides.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/config_overrides__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/config_overrides__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/config_overrides__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/manual_control_input.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/manual_control_setpoint.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/manual_control_setpoint__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/manual_control_setpoint__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/manual_control_setpoint__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/context.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/setpoint_base.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental/rates.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_rates_setpoint.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_rates_setpoint__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_rates_setpoint__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_rates_setpoint__traits.hpp \
  /usr/include/eigen3/Eigen/Core \
  /usr/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
  /usr/include/eigen3/Eigen/src/Core/util/Macros.h \
@@ -785,11 +785,11 @@ CMakeFiles/example_mode_manual.dir/src/main.cpp.o: \
  /usr/include/eigen3/Eigen/src/Core/StlIterators.h \
  /usr/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
  /usr/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental/attitude.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_attitude_setpoint.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_attitude_setpoint__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_attitude_setpoint__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_attitude_setpoint__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental/attitude.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_attitude_setpoint.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_attitude_setpoint__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_attitude_setpoint__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_attitude_setpoint__traits.hpp \
  /usr/include/eigen3/Eigen/Eigen /usr/include/eigen3/Eigen/Dense \
  /usr/include/eigen3/Eigen/Core /usr/include/eigen3/Eigen/LU \
  /usr/include/eigen3/Eigen/src/misc/Kernel.h \
@@ -922,8 +922,8 @@ CMakeFiles/example_mode_manual.dir/src/main.cpp.o: \
  /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/BiCGSTAB.h \
  /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/IncompleteLUT.h \
  /usr/include/eigen3/Eigen/src/IterativeLinearSolvers/IncompleteCholesky.h \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/peripheral_actuators.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_command.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__struct.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__builder.hpp \
- /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__traits.hpp
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/peripheral_actuators.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_command.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__traits.hpp

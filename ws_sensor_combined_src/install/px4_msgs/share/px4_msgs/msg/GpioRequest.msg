@@ -1,4 +1,1 @@
-# Request GPIO mask to be read
-
-uint64 timestamp			# time since system start (microseconds)
-uint32 device_id			# Device id
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs/msg/GpioRequest.msg

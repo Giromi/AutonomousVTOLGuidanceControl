@@ -1,0 +1,2 @@
+Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_msgs': /usr/local/bin/cmake /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs
+Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_msgs' returned '1': /usr/local/bin/cmake /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs

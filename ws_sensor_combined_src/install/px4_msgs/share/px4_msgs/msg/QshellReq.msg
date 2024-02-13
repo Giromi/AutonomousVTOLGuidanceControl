@@ -1,5 +1,1 @@
-uint64 timestamp		# time since system start (microseconds)
-char[100] cmd
-uint32 MAX_STRLEN = 100
-uint32 strlen
-uint32 request_sequence
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs/msg/QshellReq.msg

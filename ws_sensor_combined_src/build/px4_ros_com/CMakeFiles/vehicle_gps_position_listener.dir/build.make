@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com
+CMAKE_SOURCE_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+CMAKE_BINARY_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com
 
 # Include any dependencies generated for this target.
 include CMakeFiles/vehicle_gps_position_listener.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/vehicle_gps_position_listener.dir/progress.make
 include CMakeFiles/vehicle_gps_position_listener.dir/flags.make
 
 CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o: CMakeFiles/vehicle_gps_position_listener.dir/flags.make
-CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o: /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp
+CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o: /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp
 CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o: CMakeFiles/vehicle_gps_position_listener.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o -MF CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o.d -o CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o -c /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o -MF CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o.d -o CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o -c /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp
 
 CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp > CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp > CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.i
 
 CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp -o CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/listeners/vehicle_gps_position_listener.cpp -o CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.s
 
 # Object files for target vehicle_gps_position_listener
 vehicle_gps_position_listener_OBJECTS = \
@@ -93,31 +93,24 @@ vehicle_gps_position_listener_EXTERNAL_OBJECTS =
 vehicle_gps_position_listener: CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o
 vehicle_gps_position_listener: CMakeFiles/vehicle_gps_position_listener.dir/build.make
 vehicle_gps_position_listener: /opt/ros/humble/lib/librclcpp.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_c.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_cpp.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_c.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_cpp.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_cpp.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_py.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_c.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_c.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_cpp.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_cpp.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_py.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_fastrtps_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_introspection_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_introspection_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_generator_py.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/liblibstatistics_collector.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librcl.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librmw_implementation.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libament_index_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_logging_spdlog.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_logging_interface.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_py.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_yaml_param_parser.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libyaml.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_c.so
@@ -137,49 +130,80 @@ vehicle_gps_position_listener: /opt/ros/humble/lib/libstatistics_msgs__rosidl_ge
 vehicle_gps_position_listener: /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libstatistics_msgs__rosidl_generator_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libtracetools.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_c.so
-vehicle_gps_position_listener: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_c.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libfastcdr.so.1.0.24
-vehicle_gps_position_listener: /opt/ros/humble/lib/librmw.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_introspection_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libfastcdr.so.1.0.24
+vehicle_gps_position_listener: /opt/ros/humble/lib/librmw.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_introspection_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_typesupport_introspection_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
-vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
-vehicle_gps_position_listener: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_cpp.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_typesupport_cpp.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libmavros_msgs__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_py.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_generator_py.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeographic_msgs__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_generator_py.so
+vehicle_gps_position_listener: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_c.so
+vehicle_gps_position_listener: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_generator_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_typesupport_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librcpputils.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librosidl_runtime_c.so
 vehicle_gps_position_listener: /opt/ros/humble/lib/librcutils.so
 vehicle_gps_position_listener: CMakeFiles/vehicle_gps_position_listener.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable vehicle_gps_position_listener"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable vehicle_gps_position_listener"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/vehicle_gps_position_listener.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -191,6 +215,6 @@ CMakeFiles/vehicle_gps_position_listener.dir/clean:
 .PHONY : CMakeFiles/vehicle_gps_position_listener.dir/clean
 
 CMakeFiles/vehicle_gps_position_listener.dir/depend:
-	cd /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles/vehicle_gps_position_listener.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles/vehicle_gps_position_listener.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/vehicle_gps_position_listener.dir/depend
 

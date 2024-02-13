@@ -1,8 +1,8 @@
-# Install script for directory: /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs/px4_msgs__py
+# Install script for directory: /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_msgs/px4_msgs__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs")
+  set(CMAKE_INSTALL_PREFIX "/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

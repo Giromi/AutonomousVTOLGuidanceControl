@@ -1,3 +1,1 @@
-source;share/px4_ros_com/environment/ament_prefix_path.sh
-source;share/px4_ros_com/environment/library_path.sh
-source;share/px4_ros_com/environment/path.sh
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/ament_cmake_environment_hooks/local_setup.dsv

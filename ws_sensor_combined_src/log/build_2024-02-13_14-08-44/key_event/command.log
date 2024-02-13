@@ -1,0 +1,1 @@
+Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event': /usr/local/bin/cmake /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/key_event -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event

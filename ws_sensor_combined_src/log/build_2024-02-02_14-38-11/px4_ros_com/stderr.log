@@ -1,5 +1,0 @@
-[31mCMake Error at CMakeLists.txt:142 (install):
-  install TARGETS given target "DubinsPath" which does not exist.
-
-[0m
-gmake: *** [Makefile:472: cmake_check_build_system] Error 1

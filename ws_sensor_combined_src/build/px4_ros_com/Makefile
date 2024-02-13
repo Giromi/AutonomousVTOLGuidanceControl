@@ -57,10 +57,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com
+CMAKE_SOURCE_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+CMAKE_BINARY_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -237,6 +237,19 @@ Dubins/fast:
 .PHONY : Dubins/fast
 
 #=============================================================================
+# Target rules for targets named ServoControlPublisher
+
+# Build rule for target.
+ServoControlPublisher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ServoControlPublisher
+.PHONY : ServoControlPublisher
+
+# fast build rule for target.
+ServoControlPublisher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServoControlPublisher.dir/build.make CMakeFiles/ServoControlPublisher.dir/build
+.PHONY : ServoControlPublisher/fast
+
+#=============================================================================
 # Target rules for targets named sensor_combined_listener
 
 # Build rule for target.
@@ -314,6 +327,19 @@ key_event_sub/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/key_event_sub.dir/build.make CMakeFiles/key_event_sub.dir/build
 .PHONY : key_event_sub/fast
 
+#=============================================================================
+# Target rules for targets named pwm_aux_output
+
+# Build rule for target.
+pwm_aux_output: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pwm_aux_output
+.PHONY : pwm_aux_output
+
+# fast build rule for target.
+pwm_aux_output/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/build
+.PHONY : pwm_aux_output/fast
+
 src/advertisers/debug_vect_advertiser.o: src/advertisers/debug_vect_advertiser.cpp.o
 .PHONY : src/advertisers/debug_vect_advertiser.o
 
@@ -385,6 +411,30 @@ src/lib/OffboardControl.s: src/lib/OffboardControl.cpp.s
 src/lib/OffboardControl.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/OffboardControl.dir/build.make CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.s
 .PHONY : src/lib/OffboardControl.cpp.s
+
+src/lib/ServoControlPublisher.o: src/lib/ServoControlPublisher.cpp.o
+.PHONY : src/lib/ServoControlPublisher.o
+
+# target to build an object file
+src/lib/ServoControlPublisher.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServoControlPublisher.dir/build.make CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o
+.PHONY : src/lib/ServoControlPublisher.cpp.o
+
+src/lib/ServoControlPublisher.i: src/lib/ServoControlPublisher.cpp.i
+.PHONY : src/lib/ServoControlPublisher.i
+
+# target to preprocess a source file
+src/lib/ServoControlPublisher.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServoControlPublisher.dir/build.make CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.i
+.PHONY : src/lib/ServoControlPublisher.cpp.i
+
+src/lib/ServoControlPublisher.s: src/lib/ServoControlPublisher.cpp.s
+.PHONY : src/lib/ServoControlPublisher.s
+
+# target to generate assembly for a file
+src/lib/ServoControlPublisher.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ServoControlPublisher.dir/build.make CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.s
+.PHONY : src/lib/ServoControlPublisher.cpp.s
 
 src/lib/frame_transforms.o: src/lib/frame_transforms.cpp.o
 .PHONY : src/lib/frame_transforms.o
@@ -530,6 +580,30 @@ src/main/offboard_control.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/offboard_control.dir/build.make CMakeFiles/offboard_control.dir/src/main/offboard_control.cpp.s
 .PHONY : src/main/offboard_control.cpp.s
 
+src/main/pwm_aux_output.o: src/main/pwm_aux_output.cpp.o
+.PHONY : src/main/pwm_aux_output.o
+
+# target to build an object file
+src/main/pwm_aux_output.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.o
+.PHONY : src/main/pwm_aux_output.cpp.o
+
+src/main/pwm_aux_output.i: src/main/pwm_aux_output.cpp.i
+.PHONY : src/main/pwm_aux_output.i
+
+# target to preprocess a source file
+src/main/pwm_aux_output.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.i
+.PHONY : src/main/pwm_aux_output.cpp.i
+
+src/main/pwm_aux_output.s: src/main/pwm_aux_output.cpp.s
+.PHONY : src/main/pwm_aux_output.s
+
+# target to generate assembly for a file
+src/main/pwm_aux_output.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.s
+.PHONY : src/main/pwm_aux_output.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -547,11 +621,13 @@ help:
 	@echo "... uninstall"
 	@echo "... Dubins"
 	@echo "... OffboardControl"
+	@echo "... ServoControlPublisher"
 	@echo "... debug_vect_advertiser"
 	@echo "... frame_transforms"
 	@echo "... key_event_pub"
 	@echo "... key_event_sub"
 	@echo "... offboard_control"
+	@echo "... pwm_aux_output"
 	@echo "... sensor_combined_listener"
 	@echo "... vehicle_gps_position_listener"
 	@echo "... src/advertisers/debug_vect_advertiser.o"
@@ -563,6 +639,9 @@ help:
 	@echo "... src/lib/OffboardControl.o"
 	@echo "... src/lib/OffboardControl.i"
 	@echo "... src/lib/OffboardControl.s"
+	@echo "... src/lib/ServoControlPublisher.o"
+	@echo "... src/lib/ServoControlPublisher.i"
+	@echo "... src/lib/ServoControlPublisher.s"
 	@echo "... src/lib/frame_transforms.o"
 	@echo "... src/lib/frame_transforms.i"
 	@echo "... src/lib/frame_transforms.s"
@@ -581,6 +660,9 @@ help:
 	@echo "... src/main/offboard_control.o"
 	@echo "... src/main/offboard_control.i"
 	@echo "... src/main/offboard_control.s"
+	@echo "... src/main/pwm_aux_output.o"
+	@echo "... src/main/pwm_aux_output.i"
+	@echo "... src/main/pwm_aux_output.s"
 .PHONY : help
 
 

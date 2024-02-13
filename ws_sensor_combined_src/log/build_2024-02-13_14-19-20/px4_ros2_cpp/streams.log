@@ -1,0 +1,49 @@
+[0.211s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros2_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros2_cpp -- -j8 -l8
+[0.738s] [  5%] Built target gtest_main
+[0.745s] [ 10%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/manual_control_input.cpp.o[0m
+[0.745s] [ 10%] [32mBuilding CXX object CMakeFiles/integration_utils.dir/test/integration/util.cpp.o[0m
+[0.747s] [ 13%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/health_and_arming_checks.cpp.o[0m
+[0.747s] [ 16%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/message_compatibility_check.cpp.o[0m
+[0.748s] [ 18%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/mode.cpp.o[0m
+[0.753s] [ 21%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/mode_executor.cpp.o[0m
+[0.755s] [ 24%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/overrides.cpp.o[0m
+[0.782s] [ 27%] [32m[1mLinking CXX static library libgtest.a[0m
+[2.261s] [ 29%] Built target gtest
+[2.266s] [ 32%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/registration.cpp.o[0m
+[36.425s] [ 35%] [32m[1mLinking CXX shared library libintegration_utils.so[0m
+[37.383s] [ 35%] Built target integration_utils
+[45.722s] [ 37%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/experimental/trajectory.cpp.o[0m
+[51.892s] [ 40%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/navigation/experimental/global_position_measurement_interface.cpp.o[0m
+[54.899s] [ 43%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/navigation/experimental/local_position_measurement_interface.cpp.o[0m
+[55.906s] [ 45%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/experimental/rates.cpp.o[0m
+[56.913s] [ 48%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/experimental/attitude.cpp.o[0m
+[57.920s] [ 51%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/goto.cpp.o[0m
+[58.704s] [ 54%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/direct_actuators.cpp.o[0m
+[64.464s] [ 56%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/odometry/local_position.cpp.o[0m
+[66.090s] [ 59%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/odometry/global_position.cpp.o[0m
+[67.056s] [ 62%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/peripheral_actuators.cpp.o[0m
+[68.592s] [ 64%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/wait_for_fmu.cpp.o[0m
+[82.245s] [ 67%] [32m[1mLinking CXX shared library libpx4_ros2_cpp.so[0m
+[86.937s] [ 67%] Built target px4_ros2_cpp
+[86.952s] [ 70%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/arming_check.cpp.o[0m
+[86.952s] [ 72%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/global_navigation.cpp.o[0m
+[86.953s] [ 75%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/local_navigation.cpp.o[0m
+[86.953s] [ 81%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/mode.cpp.o[0m
+[86.953s] [ 81%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/mode_executor.cpp.o[0m
+[86.953s] [ 83%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/overrides.cpp.o[0m
+[86.970s] [ 86%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/local_navigation.cpp.o[0m
+[86.970s] [ 89%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/global_navigation.cpp.o[0m
+[97.480s] [ 91%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/main.cpp.o[0m
+[100.717s] [ 94%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/modes.cpp.o[0m
+[110.440s] [ 97%] [32m[1mLinking CXX executable px4_ros2_cpp_unit_tests[0m
+[110.567s] /usr/bin/ld: gtest/libgtest.a: error adding symbols: archive has no index; run ranlib to add one
+[110.569s] collect2: error: ld returned 1 exit status
+[110.572s] gmake[2]: *** [CMakeFiles/px4_ros2_cpp_unit_tests.dir/build.make:210: px4_ros2_cpp_unit_tests] Error 1
+[110.573s] gmake[1]: *** [CMakeFiles/Makefile2:244: CMakeFiles/px4_ros2_cpp_unit_tests.dir/all] Error 2
+[110.573s] gmake[1]: *** Waiting for unfinished jobs....
+[111.202s] [100%] [32m[1mLinking CXX executable integration_tests[0m
+[111.303s] /usr/bin/ld: gtest/libgtest.a: error adding symbols: archive has no index; run ranlib to add one
+[111.307s] collect2: error: ld returned 1 exit status
+[111.308s] gmake[2]: *** [CMakeFiles/integration_tests.dir/build.make:243: integration_tests] Error 1
+[111.308s] gmake[1]: *** [CMakeFiles/Makefile2:216: CMakeFiles/integration_tests.dir/all] Error 2
+[111.309s] gmake: *** [Makefile:146: all] Error 2

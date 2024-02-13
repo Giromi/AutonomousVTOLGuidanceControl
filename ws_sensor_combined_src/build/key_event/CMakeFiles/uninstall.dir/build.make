@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/giromi/Repos/ws_sensor_combined_src/src/key_event
+CMAKE_SOURCE_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/key_event
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/giromi/Repos/ws_sensor_combined_src/build/key_event
+CMAKE_BINARY_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/giromi/Repos/ws_sensor_combined_src/build/key_event && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/ws_sensor_combined_src/src/key_event /home/giromi/Repos/ws_sensor_combined_src/src/key_event /home/giromi/Repos/ws_sensor_combined_src/build/key_event /home/giromi/Repos/ws_sensor_combined_src/build/key_event /home/giromi/Repos/ws_sensor_combined_src/build/key_event/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/key_event /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/key_event /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/uninstall.dir/depend
 

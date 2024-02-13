@@ -1,0 +1,16 @@
+[  5%] Built target gtest_main
+[ 10%] Built target integration_utils
+[ 16%] Built target gtest
+[ 67%] Built target px4_ros2_cpp
+[ 70%] [32m[1mLinking CXX executable px4_ros2_cpp_unit_tests[0m
+[ 72%] [32m[1mLinking CXX executable integration_tests[0m
+/usr/bin/ld: gtest/libgtest.a: error adding symbols: archive has no index; run ranlib to add one
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/px4_ros2_cpp_unit_tests.dir/build.make:210: px4_ros2_cpp_unit_tests] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:244: CMakeFiles/px4_ros2_cpp_unit_tests.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+/usr/bin/ld: gtest/libgtest.a: error adding symbols: archive has no index; run ranlib to add one
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/integration_tests.dir/build.make:243: integration_tests] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:216: CMakeFiles/integration_tests.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

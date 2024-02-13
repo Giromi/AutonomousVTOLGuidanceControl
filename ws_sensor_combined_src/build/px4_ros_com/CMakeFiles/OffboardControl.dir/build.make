@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com
+CMAKE_SOURCE_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+CMAKE_BINARY_DIR = /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com
 
 # Include any dependencies generated for this target.
 include CMakeFiles/OffboardControl.dir/depend.make
@@ -70,18 +70,18 @@ include CMakeFiles/OffboardControl.dir/progress.make
 include CMakeFiles/OffboardControl.dir/flags.make
 
 CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o: CMakeFiles/OffboardControl.dir/flags.make
-CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o: /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp
+CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o: /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp
 CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o: CMakeFiles/OffboardControl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o -MF CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o.d -o CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o -c /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o -MF CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o.d -o CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o -c /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp
 
 CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp > CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp > CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.i
 
 CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp -o CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp -o CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.s
 
 # Object files for target OffboardControl
 OffboardControl_OBJECTS = \
@@ -93,31 +93,24 @@ OffboardControl_EXTERNAL_OBJECTS =
 libOffboardControl.so: CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o
 libOffboardControl.so: CMakeFiles/OffboardControl.dir/build.make
 libOffboardControl.so: /opt/ros/humble/lib/librclcpp.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_c.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_cpp.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_c.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_cpp.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_cpp.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_py.so
-libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_c.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_c.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_introspection_cpp.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_cpp.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_py.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_fastrtps_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_introspection_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_introspection_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_generator_py.so
 libOffboardControl.so: /opt/ros/humble/lib/liblibstatistics_collector.so
 libOffboardControl.so: /opt/ros/humble/lib/librcl.so
 libOffboardControl.so: /opt/ros/humble/lib/librmw_implementation.so
 libOffboardControl.so: /opt/ros/humble/lib/libament_index_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/librcl_logging_spdlog.so
 libOffboardControl.so: /opt/ros/humble/lib/librcl_logging_interface.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_c.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_py.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so
-libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so
 libOffboardControl.so: /opt/ros/humble/lib/librcl_yaml_param_parser.so
 libOffboardControl.so: /opt/ros/humble/lib/libyaml.so
 libOffboardControl.so: /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_fastrtps_c.so
@@ -137,49 +130,80 @@ libOffboardControl.so: /opt/ros/humble/lib/libstatistics_msgs__rosidl_generator_
 libOffboardControl.so: /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libstatistics_msgs__rosidl_generator_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libtracetools.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_c.so
-libOffboardControl.so: /home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_c.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_typesupport_c.so
+libOffboardControl.so: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib/libpx4_msgs__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_c.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_c.so
 libOffboardControl.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
-libOffboardControl.so: /opt/ros/humble/lib/libfastcdr.so.1.0.24
-libOffboardControl.so: /opt/ros/humble/lib/librmw.so
+libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_introspection_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
 libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/librosidl_typesupport_fastrtps_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libfastcdr.so.1.0.24
+libOffboardControl.so: /opt/ros/humble/lib/librmw.so
+libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_introspection_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_introspection_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_introspection_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
-libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
-libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
-libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
-libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
-libOffboardControl.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
 libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_cpp.so
 libOffboardControl.so: /opt/ros/humble/lib/librosidl_typesupport_cpp.so
+libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libmavros_msgs__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_py.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_generator_py.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
+libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
+libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeographic_msgs__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_generator_py.so
+libOffboardControl.so: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_typesupport_c.so
+libOffboardControl.so: /opt/ros/humble/lib/libunique_identifier_msgs__rosidl_generator_c.so
 libOffboardControl.so: /opt/ros/humble/lib/librosidl_typesupport_c.so
 libOffboardControl.so: /opt/ros/humble/lib/librcpputils.so
 libOffboardControl.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libOffboardControl.so: /opt/ros/humble/lib/librcutils.so
 libOffboardControl.so: CMakeFiles/OffboardControl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libOffboardControl.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libOffboardControl.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/OffboardControl.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -191,6 +215,6 @@ CMakeFiles/OffboardControl.dir/clean:
 .PHONY : CMakeFiles/OffboardControl.dir/clean
 
 CMakeFiles/OffboardControl.dir/depend:
-	cd /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles/OffboardControl.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles/OffboardControl.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/OffboardControl.dir/depend
 

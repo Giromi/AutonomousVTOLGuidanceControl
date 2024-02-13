@@ -1,8 +1,8 @@
-# Install script for directory: /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual
+# Install script for directory: /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp")
+  set(CMAKE_INSTALL_PREFIX "/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -42,83 +42,8 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp/example_mode_manual" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp/example_mode_manual")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp/example_mode_manual"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp" TYPE EXECUTABLE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/example_mode_manual")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp/example_mode_manual" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp/example_mode_manual")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp/example_mode_manual"
-         OLD_RPATH "/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/example_mode_manual_cpp/example_mode_manual")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/example_mode_manual_cpp")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/example_mode_manual_cpp")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp/environment" TYPE FILE FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/ament_prefix_path.sh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp/environment" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_environment_hooks/ament_prefix_path.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp/environment" TYPE FILE FILES "/opt/ros/humble/share/ament_cmake_core/cmake/environment_hooks/environment/path.sh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp/environment" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_environment_hooks/path.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_environment_hooks/local_setup.bash")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_environment_hooks/local_setup.sh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_environment_hooks/local_setup.zsh")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_environment_hooks/local_setup.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_environment_hooks/package.dsv")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_index/share/ament_index/resource_index/packages/example_mode_manual_cpp")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp/cmake" TYPE FILE FILES
-    "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_core/example_mode_manual_cppConfig.cmake"
-    "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_core/example_mode_manual_cppConfig-version.cmake"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/example_mode_manual_cpp" TYPE FILE FILES "/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual/package.xml")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  include("/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_manual_cpp/ament_cmake_symlink_install/ament_cmake_symlink_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -129,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_manual_cpp/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

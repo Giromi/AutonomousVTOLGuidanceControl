@@ -1,6 +1,1 @@
-# GPIO mask and state
-
-uint64 timestamp			# time since system start (microseconds)
-uint32 device_id			# Device id
-
-uint32 state				# pin state mask
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs/msg/GpioIn.msg

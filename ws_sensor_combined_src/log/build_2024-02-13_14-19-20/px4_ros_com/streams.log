@@ -1,0 +1,32 @@
+[0.122s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.632s] [  4%] [32mBuilding CXX object CMakeFiles/frame_transforms.dir/src/lib/frame_transforms.cpp.o[0m
+[0.634s] [ 13%] [32mBuilding CXX object CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o[0m
+[0.634s] [ 13%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[0.652s] [ 22%] [32mBuilding CXX object CMakeFiles/debug_vect_advertiser.dir/src/advertisers/debug_vect_advertiser.cpp.o[0m
+[0.652s] [ 22%] [32mBuilding CXX object CMakeFiles/sensor_combined_listener.dir/src/listeners/sensor_combined_listener.cpp.o[0m
+[0.652s] [ 27%] [32mBuilding CXX object CMakeFiles/key_event_pub.dir/src/main/key_event_pub.cpp.o[0m
+[0.655s] [ 31%] [32mBuilding CXX object CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.o[0m
+[0.658s] [ 36%] [32mBuilding CXX object CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o[0m
+[16.592s] [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In constructor ‘[01m[KServoControlPublisher::ServoControlPublisher()[m[K’:
+[16.592s] [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:9:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublish_servo_control_message[m[K’ is not a member of ‘[01m[KServoControlPublisher[m[K’
+[16.592s]     9 |             std::bind(&ServoControlPublisher::[01;31m[Kpublish_servo_control_message[m[K, this));
+[16.592s]       |                                               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[20.370s] gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+[20.371s] gmake[1]: *** [CMakeFiles/Makefile2:235: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+[20.371s] gmake[1]: *** Waiting for unfinished jobs....
+[20.563s] [ 40%] [32m[1mLinking CXX shared library libDubins.so[0m
+[22.315s] [ 45%] [32m[1mLinking CXX executable debug_vect_advertiser[0m
+[22.331s] [ 45%] Built target Dubins
+[23.380s] [ 45%] Built target debug_vect_advertiser
+[24.297s] [ 50%] [32m[1mLinking CXX executable key_event_pub[0m
+[25.162s] [ 50%] Built target key_event_pub
+[30.035s] [ 54%] [32m[1mLinking CXX shared library libframe_transforms.so[0m
+[31.148s] [ 54%] Built target frame_transforms
+[31.555s] [ 59%] [32m[1mLinking CXX executable vehicle_gps_position_listener[0m
+[32.025s] [ 63%] [32m[1mLinking CXX executable sensor_combined_listener[0m
+[32.696s] [ 63%] Built target vehicle_gps_position_listener
+[33.709s] [ 63%] Built target sensor_combined_listener
+[36.921s] [ 68%] [32m[1mLinking CXX shared library libOffboardControl.so[0m
+[37.994s] [ 68%] Built target OffboardControl
+[37.995s] gmake: *** [Makefile:146: all] Error 2
+[37.998s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com' returned '2': AMENT_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
