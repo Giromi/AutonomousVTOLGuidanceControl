@@ -10,5 +10,6 @@ private:
 
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr publisher_;
+    static float counter_;
 };
 

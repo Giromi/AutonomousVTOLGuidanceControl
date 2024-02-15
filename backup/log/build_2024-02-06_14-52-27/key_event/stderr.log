@@ -1,7 +1,0 @@
-[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_pub.cpp:[m[K In constructor ‘[01m[KKeyPublisher::KeyPublisher()[m[K’:
-[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_pub.cpp:32:49:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K_is_running[m[K’
-   32 |     KeyPublisher() : Node("keyboard_publisher") [01;31m[K_is_running[m[K(true) {
-      |                                                 [01;31m[K^~~~~~~~~~~[m[K
-gmake[2]: *** [CMakeFiles/key_pub.dir/build.make:76: CMakeFiles/key_pub.dir/src/key_pub.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/key_pub.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

@@ -1,8 +1,0 @@
-[31mCMake Error at /opt/ros/humble/share/ament_cmake_target_dependencies/cmake/ament_target_dependencies.cmake:42 (message):
-  ament_target_dependencies() the first argument must be a valid target name
-Call Stack (most recent call first):
-  CMakeLists.txt:41 (ament_target_dependencies)
-  CMakeLists.txt:54 (setup_target)
-
-[0m
-gmake: *** [Makefile:472: cmake_check_build_system] Error 1

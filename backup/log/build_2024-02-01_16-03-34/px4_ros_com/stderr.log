@@ -1,5 +1,0 @@
-[31mCMake Error at CMakeLists.txt:79 (get_filename_component):
-  get_filename_component called with incorrect number of arguments
-
-[0m
-gmake: *** [Makefile:431: cmake_check_build_system] Error 1

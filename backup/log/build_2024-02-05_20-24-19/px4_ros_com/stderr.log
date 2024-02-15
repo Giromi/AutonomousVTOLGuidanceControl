@@ -1,9 +1,0 @@
-[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/offboard/offboard_control.cpp:56:32:[m[K [01;31m[Kerror: [m[Kredefinition of ‘[01m[Kstd::array<WayPoint, 5> _square_array[m[K’
-   56 | static std::array<WayPoint, 5> [01;31m[K_square_array[m[K = {{
-      |                                [01;31m[K^~~~~~~~~~~~~[m[K
-[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/offboard/offboard_control.cpp:49:32:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::array<WayPoint, 5> _square_array[m[K’ previously declared here
-   49 | static std::array<WayPoint, 5> [01;36m[K_square_array[m[K = {{
-      |                                [01;36m[K^~~~~~~~~~~~~[m[K
-gmake[2]: *** [CMakeFiles/offboard_control.dir/build.make:76: CMakeFiles/offboard_control.dir/src/offboard/offboard_control.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:306: CMakeFiles/offboard_control.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2
