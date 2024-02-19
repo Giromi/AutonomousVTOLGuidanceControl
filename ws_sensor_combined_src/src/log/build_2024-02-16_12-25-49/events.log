@@ -1,0 +1,15 @@
+[0.000000] (-) TimerEvent: {}
+[0.000685] (-) JobUnselected: {'identifier': 'example_global_navigation_cpp'}
+[0.000767] (-) JobUnselected: {'identifier': 'example_local_navigation_cpp'}
+[0.000946] (-) JobUnselected: {'identifier': 'example_mode_goto_cpp'}
+[0.001064] (-) JobUnselected: {'identifier': 'example_mode_manual_cpp'}
+[0.001259] (-) JobUnselected: {'identifier': 'example_mode_rtl_replacement_cpp'}
+[0.001390] (-) JobUnselected: {'identifier': 'example_mode_with_executor_cpp'}
+[0.001430] (-) JobUnselected: {'identifier': 'key_event'}
+[0.001478] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.001538] (-) JobUnselected: {'identifier': 'px4_ros2_cpp'}
+[0.001576] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/install/px4_msgs')])}
+[0.001736] (px4_ros_com) JobStarted: {'identifier': 'px4_ros_com'}
+[0.099697] (-) TimerEvent: {}
+[0.117429] (px4_ros_com) JobEnded: {'identifier': 'px4_ros_com', 'rc': 1}
+[0.118298] (-) EventReactorShutdown: {}

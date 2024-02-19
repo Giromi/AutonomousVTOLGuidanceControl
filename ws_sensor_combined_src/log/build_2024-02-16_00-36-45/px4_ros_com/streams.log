@@ -1,0 +1,68 @@
+[0.086s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.137s] [ 13%] Built target frame_transforms
+[0.137s] [ 18%] Built target vehicle_gps_position_listener
+[0.138s] [ 27%] Built target debug_vect_advertiser
+[0.139s] [ 36%] Built target Dubins
+[0.144s] [ 45%] Built target key_event_pub
+[0.145s] [ 54%] Built target sensor_combined_listener
+[0.146s] [ 59%] [32mBuilding CXX object CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o[0m
+[0.149s] [ 68%] Built target OffboardControl
+[0.161s] [ 77%] Built target key_event_sub
+[0.170s] [ 81%] [32m[1mLinking CXX executable offboard_control[0m
+[0.486s] [ 86%] Built target offboard_control
+[5.333s] [ 90%] [32m[1mLinking CXX shared library libServoControlPublisher.so[0m
+[5.599s] [ 90%] Built target ServoControlPublisher
+[5.624s] [ 95%] [32mBuilding CXX object CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.o[0m
+[8.731s] [100%] [32m[1mLinking CXX executable pwm_aux_output[0m
+[8.924s] [100%] Built target pwm_aux_output
+[8.931s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[9.002s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --install /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com
+[9.006s] -- Install configuration: ""
+[9.006s] -- Execute custom install script
+[9.006s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener
+[9.007s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener
+[9.007s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser
+[9.008s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/offboard_control
+[9.008s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/key_event_pub
+[9.008s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/key_event_sub
+[9.008s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/pwm_aux_output
+[9.009s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh
+[9.009s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv
+[9.010s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/Dubins.hpp
+[9.010s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/OffboardControl.hpp
+[9.010s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp
+[9.010s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/frame_transforms.h
+[9.010s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//launch/offboard_control_launch.yaml
+[9.010s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//launch/sensor_combined_listener.launch.py
+[9.011s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/__init__.py
+[9.011s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/pipeline_io_test.py
+[9.011s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/test_input.py
+[9.011s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/test_output.py
+[9.012s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com
+[9.012s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com
+[9.012s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh
+[9.012s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.dsv
+[9.013s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/path.sh
+[9.013s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/path.dsv
+[9.013s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.bash
+[9.013s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.sh
+[9.014s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.zsh
+[9.014s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.dsv
+[9.014s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.dsv
+[9.019s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/packages/px4_ros_com
+[9.019s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_dependencies-extras.cmake
+[9.019s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_targets-extras.cmake
+[9.019s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_include_directories-extras.cmake
+[9.019s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_libraries-extras.cmake
+[9.020s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig.cmake
+[9.020s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig-version.cmake
+[9.020s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.xml
+[9.020s] -- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libframe_transforms.so
+[9.021s] -- Installing: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libOffboardControl.so
+[9.031s] -- Set non-toolchain portion of runtime path of "/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libOffboardControl.so" to ""
+[9.031s] -- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libDubins.so
+[9.031s] -- Installing: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libServoControlPublisher.so
+[9.034s] -- Set non-toolchain portion of runtime path of "/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libServoControlPublisher.so" to ""
+[9.035s] -- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
+[9.035s] -- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-noconfig.cmake
+[9.036s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --install /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com

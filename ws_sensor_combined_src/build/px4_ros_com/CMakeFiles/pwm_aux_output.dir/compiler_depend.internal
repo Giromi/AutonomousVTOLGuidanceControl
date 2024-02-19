@@ -26,6 +26,16 @@ CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.o
  /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/actuator_control__builder.hpp
  /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/actuator_control__struct.hpp
  /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/actuator_control__traits.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/override_rc_in__builder.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/override_rc_in__struct.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/override_rc_in__traits.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/param_value__struct.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/param_value__traits.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/override_rc_in.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/detail/param_set__builder.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/detail/param_set__struct.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/detail/param_set__traits.hpp
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/param_set.hpp
  /opt/ros/humble/include/rcl/rcl/allocator.h
  /opt/ros/humble/include/rcl/rcl/arguments.h
  /opt/ros/humble/include/rcl/rcl/client.h

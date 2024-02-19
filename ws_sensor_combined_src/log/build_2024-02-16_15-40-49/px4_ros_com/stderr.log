@@ -1,0 +1,60 @@
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In member function ‘[01m[Kvoid ServoControlPublisher::_set_mavros_param(const string&, int)[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:86:59:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Krclcpp::Client<rcl_interfaces::srv::SetParameters>::async_send_request(std::shared_ptr<mavros_msgs::srv::ParamSet_Request_<std::allocator<void> > >&)[m[K’
+   86 |     auto result_future = [01;31m[K_param_client->async_send_request(request)[m[K;
+      |                          [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp:1[m[K,
+                 from [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:2[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:643:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class CallbackT, typename std::enable_if<rclcpp::function_traits::same_arguments<CallbackT, std::function<void(std::shared_future<std::shared_ptr<rcl_interfaces::srv::SetParameters_Response_<std::allocator<void> > > >)> >::value, void>::type* <anonymous> > rclcpp::Client<ServiceT>::SharedFutureAndRequestId rclcpp::Client<ServiceT>::async_send_request(rclcpp::Client<ServiceT>::SharedRequest, CallbackT&&) [with CallbackT = CallbackT; typename std::enable_if<rclcpp::function_traits::same_arguments<CallbackT, std::function<void(std::shared_future<typename ServiceT::Response::SharedPtr>)> >::value>::type* <anonymous> = <anonymous>; ServiceT = rcl_interfaces::srv::SetParameters][m[K’
+  643 |   [01;36m[Kasync_send_request[m[K(SharedRequest request, CallbackT && cb)
+      |   [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:643:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:86:59:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 1 provided
+   86 |     auto result_future = [01;36m[K_param_client->async_send_request(request)[m[K;
+      |                          [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp:1[m[K,
+                 from [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:2[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:674:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class CallbackT, typename std::enable_if<rclcpp::function_traits::same_arguments<CallbackT, std::function<void(std::shared_future<std::pair<std::shared_ptr<rcl_interfaces::srv::SetParameters_Request_<std::allocator<void> > >, std::shared_ptr<rcl_interfaces::srv::SetParameters_Response_<std::allocator<void> > > > >)> >::value, void>::type* <anonymous> > rclcpp::Client<ServiceT>::SharedFutureWithRequestAndRequestId rclcpp::Client<ServiceT>::async_send_request(rclcpp::Client<ServiceT>::SharedRequest, CallbackT&&) [with CallbackT = CallbackT; typename std::enable_if<rclcpp::function_traits::same_arguments<CallbackT, std::function<void(std::shared_future<std::pair<typename ServiceT::Request::SharedPtr, typename ServiceT::Response::SharedPtr> >)> >::value>::type* <anonymous> = <anonymous>; ServiceT = rcl_interfaces::srv::SetParameters][m[K’
+  674 |   [01;36m[Kasync_send_request[m[K(SharedRequest request, CallbackT && cb)
+      |   [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:674:3:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:86:59:[m[K [01;36m[Knote: [m[K  candidate expects 2 arguments, 1 provided
+   86 |     auto result_future = [01;36m[K_param_client->async_send_request(request)[m[K;
+      |                          [01;36m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:24[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155[m[K,
+                 from [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp:1[m[K,
+                 from [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:2[m[K:
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:608:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Krclcpp::Client<ServiceT>::FutureAndRequestId rclcpp::Client<ServiceT>::async_send_request(rclcpp::Client<ServiceT>::SharedRequest) [with ServiceT = rcl_interfaces::srv::SetParameters; rclcpp::Client<ServiceT>::SharedRequest = std::shared_ptr<rcl_interfaces::srv::SetParameters_Request_<std::allocator<void> > >][m[K’
+  608 |   [01;36m[Kasync_send_request[m[K(SharedRequest request)
+      |   [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:608:36:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kshared_ptr<[01;32m[Kmavros_msgs::srv::ParamSet_Request_<std::allocator<void> >[m[K>[m[K’ to ‘[01m[Kshared_ptr<[01;32m[Krcl_interfaces::srv::SetParameters_Request_<std::allocator<void> >[m[K>[m[K’
+  608 |   async_send_request([01;36m[KSharedRequest request[m[K)
+      |                      [01;36m[K~~~~~~~~~~~~~~^~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:235: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

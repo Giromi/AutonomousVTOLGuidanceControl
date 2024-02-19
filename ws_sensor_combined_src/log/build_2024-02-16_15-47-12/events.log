@@ -1,0 +1,143 @@
+[0.000000] (-) TimerEvent: {}
+[0.000224] (-) JobUnselected: {'identifier': 'example_global_navigation_cpp'}
+[0.000718] (-) JobUnselected: {'identifier': 'example_local_navigation_cpp'}
+[0.000855] (-) JobUnselected: {'identifier': 'example_mode_goto_cpp'}
+[0.000994] (-) JobUnselected: {'identifier': 'example_mode_manual_cpp'}
+[0.001036] (-) JobUnselected: {'identifier': 'example_mode_rtl_replacement_cpp'}
+[0.001113] (-) JobUnselected: {'identifier': 'example_mode_with_executor_cpp'}
+[0.001158] (-) JobUnselected: {'identifier': 'key_event'}
+[0.001219] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.001280] (-) JobUnselected: {'identifier': 'px4_ros2_cpp'}
+[0.001365] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs')])}
+[0.001414] (px4_ros_com) JobStarted: {'identifier': 'px4_ros_com'}
+[0.083562] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'cmake'}
+[0.084834] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'build'}
+[0.084940] (px4_ros_com) Command: {'cmd': ['/usr/local/bin/cmake', '--build', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com', '--', '-j8', '-l8'], 'cwd': '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,4998,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('PS1', "\\[\\e[01;32m\\]\\u@\\h \\[\\e[34m\\]\\w \\[\\e[1;31m\\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/(\\1)/')\\[\\e[00m\\]$"), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2328'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('COLCON_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/giromi/Bashes:/home/giromi/Bashes'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/2302,unix/ubuntu22:/tmp/.ICE-unix/2302'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/d8487bae_7f62_4c19_b508_acec7e1f49b7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.99'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%15'), ('CMAKE_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble')]), 'shell': False}
+[0.099623] (-) TimerEvent: {}
+[0.132926] (px4_ros_com) StdoutLine: {'line': b'[  9%] Built target frame_transforms\n'}
+[0.136111] (px4_ros_com) StdoutLine: {'line': b'[ 18%] Built target Dubins\n'}
+[0.136687] (px4_ros_com) StdoutLine: {'line': b'[ 27%] Built target OffboardControl\n'}
+[0.137938] (px4_ros_com) StdoutLine: {'line': b'[ 40%] Built target sensor_combined_listener\n'}
+[0.138163] (px4_ros_com) StdoutLine: {'line': b'[ 45%] Built target debug_vect_advertiser\n'}
+[0.138860] (px4_ros_com) StdoutLine: {'line': b'[ 54%] Built target vehicle_gps_position_listener\n'}
+[0.143266] (px4_ros_com) StdoutLine: {'line': b'[ 63%] Built target key_event_pub\n'}
+[0.146870] (px4_ros_com) StdoutLine: {'line': b'[ 68%] \x1b[32mBuilding CXX object CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o\x1b[0m\n'}
+[0.156590] (px4_ros_com) StdoutLine: {'line': b'[ 77%] Built target key_event_sub\n'}
+[0.157608] (px4_ros_com) StdoutLine: {'line': b'[ 86%] Built target offboard_control\n'}
+[0.199758] (-) TimerEvent: {}
+[0.300085] (-) TimerEvent: {}
+[0.400428] (-) TimerEvent: {}
+[0.500715] (-) TimerEvent: {}
+[0.601033] (-) TimerEvent: {}
+[0.701357] (-) TimerEvent: {}
+[0.801798] (-) TimerEvent: {}
+[0.902108] (-) TimerEvent: {}
+[1.002466] (-) TimerEvent: {}
+[1.102829] (-) TimerEvent: {}
+[1.203124] (-) TimerEvent: {}
+[1.303498] (-) TimerEvent: {}
+[1.403822] (-) TimerEvent: {}
+[1.504102] (-) TimerEvent: {}
+[1.604438] (-) TimerEvent: {}
+[1.704754] (-) TimerEvent: {}
+[1.805061] (-) TimerEvent: {}
+[1.905367] (-) TimerEvent: {}
+[2.005654] (-) TimerEvent: {}
+[2.105930] (-) TimerEvent: {}
+[2.206248] (-) TimerEvent: {}
+[2.306544] (-) TimerEvent: {}
+[2.406852] (-) TimerEvent: {}
+[2.507142] (-) TimerEvent: {}
+[2.607427] (-) TimerEvent: {}
+[2.707739] (-) TimerEvent: {}
+[2.808034] (-) TimerEvent: {}
+[2.908375] (-) TimerEvent: {}
+[3.008702] (-) TimerEvent: {}
+[3.108977] (-) TimerEvent: {}
+[3.209291] (-) TimerEvent: {}
+[3.309658] (-) TimerEvent: {}
+[3.409962] (-) TimerEvent: {}
+[3.510236] (-) TimerEvent: {}
+[3.610552] (-) TimerEvent: {}
+[3.710857] (-) TimerEvent: {}
+[3.811162] (-) TimerEvent: {}
+[3.911495] (-) TimerEvent: {}
+[4.011805] (-) TimerEvent: {}
+[4.112147] (-) TimerEvent: {}
+[4.212450] (-) TimerEvent: {}
+[4.312760] (-) TimerEvent: {}
+[4.413031] (-) TimerEvent: {}
+[4.513326] (-) TimerEvent: {}
+[4.613709] (-) TimerEvent: {}
+[4.714020] (-) TimerEvent: {}
+[4.814316] (-) TimerEvent: {}
+[4.914605] (-) TimerEvent: {}
+[5.014866] (-) TimerEvent: {}
+[5.115171] (-) TimerEvent: {}
+[5.215564] (-) TimerEvent: {}
+[5.315856] (-) TimerEvent: {}
+[5.416131] (-) TimerEvent: {}
+[5.516413] (-) TimerEvent: {}
+[5.616700] (-) TimerEvent: {}
+[5.716973] (-) TimerEvent: {}
+[5.817269] (-) TimerEvent: {}
+[5.917584] (-) TimerEvent: {}
+[6.017883] (-) TimerEvent: {}
+[6.118156] (-) TimerEvent: {}
+[6.218425] (-) TimerEvent: {}
+[6.318719] (-) TimerEvent: {}
+[6.419004] (-) TimerEvent: {}
+[6.476106] (px4_ros_com) StdoutLine: {'line': b'[ 90%] \x1b[32m\x1b[1mLinking CXX shared library libServoControlPublisher.so\x1b[0m\n'}
+[6.519122] (-) TimerEvent: {}
+[6.619481] (-) TimerEvent: {}
+[6.719832] (-) TimerEvent: {}
+[6.798827] (px4_ros_com) StdoutLine: {'line': b'[ 90%] Built target ServoControlPublisher\n'}
+[6.818204] (px4_ros_com) StdoutLine: {'line': b'[ 95%] \x1b[32mBuilding CXX object CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.o\x1b[0m\n'}
+[6.819942] (-) TimerEvent: {}
+[6.920198] (-) TimerEvent: {}
+[7.020530] (-) TimerEvent: {}
+[7.120810] (-) TimerEvent: {}
+[7.221110] (-) TimerEvent: {}
+[7.321413] (-) TimerEvent: {}
+[7.421693] (-) TimerEvent: {}
+[7.521956] (-) TimerEvent: {}
+[7.622220] (-) TimerEvent: {}
+[7.722508] (-) TimerEvent: {}
+[7.822797] (-) TimerEvent: {}
+[7.923086] (-) TimerEvent: {}
+[8.023384] (-) TimerEvent: {}
+[8.123708] (-) TimerEvent: {}
+[8.223996] (-) TimerEvent: {}
+[8.324302] (-) TimerEvent: {}
+[8.424550] (-) TimerEvent: {}
+[8.524830] (-) TimerEvent: {}
+[8.625143] (-) TimerEvent: {}
+[8.725441] (-) TimerEvent: {}
+[8.825739] (-) TimerEvent: {}
+[8.926012] (-) TimerEvent: {}
+[9.026323] (-) TimerEvent: {}
+[9.126709] (-) TimerEvent: {}
+[9.227053] (-) TimerEvent: {}
+[9.327369] (-) TimerEvent: {}
+[9.351738] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/pwm_aux_output.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid MavrosParamSetter::set_parameter()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[9.351917] (px4_ros_com) StderrLine: {'line': b'\x1b[01m\x1b[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/pwm_aux_output.cpp:17:50:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kcould not convert \xe2\x80\x98\x1b[01m\x1b[Krclcpp::SyncParametersClient::set_parameters(const std::vector<rclcpp::Parameter>&, std::chrono::duration<_Rep1, _Period1>) [with RepT = long int; RatioT = std::ratio<1, 1000>](std::vector<rclcpp::Parameter>(std::initializer_list<rclcpp::Parameter>{((const rclcpp::Parameter*)(& const rclcpp::Parameter [1]{rclcpp::Parameter(std::__cxx11::basic_string<char>(((const char*)"PWM_AUX_DIS1"), std::allocator<char>()), 1500)})), 1}, std::allocator<rclcpp::Parameter>()), std::chrono::duration<long int, std::ratio<1, 1000> >(-1))\x1b[m\x1b[K\xe2\x80\x99 from \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<rcl_interfaces::msg::SetParametersResult_<std::allocator<void> > >\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kbool\x1b[m\x1b[K\xe2\x80\x99\n'}
+[9.351992] (px4_ros_com) StderrLine: {'line': b'   17 |             if (\x1b[01;31m\x1b[Kparameters_client->set_parameters({\x1b[m\x1b[K\n'}
+[9.352053] (px4_ros_com) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~\x1b[m\x1b[K\n'}
+[9.352110] (px4_ros_com) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[K|\x1b[m\x1b[K\n'}
+[9.352165] (px4_ros_com) StderrLine: {'line': b'      |                                                  \x1b[01;31m\x1b[Kstd::vector<rcl_interfaces::msg::SetParametersResult_<std::allocator<void> > >\x1b[m\x1b[K\n'}
+[9.352221] (px4_ros_com) StderrLine: {'line': b'   18 | \x1b[01;31m\x1b[K                rclcpp::Parameter("PWM_AUX_DIS1", 1500)\x1b[m\x1b[K\n'}
+[9.352295] (px4_ros_com) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[9.352364] (px4_ros_com) StderrLine: {'line': b'   19 | \x1b[01;31m\x1b[K            })\x1b[m\x1b[K) {\n'}
+[9.352420] (px4_ros_com) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K~~\x1b[m\x1b[K                                    \n'}
+[9.427449] (-) TimerEvent: {}
+[9.527761] (-) TimerEvent: {}
+[9.628044] (-) TimerEvent: {}
+[9.728327] (-) TimerEvent: {}
+[9.828635] (-) TimerEvent: {}
+[9.838720] (px4_ros_com) StderrLine: {'line': b'gmake[2]: *** [CMakeFiles/pwm_aux_output.dir/build.make:76: CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.o] Error 1\n'}
+[9.839109] (px4_ros_com) StderrLine: {'line': b'gmake[1]: *** [CMakeFiles/Makefile2:419: CMakeFiles/pwm_aux_output.dir/all] Error 2\n'}
+[9.839496] (px4_ros_com) StderrLine: {'line': b'gmake: *** [Makefile:146: all] Error 2\n'}
+[9.841519] (px4_ros_com) CommandEnded: {'returncode': 2}
+[9.928740] (-) TimerEvent: {}
+[10.007237] (px4_ros_com) JobEnded: {'identifier': 'px4_ros_com', 'rc': 2}
+[10.008241] (-) EventReactorShutdown: {}

@@ -65,3 +65,7 @@ https://askubuntu.com/questions/1024593/failed-to-execute-child-process-net-when
 ! issues
 
 
+
+
+integer_value(x) -> integer
+real_value(x) -> real

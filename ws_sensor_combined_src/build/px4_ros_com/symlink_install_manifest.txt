@@ -7,6 +7,7 @@
 /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/pwm_aux_output
 /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh
 /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv
+/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/A.hpp
 /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/Dubins.hpp
 /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/OffboardControl.hpp
 /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp

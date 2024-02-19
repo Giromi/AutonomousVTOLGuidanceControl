@@ -1,0 +1,13 @@
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/pwm_aux_output.cpp:[m[K In member function ‘[01m[Kvoid MavrosParamSetter::set_parameter()[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/pwm_aux_output.cpp:17:50:[m[K [01;31m[Kerror: [m[Kcould not convert ‘[01m[Krclcpp::SyncParametersClient::set_parameters(const std::vector<rclcpp::Parameter>&, std::chrono::duration<_Rep1, _Period1>) [with RepT = long int; RatioT = std::ratio<1, 1000>](std::vector<rclcpp::Parameter>(std::initializer_list<rclcpp::Parameter>{((const rclcpp::Parameter*)(& const rclcpp::Parameter [1]{rclcpp::Parameter(std::__cxx11::basic_string<char>(((const char*)"PWM_AUX_DIS1"), std::allocator<char>()), 1500)})), 1}, std::allocator<rclcpp::Parameter>()), std::chrono::duration<long int, std::ratio<1, 1000> >(-1))[m[K’ from ‘[01m[Kstd::vector<rcl_interfaces::msg::SetParametersResult_<std::allocator<void> > >[m[K’ to ‘[01m[Kbool[m[K’
+   17 |             if ([01;31m[Kparameters_client->set_parameters({[m[K
+      |                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~[m[K
+      |                                                  [01;31m[K|[m[K
+      |                                                  [01;31m[Kstd::vector<rcl_interfaces::msg::SetParametersResult_<std::allocator<void> > >[m[K
+   18 | [01;31m[K                rclcpp::Parameter("PWM_AUX_DIS1", 1500)[m[K
+      |                 [01;31m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+   19 | [01;31m[K            })[m[K) {
+      |             [01;31m[K~~[m[K                                    
+gmake[2]: *** [CMakeFiles/pwm_aux_output.dir/build.make:76: CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:419: CMakeFiles/pwm_aux_output.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
