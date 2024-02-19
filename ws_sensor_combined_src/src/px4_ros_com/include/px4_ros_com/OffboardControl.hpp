@@ -12,21 +12,25 @@
 # include <stdint.h>
 # include <array>
 # include <queue>
-
+#include <std_msgs/msg/string.hpp>
 using namespace std::chrono;
 using namespace std::chrono_literals;
 using namespace px4_msgs::msg;
 
+
 struct WayPoint {
-    WayPoint(void) {}
+    WayPoint(void) : north(0.0f), east(0.0f), down(0.0f), yaw(0.0f), is_dubins_path(false) {}
+
     WayPoint(float north, float east, float down, float yaw, bool is_dubins_path = false) 
         : north(north), east(east), down(down), yaw(yaw), is_dubins_path(is_dubins_path) {}
+
     float north;
     float east;
     float down;
     float yaw;
     bool is_dubins_path;
 };
+
 
 struct DubinsPathPoint : public WayPoint {
     DubinsPathPoint(float north, float east, float down, float yaw, double time_stamp = 0.0, bool is_dubins_path = true) 
@@ -62,6 +66,7 @@ private:
 	rclcpp::Publisher<VehicleCommand>::SharedPtr vehicle_command_publisher_;
 
 	rclcpp::Subscription<px4_msgs::msg::VehicleLocalPosition>::SharedPtr vehicle_local_position_subscription_;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr _key_event_subscription;
 
     std::array<float, 4> _local_position;
 	std::atomic<uint64_t> _timestamp;       //!< common synced timestamped
@@ -74,6 +79,7 @@ private:
 	void publish_vehicle_command(uint16_t command, float param1 = 0.0, float param2 = 0.0);
     void make_general_trajectory_setpoint(TrajectorySetpoint& msg);
     void make_dubins_trajectory_setpoint(TrajectorySetpoint& msg);
+    void chatterCallback(const std_msgs::msg::String::SharedPtr msg);
 
     static double turning_radius;
     static double sampling_interval;

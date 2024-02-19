@@ -74,6 +74,12 @@ OffboardControl::OffboardControl() : Node("offboard_control") {
                           << "Left Dubins path points : " << _dubins_path_points.size() << "\n"
                           << "===================================================\n";
                 });
+        _key_event_subscription = this->create_subscription<std_msgs::msg::String>(
+            "chatter", 10, std::bind(
+                &OffboardControl::chatterCallback, 
+                this, 
+                std::placeholders::_1
+        ));
 
 
 		_offboard_setpoint_counter = 0;
@@ -249,3 +255,8 @@ int OffboardControl::set_dubins_path_point(double q[3], double x, void* user_dat
     OffboardControl::_dubins_path_points.push(dubins_path_point);
     return 0;
 }
+
+void OffboardControl::chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
+}
+
