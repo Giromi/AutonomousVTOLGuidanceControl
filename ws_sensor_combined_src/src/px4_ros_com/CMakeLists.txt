@@ -25,6 +25,10 @@ find_package(px4_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
+# pkg-config 지원 활성화
+find_package(PkgConfig REQUIRED)
+# libuuid 찾기
+pkg_check_modules(UUID REQUIRED uuid)
 
 #################
 # Setup targets #
@@ -91,7 +95,7 @@ foreach(exec ${EXECUTABLES})
   # elseif("${exec_name}" STREQUAL "key_event_pub" OR "${exec_name}" STREQUAL "key_event_sub")
   #     target_link_libraries(${exec_name} frame_transforms)
   elseif("${exec_name}" STREQUAL "pwm_aux_output")
-      target_link_libraries(${exec_name} ServoControlPublisher frame_transforms)
+      target_link_libraries(${exec_name} ServoControlPublisher frame_transforms ${UUID_LIBRARIES})
   endif()
   install(TARGETS ${exec_name} DESTINATION lib/${PROJECT_NAME})
 endforeach()

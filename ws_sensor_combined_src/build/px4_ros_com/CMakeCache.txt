@@ -434,6 +434,9 @@ libyaml_vendor_DIR:PATH=/opt/ros/humble/share/libyaml_vendor/cmake
 mavros_msgs_DIR:PATH=/opt/ros/humble/share/mavros_msgs/cmake
 
 //Path to a library.
+pkgcfg_lib_UUID_uuid:FILEPATH=/usr/lib/x86_64-linux-gnu/libuuid.so
+
+//Path to a library.
 pkgcfg_lib__OPENSSL_crypto:FILEPATH=/usr/lib/x86_64-linux-gnu/libcrypto.so
 
 //Path to a library.
@@ -725,6 +728,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_Eigen3:INTERNAL=[1][v3.4.0()]
 FIND_PACKAGE_MESSAGE_DETAILS_FastRTPS:INTERNAL=[/opt/ros/humble/include][/opt/ros/humble/lib/libfastrtps.so;/opt/ros/humble/lib/libfastcdr.so][v()]
 //Details about finding OpenSSL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/usr/lib/x86_64-linux-gnu/libcrypto.so][/usr/include][c ][v3.0.2()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.2()]
 //Details about finding Python3
 FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/usr/bin/python3.10][cfound components: Interpreter ][v3.10.12()]
 //Details about finding Threads
@@ -739,6 +744,41 @@ OPENSSL_SSL_LIBRARY-ADVANCED:INTERNAL=1
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+UUID_CFLAGS:INTERNAL=-I/usr/include/uuid
+UUID_CFLAGS_I:INTERNAL=
+UUID_CFLAGS_OTHER:INTERNAL=
+UUID_FOUND:INTERNAL=1
+UUID_INCLUDEDIR:INTERNAL=/usr/include
+UUID_INCLUDE_DIRS:INTERNAL=/usr/include/uuid
+UUID_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-luuid
+UUID_LDFLAGS_OTHER:INTERNAL=
+UUID_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+UUID_LIBRARIES:INTERNAL=uuid
+UUID_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+UUID_LIBS:INTERNAL=
+UUID_LIBS_L:INTERNAL=
+UUID_LIBS_OTHER:INTERNAL=
+UUID_LIBS_PATHS:INTERNAL=
+UUID_MODULE_NAME:INTERNAL=uuid
+UUID_PREFIX:INTERNAL=/usr
+UUID_STATIC_CFLAGS:INTERNAL=-I/usr/include/uuid
+UUID_STATIC_CFLAGS_I:INTERNAL=
+UUID_STATIC_CFLAGS_OTHER:INTERNAL=
+UUID_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include/uuid
+UUID_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-luuid
+UUID_STATIC_LDFLAGS_OTHER:INTERNAL=
+UUID_STATIC_LIBDIR:INTERNAL=
+UUID_STATIC_LIBRARIES:INTERNAL=uuid
+UUID_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+UUID_STATIC_LIBS:INTERNAL=
+UUID_STATIC_LIBS_L:INTERNAL=
+UUID_STATIC_LIBS_OTHER:INTERNAL=
+UUID_STATIC_LIBS_PATHS:INTERNAL=
+UUID_VERSION:INTERNAL=2.37.2
+UUID_uuid_INCLUDEDIR:INTERNAL=
+UUID_uuid_LIBDIR:INTERNAL=
+UUID_uuid_PREFIX:INTERNAL=
+UUID_uuid_VERSION:INTERNAL=
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 _OPENSSL_CFLAGS:INTERNAL=-I/usr/include
@@ -789,8 +829,12 @@ _Python3_INTERPRETER_SIGNATURE:INTERNAL=b91b4035ecb3bb3f5760d35922531bcd
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 //Index for unique symlink install targets
 __AMENT_CMAKE_SYMLINK_INSTALL_TARGETS_INDEX:INTERNAL=7
+__pkg_config_arguments_UUID:INTERNAL=REQUIRED;uuid
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
+__pkg_config_checked_UUID:INTERNAL=1
 __pkg_config_checked__OPENSSL:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_UUID_uuid
+pkgcfg_lib_UUID_uuid-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto
 pkgcfg_lib__OPENSSL_crypto-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_ssl

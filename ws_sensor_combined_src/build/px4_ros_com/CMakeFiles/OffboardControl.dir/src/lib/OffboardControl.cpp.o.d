@@ -622,4 +622,8 @@ CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o: \
  /usr/include/c++/11/queue /usr/include/c++/11/deque \
  /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
  /usr/include/c++/11/bits/stl_queue.h \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/string.hpp \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/string__struct.hpp \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/string__builder.hpp \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/string__traits.hpp \
  /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/Dubins.hpp

@@ -1,0 +1,6 @@
+[01m[Kcc1plus:[m[K [01;31m[Kfatal error: [m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp: No such file or directory
+compilation terminated.
+gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:235: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,8 @@
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In member function ‘[01m[Kvoid ServoControlPublisher::_publish_disarm_control_message()[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:30:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass std::shared_ptr<mavros_msgs::srv::ParamSetV2_Request_<std::allocator<void> > >[m[K’ has no member named ‘[01m[Kvalue[m[K’
+   30 |     request.[01;31m[Kvalue[m[K.type = rcl_interfaces::msg::ParameterType::PARAMETER_INTEGER;
+      |             [01;31m[K^~~~~[m[K
+gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:235: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2
