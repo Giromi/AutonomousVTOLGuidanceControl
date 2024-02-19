@@ -1,78 +1,90 @@
-
 #include "px4_ros_com/ServoControlPublisher.hpp"
-#include <uuid/uuid.h>
+
 
 ServoControlPublisher::ServoControlPublisher(void)
-    // : Node("servo_control_publisher_" + generate_uuid()), _pwm(800), _pwm_nomallize(-1.0) {
-    : Node("servo_control_publisher"), _pwm(800), _pwm_nomallize(-1.0) {
-    _param_client = this->create_client<mavros_msgs::srv::ParamSetV2>("/mavros/param/set");
+    : Node("servo_control_publisher"), _pwm(800), _pwm_nomallize(0.0f), _offboard_setpoint_counter(0) {
+        _offboard_control_mode_publisher = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
+        _publisher_arm = this->create_publisher<px4_msgs::msg::ActuatorServos>( "/fmu/in/actuator_servos", 10);
+    _vehicle_command_publisher = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
     _timer = this->create_wall_timer(
-            std::chrono::milliseconds(1000),
+            std::chrono::milliseconds(100),
             std::bind(&ServoControlPublisher::_publish_pwm_output_message, this));
 }
 
+void ServoControlPublisher::_publish_offboard_control_mode()
+{
+    px4_msgs::msg::OffboardControlMode msg{};
+	msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+	msg.position = false;
+	msg.velocity = false;
+	msg.acceleration = false;
+	msg.attitude = false;
+	msg.body_rate = false;
+    msg.thrust_and_torque = false;
+    msg.direct_actuator = true;
+	_offboard_control_mode_publisher->publish(msg);
+}
+
 void ServoControlPublisher::_publish_pwm_output_message(void) {
-    // _publish_arm_control_message();
-    _publish_disarm_control_message();
+    // if (_pwm_nomallize == -1.0) {
+        // this->_publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+        // this->_arm();
+    // }
+    _publish_offboard_control_mode();
+    _publish_arm_control_message();
+    _offboard_setpoint_counter++;
+    // _publish_disarm_control_message();
     // _publish_disarm_control_message2();
     // _publish_disarm_control_message_param();
 }
 
-void ServoControlPublisher::_publish_disarm_control_message(void) {
-    if (!_param_client->wait_for_service(std::chrono::seconds(1))) {
-        RCLCPP_INFO(this->get_logger(), "Service /mavros/param/set not available, waiting...");
-        return;
-    }
 
-    auto request = std::make_shared<mavros_msgs::srv::ParamSetV2::Request>();
-    request->force_set = false;
-    request->param_id = "PWM_AUX_DIS1";
-    _pwm += (_pwm < 2000) * 100;
-    request->value.integer_value = _pwm;
-    request->value.type = rcl_interfaces::msg::ParameterType::PARAMETER_INTEGER;
-
-    auto future = _param_client->async_send_request(request, std::bind(&ServoControlPublisher::_response_callback, this, std::placeholders::_1));
-    // auto future = _param_client->async_send_request(request);
-    // try {
-    //     auto response = future.get();
-    //     if (response->success) {
-    //         RCLCPP_INFO(this->get_logger(), "Parameter %s set to %lu successfully.", request->param_id.c_str(), request->value.integer_value);
-            // rclcpp::shutdown();
-    //     } else {
-    //         RCLCPP_ERROR(this->get_logger(), "Failed to set parameter %s.", request->param_id.c_str());
-    //         rclcpp::shutdown();
-    //     }
-    // } catch (const std::exception& e) {
-    //     RCLCPP_ERROR(this->get_logger(), "Service call failed: %s", e.what());
-    // }
-    // -> 이렇게 하니깐 안꺼짐
-}
-
-void ServoControlPublisher::_response_callback(rclcpp::Client<mavros_msgs::srv::ParamSetV2>::SharedFuture future) {
-    auto response = future.get();
-    std::cout << "response: " << response->success << std::endl;
-    if (response->success) {
-        RCLCPP_INFO(this->get_logger(), "Parameter set to successfully.");
-        
-        // // 모든 작업이 성공적으로 완료되었다면 노드 종료
-        // RCLCPP_INFO(this->get_logger(), "Shutting down node due to successful operation.");
-
-    } else {
-        RCLCPP_ERROR(this->get_logger(), "Failed to set parameter.");
-    }
+void ServoControlPublisher::_publish_arm_control_message(void) {
+    px4_msgs::msg::ActuatorServos msg{};
+    // auto message = mavros_msgs::msg::ActuatorControl();
+	msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+    msg.control[0] = _pwm_nomallize;
+    msg.control[1] = _pwm_nomallize;
+    std::cout << "Publishing arm control message " << _pwm_nomallize << std::endl;
+    _pwm_nomallize = _offboard_setpoint_counter <= 25 ? 0.25f : 
+                     _offboard_setpoint_counter <= 50 ? 0.5f :
+                     _offboard_setpoint_counter <= 75 ? 0.25f :
+                     _offboard_setpoint_counter <= 100 ? 0.0f : 
+                     _offboard_setpoint_counter <= 125 ? -0.25f : 
+                     _offboard_setpoint_counter <= 150 ? -0.5f :
+                     _offboard_setpoint_counter <= 175 ? -0.25f : 0.0f;
+    _publisher_arm->publish(msg);
 }
 
 
-std::string ServoControlPublisher::generate_uuid() {
-    uuid_t uuid;
-    char uuid_str[37]; // UUID 문자열 크기
-    uuid_generate_random(uuid);
-    uuid_unparse_lower(uuid, uuid_str);
-
-    std::string uuid_modified(uuid_str);
-    std::replace(uuid_modified.begin(), uuid_modified.end(), '-', '_'); // 하이픈을 밑줄로 대체
-
-    return uuid_modified;
+void ServoControlPublisher::_publish_vehicle_command(uint16_t command, float param1, float param2)
+{
+    px4_msgs::msg::VehicleCommand msg{};
+	msg.param1 = param1;
+	msg.param2 = param2;
+	msg.command = command;
+	msg.target_system = 1;
+	msg.target_component = 1;
+	msg.source_system = 1;
+	msg.source_component = 1;
+	msg.from_external = true;
+	msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
+	_vehicle_command_publisher->publish(msg);
 }
 
+void ServoControlPublisher::_arm()
+{
+	_publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0);
 
+	RCLCPP_INFO(this->get_logger(), "Arm command send");
+}
+
+/**
+ * @brief Send a command to Disarm the vehicle
+ */
+void ServoControlPublisher::_disarm()
+{
+	_publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
+
+	RCLCPP_INFO(this->get_logger(), "Disarm command send");
+}

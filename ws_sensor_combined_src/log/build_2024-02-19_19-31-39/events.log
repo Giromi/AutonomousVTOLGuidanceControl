@@ -1,0 +1,172 @@
+[0.000000] (-) TimerEvent: {}
+[0.000810] (-) JobUnselected: {'identifier': 'example_global_navigation_cpp'}
+[0.001085] (-) JobUnselected: {'identifier': 'example_local_navigation_cpp'}
+[0.001224] (-) JobUnselected: {'identifier': 'example_mode_goto_cpp'}
+[0.001302] (-) JobUnselected: {'identifier': 'example_mode_manual_cpp'}
+[0.001460] (-) JobUnselected: {'identifier': 'example_mode_rtl_replacement_cpp'}
+[0.001501] (-) JobUnselected: {'identifier': 'example_mode_with_executor_cpp'}
+[0.001530] (-) JobUnselected: {'identifier': 'key_event'}
+[0.001557] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.001584] (-) JobUnselected: {'identifier': 'px4_ros2_cpp'}
+[0.001614] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs')])}
+[0.001658] (px4_ros_com) JobStarted: {'identifier': 'px4_ros_com'}
+[0.099611] (-) TimerEvent: {}
+[0.133996] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'cmake'}
+[0.136529] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'build'}
+[0.136639] (px4_ros_com) Command: {'cmd': ['/usr/local/bin/cmake', '--build', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com', '--', '-j8', '-l8'], 'cwd': '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,4150,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('OLDPWD', '/home/giromi/Repos/PX4-Autopilot/Tools'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('PS1', "\\[\\e[01;32m\\]\\u@\\h \\[\\e[34m\\]\\w \\[\\e[1;31m\\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/(\\1)/')\\[\\e[00m\\]$"), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2109'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('COLCON_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install:/home/giromi/Repos/PX4-Autopilot/Tools/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/giromi/Bashes:/home/giromi/Bashes'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/2069,unix/ubuntu22:/tmp/.ICE-unix/2069'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/3f76fcb8_de1e_4820_abb4_9d022248cbc8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.99'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%15'), ('CMAKE_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble')]), 'shell': False}
+[0.193162] (px4_ros_com) StdoutLine: {'line': b'[ 12%] Built target debug_vect_advertiser\n'}
+[0.193449] (px4_ros_com) StdoutLine: {'line': b'[ 16%] Built target frame_transforms\n'}
+[0.194738] (px4_ros_com) StdoutLine: {'line': b'[ 25%] Built target Dubins\n'}
+[0.200794] (px4_ros_com) StdoutLine: {'line': b'[ 33%] Built target vehicle_gps_position_listener\n'}
+[0.201047] (-) TimerEvent: {}
+[0.203345] (px4_ros_com) StdoutLine: {'line': b'[ 50%] Built target OffboardControl\n'}
+[0.203600] (px4_ros_com) StdoutLine: {'line': b'[ 50%] Built target key_event_pub\n'}
+[0.203784] (px4_ros_com) StdoutLine: {'line': b'[ 58%] Built target sensor_combined_listener\n'}
+[0.207139] (px4_ros_com) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o\x1b[0m\n'}
+[0.218783] (px4_ros_com) StdoutLine: {'line': b'[ 70%] Built target key_event_sub\n'}
+[0.221674] (px4_ros_com) StdoutLine: {'line': b'[ 79%] Built target gripper_servo\n'}
+[0.225403] (px4_ros_com) StdoutLine: {'line': b'[ 87%] Built target offboard_control\n'}
+[0.301173] (-) TimerEvent: {}
+[0.401476] (-) TimerEvent: {}
+[0.501815] (-) TimerEvent: {}
+[0.602096] (-) TimerEvent: {}
+[0.702462] (-) TimerEvent: {}
+[0.802755] (-) TimerEvent: {}
+[0.903051] (-) TimerEvent: {}
+[1.003346] (-) TimerEvent: {}
+[1.103644] (-) TimerEvent: {}
+[1.203939] (-) TimerEvent: {}
+[1.304205] (-) TimerEvent: {}
+[1.404541] (-) TimerEvent: {}
+[1.504806] (-) TimerEvent: {}
+[1.605066] (-) TimerEvent: {}
+[1.705331] (-) TimerEvent: {}
+[1.805621] (-) TimerEvent: {}
+[1.905924] (-) TimerEvent: {}
+[2.006237] (-) TimerEvent: {}
+[2.106506] (-) TimerEvent: {}
+[2.206783] (-) TimerEvent: {}
+[2.307067] (-) TimerEvent: {}
+[2.407369] (-) TimerEvent: {}
+[2.507797] (-) TimerEvent: {}
+[2.608127] (-) TimerEvent: {}
+[2.708429] (-) TimerEvent: {}
+[2.808681] (-) TimerEvent: {}
+[2.908976] (-) TimerEvent: {}
+[3.009354] (-) TimerEvent: {}
+[3.109678] (-) TimerEvent: {}
+[3.210093] (-) TimerEvent: {}
+[3.310492] (-) TimerEvent: {}
+[3.410763] (-) TimerEvent: {}
+[3.511037] (-) TimerEvent: {}
+[3.611350] (-) TimerEvent: {}
+[3.711671] (-) TimerEvent: {}
+[3.811950] (-) TimerEvent: {}
+[3.912241] (-) TimerEvent: {}
+[4.012529] (-) TimerEvent: {}
+[4.112816] (-) TimerEvent: {}
+[4.213088] (-) TimerEvent: {}
+[4.313405] (-) TimerEvent: {}
+[4.413771] (-) TimerEvent: {}
+[4.514147] (-) TimerEvent: {}
+[4.614450] (-) TimerEvent: {}
+[4.714739] (-) TimerEvent: {}
+[4.814978] (-) TimerEvent: {}
+[4.915316] (-) TimerEvent: {}
+[5.015822] (-) TimerEvent: {}
+[5.116194] (-) TimerEvent: {}
+[5.216565] (-) TimerEvent: {}
+[5.316877] (-) TimerEvent: {}
+[5.417214] (-) TimerEvent: {}
+[5.517508] (-) TimerEvent: {}
+[5.617795] (-) TimerEvent: {}
+[5.718118] (-) TimerEvent: {}
+[5.818439] (-) TimerEvent: {}
+[5.918735] (-) TimerEvent: {}
+[6.019030] (-) TimerEvent: {}
+[6.119325] (-) TimerEvent: {}
+[6.219611] (-) TimerEvent: {}
+[6.319887] (-) TimerEvent: {}
+[6.420227] (-) TimerEvent: {}
+[6.520510] (-) TimerEvent: {}
+[6.620760] (-) TimerEvent: {}
+[6.721059] (-) TimerEvent: {}
+[6.821312] (-) TimerEvent: {}
+[6.921618] (-) TimerEvent: {}
+[7.021864] (-) TimerEvent: {}
+[7.122141] (-) TimerEvent: {}
+[7.222413] (-) TimerEvent: {}
+[7.322721] (-) TimerEvent: {}
+[7.422962] (-) TimerEvent: {}
+[7.523262] (-) TimerEvent: {}
+[7.623701] (-) TimerEvent: {}
+[7.633330] (px4_ros_com) StdoutLine: {'line': b'[ 91%] \x1b[32m\x1b[1mLinking CXX shared library libServoControlPublisher.so\x1b[0m\n'}
+[7.723792] (-) TimerEvent: {}
+[7.824125] (-) TimerEvent: {}
+[7.924597] (-) TimerEvent: {}
+[7.983145] (px4_ros_com) StdoutLine: {'line': b'[ 91%] Built target ServoControlPublisher\n'}
+[8.006047] (px4_ros_com) StdoutLine: {'line': b'[ 95%] \x1b[32m\x1b[1mLinking CXX executable pwm_aux_output\x1b[0m\n'}
+[8.024703] (-) TimerEvent: {}
+[8.125003] (-) TimerEvent: {}
+[8.225362] (-) TimerEvent: {}
+[8.249589] (px4_ros_com) StdoutLine: {'line': b'[100%] Built target pwm_aux_output\n'}
+[8.257245] (px4_ros_com) CommandEnded: {'returncode': 0}
+[8.325472] (-) TimerEvent: {}
+[8.332162] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'install'}
+[8.338677] (px4_ros_com) Command: {'cmd': ['/usr/local/bin/cmake', '--install', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com'], 'cwd': '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,4150,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('OLDPWD', '/home/giromi/Repos/PX4-Autopilot/Tools'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('PS1', "\\[\\e[01;32m\\]\\u@\\h \\[\\e[34m\\]\\w \\[\\e[1;31m\\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/(\\1)/')\\[\\e[00m\\]$"), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2109'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('COLCON_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install:/home/giromi/Repos/PX4-Autopilot/Tools/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/giromi/Bashes:/home/giromi/Bashes'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/2069,unix/ubuntu22:/tmp/.ICE-unix/2069'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/3f76fcb8_de1e_4820_abb4_9d022248cbc8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.99'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%15'), ('CMAKE_PREFIX_PATH', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble')]), 'shell': False}
+[8.343869] (px4_ros_com) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[8.344583] (px4_ros_com) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[8.345006] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener\n'}
+[8.345457] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener\n'}
+[8.345903] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser\n'}
+[8.346417] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/offboard_control\n'}
+[8.346795] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/key_event_pub\n'}
+[8.347324] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/key_event_sub\n'}
+[8.347933] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/pwm_aux_output\n'}
+[8.348798] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/gripper_servo\n'}
+[8.349174] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh\n'}
+[8.349565] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv\n'}
+[8.350243] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/1st_ServoControlPublisher.hpp\n'}
+[8.350455] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/A.hpp\n'}
+[8.350727] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/Dubins.hpp\n'}
+[8.350971] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/OffboardControl.hpp\n'}
+[8.351337] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp\n'}
+[8.351523] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/frame_transforms.h\n'}
+[8.352020] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//launch/offboard_control_launch.yaml\n'}
+[8.352240] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//launch/sensor_combined_listener.launch.py\n'}
+[8.352803] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/__init__.py\n'}
+[8.353032] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/pipeline_io_test.py\n'}
+[8.353240] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/test_input.py\n'}
+[8.353433] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/test_output.py\n'}
+[8.353779] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com\n'}
+[8.354120] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com\n'}
+[8.354401] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh\n'}
+[8.354698] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.dsv\n'}
+[8.355021] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/path.sh\n'}
+[8.355321] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/path.dsv\n'}
+[8.355729] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.bash\n'}
+[8.356020] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.sh\n'}
+[8.356527] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.zsh\n'}
+[8.356842] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.dsv\n'}
+[8.357091] (px4_ros_com) StdoutLine: {'line': b'-- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.dsv\n'}
+[8.362489] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/packages/px4_ros_com\n'}
+[8.362729] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[8.362930] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[8.363174] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[8.363589] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[8.363834] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig.cmake\n'}
+[8.364019] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig-version.cmake\n'}
+[8.364432] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.xml\n'}
+[8.364854] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libframe_transforms.so\n'}
+[8.365316] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libOffboardControl.so\n'}
+[8.365873] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libDubins.so\n'}
+[8.366505] (px4_ros_com) StdoutLine: {'line': b'-- Installing: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libServoControlPublisher.so\n'}
+[8.371313] (px4_ros_com) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libServoControlPublisher.so" to ""\n'}
+[8.371587] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake\n'}
+[8.371841] (px4_ros_com) StdoutLine: {'line': b'-- Up-to-date: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-noconfig.cmake\n'}
+[8.373204] (px4_ros_com) CommandEnded: {'returncode': 0}
+[8.425566] (-) TimerEvent: {}
+[8.525885] (-) TimerEvent: {}
+[8.626168] (-) TimerEvent: {}
+[8.688950] (px4_ros_com) JobEnded: {'identifier': 'px4_ros_com', 'rc': 0}
+[8.689398] (-) EventReactorShutdown: {}

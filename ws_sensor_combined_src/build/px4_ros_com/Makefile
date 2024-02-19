@@ -340,6 +340,19 @@ pwm_aux_output/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pwm_aux_output.dir/build.make CMakeFiles/pwm_aux_output.dir/build
 .PHONY : pwm_aux_output/fast
 
+#=============================================================================
+# Target rules for targets named gripper_servo
+
+# Build rule for target.
+gripper_servo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gripper_servo
+.PHONY : gripper_servo
+
+# fast build rule for target.
+gripper_servo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_servo.dir/build.make CMakeFiles/gripper_servo.dir/build
+.PHONY : gripper_servo/fast
+
 src/advertisers/debug_vect_advertiser.o: src/advertisers/debug_vect_advertiser.cpp.o
 .PHONY : src/advertisers/debug_vect_advertiser.o
 
@@ -508,6 +521,30 @@ src/listeners/vehicle_gps_position_listener.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vehicle_gps_position_listener.dir/build.make CMakeFiles/vehicle_gps_position_listener.dir/src/listeners/vehicle_gps_position_listener.cpp.s
 .PHONY : src/listeners/vehicle_gps_position_listener.cpp.s
 
+src/main/gripper_servo.o: src/main/gripper_servo.cpp.o
+.PHONY : src/main/gripper_servo.o
+
+# target to build an object file
+src/main/gripper_servo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_servo.dir/build.make CMakeFiles/gripper_servo.dir/src/main/gripper_servo.cpp.o
+.PHONY : src/main/gripper_servo.cpp.o
+
+src/main/gripper_servo.i: src/main/gripper_servo.cpp.i
+.PHONY : src/main/gripper_servo.i
+
+# target to preprocess a source file
+src/main/gripper_servo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_servo.dir/build.make CMakeFiles/gripper_servo.dir/src/main/gripper_servo.cpp.i
+.PHONY : src/main/gripper_servo.cpp.i
+
+src/main/gripper_servo.s: src/main/gripper_servo.cpp.s
+.PHONY : src/main/gripper_servo.s
+
+# target to generate assembly for a file
+src/main/gripper_servo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_servo.dir/build.make CMakeFiles/gripper_servo.dir/src/main/gripper_servo.cpp.s
+.PHONY : src/main/gripper_servo.cpp.s
+
 src/main/key_event_pub.o: src/main/key_event_pub.cpp.o
 .PHONY : src/main/key_event_pub.o
 
@@ -624,6 +661,7 @@ help:
 	@echo "... ServoControlPublisher"
 	@echo "... debug_vect_advertiser"
 	@echo "... frame_transforms"
+	@echo "... gripper_servo"
 	@echo "... key_event_pub"
 	@echo "... key_event_sub"
 	@echo "... offboard_control"
@@ -651,6 +689,9 @@ help:
 	@echo "... src/listeners/vehicle_gps_position_listener.o"
 	@echo "... src/listeners/vehicle_gps_position_listener.i"
 	@echo "... src/listeners/vehicle_gps_position_listener.s"
+	@echo "... src/main/gripper_servo.o"
+	@echo "... src/main/gripper_servo.i"
+	@echo "... src/main/gripper_servo.s"
 	@echo "... src/main/key_event_pub.o"
 	@echo "... src/main/key_event_pub.i"
 	@echo "... src/main/key_event_pub.s"

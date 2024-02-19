@@ -76,7 +76,7 @@ static void _iter_way_points(const T& way_points) {
 static void _ready_for_test(void) {
     OffboardControl::set_way_point({0.0, 0.0, -5.0, -3.14});
     // _iter_way_points(_square_array1);
-    _iter_way_points(_square_array2);
+    _iter_way_points(_star_array);
     OffboardControl::set_way_point({0.0, 0.0, -5.0, -3.14});
     OffboardControl::set_way_point({0.0, 0.0, 0.0, -3.14});
 }
@@ -87,8 +87,6 @@ int main(int argc, char *argv[])
 
 	std::cout << "Starting offboard control node..." << std::endl;
 	setvbuf(stdout, NULL, _IONBF, BUFSIZ);
-
-
 
 	rclcpp::init(argc, argv);
 	rclcpp::spin(std::make_shared<OffboardControl>());

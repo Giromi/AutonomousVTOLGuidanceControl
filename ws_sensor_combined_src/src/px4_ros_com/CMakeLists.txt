@@ -27,6 +27,7 @@ find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
 # pkg-config 지원 활성화
 find_package(PkgConfig REQUIRED)
+
 # libuuid 찾기
 pkg_check_modules(UUID REQUIRED uuid)
 
@@ -84,6 +85,7 @@ set(EXECUTABLES
   main/key_event_pub
   main/key_event_sub
   main/pwm_aux_output
+  main/gripper_servo
 )
 
 foreach(exec ${EXECUTABLES})
