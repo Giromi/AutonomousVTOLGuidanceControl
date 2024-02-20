@@ -1,5 +1,0 @@
-gmake[2]: *** [CMakeFiles/OffboardControl.dir/build.make:76: CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o] Interrupt
-gmake[2]: *** [CMakeFiles/pwm_aux_output.dir/build.make:76: CMakeFiles/pwm_aux_output.dir/src/main/pwm_aux_output.cpp.o] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:183: CMakeFiles/OffboardControl.dir/all] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:419: CMakeFiles/pwm_aux_output.dir/all] Interrupt
-gmake: *** [Makefile:146: all] Interrupt

@@ -1,6 +1,0 @@
-[  5%] Built target gtest_main
-[ 10%] Built target gtest
-[ 16%] Built target integration_utils
-[ 67%] Built target px4_ros2_cpp
-[ 70%] [32m[1mLinking CXX executable px4_ros2_cpp_unit_tests[0m
-[ 72%] [32m[1mLinking CXX executable integration_tests[0m

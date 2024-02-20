@@ -1,1 +1,0 @@
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_msgs/msg/GpsDump.msg

@@ -1,3 +1,0 @@
-gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Interrupt
-gmake[1]: *** [CMakeFiles/Makefile2:237: CMakeFiles/ServoControlPublisher.dir/all] Interrupt
-gmake: *** [Makefile:146: all] Interrupt

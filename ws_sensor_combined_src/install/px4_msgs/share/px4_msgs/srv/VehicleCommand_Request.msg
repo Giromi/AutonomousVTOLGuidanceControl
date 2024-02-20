@@ -1,1 +1,0 @@
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_msgs/rosidl_cmake/srv/VehicleCommand_Request.msg

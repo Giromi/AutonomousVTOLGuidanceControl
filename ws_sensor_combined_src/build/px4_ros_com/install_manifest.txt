@@ -1,6 +1,0 @@
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libframe_transforms.so
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libOffboardControl.so
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libDubins.so
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib/libServoControlPublisher.so
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-noconfig.cmake

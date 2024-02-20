@@ -1,1 +1,0 @@
-ament_cmake_symlink_install_targets("TARGET_FILES" "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/example_mode_goto_cpp/example_mode_goto" "TARGETS" "example_mode_goto" "DESTINATION" "lib/example_mode_goto_cpp")

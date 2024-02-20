@@ -1,9 +1,0 @@
-libdir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4/lib
-includedir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4/include
-
-Name: gtest
-Description: GoogleTest (without main() function)
-Version: 1.13.0
-URL: https://github.com/google/googletest
-Libs: -L${libdir} -lgtest 
-Cflags: -I${includedir} -DGTEST_HAS_PTHREAD=1

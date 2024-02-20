@@ -1,4 +1,0 @@
-[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:[m[K In lambda function:
-[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:50:219:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kmsg[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
-   50 |                 vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, [this]([01;35m[Kconst px4_msgs::msg::VehicleLocalPosition::UniquePtr msg[m[K) {
-      |                                                                                                                                                                      [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~[m[K

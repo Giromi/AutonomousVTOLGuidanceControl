@@ -1,3 +1,0 @@
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib/libpx4_ros2_cpp.so
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/px4_ros2_cppExport.cmake
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/px4_ros2_cppExport-noconfig.cmake

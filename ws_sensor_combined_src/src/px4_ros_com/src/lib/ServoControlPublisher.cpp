@@ -1,6 +1,5 @@
 #include "px4_ros_com/ServoControlPublisher.hpp"
 
-
 ServoControlPublisher::ServoControlPublisher(void)
     : Node("servo_control_publisher"), _pwm(800), _pwm_nomallize(0.0f), _offboard_setpoint_counter(0) {
         _offboard_control_mode_publisher = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
@@ -11,8 +10,7 @@ ServoControlPublisher::ServoControlPublisher(void)
             std::bind(&ServoControlPublisher::_publish_pwm_output_message, this));
 }
 
-void ServoControlPublisher::_publish_offboard_control_mode()
-{
+void ServoControlPublisher::_publish_offboard_control_mode() {
     px4_msgs::msg::OffboardControlMode msg{};
 	msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
 	msg.position = false;

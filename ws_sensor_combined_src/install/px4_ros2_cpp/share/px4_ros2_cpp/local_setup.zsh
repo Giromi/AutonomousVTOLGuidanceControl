@@ -1,1 +1,0 @@
-/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros2_cpp/ament_cmake_environment_hooks/local_setup.zsh

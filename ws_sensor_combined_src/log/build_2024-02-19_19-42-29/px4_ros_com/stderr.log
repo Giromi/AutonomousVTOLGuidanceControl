@@ -1,8 +1,0 @@
-[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In member function ‘[01m[Kvoid ServoControlPublisher::_publish_arm_control_message()[m[K’:
-[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:48:82:[m[K [01;31m[Kerror: [m[K‘[01m[K_add[m[K’ was not declared in this scope; did you mean ‘[01m[Kfadd[m[K’?
-   48 |     std::cout << "Publishing arm control message " << _pwm_nomallize << " | " << [01;31m[K_add[m[K << std::endl;
-      |                                                                                  [01;31m[K^~~~[m[K
-      |                                                                                  [32m[Kfadd[m[K
-gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:237: CMakeFiles/ServoControlPublisher.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

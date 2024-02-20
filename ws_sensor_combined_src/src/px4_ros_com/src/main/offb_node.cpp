@@ -6,7 +6,7 @@
 
 class OffbNode : public rclcpp::Node {
 public:
-    OffbNode() : Node("offb_node") {
+    OffbNode(void) : Node("offb_node") {
         state_sub = this->create_subscription<mavros_msgs::msg::State>(
             "mavros/state", 10, std::bind(&OffbNode::state_cb, this, std::placeholders::_1));
 
@@ -75,8 +75,7 @@ private:
 
 int main(int argc, char** argv) {
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<OffbNode>();
-    rclcpp::spin(node);
+    rclcpp::spin(std::make_shared<OffbNode>()); // node 실행
     rclcpp::shutdown();
     return 0;
 }
