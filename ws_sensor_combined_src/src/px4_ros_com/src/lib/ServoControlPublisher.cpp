@@ -2,7 +2,6 @@
 
 
 ServoControlPublisher::ServoControlPublisher(void)
-<<<<<<< HEAD
     : Node("servo_control_publisher"), _pwm(800), _pwm_nomallize(0.0f), _offboard_setpoint_counter(0) {
         _offboard_control_mode_publisher = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
         _publisher_arm = this->create_publisher<px4_msgs::msg::ActuatorServos>( "/fmu/in/actuator_servos", 10);
@@ -10,31 +9,6 @@ ServoControlPublisher::ServoControlPublisher(void)
     _timer = this->create_wall_timer(
             std::chrono::milliseconds(100),
             std::bind(&ServoControlPublisher::_publish_pwm_output_message, this));
-=======
-    : Node("servo_control_publisher") {
-        publisher_ = this->create_publisher<mavros_msgs::msg::ActuatorControl>("/mavros/actuator_control", 10);
-        timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(1000),
-            std::bind(&ServoControlPublisher::_publish_servo_control_message, this));
-    }
-
-void ServoControlPublisher::_publish_servo_control_message(void)
-{
-    auto message = mavros_msgs::msg::ActuatorControl();
-    message.header.stamp = this->get_clock()->now();
-    message.group_mix = 3;  // Use group 2 for AUX channels in PX4
-    message.controls[0] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    message.controls[1] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    message.controls[2] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    message.controls[3] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    message.controls[4] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    message.controls[5] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    message.controls[6] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    message.controls[7] = 0.5;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-
-
-    publisher_->publish(message);
->>>>>>> main
 }
 
 void ServoControlPublisher::_publish_offboard_control_mode()

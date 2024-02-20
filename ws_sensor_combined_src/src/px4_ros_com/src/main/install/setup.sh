@@ -7,11 +7,7 @@
 # since a plain shell script can't determine its own path when being sourced
 # either use the provided COLCON_CURRENT_PREFIX
 # or fall back to the build time prefix (if it exists)
-<<<<<<<< HEAD:ws_sensor_combined_src/src/px4_ros_com/src/main/install/setup.sh
 _colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/install
-========
-_colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX=/home/giromi/Repos/VTOL/backup/install
->>>>>>>> main:.backup/install/setup.sh
 if [ ! -z "$COLCON_CURRENT_PREFIX" ]; then
   _colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX="$COLCON_CURRENT_PREFIX"
 elif [ ! -d "$_colcon_prefix_chain_sh_COLCON_CURRENT_PREFIX" ]; then
