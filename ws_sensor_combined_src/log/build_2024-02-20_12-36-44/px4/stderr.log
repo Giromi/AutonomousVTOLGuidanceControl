@@ -1,0 +1,44 @@
+[33mCMake Warning at /opt/ros/humble/share/rcutils/cmake/ament_cmake_export_libraries-extras.cmake:116 (message):
+  Package 'rcutils' exports library 'dl' which couldn't be found
+Call Stack (most recent call first):
+  /opt/ros/humble/share/rcutils/cmake/rcutilsConfig.cmake:41 (include)
+  /opt/ros/humble/share/rosidl_runtime_c/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/humble/share/rosidl_runtime_c/cmake/rosidl_runtime_cConfig.cmake:41 (include)
+  /opt/ros/humble/share/rosidl_typesupport_fastrtps_c/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)
+  /opt/ros/humble/share/rosidl_typesupport_fastrtps_c/cmake/rosidl_typesupport_fastrtps_cConfig.cmake:41 (include)
+  /opt/ros/humble/share/rosidl_typesupport_c/cmake/rosidl_typesupport_c-extras.cmake:13 (find_package)
+  /opt/ros/humble/share/rosidl_typesupport_c/cmake/rosidl_typesupport_cConfig.cmake:41 (include)
+  /opt/ros/humble/share/rosidl_default_generators/cmake/rosidl_default_generators-extras.cmake:21 (find_package)
+  /opt/ros/humble/share/rosidl_default_generators/cmake/rosidl_default_generatorsConfig.cmake:41 (include)
+  CMakeLists.txt:167 (find_package)
+
+[0m
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Warning (dev) at /usr/local/share/cmake-3.28/Modules/ExternalProject.cmake:3195 (message):
+  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+  not set.  The policy's OLD behavior will be used.  When using a URL
+  download, the timestamps of extracted files should preferably be that of
+  the time of extraction, otherwise code that depends on the extracted
+  contents might not be rebuilt if the URL changes.  The OLD behavior
+  preserves the timestamps from the archive instead, but this is usually not
+  what you want.  Update your project to the NEW behavior or specify the
+  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+  robustness issue.
+Call Stack (most recent call first):
+  /usr/local/share/cmake-3.28/Modules/ExternalProject.cmake:4418 (_ep_add_download_command)
+  CMakeLists.txt:6 (ExternalProject_Add)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+[31mCMake Error at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:59 (message):
+  rosidl_generate_interfaces() called without any interface files
+Call Stack (most recent call first):
+  platforms/ros2/CMakeLists.txt:63 (rosidl_generate_interfaces)
+
+[0m

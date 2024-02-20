@@ -1,0 +1,199 @@
+[0.000000] (-) TimerEvent: {}
+[0.000176] (key_event) JobQueued: {'identifier': 'key_event', 'dependencies': OrderedDict()}
+[0.000275] (px4) JobQueued: {'identifier': 'px4', 'dependencies': OrderedDict()}
+[0.000370] (px4_msgs) JobQueued: {'identifier': 'px4_msgs', 'dependencies': OrderedDict()}
+[0.000394] (px4_ros2_cpp) JobQueued: {'identifier': 'px4_ros2_cpp', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs')])}
+[0.000425] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs')])}
+[0.000542] (example_global_navigation_cpp) JobQueued: {'identifier': 'example_global_navigation_cpp', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs'), ('px4_ros2_cpp', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp')])}
+[0.000566] (example_local_navigation_cpp) JobQueued: {'identifier': 'example_local_navigation_cpp', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs'), ('px4_ros2_cpp', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp')])}
+[0.000602] (example_mode_goto_cpp) JobQueued: {'identifier': 'example_mode_goto_cpp', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs'), ('px4_ros2_cpp', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp')])}
+[0.000668] (example_mode_manual_cpp) JobQueued: {'identifier': 'example_mode_manual_cpp', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs'), ('px4_ros2_cpp', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp')])}
+[0.000704] (example_mode_rtl_replacement_cpp) JobQueued: {'identifier': 'example_mode_rtl_replacement_cpp', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs'), ('px4_ros2_cpp', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp')])}
+[0.000795] (example_mode_with_executor_cpp) JobQueued: {'identifier': 'example_mode_with_executor_cpp', 'dependencies': OrderedDict([('px4_msgs', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs'), ('px4_ros2_cpp', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp')])}
+[0.000852] (px4_msgs) JobStarted: {'identifier': 'px4_msgs'}
+[0.052578] (key_event) JobStarted: {'identifier': 'key_event'}
+[0.099118] (-) TimerEvent: {}
+[0.106919] (px4) JobStarted: {'identifier': 'px4'}
+[0.160604] (px4_msgs) JobProgress: {'identifier': 'px4_msgs', 'progress': 'cmake'}
+[0.161428] (px4_msgs) JobProgress: {'identifier': 'px4_msgs', 'progress': 'build'}
+[0.162074] (px4_msgs) Command: {'cmd': ['/usr/local/bin/cmake', '--build', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_msgs', '--', '-j8', '-l8'], 'cwd': '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,4900,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('OLDPWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/src'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('PS1', "\\[\\e[01;32m\\]\\u@\\h \\[\\e[34m\\]\\w \\[\\e[1;31m\\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/(\\1)/')\\[\\e[00m\\]$"), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2073'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/giromi/Bashes:/home/giromi/Bashes'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/2044,unix/ubuntu22:/tmp/.ICE-unix/2044'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7c38761a_019b_4274_8719_b3f2320c43bd'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.100'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%9'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.164720] (key_event) JobProgress: {'identifier': 'key_event', 'progress': 'cmake'}
+[0.165459] (key_event) JobProgress: {'identifier': 'key_event', 'progress': 'build'}
+[0.165725] (key_event) Command: {'cmd': ['/usr/local/bin/cmake', '--build', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event', '--', '-j8', '-l8'], 'cwd': '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,4900,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('OLDPWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/src'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('PS1', "\\[\\e[01;32m\\]\\u@\\h \\[\\e[34m\\]\\w \\[\\e[1;31m\\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/(\\1)/')\\[\\e[00m\\]$"), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2073'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/giromi/Bashes:/home/giromi/Bashes'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/2044,unix/ubuntu22:/tmp/.ICE-unix/2044'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7c38761a_019b_4274_8719_b3f2320c43bd'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.100'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%9'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.170721] (px4) JobProgress: {'identifier': 'px4', 'progress': 'cmake'}
+[0.172201] (px4) Command: {'cmd': ['/usr/local/bin/cmake', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/PX4-Autopilot', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', '-Wno-dev', '-DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4'], 'cwd': '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,4900,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('OLDPWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/src'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('PS1', "\\[\\e[01;32m\\]\\u@\\h \\[\\e[34m\\]\\w \\[\\e[1;31m\\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/(\\1)/')\\[\\e[00m\\]$"), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2073'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/giromi/Bashes:/home/giromi/Bashes'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/2044,unix/ubuntu22:/tmp/.ICE-unix/2044'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7c38761a_019b_4274_8719_b3f2320c43bd'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.100'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%9'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.186983] (px4) StdoutLine: {'line': b'-- PX4 version: v1.15.0-alpha1-502-g76a2acb222 (1.15.0)\n'}
+[0.199220] (-) TimerEvent: {}
+[0.205017] (key_event) StdoutLine: {'line': b'[ 33%] Built target key_event\n'}
+[0.207545] (key_event) StdoutLine: {'line': b'[ 66%] Built target key_sub\n'}
+[0.208179] (key_event) StdoutLine: {'line': b'[100%] Built target key_pub\n'}
+[0.211199] (px4) StdoutLine: {'line': b'-- PX4 config file: /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/PX4-Autopilot/boards/px4/ros2/default.px4board\n'}
+[0.215153] (key_event) CommandEnded: {'returncode': 0}
+[0.244071] (key_event) JobProgress: {'identifier': 'key_event', 'progress': 'install'}
+[0.249254] (key_event) Command: {'cmd': ['/usr/local/bin/cmake', '--install', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event'], 'cwd': '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,4900,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('OLDPWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/src'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('PS1', "\\[\\e[01;32m\\]\\u@\\h \\[\\e[34m\\]\\w \\[\\e[1;31m\\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/(\\1)/')\\[\\e[00m\\]$"), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2073'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/giromi/Bashes:/home/giromi/Bashes'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/2044,unix/ubuntu22:/tmp/.ICE-unix/2044'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/7c38761a_019b_4274_8719_b3f2320c43bd'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.100'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%9'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.253747] (key_event) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.254228] (key_event) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.254580] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/lib/key_event/key_event\n'}
+[0.254889] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/lib/key_event/key_sub\n'}
+[0.255203] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/lib/key_event/key_pub\n'}
+[0.255451] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/package_run_dependencies/key_event\n'}
+[0.255690] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/parent_prefix_path/key_event\n'}
+[0.255911] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.sh\n'}
+[0.256123] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.dsv\n'}
+[0.256336] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.sh\n'}
+[0.256535] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.dsv\n'}
+[0.256727] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.bash\n'}
+[0.257018] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.sh\n'}
+[0.257286] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.zsh\n'}
+[0.257534] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.dsv\n'}
+[0.257710] (key_event) StdoutLine: {'line': b'-- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/package.dsv\n'}
+[0.262384] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/packages/key_event\n'}
+[0.262623] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig.cmake\n'}
+[0.262816] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig-version.cmake\n'}
+[0.263029] (key_event) StdoutLine: {'line': b'-- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/package.xml\n'}
+[0.264649] (key_event) CommandEnded: {'returncode': 0}
+[0.299406] (-) TimerEvent: {}
+[0.400169] (-) TimerEvent: {}
+[0.433791] (px4) StdoutLine: {'line': b'-- PLATFORM ros2\n'}
+[0.434733] (px4) StdoutLine: {'line': b'-- ROMFSROOT px4fmu_common\n'}
+[0.438122] (key_event) JobEnded: {'identifier': 'key_event', 'rc': 0}
+[0.457451] (px4) StdoutLine: {'line': b'-- PX4 config: px4_ros2_default\n'}
+[0.457617] (px4) StdoutLine: {'line': b'-- PX4 platform: ros2\n'}
+[0.463022] (px4) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.500281] (-) TimerEvent: {}
+[0.600565] (-) TimerEvent: {}
+[0.694899] (px4) StdoutLine: {'line': b'-- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.700652] (-) TimerEvent: {}
+[0.732500] (px4) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.736082] (px4) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.743820] (px4) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.757950] (px4) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.778250] (px4) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.800760] (-) TimerEvent: {}
+[0.847349] (px4_msgs) StdoutLine: {'line': b'[  0%] Built target ament_cmake_python_symlink_px4_msgs\n'}
+[0.853851] (px4) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.855616] (px4) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.870113] (px4_msgs) StdoutLine: {'line': b'[  0%] Built target px4_msgs__cpp\n'}
+[0.900870] (-) TimerEvent: {}
+[0.911030] (px4_msgs) StdoutLine: {'line': b'[ 12%] Built target px4_msgs__rosidl_generator_c\n'}
+[0.999692] (px4_msgs) StdoutLine: {'line': b'[ 24%] Built target px4_msgs__rosidl_typesupport_cpp\n'}
+[1.000960] (-) TimerEvent: {}
+[1.007943] (px4_msgs) StdoutLine: {'line': b'[ 37%] Built target px4_msgs__rosidl_typesupport_c\n'}
+[1.031815] (px4_msgs) StdoutLine: {'line': b'[ 50%] Built target px4_msgs__rosidl_typesupport_introspection_c\n'}
+[1.056762] (px4_msgs) StdoutLine: {'line': b'[ 62%] Built target px4_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[1.060298] (px4_msgs) StdoutLine: {'line': b'[ 75%] Built target px4_msgs__rosidl_typesupport_introspection_cpp\n'}
+[1.068760] (px4) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.070911] (px4_msgs) StdoutLine: {'line': b'[ 88%] Built target px4_msgs__rosidl_typesupport_fastrtps_c\n'}
+[1.084348] (px4_msgs) StdoutLine: {'line': b'[ 88%] Built target px4_msgs\n'}
+[1.101093] (-) TimerEvent: {}
+[1.110513] (px4_msgs) StdoutLine: {'line': b'[ 88%] Built target px4_msgs__py\n'}
+[1.136877] (px4_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[1.155374] (px4_msgs) StdoutLine: {'line': b'writing px4_msgs.egg-info/PKG-INFO\n'}
+[1.155835] (px4_msgs) StdoutLine: {'line': b'writing dependency_links to px4_msgs.egg-info/dependency_links.txt\n'}
+[1.156250] (px4_msgs) StdoutLine: {'line': b'writing top-level names to px4_msgs.egg-info/top_level.txt\n'}
+[1.201193] (-) TimerEvent: {}
+[1.208815] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_generator_py\n'}
+[1.212790] (px4_msgs) StdoutLine: {'line': b"reading manifest file 'px4_msgs.egg-info/SOURCES.txt'\n"}
+[1.217785] (px4_msgs) StdoutLine: {'line': b"writing manifest file 'px4_msgs.egg-info/SOURCES.txt'\n"}
+[1.230831] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.235173] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_typesupport_c__pyext\n'}
+[1.236682] (px4_msgs) StdoutLine: {'line': b'[100%] Built target px4_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[1.246511] (px4_msgs) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_px4_msgs_egg\n'}
+[1.254282] (px4_msgs) CommandEnded: {'returncode': 0}
+[1.280098] (px4) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.298011] (px4) StdoutLine: {'line': b'-- cmake build type: RelWithDebInfo\n'}
+[1.301303] (-) TimerEvent: {}
+[1.335006] (px4) StderrLine: {'line': b'CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[1.335167] (px4) StderrLine: {'line': b'  Compatibility with CMake < 3.5 will be removed from a future version of\n'}
+[1.335239] (px4) StderrLine: {'line': b'  CMake.\n'}
+[1.335301] (px4) StderrLine: {'line': b'\n'}
+[1.335361] (px4) StderrLine: {'line': b'  Update the VERSION argument <min> value or use a ...<max> suffix to tell\n'}
+[1.335420] (px4) StderrLine: {'line': b'  CMake that the project does not need compatibility with older versions.\n'}
+[1.335485] (px4) StderrLine: {'line': b'\n'}
+[1.335543] (px4) StderrLine: {'line': b'\n'}
+[1.344912] (px4) StderrLine: {'line': b'CMake Warning (dev) at /usr/local/share/cmake-3.28/Modules/ExternalProject.cmake:3195 (message):\n'}
+[1.345051] (px4) StderrLine: {'line': b'  The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is\n'}
+[1.345120] (px4) StderrLine: {'line': b"  not set.  The policy's OLD behavior will be used.  When using a URL\n"}
+[1.345183] (px4) StderrLine: {'line': b'  download, the timestamps of extracted files should preferably be that of\n'}
+[1.345243] (px4) StderrLine: {'line': b'  the time of extraction, otherwise code that depends on the extracted\n'}
+[1.345301] (px4) StderrLine: {'line': b'  contents might not be rebuilt if the URL changes.  The OLD behavior\n'}
+[1.345359] (px4) StderrLine: {'line': b'  preserves the timestamps from the archive instead, but this is usually not\n'}
+[1.345418] (px4) StderrLine: {'line': b'  what you want.  Update your project to the NEW behavior or specify the\n'}
+[1.345475] (px4) StderrLine: {'line': b'  DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this\n'}
+[1.345533] (px4) StderrLine: {'line': b'  robustness issue.\n'}
+[1.345591] (px4) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.345649] (px4) StderrLine: {'line': b'  /usr/local/share/cmake-3.28/Modules/ExternalProject.cmake:4418 (_ep_add_download_command)\n'}
+[1.345708] (px4) StderrLine: {'line': b'  CMakeLists.txt:6 (ExternalProject_Add)\n'}
+[1.345768] (px4) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.345826] (px4) StderrLine: {'line': b'\n'}
+[1.356099] (px4) StdoutLine: {'line': b'-- Configuring done (0.0s)\n'}
+[1.359094] (px4) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[1.359836] (px4) StdoutLine: {'line': b'-- Build files have been written to: /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download\n'}
+[1.387738] (px4) StdoutLine: {'line': b'[100%] Built target googletest\n'}
+[1.401418] (-) TimerEvent: {}
+[1.501781] (-) TimerEvent: {}
+[1.602115] (-) TimerEvent: {}
+[1.702397] (-) TimerEvent: {}
+[1.792066] (px4) StdoutLine: {'line': b'-- ROS_VERSION: 2\n'}
+[1.792408] (px4) StdoutLine: {'line': b'-- AMENT_PREFIX_PATH: /opt/ros/humble\n'}
+[1.792488] (px4) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:59 (message):\n'}
+[1.792556] (px4) StderrLine: {'line': b'  rosidl_generate_interfaces() called without any interface files\n'}
+[1.792616] (px4) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.792673] (px4) StderrLine: {'line': b'  platforms/ros2/CMakeLists.txt:63 (rosidl_generate_interfaces)\n'}
+[1.792729] (px4) StderrLine: {'line': b'\n'}
+[1.792785] (px4) StderrLine: {'line': b'\x1b[0m\n'}
+[1.801710] (px4) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.802514] (-) TimerEvent: {}
+[1.830902] (px4) CommandEnded: {'returncode': 1}
+[1.882744] (px4) JobEnded: {'identifier': 'px4', 'rc': 1}
+[1.902639] (-) TimerEvent: {}
+[2.003088] (-) TimerEvent: {}
+[2.103574] (-) TimerEvent: {}
+[2.203820] (-) TimerEvent: {}
+[2.304075] (-) TimerEvent: {}
+[2.404323] (-) TimerEvent: {}
+[2.504698] (-) TimerEvent: {}
+[2.605092] (-) TimerEvent: {}
+[2.705331] (-) TimerEvent: {}
+[2.805648] (-) TimerEvent: {}
+[2.905990] (-) TimerEvent: {}
+[3.006254] (-) TimerEvent: {}
+[3.106502] (-) TimerEvent: {}
+[3.206851] (-) TimerEvent: {}
+[3.307214] (-) TimerEvent: {}
+[3.407545] (-) TimerEvent: {}
+[3.507784] (-) TimerEvent: {}
+[3.608065] (-) TimerEvent: {}
+[3.708297] (-) TimerEvent: {}
+[3.808613] (-) TimerEvent: {}
+[3.908950] (-) TimerEvent: {}
+[4.009232] (-) TimerEvent: {}
+[4.109487] (-) TimerEvent: {}
+[4.209738] (-) TimerEvent: {}
+[4.309975] (-) TimerEvent: {}
+[4.410256] (-) TimerEvent: {}
+[4.510495] (-) TimerEvent: {}
+[4.610774] (-) TimerEvent: {}
+[4.711034] (-) TimerEvent: {}
+[4.811339] (-) TimerEvent: {}
+[4.911595] (-) TimerEvent: {}
+[5.011847] (-) TimerEvent: {}
+[5.112080] (-) TimerEvent: {}
+[5.212352] (-) TimerEvent: {}
+[5.312626] (-) TimerEvent: {}
+[5.412949] (-) TimerEvent: {}
+[5.513190] (-) TimerEvent: {}
+[5.613436] (-) TimerEvent: {}
+[5.713681] (-) TimerEvent: {}
+[5.813929] (-) TimerEvent: {}
+[5.914186] (-) TimerEvent: {}
+[5.961554] (px4_msgs) JobEnded: {'identifier': 'px4_msgs', 'rc': 'SIGINT'}
+[5.972372] (px4_ros2_cpp) JobSkipped: {'identifier': 'px4_ros2_cpp'}
+[5.972434] (px4_ros_com) JobSkipped: {'identifier': 'px4_ros_com'}
+[5.972465] (example_global_navigation_cpp) JobSkipped: {'identifier': 'example_global_navigation_cpp'}
+[5.972492] (example_local_navigation_cpp) JobSkipped: {'identifier': 'example_local_navigation_cpp'}
+[5.972518] (example_mode_goto_cpp) JobSkipped: {'identifier': 'example_mode_goto_cpp'}
+[5.972631] (example_mode_manual_cpp) JobSkipped: {'identifier': 'example_mode_manual_cpp'}
+[5.972685] (example_mode_rtl_replacement_cpp) JobSkipped: {'identifier': 'example_mode_rtl_replacement_cpp'}
+[5.972785] (example_mode_with_executor_cpp) JobSkipped: {'identifier': 'example_mode_with_executor_cpp'}
+[5.972987] (-) EventReactorShutdown: {}

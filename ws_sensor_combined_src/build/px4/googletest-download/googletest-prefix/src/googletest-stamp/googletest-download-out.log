@@ -1,0 +1,40 @@
+-- Downloading...
+   dst='/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip'
+   timeout='none'
+   inactivity timeout='none'
+-- Using src='https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip'
+-- [download 1% complete]
+-- [download 4% complete]
+-- [download 7% complete]
+-- [download 9% complete]
+-- [download 12% complete]
+-- [download 14% complete]
+-- [download 17% complete]
+-- [download 18% complete]
+-- [download 19% complete]
+-- [download 24% complete]
+-- [download 27% complete]
+-- [download 30% complete]
+-- [download 32% complete]
+-- [download 35% complete]
+-- [download 37% complete]
+-- [download 41% complete]
+-- [download 42% complete]
+-- [download 45% complete]
+-- [download 46% complete]
+-- [download 48% complete]
+-- [download 51% complete]
+-- [download 54% complete]
+-- [download 57% complete]
+-- [download 59% complete]
+-- [download 71% complete]
+-- [download 100% complete]
+-- Downloading... done
+-- extracting...
+     src='/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip'
+     dst='/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-src'
+-- extracting... [tar xfz]
+-- extracting... [analysis]
+-- extracting... [rename]
+-- extracting... [clean up]
+-- extracting... done

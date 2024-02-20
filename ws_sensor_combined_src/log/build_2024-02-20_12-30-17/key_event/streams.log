@@ -1,0 +1,27 @@
+[0.161s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event': CMAKE_PREFIX_PATH=/opt/ros/humble PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event -- -j8 -l8
+[0.203s] [ 33%] Built target key_sub
+[0.207s] [ 66%] Built target key_event
+[0.207s] [100%] Built target key_pub
+[0.215s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event -- -j8 -l8
+[0.256s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event': CMAKE_PREFIX_PATH=/opt/ros/humble PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --install /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event
+[0.260s] -- Install configuration: ""
+[0.261s] -- Execute custom install script
+[0.261s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/lib/key_event/key_event
+[0.261s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/lib/key_event/key_sub
+[0.262s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/lib/key_event/key_pub
+[0.262s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/package_run_dependencies/key_event
+[0.262s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/parent_prefix_path/key_event
+[0.263s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.sh
+[0.263s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.dsv
+[0.263s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.sh
+[0.263s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.dsv
+[0.264s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.bash
+[0.264s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.sh
+[0.264s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.zsh
+[0.265s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.dsv
+[0.265s] -- Symlinking: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/package.dsv
+[0.271s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/packages/key_event
+[0.271s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig.cmake
+[0.271s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig-version.cmake
+[0.271s] -- Up-to-date symlink: /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event/share/key_event/package.xml
+[0.273s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --install /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/key_event

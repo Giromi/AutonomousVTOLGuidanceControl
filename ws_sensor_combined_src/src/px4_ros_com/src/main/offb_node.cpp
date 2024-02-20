@@ -34,14 +34,17 @@ private:
         }
 
         if (current_state.mode != "OFFBOARD") {
+            std::cout << "current_state.mode: " << current_state.mode << std::endl;
             // 요청을 OFFBOARD 모드로 변경
             auto request = std::make_shared<mavros_msgs::srv::SetMode::Request>();
             request->custom_mode = "OFFBOARD";
 
             auto result = set_mode_client->async_send_request(request);
+            std::cout << "result: " << result.get()->mode_sent << std::endl;
             // Handle response in a callback or using a future
             last_request = this->now();
         } else if (!current_state.armed) {
+            std::cout << "current_state.armed: " << "NO" << std::endl;
             // 요청을 ARM
             auto request = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
             request->value = true;
@@ -50,6 +53,7 @@ private:
             // Handle response in a callback or using a future
             last_request = this->now();
         } else {
+            std::cout << "current_state.armed: " << current_state.armed << std::endl;
             // OFFBOARD 모드이고 ARMED인 경우에만 명령 전송
             geometry_msgs::msg::PoseStamped pose;
             pose.pose.position.x = 0;
