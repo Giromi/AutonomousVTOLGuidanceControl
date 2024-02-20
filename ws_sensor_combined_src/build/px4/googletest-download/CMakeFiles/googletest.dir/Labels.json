@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/CMakeFiles/googletest"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/CMakeFiles/googletest.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/CMakeFiles/googletest-complete.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-build.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-configure.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-download.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-install.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-patch.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-test.rule"
+		},
+		{
+			"file" : "/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/googletest-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googletest"
+		],
+		"name" : "googletest"
+	}
+}

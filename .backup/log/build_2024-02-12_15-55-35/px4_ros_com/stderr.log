@@ -1,9 +1,0 @@
-In file included from [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:2[m[K:
-[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp:1:10:[m[K [01;31m[Kfatal error: [m[Krclcpp/rclcpp.hpp: No such file or directory
-    1 | #include [01;31m[K<rclcpp/rclcpp.hpp>[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:235: CMakeFiles/ServoControlPublisher.dir/all] Error 2
-gmake[1]: *** Waiting for unfinished jobs....
-gmake: *** [Makefile:146: all] Error 2

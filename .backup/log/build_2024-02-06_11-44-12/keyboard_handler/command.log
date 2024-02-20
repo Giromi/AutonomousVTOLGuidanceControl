@@ -1,2 +1,0 @@
-Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler -- -j8 -l8
-Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler' returned '2': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler -- -j8 -l8

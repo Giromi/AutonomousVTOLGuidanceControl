@@ -1,0 +1,12 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=url
+command=/usr/local/bin/cmake;-P;/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/download-googletest.cmake;COMMAND;/usr/local/bin/cmake;-P;/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/verify-googletest.cmake;COMMAND;/usr/local/bin/cmake;-P;/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download/googletest-prefix/src/googletest-stamp/extract-googletest.cmake
+source_dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-src
+work_dir=/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4
+url(s)=https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip
+hash=
+no_extract=
+

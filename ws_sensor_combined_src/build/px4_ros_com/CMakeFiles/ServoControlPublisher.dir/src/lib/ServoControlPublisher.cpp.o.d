@@ -600,9 +600,37 @@ CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o: \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/thread_safe_synchronization.hpp \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_policies/detail/write_preferring_read_write_lock.hpp \
  /opt/ros/humble/include/rclcpp/rclcpp/wait_set_template.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/offboard_control_mode.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/offboard_control_mode__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/offboard_control_mode__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/offboard_control_mode__traits.hpp \
  /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/actuator_control.hpp \
  /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/actuator_control__struct.hpp \
  /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__struct.hpp \
  /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/actuator_control__builder.hpp \
  /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/actuator_control__traits.hpp \
- /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__traits.hpp
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/header__traits.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/override_rc_in.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/override_rc_in__struct.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/override_rc_in__builder.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/msg/detail/override_rc_in__traits.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/param_set_v2.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/detail/param_set_v2__struct.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/detail/param_set_v2__builder.hpp \
+ /opt/ros/humble/include/mavros_msgs/mavros_msgs/srv/detail/param_set_v2__traits.hpp \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/string.hpp \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/string__struct.hpp \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/string__builder.hpp \
+ /opt/ros/humble/include/std_msgs/std_msgs/msg/detail/string__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_command.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_command__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/vehicle_control_mode.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/vehicle_control_mode__traits.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/actuator_servos.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/actuator_servos__struct.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/actuator_servos__builder.hpp \
+ /home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/include/px4_msgs/px4_msgs/msg/detail/actuator_servos__traits.hpp

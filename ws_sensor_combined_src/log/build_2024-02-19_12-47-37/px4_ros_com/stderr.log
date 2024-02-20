@@ -1,0 +1,6 @@
+/usr/bin/ld: libServoControlPublisher.so: undefined reference to `uuid_unparse_lower'
+/usr/bin/ld: libServoControlPublisher.so: undefined reference to `uuid_generate_random'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/pwm_aux_output.dir/build.make:209: pwm_aux_output] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:419: CMakeFiles/pwm_aux_output.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

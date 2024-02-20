@@ -1,0 +1,32 @@
+[0.208s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.312s] [  4%] [32mBuilding CXX object CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o[0m
+[0.316s] [ 12%] Built target OffboardControl
+[0.318s] [ 20%] Built target sensor_combined_listener
+[0.328s] [ 29%] Built target Dubins
+[0.328s] [ 37%] Built target frame_transforms
+[0.328s] [ 45%] Built target vehicle_gps_position_listener
+[0.328s] [ 54%] Built target key_event_pub
+[0.333s] [ 62%] Built target debug_vect_advertiser
+[0.364s] [ 70%] Built target key_event_sub
+[0.368s] [ 79%] Built target gripper_servo
+[0.389s] [ 83%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/main/offboard_control.cpp.o[0m
+[3.810s] [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In member function ‘[01m[Kvoid ServoControlPublisher::_publish_pwm_output_message()[m[K’:
+[3.810s] [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:15:9:[m[K [01;31m[Kerror: [m[K‘[01m[K_offboard_setpoint_counter[m[K’ was not declared in this scope
+[3.810s]    15 |     if ([01;31m[K_offboard_setpoint_counter[m[K == 10) {
+[3.810s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.811s] [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:17:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass ServoControlPublisher[m[K’ has no member named ‘[01m[Kpublish_vehicle_command[m[K’; did you mean ‘[01m[K_publish_vehicle_command[m[K’?
+[3.811s]    17 |         this->[01;31m[Kpublish_vehicle_command[m[K(VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+[3.811s]       |               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.811s]       |               [32m[K_publish_vehicle_command[m[K
+[3.811s] [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:20:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass ServoControlPublisher[m[K’ has no member named ‘[01m[Karm[m[K’
+[3.811s]    20 |         this->[01;31m[Karm[m[K();
+[3.811s]       |               [01;31m[K^~~[m[K
+[4.282s] [01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/offboard_control.cpp:76:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid _ready_for_test()[m[K’ defined but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+[4.282s]    76 | static void [01;35m[K_ready_for_test[m[K(void) {
+[4.282s]       |             [01;35m[K^~~~~~~~~~~~~~~[m[K
+[4.396s] [ 87%] [32m[1mLinking CXX executable offboard_control[0m
+[4.888s] [ 87%] Built target offboard_control
+[5.036s] gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+[5.036s] gmake[1]: *** [CMakeFiles/Makefile2:237: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+[5.036s] gmake: *** [Makefile:146: all] Error 2
+[5.038s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com' returned '2': CMAKE_PREFIX_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/key_event:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake --build /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8

@@ -848,6 +848,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "ament_cmake_symlink_install_targets_4_.cmake"
   "ament_cmake_symlink_install_targets_5_.cmake"
   "ament_cmake_symlink_install_targets_6_.cmake"
+  "ament_cmake_symlink_install_targets_7_.cmake"
+  "ament_cmake_symlink_install_targets_8_.cmake"
   "ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/px4_ros_com"
   "ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/px4_ros_com"
   "ament_cmake_index/share/ament_index/resource_index/packages/px4_ros_com"
@@ -869,4 +871,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/key_event_pub.dir/DependInfo.cmake"
   "CMakeFiles/key_event_sub.dir/DependInfo.cmake"
   "CMakeFiles/pwm_aux_output.dir/DependInfo.cmake"
+  "CMakeFiles/gripper_servo.dir/DependInfo.cmake"
+  "CMakeFiles/offb_node.dir/DependInfo.cmake"
   )

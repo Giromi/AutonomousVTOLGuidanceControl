@@ -1,0 +1,57 @@
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:6:1:[m[K [01;31m[Kerror: [m[K‘[01m[KServoControlPublisher[m[K’ does not name a type; did you mean ‘[01m[KServoControlPublisher_EXPORTS[m[K’?
+    6 | [01;31m[KServoControlPublisher[m[K::ServoControlPublisher(void)
+      | [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+      | [32m[KServoControlPublisher_EXPORTS[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:14:6:[m[K [01;31m[Kerror: [m[K‘[01m[KServoControlPublisher[m[K’ has not been declared
+   14 | void [01;31m[KServoControlPublisher[m[K::_publish_pwm_output_message(void) {
+      |      [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In function ‘[01m[Kvoid _publish_pwm_output_message()[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:15:5:[m[K [01;31m[Kerror: [m[K‘[01m[K_publish_arm_control_message[m[K’ was not declared in this scope; did you mean ‘[01m[K_publish_pwm_output_message[m[K’?
+   15 |     [01;31m[K_publish_arm_control_message[m[K();
+      |     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |     [32m[K_publish_pwm_output_message[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K At global scope:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:21:6:[m[K [01;31m[Kerror: [m[K‘[01m[KServoControlPublisher[m[K’ has not been declared
+   21 | void [01;31m[KServoControlPublisher[m[K::_publish_arm_control_message(void) {
+      |      [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In function ‘[01m[Kvoid _publish_arm_control_message()[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:22:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kmake_shared[m[K’ is not a member of ‘[01m[Kstd[m[K’
+   22 |     auto actuator_control_msg = std::[01;31m[Kmake_shared[m[K<mavros_msgs::msg::ActuatorControl>();
+      |                                      [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:4:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::make_shared[m[K’ is defined in header ‘[01m[K<memory>[m[K’; did you forget to ‘[01m[K#include <memory>[m[K’?
+    3 | #include "px4_ros_com/ServoControlPublisher.hpp"
+  +++ |+[32m[K#include <memory>[m[K
+    4 | 
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:22:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kmavros_msgs[m[K’ has not been declared
+   22 |     auto actuator_control_msg = std::make_shared<[01;31m[Kmavros_msgs[m[K::msg::ActuatorControl>();
+      |                                                  [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:22:85:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+   22 |     auto actuator_control_msg = std::make_shared<mavros_msgs::msg::ActuatorControl>([01;31m[K)[m[K;
+      |                                                                                     [01;31m[K^[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:24:42:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+   24 |     actuator_control_msg->header.stamp = [01;31m[Kthis[m[K->now();
+      |                                          [01;31m[K^~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:28:41:[m[K [01;31m[Kerror: [m[K‘[01m[K_pwm_nomallize[m[K’ was not declared in this scope
+   28 |     actuator_control_msg->controls[0] = [01;31m[K_pwm_nomallize[m[K;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
+      |                                         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:30:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kcout[m[K’ is not a member of ‘[01m[Kstd[m[K’
+   30 |     std::[01;31m[Kcout[m[K << "Publishing arm control message" << _pwm_nomallize << std::endl;
+      |          [01;31m[K^~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:4:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::cout[m[K’ is defined in header ‘[01m[K<iostream>[m[K’; did you forget to ‘[01m[K#include <iostream>[m[K’?
+    3 | #include "px4_ros_com/ServoControlPublisher.hpp"
+  +++ |+[32m[K#include <iostream>[m[K
+    4 | 
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:30:77:[m[K [01;31m[Kerror: [m[K‘[01m[Kendl[m[K’ is not a member of ‘[01m[Kstd[m[K’
+   30 |     std::cout << "Publishing arm control message" << _pwm_nomallize << std::[01;31m[Kendl[m[K;
+      |                                                                             [01;31m[K^~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:4:1:[m[K [01;36m[Knote: [m[K‘[01m[Kstd::endl[m[K’ is defined in header ‘[01m[K<ostream>[m[K’; did you forget to ‘[01m[K#include <ostream>[m[K’?
+    3 | #include "px4_ros_com/ServoControlPublisher.hpp"
+  +++ |+[32m[K#include <ostream>[m[K
+    4 | 
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:31:5:[m[K [01;31m[Kerror: [m[K‘[01m[K_publisher_arm[m[K’ was not declared in this scope
+   31 |     [01;31m[K_publisher_arm[m[K->publish(*actuator_control_msg);
+      |     [01;31m[K^~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:237: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+gmake: *** [Makefile:146: all] Error 2

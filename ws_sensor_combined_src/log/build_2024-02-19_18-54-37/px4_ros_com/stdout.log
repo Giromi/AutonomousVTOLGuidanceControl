@@ -1,0 +1,11 @@
+[  8%] Built target sensor_combined_listener
+[ 16%] Built target frame_transforms
+[ 25%] Built target vehicle_gps_position_listener
+[ 37%] Built target Dubins
+[ 41%] Built target OffboardControl
+[ 50%] Built target key_event_pub
+[ 58%] Built target debug_vect_advertiser
+[ 62%] [32mBuilding CXX object CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o[0m
+[ 70%] Built target key_event_sub
+[ 79%] Built target gripper_servo
+[ 87%] Built target offboard_control

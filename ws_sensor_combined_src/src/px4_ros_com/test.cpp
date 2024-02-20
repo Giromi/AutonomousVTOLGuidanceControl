@@ -1,32 +1,51 @@
-#include <stdio.h>
-#include <iomanip>
 #include <iostream>
-#include "include/px4_ros_com/Dubins.hpp"
 
-int printConfiguration(double q[3], double x, void* user_data) {
-    // x를 소수점 아래 한 자리까지 출력
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << "[" << x << "] q: ";
-
-    // q의 각 요소를 기본 정밀도로 출력
-    std::cout << std::fixed << std::setprecision(6);
-    // std::cout.unsetf(std::ios::fixed); // fixed 속성 해제
-    // std::cout.precision(6); // 기본 정밀도로 되돌림 (C++ 표준에서 기본 정밀도는 6)
-
-    // q 배열 출력
-    std::cout << q[0] << " " << q[1] << " " << q[2] << std::endl;
-
-    return 0;
-}
+class A
+{   
+public:
+    A(void) : x(0), y(0), z(0) {}
+    A(int x, int y, int z) : x(x), y(y), z(z) {}
 
 
-int main()
+
+    int x;
+    int y;
+    int z;
+};
+
+
+struct B
 {
-    const std::array<double, 3> q0 = {0, 0, 0};
-    const std::array<double, 3> q1 = {4, 4, 3.142};
-    Dubins dubins = Dubins(q0, q1, 1.0);
+    int b;
+};
 
-    dubins.shortest_path();
-    dubins.path_sample_many(0.1, printConfiguration, NULL);
+
+#define X 1
+#define Y 2
+#define Z 3
+
+int main() {
+
+    // std::array<int, 3> a = {1003, 1004, 1005}; 
+
+    int     a[3] = {1000, 1001, 1002};//  (1000)(1001)(1002)()()
+    int*    a_ptr;//                               ()()()()()(1000)()()()
+
+    a_ptr = a;
+
+
+    std::cout << "a[0] = " << a[0] << std::endl;
+    std::cout << "*a = " << *(a + 0) << std::endl;
+    std::cout << "a[1] = " << a[1] << std::endl;
+    std::cout << "*a = " << *(a + 1) << std::endl;
+    std::cout << "a[2] = " << a[2] << std::endl;
+    std::cout << "*a = " << *(a + 2) << std::endl;
+
+
+    std::cout << "*a_ptr = " << *a_ptr << std::endl;
+    std::cout << "*a_ptr = " << *a_ptr + 1<< std::endl;
+    std::cout << "*a_ptr = " << *(a_ptr + 2)<< std::endl;
+    
     return 0;
 }
+

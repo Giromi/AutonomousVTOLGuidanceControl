@@ -1,0 +1,7 @@
+
+ros2 topic pub /mavros/actuator_control mavros_msgs/msg/ActuatorControl "
+{header: {stamp: {sec: 0}, frame_id: ''}, 
+goup_mix: 2,
+controls: [0.5, 0.5, 0.5, 0.5, 0.0, 0.0, 0.0, 0.0]}
+"
+

@@ -39,11 +39,11 @@ std::queue<DubinsPathPoint> OffboardControl::_dubins_path_points;
 double OffboardControl::turning_radius = 10.0;
 double OffboardControl::sampling_interval = 2.0;
 
-
-OffboardControl::OffboardControl() : Node("offboard_control") {
+OffboardControl::OffboardControl() : Node("offboard_control"), _pwm(800), _pwm_nomallize(-1.0) {
 		offboard_control_mode_publisher_ = this->create_publisher<OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
 		trajectory_setpoint_publisher_ = this->create_publisher<TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
 		vehicle_command_publisher_ = this->create_publisher<VehicleCommand>("/fmu/in/vehicle_command", 10);
+        _publisher_arm = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
 
 		rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
 		auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
@@ -74,6 +74,12 @@ OffboardControl::OffboardControl() : Node("offboard_control") {
                           << "Left Dubins path points : " << _dubins_path_points.size() << "\n"
                           << "===================================================\n";
                 });
+        // _key_event_subscription = this->create_subscription<std_msgs::msg::String>(
+        //     "chatter", 10, std::bind(
+        //         &OffboardControl::chatterCallback, 
+        //         this, 
+        //         std::placeholders::_1
+        // ));
 
 
 		_offboard_setpoint_counter = 0;
@@ -90,14 +96,14 @@ OffboardControl::OffboardControl() : Node("offboard_control") {
 
 			// offboard_control_mode needs to be paired with trajectory_setpoint
 			publish_offboard_control_mode();
-			publish_trajectory_setpoint();
-
+			// publish_trajectory_setpoint();
+            _publish_pwm_output_message();
 			// stop the counter after reaching 11
 			if (_offboard_setpoint_counter < 11) {
 				_offboard_setpoint_counter++;
 			}
 		};
-		timer_ = this->create_wall_timer(100ms, timer_callback);
+		timer_ = this->create_wall_timer(1000ms, timer_callback);
 	}
 
 
@@ -248,4 +254,27 @@ int OffboardControl::set_dubins_path_point(double q[3], double x, void* user_dat
     DubinsPathPoint dubins_path_point(q[0], q[1], (*local_position)[DOWN], q[2], x);
     OffboardControl::_dubins_path_points.push(dubins_path_point);
     return 0;
+}
+
+// void OffboardControl::chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
+//     RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
+// }
+
+void OffboardControl::_publish_pwm_output_message(void) {
+    _publish_arm_control_message();
+    // _publish_disarm_control_message();
+    // _publish_disarm_control_message2();
+    // _publish_disarm_control_message_param();
+}
+
+void OffboardControl::_publish_arm_control_message(void) {
+    auto actuator_control_msg = mavros_msgs::msg::ActuatorControl();
+    actuator_control_msg.header.stamp = this->now();
+    actuator_control_msg.header.frame_id = "camera_servo";
+    actuator_control_msg.group_mix = 2;  // Use group 2 for AUX channels in PX4
+    // actuator_control_msg->controls.resize(8);  // 사용할 채널 수에 따라 크기 조정
+    actuator_control_msg.controls[0] = _pwm_nomallize;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
+    _pwm_nomallize += (_pwm_nomallize < 0.9) * 0.1;
+    std::cout << "Publishing arm control message" << _pwm_nomallize << std::endl;
+    _publisher_arm->publish(actuator_control_msg);
 }

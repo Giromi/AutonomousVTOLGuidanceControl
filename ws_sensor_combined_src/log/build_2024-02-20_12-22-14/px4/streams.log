@@ -1,0 +1,63 @@
+[0.076s] Invoking command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4': CMAKE_PREFIX_PATH=/opt/ros/humble PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/PX4-Autopilot -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4
+[0.092s] -- PX4 version: v1.15.0-alpha1-502-g76a2acb222 (1.15.0)
+[0.093s] [33mCMake Warning (dev) at CMakeLists.txt:166 (find_package):
+[0.093s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[0.093s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[0.093s]   the cmake_policy command to set the policy and suppress this warning.
+[0.093s] 
+[0.094s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[0.094s] [0m
+[0.120s] -- PX4 config file: /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/PX4-Autopilot/boards/px4/ros2/default.px4board
+[0.343s] -- PLATFORM ros2
+[0.343s] -- ROMFSROOT px4fmu_common
+[0.362s] -- PX4 config: px4_ros2_default
+[0.362s] -- PX4 platform: ros2
+[0.366s] -- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.598s] -- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+[0.634s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.637s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.645s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.659s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.679s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.751s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.753s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.915s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.107s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.124s] -- cmake build type: RelWithDebInfo
+[1.163s] CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+[1.163s]   Compatibility with CMake < 3.5 will be removed from a future version of
+[1.163s]   CMake.
+[1.163s] 
+[1.163s]   Update the VERSION argument <min> value or use a ...<max> suffix to tell
+[1.163s]   CMake that the project does not need compatibility with older versions.
+[1.163s] 
+[1.163s] 
+[1.173s] CMake Warning (dev) at /usr/local/share/cmake-3.28/Modules/ExternalProject.cmake:3195 (message):
+[1.173s]   The DOWNLOAD_EXTRACT_TIMESTAMP option was not given and policy CMP0135 is
+[1.173s]   not set.  The policy's OLD behavior will be used.  When using a URL
+[1.173s]   download, the timestamps of extracted files should preferably be that of
+[1.173s]   the time of extraction, otherwise code that depends on the extracted
+[1.173s]   contents might not be rebuilt if the URL changes.  The OLD behavior
+[1.173s]   preserves the timestamps from the archive instead, but this is usually not
+[1.173s]   what you want.  Update your project to the NEW behavior or specify the
+[1.173s]   DOWNLOAD_EXTRACT_TIMESTAMP option with a value of true to avoid this
+[1.173s]   robustness issue.
+[1.173s] Call Stack (most recent call first):
+[1.173s]   /usr/local/share/cmake-3.28/Modules/ExternalProject.cmake:4418 (_ep_add_download_command)
+[1.174s]   CMakeLists.txt:6 (ExternalProject_Add)
+[1.174s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.174s] 
+[1.185s] -- Configuring done (0.0s)
+[1.198s] -- Generating done (0.0s)
+[1.200s] -- Build files have been written to: /home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4/googletest-download
+[1.257s] [100%] Built target googletest
+[1.676s] -- ROS_VERSION: 2
+[1.677s] -- AMENT_PREFIX_PATH: /opt/ros/humble
+[1.677s] [31mCMake Error at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:59 (message):
+[1.677s]   rosidl_generate_interfaces() called without any interface files
+[1.677s] Call Stack (most recent call first):
+[1.677s]   platforms/ros2/CMakeLists.txt:63 (rosidl_generate_interfaces)
+[1.677s] 
+[1.677s] [0m
+[1.686s] -- Configuring incomplete, errors occurred!
+[1.714s] Invoked command in '/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4' returned '1': CMAKE_PREFIX_PATH=/opt/ros/humble PS1=\[\e[01;32m\]\u@\h \[\e[34m\]\w \[\e[1;31m\]$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/')\[\e[00m\]$ /usr/local/bin/cmake /home/giromi/Repos/VTOL/ws_sensor_combined_src/src/PX4-Autopilot -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/VTOL/ws_sensor_combined_src/install/px4

@@ -1,9 +1,0 @@
-[31mCMake Error at CMakeLists.txt:60 (add_executable):
-  add_executable cannot create target "offboard_control" because another
-  target with the same name already exists.  The existing target is an
-  executable created in source directory
-  "/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com".  See
-  documentation for policy CMP0002 for more details.
-
-[0m
-gmake: *** [Makefile:431: cmake_check_build_system] Error 1

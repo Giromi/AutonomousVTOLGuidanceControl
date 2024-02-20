@@ -1,0 +1,7 @@
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In member function ‘[01m[Kvoid ServoControlPublisher::_publish_arm_control_message()[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:58:69:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K<[m[K’ token
+   58 |     _pwm_nomallize += ((_pwm_nomallize >= -1.0) && (_pwm_nomallize =[01;31m[K<[m[K 1.0)) * _add;
+      |                                                                     [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:237: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

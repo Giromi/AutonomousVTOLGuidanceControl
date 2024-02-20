@@ -1,0 +1,18 @@
+[  8%] Built target frame_transforms
+[ 16%] Built target Dubins
+[ 29%] Built target vehicle_gps_position_listener
+[ 33%] Built target sensor_combined_listener
+[ 41%] Built target OffboardControl
+[ 50%] Built target debug_vect_advertiser
+[ 58%] Built target key_event_pub
+[ 62%] [32mBuilding CXX object CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o[0m
+[ 83%] Built target offboard_control
+[ 83%] Built target gripper_servo
+[ 87%] Built target key_event_sub
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In constructor ‘[01m[KServoControlPublisher::ServoControlPublisher()[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:5:66:[m[K [01;31m[Kerror: [m[Kunable to find numeric literal operator ‘[01m[Koperator""f[m[K’
+    5 |     : Node("servo_control_publisher"), _pwm(800), _pwm_nomallize([01;31m[K0f[m[K), _add(0.01f), _offboard_setpoint_counter(0) {
+      |                                                                  [01;31m[K^~[m[K
+gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:237: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

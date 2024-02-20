@@ -1,0 +1,17 @@
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:[m[K In member function ‘[01m[Kvoid ServoControlPublisher::_publish_pwm_output_message()[m[K’:
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:15:9:[m[K [01;31m[Kerror: [m[K‘[01m[K_offboard_setpoint_counter[m[K’ was not declared in this scope
+   15 |     if ([01;31m[K_offboard_setpoint_counter[m[K == 10) {
+      |         [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:17:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass ServoControlPublisher[m[K’ has no member named ‘[01m[Kpublish_vehicle_command[m[K’; did you mean ‘[01m[K_publish_vehicle_command[m[K’?
+   17 |         this->[01;31m[Kpublish_vehicle_command[m[K(VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+      |               [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |               [32m[K_publish_vehicle_command[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/lib/ServoControlPublisher.cpp:20:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass ServoControlPublisher[m[K’ has no member named ‘[01m[Karm[m[K’
+   20 |         this->[01;31m[Karm[m[K();
+      |               [01;31m[K^~~[m[K
+[01m[K/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/offboard_control.cpp:76:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid _ready_for_test()[m[K’ defined but not used [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-function-Wunused-function]8;;[m[K]
+   76 | static void [01;35m[K_ready_for_test[m[K(void) {
+      |             [01;35m[K^~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/ServoControlPublisher.dir/build.make:76: CMakeFiles/ServoControlPublisher.dir/src/lib/ServoControlPublisher.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:237: CMakeFiles/ServoControlPublisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
