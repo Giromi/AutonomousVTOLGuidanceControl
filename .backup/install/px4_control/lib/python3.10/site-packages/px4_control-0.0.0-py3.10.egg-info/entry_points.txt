@@ -1,3 +1,0 @@
-[console_scripts]
-listener = px4_control.subscriber_member_function:main
-talker = px4_control.publisher_member_function:main
