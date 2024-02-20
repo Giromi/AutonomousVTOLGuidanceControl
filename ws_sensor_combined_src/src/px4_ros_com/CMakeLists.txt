@@ -86,6 +86,7 @@ set(EXECUTABLES
   main/key_event_sub
   main/pwm_aux_output
   main/gripper_servo
+  main/offb_node
 )
 
 foreach(exec ${EXECUTABLES})

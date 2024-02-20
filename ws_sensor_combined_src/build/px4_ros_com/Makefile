@@ -353,6 +353,19 @@ gripper_servo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gripper_servo.dir/build.make CMakeFiles/gripper_servo.dir/build
 .PHONY : gripper_servo/fast
 
+#=============================================================================
+# Target rules for targets named offb_node
+
+# Build rule for target.
+offb_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 offb_node
+.PHONY : offb_node
+
+# fast build rule for target.
+offb_node/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/offb_node.dir/build.make CMakeFiles/offb_node.dir/build
+.PHONY : offb_node/fast
+
 src/advertisers/debug_vect_advertiser.o: src/advertisers/debug_vect_advertiser.cpp.o
 .PHONY : src/advertisers/debug_vect_advertiser.o
 
@@ -593,6 +606,30 @@ src/main/key_event_sub.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/key_event_sub.dir/build.make CMakeFiles/key_event_sub.dir/src/main/key_event_sub.cpp.s
 .PHONY : src/main/key_event_sub.cpp.s
 
+src/main/offb_node.o: src/main/offb_node.cpp.o
+.PHONY : src/main/offb_node.o
+
+# target to build an object file
+src/main/offb_node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/offb_node.dir/build.make CMakeFiles/offb_node.dir/src/main/offb_node.cpp.o
+.PHONY : src/main/offb_node.cpp.o
+
+src/main/offb_node.i: src/main/offb_node.cpp.i
+.PHONY : src/main/offb_node.i
+
+# target to preprocess a source file
+src/main/offb_node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/offb_node.dir/build.make CMakeFiles/offb_node.dir/src/main/offb_node.cpp.i
+.PHONY : src/main/offb_node.cpp.i
+
+src/main/offb_node.s: src/main/offb_node.cpp.s
+.PHONY : src/main/offb_node.s
+
+# target to generate assembly for a file
+src/main/offb_node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/offb_node.dir/build.make CMakeFiles/offb_node.dir/src/main/offb_node.cpp.s
+.PHONY : src/main/offb_node.cpp.s
+
 src/main/offboard_control.o: src/main/offboard_control.cpp.o
 .PHONY : src/main/offboard_control.o
 
@@ -664,6 +701,7 @@ help:
 	@echo "... gripper_servo"
 	@echo "... key_event_pub"
 	@echo "... key_event_sub"
+	@echo "... offb_node"
 	@echo "... offboard_control"
 	@echo "... pwm_aux_output"
 	@echo "... sensor_combined_listener"
@@ -698,6 +736,9 @@ help:
 	@echo "... src/main/key_event_sub.o"
 	@echo "... src/main/key_event_sub.i"
 	@echo "... src/main/key_event_sub.s"
+	@echo "... src/main/offb_node.o"
+	@echo "... src/main/offb_node.i"
+	@echo "... src/main/offb_node.s"
 	@echo "... src/main/offboard_control.o"
 	@echo "... src/main/offboard_control.i"
 	@echo "... src/main/offboard_control.s"

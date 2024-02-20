@@ -12,7 +12,10 @@ colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --packages-select p
 
 
 # 잘 안됨
-ros2 service call /mavros/cmd/command mavros_msgs/srv/CommandLong "{broadcast: true, command: 183, confirmation: 0, param1: 1.0, param2: 1000.0, param3: 0.0, param4: 0.0, param5: 0.0, param6: 0.0, param7: 0.0}"
+ros2 service call /mavros/cmd/command mavros_msgs/srv/CommandLong "{broadcast: false, command: 183, confirmation: 0, param1: 1.0, param2: 1000.0, param3: 0.0, param4: 0.0, param5: 0.0, param6: 0.0, param7: 0.0}"
+
+
+ ros2 service call /mavros/param/set mavros_msgs/srv/ParamSet "{param_id: 'PWM_AUX_DIS1', value: {integer: 0, real: 1200.0}}"
 
 
 
@@ -22,4 +25,17 @@ ros2 service call /mavros/set_mode mavros_msgs/srv/SetMode "{base_mode: 194, cus
 ros2 launch mavros px4.launch fcu_url:=/dev/ttyACM0:57600
 
 
+# 모든 파라미터 가져오는 법
+ros2 service call /mavros/param/list_parameters rcl_interfaces/srv/ListParameters
+
+
+# set get 하는 법
 ros2 param set /mavros/param 'PWM_AUX_DIS1' 1700
+ros2 param get /mavros/param 'PWM_AUX_DIS1'
+
+
+
+# ros2 msg 확인하는 법
+#
+#
+#

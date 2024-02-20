@@ -35,7 +35,7 @@ COLCON_CURRENT_PREFIX="/opt/ros/humble"
 _colcon_prefix_chain_sh_source_script "$COLCON_CURRENT_PREFIX/local_setup.sh"
 
 # setting COLCON_CURRENT_PREFIX avoids relying on the build time prefix of the sourced script
-COLCON_CURRENT_PREFIX="/home/giromi/Repos/PX4-Autopilot/Tools/install"
+COLCON_CURRENT_PREFIX="/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com/src/main/install"
 _colcon_prefix_chain_sh_source_script "$COLCON_CURRENT_PREFIX/local_setup.sh"
 
 

@@ -334,6 +334,9 @@ include("/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/ament_
 # install("TARGETS" "gripper_servo" "DESTINATION" "lib/px4_ros_com")
 include("/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/ament_cmake_symlink_install_targets_7_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
+# install("TARGETS" "offb_node" "DESTINATION" "lib/px4_ros_com")
+include("/home/giromi/Repos/VTOL/ws_sensor_combined_src/build/px4_ros_com/ament_cmake_symlink_install_targets_8_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
+
 # install(FILES "/opt/ros/humble/lib/python3.10/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/px4_ros_com/environment")
 ament_cmake_symlink_install_files("/home/giromi/Repos/VTOL/ws_sensor_combined_src/src/px4_ros_com" FILES "/opt/ros/humble/lib/python3.10/site-packages/ament_package/template/environment_hook/library_path.sh" "DESTINATION" "share/px4_ros_com/environment")
 

@@ -67,5 +67,20 @@ https://askubuntu.com/questions/1024593/failed-to-execute-child-process-net-when
 
 
 
+
+
 integer_value(x) -> integer
 real_value(x) -> real
+
+
+
+2024.02.19
+# ActuatorServos msg
+https://github.com/PX4/PX4-Autopilot/blob/main/msg/ActuatorServos.msg
+https://docs.px4.io/main/en/msg_docs/ActuatorServos.html
+
+offboard 표
+https://docs.px4.io/main/en/flight_modes/offboard.html
+
+액츄에이터 표
+https://docs.px4.io/main/en/config/actuators.html
