@@ -1,0 +1,41 @@
+[0.165s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.236s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.567s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[0.614s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.619s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.630s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.650s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.688s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.709s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[0.711s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.904s] -- Found px4_msgs: 2.0.1 (/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/cmake)
+[0.975s] -- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+[1.082s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.085s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.303s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.578s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.755s] [31mCMake Error at CMakeLists.txt:60 (add_executable):
+[1.755s]   add_executable cannot create target "offboard_control" because another
+[1.755s]   target with the same name already exists.  The existing target is an
+[1.755s]   executable created in source directory
+[1.755s]   "/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com".  See
+[1.756s]   documentation for policy CMP0002 for more details.
+[1.756s] 
+[1.756s] [0m
+[1.760s] -- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.909s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.919s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.920s] -- Configured cppcheck include dirs: /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include;$<BUILD_INTERFACE:/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com>
+[1.921s] -- Configured cppcheck exclude dirs and/or files: 
+[1.928s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.929s] -- Configured cpplint exclude dirs and/or files: 
+[1.929s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.932s] -- Added test 'lint_cmake' to check CMake code style
+[1.934s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.940s] -- Added test 'uncrustify' to check C / C++ code style
+[1.940s] -- Configured uncrustify additional arguments: 
+[1.942s] -- Added test 'xmllint' to check XML markup files
+[1.947s] -- Configuring incomplete, errors occurred!
+[1.948s] See also "/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com/CMakeFiles/CMakeOutput.log".
+[1.959s] gmake: *** [Makefile:431: cmake_check_build_system] Error 1
+[2.121s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '2': CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8

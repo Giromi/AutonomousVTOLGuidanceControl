@@ -1,0 +1,14 @@
+/usr/bin/ld: CMakeFiles/key_publisher.dir/src/key_publisher.cpp.o: warning: relocation against `stdscr' in read-only section `.text._ZZN17KeyboardPublisherC4EvENKUlvE_clEv[_ZZN17KeyboardPublisherC4EvENKUlvE_clEv]'
+/usr/bin/ld: CMakeFiles/key_publisher.dir/src/key_publisher.cpp.o: in function `KeyboardPublisher::KeyboardPublisher()::{lambda()#1}::operator()() const':
+key_publisher.cpp:(.text._ZZN17KeyboardPublisherC4EvENKUlvE_clEv[_ZZN17KeyboardPublisherC4EvENKUlvE_clEv]+0x30): undefined reference to `stdscr'
+/usr/bin/ld: key_publisher.cpp:(.text._ZZN17KeyboardPublisherC4EvENKUlvE_clEv[_ZZN17KeyboardPublisherC4EvENKUlvE_clEv]+0x38): undefined reference to `wgetch'
+/usr/bin/ld: key_publisher.cpp:(.text._ZZN17KeyboardPublisherC4EvENKUlvE_clEv[_ZZN17KeyboardPublisherC4EvENKUlvE_clEv]+0x2d2): undefined reference to `endwin'
+/usr/bin/ld: CMakeFiles/key_publisher.dir/src/key_publisher.cpp.o: in function `KeyboardPublisher::KeyboardPublisher()':
+key_publisher.cpp:(.text._ZN17KeyboardPublisherC2Ev[_ZN17KeyboardPublisherC5Ev]+0x1ec): undefined reference to `initscr'
+/usr/bin/ld: key_publisher.cpp:(.text._ZN17KeyboardPublisherC2Ev[_ZN17KeyboardPublisherC5Ev]+0x1f1): undefined reference to `cbreak'
+/usr/bin/ld: key_publisher.cpp:(.text._ZN17KeyboardPublisherC2Ev[_ZN17KeyboardPublisherC5Ev]+0x1f6): undefined reference to `noecho'
+/usr/bin/ld: warning: creating DT_TEXTREL in a PIE
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/key_publisher.dir/build.make:159: key_publisher] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/key_publisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

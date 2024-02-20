@@ -1,0 +1,811 @@
+[1.516s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[1.516s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f526a9143d0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f526adcafe0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f526adcafe0>>)
+[1.606s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.607s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.607s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.607s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.607s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.607s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.607s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/giromi/Repos/ws_sensor_combined_src'
+[1.607s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.607s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.607s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.607s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.607s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.607s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.607s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.608s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.608s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.630s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.630s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.630s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.630s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.630s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.630s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.631s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['ignore', 'ignore_ament_install']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'ignore'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'ignore_ament_install'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['colcon_pkg']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'colcon_pkg'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['colcon_meta']
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'colcon_meta'
+[1.632s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['ros']
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'ros'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['cmake', 'python']
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'cmake'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'python'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['python_setup_py']
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'python_setup_py'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['ignore', 'ignore_ament_install']
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'ignore'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'ignore_ament_install'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['colcon_pkg']
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'colcon_pkg'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['colcon_meta']
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'colcon_meta'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['ros']
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'ros'
+[1.633s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['cmake', 'python']
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'cmake'
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'python'
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['python_setup_py']
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'python_setup_py'
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['ignore', 'ignore_ament_install']
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'ignore'
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'ignore_ament_install'
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['colcon_pkg']
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'colcon_pkg'
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['colcon_meta']
+[1.634s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'colcon_meta'
+[1.635s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['ros']
+[1.635s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'ros'
+[1.635s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['cmake', 'python']
+[1.635s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'cmake'
+[1.635s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'python'
+[1.635s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['python_setup_py']
+[1.635s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'python_setup_py'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['ignore', 'ignore_ament_install']
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'ignore'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'ignore_ament_install'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['colcon_pkg']
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'colcon_pkg'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['colcon_meta']
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'colcon_meta'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['ros']
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'ros'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['cmake', 'python']
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'cmake'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'python'
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['python_setup_py']
+[1.636s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'python_setup_py'
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['ignore', 'ignore_ament_install']
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'ignore'
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'ignore_ament_install'
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['colcon_pkg']
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'colcon_pkg'
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['colcon_meta']
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'colcon_meta'
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['ros']
+[1.637s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'ros'
+[1.641s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/goto' with type 'ros.ament_cmake' and name 'example_mode_goto_cpp'
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['ignore', 'ignore_ament_install']
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'ignore'
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'ignore_ament_install'
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['colcon_pkg']
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'colcon_pkg'
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['colcon_meta']
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'colcon_meta'
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['ros']
+[1.641s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'ros'
+[1.642s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/manual' with type 'ros.ament_cmake' and name 'example_mode_manual_cpp'
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['ignore', 'ignore_ament_install']
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'ignore'
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'ignore_ament_install'
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['colcon_pkg']
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'colcon_pkg'
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['colcon_meta']
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'colcon_meta'
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['ros']
+[1.643s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'ros'
+[1.644s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor' with type 'ros.ament_cmake' and name 'example_mode_with_executor_cpp'
+[1.644s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['ignore', 'ignore_ament_install']
+[1.644s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'ignore'
+[1.644s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'ignore_ament_install'
+[1.644s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['colcon_pkg']
+[1.644s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'colcon_pkg'
+[1.644s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['colcon_meta']
+[1.645s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'colcon_meta'
+[1.645s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['ros']
+[1.645s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'ros'
+[1.646s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement' with type 'ros.ament_cmake' and name 'example_mode_rtl_replacement_cpp'
+[1.646s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['ignore', 'ignore_ament_install']
+[1.646s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'ignore'
+[1.646s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'ignore_ament_install'
+[1.646s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['colcon_pkg']
+[1.646s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'colcon_pkg'
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['colcon_meta']
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'colcon_meta'
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['ros']
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'ros'
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['cmake', 'python']
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'cmake'
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'python'
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['python_setup_py']
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'python_setup_py'
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['ignore', 'ignore_ament_install']
+[1.647s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'ignore'
+[1.648s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'ignore_ament_install'
+[1.648s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['colcon_pkg']
+[1.648s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'colcon_pkg'
+[1.648s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['colcon_meta']
+[1.648s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'colcon_meta'
+[1.648s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['ros']
+[1.648s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'ros'
+[1.649s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation' with type 'ros.ament_cmake' and name 'example_global_navigation_cpp'
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['ignore', 'ignore_ament_install']
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'ignore'
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'ignore_ament_install'
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['colcon_pkg']
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'colcon_pkg'
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['colcon_meta']
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'colcon_meta'
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['ros']
+[1.649s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'ros'
+[1.651s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation' with type 'ros.ament_cmake' and name 'example_local_navigation_cpp'
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['ignore', 'ignore_ament_install']
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'ignore'
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'ignore_ament_install'
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['colcon_pkg']
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'colcon_pkg'
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['colcon_meta']
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'colcon_meta'
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['ros']
+[1.652s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'ros'
+[1.653s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/px4_ros2_cpp' with type 'ros.ament_cmake' and name 'px4_ros2_cpp'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['ignore', 'ignore_ament_install']
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'ignore'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'ignore_ament_install'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['colcon_pkg']
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'colcon_pkg'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['colcon_meta']
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'colcon_meta'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['ros']
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'ros'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['cmake', 'python']
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'cmake'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'python'
+[1.654s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['python_setup_py']
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'python_setup_py'
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extensions ['ignore', 'ignore_ament_install']
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extension 'ignore'
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extension 'ignore_ament_install'
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extensions ['colcon_pkg']
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extension 'colcon_pkg'
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extensions ['colcon_meta']
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extension 'colcon_meta'
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extensions ['ros']
+[1.655s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_control) by extension 'ros'
+[1.656s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4_control' with type 'ros.ament_python' and name 'px4_control'
+[1.656s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['ignore', 'ignore_ament_install']
+[1.656s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ignore'
+[1.656s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ignore_ament_install'
+[1.656s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['colcon_pkg']
+[1.657s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'colcon_pkg'
+[1.657s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['colcon_meta']
+[1.657s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'colcon_meta'
+[1.657s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['ros']
+[1.657s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ros'
+[1.657s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4_msgs' with type 'ros.ament_cmake' and name 'px4_msgs'
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['ignore', 'ignore_ament_install']
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ignore'
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ignore_ament_install'
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['colcon_pkg']
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'colcon_pkg'
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['colcon_meta']
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'colcon_meta'
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['ros']
+[1.658s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ros'
+[1.660s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4_ros_com' with type 'ros.ament_cmake' and name 'px4_ros_com'
+[1.660s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.660s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.660s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.660s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.660s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.804s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.805s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.852s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/giromi/Repos/ros2_ws/install
+[1.876s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 276 installed packages in /opt/ros/humble
+[1.878s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'cmake_args' from command line to 'None'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'cmake_target' from command line to 'None'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'cmake_clean_cache' from command line to 'False'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'cmake_clean_first' from command line to 'False'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'cmake_force_configure' from command line to 'False'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'ament_cmake_args' from command line to 'None'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'catkin_cmake_args' from command line to 'None'
+[1.994s] Level 5:colcon.colcon_core.verb:set package 'px4_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.994s] DEBUG:colcon.colcon_core.verb:Building package 'px4_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/px4_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control', 'symlink_install': False, 'test_result_base': None}
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_args' from command line to 'None'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_target' from command line to 'None'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[2.017s] Level 5:colcon.colcon_core.verb:set package 'px4_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.017s] DEBUG:colcon.colcon_core.verb:Building package 'px4_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4_msgs', 'symlink_install': False, 'test_result_base': None}
+[2.040s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'cmake_args' from command line to 'None'
+[2.040s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'cmake_target' from command line to 'None'
+[2.040s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.040s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[2.041s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[2.041s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[2.041s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[2.041s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[2.041s] Level 5:colcon.colcon_core.verb:set package 'px4_ros2_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.041s] DEBUG:colcon.colcon_core.verb:Building package 'px4_ros2_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/px4_ros2_cpp', 'symlink_install': False, 'test_result_base': None}
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_args' from command line to 'None'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_target' from command line to 'None'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_clean_cache' from command line to 'False'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_clean_first' from command line to 'False'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_force_configure' from command line to 'False'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'ament_cmake_args' from command line to 'None'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'catkin_cmake_args' from command line to 'None'
+[2.081s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.081s] DEBUG:colcon.colcon_core.verb:Building package 'px4_ros_com' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com', 'symlink_install': False, 'test_result_base': None}
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'cmake_args' from command line to 'None'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'cmake_target' from command line to 'None'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[2.104s] Level 5:colcon.colcon_core.verb:set package 'example_global_navigation_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.104s] DEBUG:colcon.colcon_core.verb:Building package 'example_global_navigation_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation', 'symlink_install': False, 'test_result_base': None}
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'cmake_args' from command line to 'None'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'cmake_target' from command line to 'None'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[2.127s] Level 5:colcon.colcon_core.verb:set package 'example_local_navigation_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.127s] DEBUG:colcon.colcon_core.verb:Building package 'example_local_navigation_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation', 'symlink_install': False, 'test_result_base': None}
+[2.149s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'cmake_args' from command line to 'None'
+[2.149s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'cmake_target' from command line to 'None'
+[2.149s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.150s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[2.150s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[2.150s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[2.150s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[2.150s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[2.150s] Level 5:colcon.colcon_core.verb:set package 'example_mode_goto_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.150s] DEBUG:colcon.colcon_core.verb:Building package 'example_mode_goto_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/goto', 'symlink_install': False, 'test_result_base': None}
+[2.173s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'cmake_args' from command line to 'None'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'cmake_target' from command line to 'None'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[2.174s] Level 5:colcon.colcon_core.verb:set package 'example_mode_manual_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.174s] DEBUG:colcon.colcon_core.verb:Building package 'example_mode_manual_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual', 'symlink_install': False, 'test_result_base': None}
+[2.197s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'cmake_args' from command line to 'None'
+[2.197s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'cmake_target' from command line to 'None'
+[2.198s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.198s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[2.216s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[2.216s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[2.216s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[2.216s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[2.216s] Level 5:colcon.colcon_core.verb:set package 'example_mode_rtl_replacement_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.216s] DEBUG:colcon.colcon_core.verb:Building package 'example_mode_rtl_replacement_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement', 'symlink_install': False, 'test_result_base': None}
+[2.238s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'cmake_args' from command line to 'None'
+[2.238s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'cmake_target' from command line to 'None'
+[2.239s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[2.239s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'cmake_clean_cache' from command line to 'False'
+[2.239s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'cmake_clean_first' from command line to 'False'
+[2.239s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'cmake_force_configure' from command line to 'False'
+[2.239s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'ament_cmake_args' from command line to 'None'
+[2.239s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'catkin_cmake_args' from command line to 'None'
+[2.239s] Level 5:colcon.colcon_core.verb:set package 'example_mode_with_executor_cpp' build argument 'catkin_skip_building_tests' from command line to 'False'
+[2.239s] DEBUG:colcon.colcon_core.verb:Building package 'example_mode_with_executor_cpp' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor', 'symlink_install': False, 'test_result_base': None}
+[2.260s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[2.283s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[2.284s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_msgs' with build type 'ament_cmake'
+[2.284s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_msgs'
+[2.312s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[2.313s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.313s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.433s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control' with build type 'ament_python'
+[2.434s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_control', 'ament_prefix_path')
+[2.456s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/hook/ament_prefix_path.ps1'
+[2.497s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/hook/ament_prefix_path.dsv'
+[2.498s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/hook/ament_prefix_path.sh'
+[2.535s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.536s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.622s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs -- -j8 -l8
+[3.003s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control'
+[3.033s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.033s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.092s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control': PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/prefix_override:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/px4_control build --build-base /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build install --record /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log --single-version-externally-managed
+[5.293s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_control' returned '0': PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/build/px4_control/prefix_override:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/px4_control build --build-base /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/build install --record /home/giromi/Repos/ws_sensor_combined_src/build/px4_control/install.log --single-version-externally-managed
+[5.327s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control' for CMake module files
+[5.327s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control' for CMake config files
+[5.328s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib'
+[5.328s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/bin'
+[5.328s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/pkgconfig/px4_control.pc'
+[5.328s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages'
+[5.328s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_control', 'pythonpath')
+[5.360s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/hook/pythonpath.ps1'
+[5.361s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/hook/pythonpath.dsv'
+[5.361s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/hook/pythonpath.sh'
+[5.362s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/bin'
+[5.362s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_control)
+[5.391s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/package.ps1'
+[5.392s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/package.dsv'
+[5.393s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/package.sh'
+[5.397s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/package.bash'
+[5.399s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/px4_control/package.zsh'
+[5.400s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/share/colcon-core/packages/px4_control)
+[5.527s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs -- -j8 -l8
+[13.073s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs
+[14.277s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_msgs)
+[14.277s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs
+[14.315s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs' for CMake module files
+[14.316s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs' for CMake config files
+[14.324s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'cmake_prefix_path')
+[14.351s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.ps1'
+[14.352s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.dsv'
+[14.353s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.sh'
+[14.356s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib'
+[14.357s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'ld_library_path_lib')
+[14.391s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.ps1'
+[14.391s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.dsv'
+[14.392s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.sh'
+[14.392s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/bin'
+[14.393s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/pkgconfig/px4_msgs.pc'
+[14.393s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/python3.10/site-packages'
+[14.393s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/bin'
+[14.420s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.ps1'
+[14.421s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.dsv'
+[14.422s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.sh'
+[14.423s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.bash'
+[14.423s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.zsh'
+[14.424s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/colcon-core/packages/px4_msgs)
+[22.348s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_msgs)
+[22.378s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs' for CMake module files
+[22.379s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs' for CMake config files
+[22.384s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'cmake_prefix_path')
+[22.417s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.ps1'
+[22.418s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.dsv'
+[22.420s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/cmake_prefix_path.sh'
+[22.423s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib'
+[22.423s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_msgs', 'ld_library_path_lib')
+[22.461s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.ps1'
+[22.461s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.dsv'
+[22.461s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/hook/ld_library_path_lib.sh'
+[22.462s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/bin'
+[22.462s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/pkgconfig/px4_msgs.pc'
+[22.462s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib/python3.10/site-packages'
+[22.462s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/bin'
+[22.501s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.ps1'
+[22.503s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.dsv'
+[22.504s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.sh'
+[22.505s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.bash'
+[22.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/package.zsh'
+[22.507s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/colcon-core/packages/px4_msgs)
+[22.508s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/px4_ros2_cpp' with build type 'ament_cmake'
+[22.508s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/px4_ros2_cpp'
+[22.552s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[22.552s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[22.653s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com' with build type 'ament_cmake'
+[22.654s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com'
+[22.682s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[22.682s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[22.812s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp -- -j8 -l8
+[22.840s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[23.293s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[23.354s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+[23.646s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp -- -j8 -l8
+[23.658s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_ros_com)
+[23.660s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+[23.712s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake module files
+[23.713s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake config files
+[23.714s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'cmake_prefix_path')
+[23.767s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.ps1'
+[23.768s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.dsv'
+[23.769s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.sh'
+[23.770s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib'
+[23.771s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'ld_library_path_lib')
+[23.808s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.ps1'
+[23.809s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.dsv'
+[23.813s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.sh'
+[23.814s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[23.815s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/pkgconfig/px4_ros_com.pc'
+[23.815s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/python3.10/site-packages'
+[23.816s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[23.863s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.ps1'
+[23.864s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.dsv'
+[23.865s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.sh'
+[23.866s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.bash'
+[23.868s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.zsh'
+[23.868s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/colcon-core/packages/px4_ros_com)
+[23.874s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp
+[23.967s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_ros_com)
+[23.998s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake module files
+[23.999s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake config files
+[24.000s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'cmake_prefix_path')
+[24.033s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.ps1'
+[24.034s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.dsv'
+[24.035s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.sh'
+[24.036s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib'
+[24.036s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'ld_library_path_lib')
+[24.077s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.ps1'
+[24.078s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.dsv'
+[24.078s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.sh'
+[24.079s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[24.079s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/pkgconfig/px4_ros_com.pc'
+[24.079s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/python3.10/site-packages'
+[24.079s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[24.106s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.ps1'
+[24.107s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.dsv'
+[24.108s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.sh'
+[24.108s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.bash'
+[24.109s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.zsh'
+[24.109s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/colcon-core/packages/px4_ros_com)
+[24.111s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_ros2_cpp)
+[24.112s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp
+[24.139s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp' for CMake module files
+[24.140s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp' for CMake config files
+[24.141s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros2_cpp', 'cmake_prefix_path')
+[24.167s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/cmake_prefix_path.ps1'
+[24.167s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/cmake_prefix_path.dsv'
+[24.168s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/cmake_prefix_path.sh'
+[24.169s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib'
+[24.169s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros2_cpp', 'ld_library_path_lib')
+[24.194s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/ld_library_path_lib.ps1'
+[24.195s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/ld_library_path_lib.dsv'
+[24.196s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/ld_library_path_lib.sh'
+[24.197s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/bin'
+[24.197s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib/pkgconfig/px4_ros2_cpp.pc'
+[24.197s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib/python3.10/site-packages'
+[24.198s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/bin'
+[24.221s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.ps1'
+[24.222s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.dsv'
+[24.223s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.sh'
+[24.224s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.bash'
+[24.225s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.zsh'
+[24.226s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/colcon-core/packages/px4_ros2_cpp)
+[24.409s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_ros2_cpp)
+[24.433s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp' for CMake module files
+[24.434s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp' for CMake config files
+[24.434s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros2_cpp', 'cmake_prefix_path')
+[24.479s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/cmake_prefix_path.ps1'
+[24.479s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/cmake_prefix_path.dsv'
+[24.480s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/cmake_prefix_path.sh'
+[24.483s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib'
+[24.484s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros2_cpp', 'ld_library_path_lib')
+[24.527s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/ld_library_path_lib.ps1'
+[24.528s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/ld_library_path_lib.dsv'
+[24.529s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/hook/ld_library_path_lib.sh'
+[24.530s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/bin'
+[24.531s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib/pkgconfig/px4_ros2_cpp.pc'
+[24.533s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib/python3.10/site-packages'
+[24.534s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/bin'
+[24.573s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.ps1'
+[24.573s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.dsv'
+[24.574s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.sh'
+[24.575s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.bash'
+[24.575s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.zsh'
+[24.576s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/colcon-core/packages/px4_ros2_cpp)
+[24.580s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation' with build type 'ament_cmake'
+[24.581s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation'
+[24.618s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[24.618s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[24.720s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation' with build type 'ament_cmake'
+[24.721s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation'
+[24.794s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[24.795s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[24.891s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/goto' with build type 'ament_cmake'
+[24.892s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/goto'
+[24.929s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[24.929s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[25.027s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual' with build type 'ament_cmake'
+[25.028s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/manual'
+[25.062s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[25.062s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[25.148s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement' with build type 'ament_cmake'
+[25.149s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement'
+[25.181s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[25.181s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[25.286s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor' with build type 'ament_cmake'
+[25.286s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor'
+[25.326s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[25.326s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[25.450s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp -- -j8 -l8
+[25.473s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp -- -j8 -l8
+[25.481s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp -- -j8 -l8
+[25.509s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp -- -j8 -l8
+[25.525s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp -- -j8 -l8
+[25.545s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp -- -j8 -l8
+[25.652s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp -- -j8 -l8
+[25.662s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp -- -j8 -l8
+[25.665s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp -- -j8 -l8
+[25.676s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp -- -j8 -l8
+[25.680s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp -- -j8 -l8
+[25.708s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp -- -j8 -l8
+[25.712s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp
+[25.719s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp
+[25.727s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp
+[25.729s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp
+[25.745s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp
+[25.757s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp
+[25.764s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_global_navigation_cpp)
+[25.766s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_global_navigation_cpp
+[25.800s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp' for CMake module files
+[25.801s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp' for CMake config files
+[25.844s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_global_navigation_cpp', 'cmake_prefix_path')
+[26.049s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/hook/cmake_prefix_path.ps1'
+[26.051s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/hook/cmake_prefix_path.dsv'
+[26.053s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/hook/cmake_prefix_path.sh'
+[26.058s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/lib'
+[26.059s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/bin'
+[26.059s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/lib/pkgconfig/example_global_navigation_cpp.pc'
+[26.061s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/lib/python3.10/site-packages'
+[26.063s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/bin'
+[26.119s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.ps1'
+[26.120s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.dsv'
+[26.121s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.sh'
+[26.122s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.bash'
+[26.122s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.zsh'
+[26.123s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/colcon-core/packages/example_global_navigation_cpp)
+[26.126s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_local_navigation_cpp)
+[26.126s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_local_navigation_cpp
+[26.155s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp' for CMake module files
+[26.156s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp' for CMake config files
+[26.157s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_local_navigation_cpp', 'cmake_prefix_path')
+[26.186s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/hook/cmake_prefix_path.ps1'
+[26.189s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/hook/cmake_prefix_path.dsv'
+[26.190s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/hook/cmake_prefix_path.sh'
+[26.191s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/lib'
+[26.192s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/bin'
+[26.192s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/lib/pkgconfig/example_local_navigation_cpp.pc'
+[26.192s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/lib/python3.10/site-packages'
+[26.193s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/bin'
+[26.228s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.ps1'
+[26.229s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.dsv'
+[26.230s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.sh'
+[26.231s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.bash'
+[26.232s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.zsh'
+[26.232s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/colcon-core/packages/example_local_navigation_cpp)
+[26.235s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_goto_cpp)
+[26.235s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_goto_cpp
+[26.271s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp' for CMake module files
+[26.272s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp' for CMake config files
+[26.275s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_goto_cpp', 'cmake_prefix_path')
+[26.302s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/hook/cmake_prefix_path.ps1'
+[26.303s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/hook/cmake_prefix_path.dsv'
+[26.303s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/hook/cmake_prefix_path.sh'
+[26.304s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/lib'
+[26.304s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/bin'
+[26.304s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/lib/pkgconfig/example_mode_goto_cpp.pc'
+[26.304s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/lib/python3.10/site-packages'
+[26.305s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/bin'
+[26.339s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.ps1'
+[26.341s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.dsv'
+[26.342s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.sh'
+[26.343s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.bash'
+[26.344s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.zsh'
+[26.344s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/colcon-core/packages/example_mode_goto_cpp)
+[26.346s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_rtl_replacement_cpp)
+[26.347s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_rtl_replacement_cpp
+[26.389s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp' for CMake module files
+[26.390s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp' for CMake config files
+[26.391s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_rtl_replacement_cpp', 'cmake_prefix_path')
+[26.426s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/hook/cmake_prefix_path.ps1'
+[26.427s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/hook/cmake_prefix_path.dsv'
+[26.428s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/hook/cmake_prefix_path.sh'
+[26.428s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/lib'
+[26.428s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/bin'
+[26.429s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/lib/pkgconfig/example_mode_rtl_replacement_cpp.pc'
+[26.429s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/lib/python3.10/site-packages'
+[26.429s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/bin'
+[26.469s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.ps1'
+[26.470s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.dsv'
+[26.471s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.sh'
+[26.473s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.bash'
+[26.474s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.zsh'
+[26.474s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/colcon-core/packages/example_mode_rtl_replacement_cpp)
+[26.476s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_manual_cpp)
+[26.476s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_manual_cpp
+[26.509s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp' for CMake module files
+[26.510s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp' for CMake config files
+[26.511s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_manual_cpp', 'cmake_prefix_path')
+[26.540s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/hook/cmake_prefix_path.ps1'
+[26.541s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/hook/cmake_prefix_path.dsv'
+[26.541s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/hook/cmake_prefix_path.sh'
+[26.543s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/lib'
+[26.543s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/bin'
+[26.543s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/lib/pkgconfig/example_mode_manual_cpp.pc'
+[26.544s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/lib/python3.10/site-packages'
+[26.544s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/bin'
+[26.574s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.ps1'
+[26.574s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.dsv'
+[26.575s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.sh'
+[26.575s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.bash'
+[26.576s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.zsh'
+[26.576s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/colcon-core/packages/example_mode_manual_cpp)
+[26.581s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_with_executor_cpp)
+[26.582s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/example_mode_with_executor_cpp
+[26.609s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp' for CMake module files
+[26.612s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp' for CMake config files
+[26.613s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_with_executor_cpp', 'cmake_prefix_path')
+[26.636s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/hook/cmake_prefix_path.ps1'
+[26.636s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/hook/cmake_prefix_path.dsv'
+[26.637s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/hook/cmake_prefix_path.sh'
+[26.637s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib'
+[26.637s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/bin'
+[26.637s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib/pkgconfig/example_mode_with_executor_cpp.pc'
+[26.638s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib/python3.10/site-packages'
+[26.638s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/bin'
+[26.663s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.ps1'
+[26.664s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.dsv'
+[26.665s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.sh'
+[26.665s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.bash'
+[26.666s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.zsh'
+[26.667s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/colcon-core/packages/example_mode_with_executor_cpp)
+[26.701s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_global_navigation_cpp)
+[26.725s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp' for CMake module files
+[26.726s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp' for CMake config files
+[26.727s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_global_navigation_cpp', 'cmake_prefix_path')
+[26.748s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/hook/cmake_prefix_path.ps1'
+[26.749s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/hook/cmake_prefix_path.dsv'
+[26.749s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/hook/cmake_prefix_path.sh'
+[26.750s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/lib'
+[26.750s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/bin'
+[26.751s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/lib/pkgconfig/example_global_navigation_cpp.pc'
+[26.751s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/lib/python3.10/site-packages'
+[26.751s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/bin'
+[26.781s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.ps1'
+[26.782s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.dsv'
+[26.783s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.sh'
+[26.783s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.bash'
+[26.784s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/example_global_navigation_cpp/package.zsh'
+[26.786s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp/share/colcon-core/packages/example_global_navigation_cpp)
+[26.816s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_local_navigation_cpp)
+[26.846s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp' for CMake module files
+[26.846s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp' for CMake config files
+[26.847s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_local_navigation_cpp', 'cmake_prefix_path')
+[26.875s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/hook/cmake_prefix_path.ps1'
+[26.876s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/hook/cmake_prefix_path.dsv'
+[26.876s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/hook/cmake_prefix_path.sh'
+[26.877s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/lib'
+[26.877s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/bin'
+[26.877s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/lib/pkgconfig/example_local_navigation_cpp.pc'
+[26.877s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/lib/python3.10/site-packages'
+[26.877s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/bin'
+[26.904s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.ps1'
+[26.904s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.dsv'
+[26.906s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.sh'
+[26.907s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.bash'
+[26.907s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/example_local_navigation_cpp/package.zsh'
+[26.907s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp/share/colcon-core/packages/example_local_navigation_cpp)
+[26.934s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_goto_cpp)
+[26.969s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp' for CMake module files
+[26.969s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp' for CMake config files
+[26.970s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_goto_cpp', 'cmake_prefix_path')
+[26.998s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/hook/cmake_prefix_path.ps1'
+[26.999s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/hook/cmake_prefix_path.dsv'
+[26.999s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/hook/cmake_prefix_path.sh'
+[27.001s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/lib'
+[27.001s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/bin'
+[27.001s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/lib/pkgconfig/example_mode_goto_cpp.pc'
+[27.002s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/lib/python3.10/site-packages'
+[27.002s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/bin'
+[27.027s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.ps1'
+[27.027s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.dsv'
+[27.028s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.sh'
+[27.029s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.bash'
+[27.029s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/example_mode_goto_cpp/package.zsh'
+[27.030s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp/share/colcon-core/packages/example_mode_goto_cpp)
+[27.053s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_rtl_replacement_cpp)
+[27.086s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp' for CMake module files
+[27.086s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp' for CMake config files
+[27.087s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_rtl_replacement_cpp', 'cmake_prefix_path')
+[27.116s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/hook/cmake_prefix_path.ps1'
+[27.117s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/hook/cmake_prefix_path.dsv'
+[27.117s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/hook/cmake_prefix_path.sh'
+[27.118s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/lib'
+[27.118s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/bin'
+[27.118s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/lib/pkgconfig/example_mode_rtl_replacement_cpp.pc'
+[27.118s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/lib/python3.10/site-packages'
+[27.118s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/bin'
+[27.148s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.ps1'
+[27.149s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.dsv'
+[27.149s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.sh'
+[27.150s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.bash'
+[27.150s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/example_mode_rtl_replacement_cpp/package.zsh'
+[27.151s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp/share/colcon-core/packages/example_mode_rtl_replacement_cpp)
+[27.184s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_manual_cpp)
+[27.213s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp' for CMake module files
+[27.214s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp' for CMake config files
+[27.214s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_manual_cpp', 'cmake_prefix_path')
+[27.244s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/hook/cmake_prefix_path.ps1'
+[27.244s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/hook/cmake_prefix_path.dsv'
+[27.245s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/hook/cmake_prefix_path.sh'
+[27.245s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/lib'
+[27.246s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/bin'
+[27.246s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/lib/pkgconfig/example_mode_manual_cpp.pc'
+[27.246s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/lib/python3.10/site-packages'
+[27.246s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/bin'
+[27.280s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.ps1'
+[27.283s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.dsv'
+[27.287s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.sh'
+[27.298s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.bash'
+[27.305s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/example_mode_manual_cpp/package.zsh'
+[27.314s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp/share/colcon-core/packages/example_mode_manual_cpp)
+[27.392s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(example_mode_with_executor_cpp)
+[27.420s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp' for CMake module files
+[27.421s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp' for CMake config files
+[27.421s] Level 1:colcon.colcon_core.shell:create_environment_hook('example_mode_with_executor_cpp', 'cmake_prefix_path')
+[27.450s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/hook/cmake_prefix_path.ps1'
+[27.451s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/hook/cmake_prefix_path.dsv'
+[27.452s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/hook/cmake_prefix_path.sh'
+[27.452s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib'
+[27.452s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/bin'
+[27.453s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib/pkgconfig/example_mode_with_executor_cpp.pc'
+[27.453s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/lib/python3.10/site-packages'
+[27.453s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/bin'
+[27.483s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.ps1'
+[27.483s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.dsv'
+[27.484s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.sh'
+[27.484s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.bash'
+[27.485s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/example_mode_with_executor_cpp/package.zsh'
+[27.485s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp/share/colcon-core/packages/example_mode_with_executor_cpp)
+[27.485s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[27.486s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[27.486s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[27.486s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[27.527s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[27.528s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[27.528s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[27.544s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[27.572s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.ps1'
+[27.574s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/giromi/Repos/ws_sensor_combined_src/install/_local_setup_util_ps1.py'
+[27.577s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.ps1'
+[27.605s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.sh'
+[27.606s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/giromi/Repos/ws_sensor_combined_src/install/_local_setup_util_sh.py'
+[27.607s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.sh'
+[27.654s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.bash'
+[27.655s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.bash'
+[27.680s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.zsh'
+[27.682s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.zsh'

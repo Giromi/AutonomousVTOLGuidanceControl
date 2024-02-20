@@ -1,0 +1,6 @@
+Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs
+Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/px4_msgs -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs
+Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs -- -j8 -l8
+Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs -- -j8 -l8
+Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs
+Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_msgs

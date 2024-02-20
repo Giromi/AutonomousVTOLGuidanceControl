@@ -1,0 +1,321 @@
+[2.692s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--cmake-args', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', '--packages-select', 'px4_ros_com']
+[2.692s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['px4_ros_com'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=['-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'], cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f3c03f184c0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f3c043cbf70>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f3c043cbf70>>)
+[2.840s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[2.840s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[2.840s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[2.840s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[2.840s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[2.841s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[2.841s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/giromi/Repos/ws_sensor_combined_src'
+[2.841s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[2.841s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[2.841s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[2.841s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[2.841s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[2.842s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[2.842s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[2.842s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[2.842s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[2.882s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[2.882s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[2.882s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[2.882s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[2.882s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[2.883s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[2.883s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[2.883s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[2.884s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[2.884s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[2.884s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[2.885s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[2.885s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[2.885s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[2.885s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[2.886s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[2.886s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[2.886s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[2.886s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[2.887s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['ignore', 'ignore_ament_install']
+[2.888s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'ignore'
+[2.888s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'ignore_ament_install'
+[2.888s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['colcon_pkg']
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'colcon_pkg'
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['colcon_meta']
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'colcon_meta'
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['ros']
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'ros'
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['cmake', 'python']
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'cmake'
+[2.889s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'python'
+[2.890s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extensions ['python_setup_py']
+[2.890s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib) by extension 'python_setup_py'
+[2.890s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['ignore', 'ignore_ament_install']
+[2.890s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'ignore'
+[2.891s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'ignore_ament_install'
+[2.891s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['colcon_pkg']
+[2.891s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'colcon_pkg'
+[2.891s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['colcon_meta']
+[2.891s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'colcon_meta'
+[2.891s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['ros']
+[2.891s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'ros'
+[2.892s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['cmake', 'python']
+[2.892s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'cmake'
+[2.892s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'python'
+[2.892s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extensions ['python_setup_py']
+[2.892s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples) by extension 'python_setup_py'
+[2.893s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['ignore', 'ignore_ament_install']
+[2.893s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'ignore'
+[2.893s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'ignore_ament_install'
+[2.893s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['colcon_pkg']
+[2.893s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'colcon_pkg'
+[2.893s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['colcon_meta']
+[2.893s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'colcon_meta'
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['ros']
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'ros'
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['cmake', 'python']
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'cmake'
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'python'
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extensions ['python_setup_py']
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp) by extension 'python_setup_py'
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['ignore', 'ignore_ament_install']
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'ignore'
+[2.894s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'ignore_ament_install'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['colcon_pkg']
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'colcon_pkg'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['colcon_meta']
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'colcon_meta'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['ros']
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'ros'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['cmake', 'python']
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'cmake'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'python'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extensions ['python_setup_py']
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes) by extension 'python_setup_py'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['ignore', 'ignore_ament_install']
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'ignore'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'ignore_ament_install'
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['colcon_pkg']
+[2.895s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'colcon_pkg'
+[2.896s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['colcon_meta']
+[2.896s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'colcon_meta'
+[2.896s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extensions ['ros']
+[2.896s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/goto) by extension 'ros'
+[2.899s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/goto' with type 'ros.ament_cmake' and name 'example_mode_goto_cpp'
+[2.899s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['ignore', 'ignore_ament_install']
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'ignore'
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'ignore_ament_install'
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['colcon_pkg']
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'colcon_pkg'
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['colcon_meta']
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'colcon_meta'
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extensions ['ros']
+[2.900s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/manual) by extension 'ros'
+[2.902s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/manual' with type 'ros.ament_cmake' and name 'example_mode_manual_cpp'
+[2.902s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['ignore', 'ignore_ament_install']
+[2.902s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'ignore'
+[2.902s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'ignore_ament_install'
+[2.903s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['colcon_pkg']
+[2.903s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'colcon_pkg'
+[2.903s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['colcon_meta']
+[2.903s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'colcon_meta'
+[2.903s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extensions ['ros']
+[2.903s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor) by extension 'ros'
+[2.905s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor' with type 'ros.ament_cmake' and name 'example_mode_with_executor_cpp'
+[2.906s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['ignore', 'ignore_ament_install']
+[2.906s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'ignore'
+[2.906s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'ignore_ament_install'
+[2.907s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['colcon_pkg']
+[2.907s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'colcon_pkg'
+[2.908s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['colcon_meta']
+[2.909s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'colcon_meta'
+[2.909s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extensions ['ros']
+[2.909s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement) by extension 'ros'
+[2.912s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement' with type 'ros.ament_cmake' and name 'example_mode_rtl_replacement_cpp'
+[2.912s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['ignore', 'ignore_ament_install']
+[2.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'ignore'
+[2.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'ignore_ament_install'
+[2.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['colcon_pkg']
+[2.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'colcon_pkg'
+[2.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['colcon_meta']
+[2.913s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'colcon_meta'
+[2.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['ros']
+[2.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'ros'
+[2.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['cmake', 'python']
+[2.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'cmake'
+[2.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'python'
+[2.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extensions ['python_setup_py']
+[2.914s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation) by extension 'python_setup_py'
+[2.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['ignore', 'ignore_ament_install']
+[2.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'ignore'
+[2.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'ignore_ament_install'
+[2.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['colcon_pkg']
+[2.915s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'colcon_pkg'
+[2.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['colcon_meta']
+[2.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'colcon_meta'
+[2.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extensions ['ros']
+[2.916s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation) by extension 'ros'
+[2.917s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation' with type 'ros.ament_cmake' and name 'example_global_navigation_cpp'
+[2.917s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['ignore', 'ignore_ament_install']
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'ignore'
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'ignore_ament_install'
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['colcon_pkg']
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'colcon_pkg'
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['colcon_meta']
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'colcon_meta'
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extensions ['ros']
+[2.918s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation) by extension 'ros'
+[2.920s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation' with type 'ros.ament_cmake' and name 'example_local_navigation_cpp'
+[2.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['ignore', 'ignore_ament_install']
+[2.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'ignore'
+[2.920s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'ignore_ament_install'
+[2.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['colcon_pkg']
+[2.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'colcon_pkg'
+[2.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['colcon_meta']
+[2.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'colcon_meta'
+[2.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extensions ['ros']
+[2.921s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/px4_ros2_cpp) by extension 'ros'
+[2.923s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4-ros2-interface-lib/px4_ros2_cpp' with type 'ros.ament_cmake' and name 'px4_ros2_cpp'
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['ignore', 'ignore_ament_install']
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'ignore'
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'ignore_ament_install'
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['colcon_pkg']
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'colcon_pkg'
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['colcon_meta']
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'colcon_meta'
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['ros']
+[2.924s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'ros'
+[2.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['cmake', 'python']
+[2.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'cmake'
+[2.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'python'
+[2.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extensions ['python_setup_py']
+[2.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4-ros2-interface-lib/scripts) by extension 'python_setup_py'
+[2.925s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['ignore', 'ignore_ament_install']
+[2.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ignore'
+[2.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ignore_ament_install'
+[2.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['colcon_pkg']
+[2.926s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'colcon_pkg'
+[2.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['colcon_meta']
+[2.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'colcon_meta'
+[2.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extensions ['ros']
+[2.927s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_msgs) by extension 'ros'
+[2.928s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4_msgs' with type 'ros.ament_cmake' and name 'px4_msgs'
+[2.928s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['ignore', 'ignore_ament_install']
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ignore'
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ignore_ament_install'
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['colcon_pkg']
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'colcon_pkg'
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['colcon_meta']
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'colcon_meta'
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extensions ['ros']
+[2.929s] Level 1:colcon.colcon_core.package_identification:_identify(src/px4_ros_com) by extension 'ros'
+[2.930s] DEBUG:colcon.colcon_core.package_identification:Package 'src/px4_ros_com' with type 'ros.ament_cmake' and name 'px4_ros_com'
+[2.930s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[2.931s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[2.931s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[2.931s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[2.931s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'px4_msgs' in 'src/px4_msgs'
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'px4_ros2_cpp' in 'src/px4-ros2-interface-lib/px4_ros2_cpp'
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'example_global_navigation_cpp' in 'src/px4-ros2-interface-lib/examples/cpp/navigation/global_navigation'
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'example_local_navigation_cpp' in 'src/px4-ros2-interface-lib/examples/cpp/navigation/local_navigation'
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'example_mode_goto_cpp' in 'src/px4-ros2-interface-lib/examples/cpp/modes/goto'
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'example_mode_manual_cpp' in 'src/px4-ros2-interface-lib/examples/cpp/modes/manual'
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'example_mode_rtl_replacement_cpp' in 'src/px4-ros2-interface-lib/examples/cpp/modes/rtl_replacement'
+[3.095s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'example_mode_with_executor_cpp' in 'src/px4-ros2-interface-lib/examples/cpp/modes/mode_with_executor'
+[3.168s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[3.169s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[3.248s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/giromi/Repos/ros2_ws/install
+[3.287s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 276 installed packages in /opt/ros/humble
+[3.293s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[3.495s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_args' from command line to '['-DCMAKE_EXPORT_COMPILE_COMMANDS=ON']'
+[3.496s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_target' from command line to 'None'
+[3.496s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[3.496s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_clean_cache' from command line to 'False'
+[3.496s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_clean_first' from command line to 'False'
+[3.496s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'cmake_force_configure' from command line to 'False'
+[3.496s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'ament_cmake_args' from command line to 'None'
+[3.497s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'catkin_cmake_args' from command line to 'None'
+[3.497s] Level 5:colcon.colcon_core.verb:set package 'px4_ros_com' build argument 'catkin_skip_building_tests' from command line to 'False'
+[3.497s] DEBUG:colcon.colcon_core.verb:Building package 'px4_ros_com' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': ['-DCMAKE_EXPORT_COMPILE_COMMANDS=ON'], 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com', 'merge_install': False, 'path': '/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com', 'symlink_install': False, 'test_result_base': None}
+[3.544s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[3.584s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[3.584s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com' with build type 'ament_cmake'
+[3.585s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com'
+[3.676s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[3.676s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.676s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.842s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[43.696s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[43.835s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+[43.887s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_ros_com)
+[43.896s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+[43.952s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake module files
+[43.955s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake config files
+[43.956s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'cmake_prefix_path')
+[44.021s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.ps1'
+[44.023s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.dsv'
+[44.025s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.sh'
+[44.029s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib'
+[44.029s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'ld_library_path_lib')
+[44.075s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.ps1'
+[44.077s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.dsv'
+[44.079s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.sh'
+[44.080s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[44.080s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/pkgconfig/px4_ros_com.pc'
+[44.081s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/python3.10/site-packages'
+[44.082s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[44.137s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.ps1'
+[44.141s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.dsv'
+[44.142s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.sh'
+[44.144s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.bash'
+[44.146s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.zsh'
+[44.148s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/colcon-core/packages/px4_ros_com)
+[44.273s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(px4_ros_com)
+[44.330s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake module files
+[44.331s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com' for CMake config files
+[44.332s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'cmake_prefix_path')
+[44.398s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.ps1'
+[44.399s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.dsv'
+[44.400s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/cmake_prefix_path.sh'
+[44.401s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib'
+[44.402s] Level 1:colcon.colcon_core.shell:create_environment_hook('px4_ros_com', 'ld_library_path_lib')
+[44.445s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.ps1'
+[44.446s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.dsv'
+[44.446s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/hook/ld_library_path_lib.sh'
+[44.447s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[44.447s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/pkgconfig/px4_ros_com.pc'
+[44.448s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/python3.10/site-packages'
+[44.449s] Level 1:colcon.colcon_core.environment:checking '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/bin'
+[44.503s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.ps1'
+[44.504s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.dsv'
+[44.505s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.sh'
+[44.506s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.bash'
+[44.507s] INFO:colcon.colcon_core.shell:Creating package script '/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.zsh'
+[44.508s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/colcon-core/packages/px4_ros_com)
+[44.508s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[44.509s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[44.509s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[44.509s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[44.566s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[44.566s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[44.566s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[44.615s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[44.680s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.ps1'
+[44.684s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/giromi/Repos/ws_sensor_combined_src/install/_local_setup_util_ps1.py'
+[44.688s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.ps1'
+[44.737s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.sh'
+[44.739s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/giromi/Repos/ws_sensor_combined_src/install/_local_setup_util_sh.py'
+[44.741s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.sh'
+[44.782s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.bash'
+[44.784s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.bash'
+[44.822s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/giromi/Repos/ws_sensor_combined_src/install/local_setup.zsh'
+[44.823s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/giromi/Repos/ws_sensor_combined_src/install/setup.zsh'

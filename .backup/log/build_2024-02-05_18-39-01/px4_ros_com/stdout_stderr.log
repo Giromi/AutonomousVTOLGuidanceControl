@@ -1,0 +1,14 @@
+[ 14%] Built target Dubins
+[ 42%] Built target vehicle_gps_position_listener
+[ 42%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[ 57%] Built target frame_transforms
+[ 64%] Built target sensor_combined_listener
+[ 78%] Built target debug_vect_advertiser
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:[m[K In lambda function:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:64:53:[m[K [01;31m[Kerror: [m[K‘[01m[Kway_points_[m[K’ was not declared in this scope; did you mean ‘[01m[K_way_points[m[K’?
+   64 |                           << "Left way points: " << [01;31m[Kway_points_[m[K.size() << "\n"
+      |                                                     [01;31m[K^~~~~~~~~~~[m[K
+      |                                                     [32m[K_way_points[m[K
+gmake[2]: *** [CMakeFiles/OffboardControl.dir/build.make:76: CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:175: CMakeFiles/OffboardControl.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,8 @@
+[31mCMake Error at CMakeLists.txt:71:
+  Parse error.  Expected "(", got newline with text "
+
+  ".
+
+[0m
+-- Configuring incomplete, errors occurred!
+gmake: *** [Makefile:431: cmake_check_build_system] Error 1

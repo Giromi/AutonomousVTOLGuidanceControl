@@ -1,0 +1,18 @@
+/home/giromi/.local/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:66: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+!!
+
+        ********************************************************************************
+        Please avoid running ``setup.py`` directly.
+        Instead, use pypa/build, pypa/installer or other
+        standards-based tools.
+
+        See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+        ********************************************************************************
+
+!!
+  self.initialize_options()
+  File "/home/giromi/Repos/ws_sensor_combined_src/install/px4_control/lib/python3.10/site-packages/px4_control/publisher_member_function.py", line 54
+    main()   main()
+             ^^^^
+SyntaxError: invalid syntax
+

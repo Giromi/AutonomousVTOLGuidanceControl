@@ -1,0 +1,12 @@
+[0.123s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/key_event -- -j8 -l8
+[0.166s] [ 66%] Built target key_event
+[0.166s] [ 66%] Built target key_sub
+[0.172s] [ 83%] [32mBuilding CXX object CMakeFiles/key_pub.dir/src/key_pub.cpp.o[0m
+[3.228s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_pub.cpp:[m[K In constructor ‘[01m[KKeyPublisher::KeyPublisher()[m[K’:
+[3.228s] [01m[K/home/giromi/Repos/ws_sensor_combined_src/src/key_event/src/key_pub.cpp:32:50:[m[K [01;31m[Kerror: [m[Kclass ‘[01m[KKeyPublisher[m[K’ does not have any field named ‘[01m[Kis_running[m[K’
+[3.228s]    32 |     KeyPublisher() : Node("keyboard_publisher"), [01;31m[Kis_running[m[K(true) {
+[3.229s]       |                                                  [01;31m[K^~~~~~~~~~[m[K
+[4.288s] gmake[2]: *** [CMakeFiles/key_pub.dir/build.make:76: CMakeFiles/key_pub.dir/src/key_pub.cpp.o] Error 1
+[4.288s] gmake[1]: *** [CMakeFiles/Makefile2:193: CMakeFiles/key_pub.dir/all] Error 2
+[4.288s] gmake: *** [Makefile:146: all] Error 2
+[4.291s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/key_event' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/key_event -- -j8 -l8

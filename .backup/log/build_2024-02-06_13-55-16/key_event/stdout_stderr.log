@@ -1,0 +1,25 @@
+[ 50%] Built target key_input
+[ 66%] Built target key_event
+[ 83%] [32mBuilding CXX object CMakeFiles/key_publisher.dir/src/key_publisher.cpp.o[0m
+[100%] [32m[1mLinking CXX executable key_publisher[0m
+[100%] Built target key_publisher
+-- Install configuration: ""
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_event
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_input
+-- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_publisher
+-- Set non-toolchain portion of runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/key_event/lib/key_event/key_publisher" to ""
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/package_run_dependencies/key_event
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/parent_prefix_path/key_event
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.sh
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.sh
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/environment/path.dsv
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.bash
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.sh
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.zsh
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/local_setup.dsv
+-- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/package.dsv
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/ament_index/resource_index/packages/key_event
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig.cmake
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/cmake/key_eventConfig-version.cmake
+-- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/key_event/share/key_event/package.xml

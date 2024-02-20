@@ -1,0 +1,31 @@
+[ 14%] Built target Dubins
+[ 42%] Built target frame_transforms
+[ 42%] Built target debug_vect_advertiser
+[ 71%] Built target sensor_combined_listener
+[ 71%] Built target vehicle_gps_position_listener
+[ 78%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:[m[K In lambda function:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:64:53:[m[K [01;31m[Kerror: [m[K‘[01m[Kway_points_[m[K’ was not declared in this scope; did you mean ‘[01m[K_way_points[m[K’?
+   64 |                           << "Left way points: " << [01;31m[Kway_points_[m[K.size() << "\n"
+      |                                                     [01;31m[K^~~~~~~~~~~[m[K
+      |                                                     [32m[K_way_points[m[K
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:[m[K In member function ‘[01m[Kvoid OffboardControl::publish_trajectory_setpoint()[m[K’:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:140:50:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K][m[K’ token
+  140 |                         _way_points.front().north[01;31m[K][m[K - _local_position[NORTH]); // -pi ~ pi
+      |                                                  [01;31m[K^[m[K
+      |                                                  [32m[K)[m[K
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:139:24:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K([m[K’
+  139 |                 : atan2[01;36m[K([m[K_way_points.front().east - _local_position[EAST],
+      |                        [01;36m[K^[m[K
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:[m[K In member function ‘[01m[Kbool OffboardControl::is_reach_way_point_with_square()[m[K’:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:153:67:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K][m[K’ token
+  153 |     return (abs[34m[K([m[K_local_position[NORTH] - _way_points.front().north[01;31m[K][m[K) < 1.0 &&
+      |                [34m[K~[m[K                                                  [01;31m[K^[m[K
+      |                                                                   [32m[K)[m[K
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/src/lib/OffboardControl.cpp:153:67:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K][m[K’ token
+  153 |     return [34m[K([m[Kabs(_local_position[NORTH] - _way_points.front().north[01;31m[K][m[K) < 1.0 &&
+      |            [34m[K~[m[K                                                      [01;31m[K^[m[K
+      |                                                                   [32m[K)[m[K
+gmake[2]: *** [CMakeFiles/OffboardControl.dir/build.make:76: CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:175: CMakeFiles/OffboardControl.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

@@ -1,0 +1,161 @@
+[0.223s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/px4_ros2_cpp -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp
+[0.317s] -- The C compiler identification is GNU 11.4.0
+[0.427s] -- The CXX compiler identification is GNU 11.4.0
+[0.444s] -- Detecting C compiler ABI info
+[0.553s] -- Detecting C compiler ABI info - done
+[0.568s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.568s] -- Detecting C compile features
+[0.569s] -- Detecting C compile features - done
+[0.577s] -- Detecting CXX compiler ABI info
+[0.707s] -- Detecting CXX compiler ABI info - done
+[0.721s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.721s] -- Detecting CXX compile features
+[0.723s] -- Detecting CXX compile features - done
+[0.727s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.370s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[1.516s] -- Found ament_index_cpp: 1.4.0 (/opt/ros/humble/share/ament_index_cpp/cmake)
+[1.518s] -- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+[1.583s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.589s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.600s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.619s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.654s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.769s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.774s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.933s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.984s] -- Found FastRTPS: /opt/ros/humble/include  
+[2.065s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.080s] -- Looking for pthread.h
+[2.188s] -- Looking for pthread.h - found
+[2.189s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[2.306s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[2.307s] -- Found Threads: TRUE  
+[2.606s] -- Found px4_msgs: 2.0.1 (/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/cmake)
+[2.669s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[2.682s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[2.689s] -- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.692s] -- Found ament_cmake_gtest: 1.3.6 (/opt/ros/humble/share/ament_cmake_gtest/cmake)
+[2.843s] -- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[2.858s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.866s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.867s] -- Configured cppcheck include dirs: /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/px4_ros2_cpp/include
+[2.867s] -- Configured cppcheck exclude dirs and/or files: 
+[2.875s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.875s] -- Configured cpplint exclude dirs and/or files: 
+[2.879s] -- Added test 'lint_cmake' to check CMake code style
+[2.886s] -- Added test 'uncrustify' to check C / C++ code style
+[2.886s] -- Configured uncrustify additional arguments: 
+[2.887s] -- Added test 'xmllint' to check XML markup files
+[2.891s] -- Configuring done
+[2.932s] -- Generating done
+[2.935s] -- Build files have been written to: /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp
+[2.960s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/giromi/Repos/ws_sensor_combined_src/src/px4-ros2-interface-lib/px4_ros2_cpp -DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp
+[2.964s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp -- -j8 -l8
+[3.045s] [  2%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[3.048s] [  8%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/message_compatibility_check.cpp.o[0m
+[3.049s] [ 10%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/mode_executor.cpp.o[0m
+[3.049s] [  8%] [32mBuilding CXX object CMakeFiles/integration_utils.dir/test/integration/util.cpp.o[0m
+[3.051s] [ 13%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/mode.cpp.o[0m
+[3.053s] [ 16%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[3.053s] [ 18%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/health_and_arming_checks.cpp.o[0m
+[3.054s] [ 21%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/manual_control_input.cpp.o[0m
+[5.659s] [ 24%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[5.835s] [ 24%] Built target gtest_main
+[5.875s] [ 27%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/overrides.cpp.o[0m
+[11.830s] [ 29%] [32m[1mLinking CXX static library libgtest.a[0m
+[12.052s] [ 29%] Built target gtest
+[12.102s] [ 32%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/registration.cpp.o[0m
+[16.973s] [ 35%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/components/wait_for_fmu.cpp.o[0m
+[26.435s] [ 37%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/peripheral_actuators.cpp.o[0m
+[26.778s] [ 40%] [32m[1mLinking CXX shared library libintegration_utils.so[0m
+[26.801s] [ 43%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/direct_actuators.cpp.o[0m
+[28.199s] [ 43%] Built target integration_utils
+[28.246s] [ 45%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/goto.cpp.o[0m
+[29.506s] [ 48%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/experimental/attitude.cpp.o[0m
+[32.490s] [ 51%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/experimental/rates.cpp.o[0m
+[45.629s] [ 54%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/odometry/local_position.cpp.o[0m
+[59.872s] [ 56%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/odometry/global_position.cpp.o[0m
+[59.873s] [ 59%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/navigation/experimental/local_position_measurement_interface.cpp.o[0m
+[59.873s] [ 64%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/navigation/experimental/global_position_measurement_interface.cpp.o[0m
+[59.873s] [ 64%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp.dir/src/control/setpoint_types/experimental/trajectory.cpp.o[0m
+[78.287s] [ 67%] [32m[1mLinking CXX shared library libpx4_ros2_cpp.so[0m
+[83.843s] [ 67%] Built target px4_ros2_cpp
+[83.879s] [ 70%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/arming_check.cpp.o[0m
+[83.879s] [ 72%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/local_navigation.cpp.o[0m
+[83.880s] [ 75%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/main.cpp.o[0m
+[83.880s] [ 78%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/global_navigation.cpp.o[0m
+[83.880s] [ 81%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/modes.cpp.o[0m
+[83.882s] [ 83%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/local_navigation.cpp.o[0m
+[83.885s] [ 86%] [32mBuilding CXX object CMakeFiles/px4_ros2_cpp_unit_tests.dir/test/unit/global_navigation.cpp.o[0m
+[83.886s] [ 89%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/mode.cpp.o[0m
+[92.989s] [ 91%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/mode_executor.cpp.o[0m
+[94.672s] [ 94%] [32mBuilding CXX object CMakeFiles/integration_tests.dir/test/integration/overrides.cpp.o[0m
+[99.865s] [ 97%] [32m[1mLinking CXX executable px4_ros2_cpp_unit_tests[0m
+[101.972s] [ 97%] Built target px4_ros2_cpp_unit_tests
+[112.544s] [100%] [32m[1mLinking CXX executable integration_tests[0m
+[114.835s] [100%] Built target integration_tests
+[114.870s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp -- -j8 -l8
+[115.408s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp
+[115.445s] -- Install configuration: ""
+[115.445s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/environment/library_path.sh
+[115.446s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/environment/library_path.dsv
+[115.446s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2
+[115.447s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common
+[115.447s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/setpoint_base.hpp
+[115.447s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/frame.hpp
+[115.448s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/requirement_flags.hpp
+[115.448s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/common/context.hpp
+[115.448s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components
+[115.449s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/overrides.hpp
+[115.449s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/mode_executor.hpp
+[115.449s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/wait_for_fmu.hpp
+[115.450s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/health_and_arming_checks.hpp
+[115.450s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/groups.dox
+[115.450s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/mode.hpp
+[115.451s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/manual_control_input.hpp
+[115.452s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/events.hpp
+[115.453s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/components/message_compatibility_check.hpp
+[115.453s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/navigation
+[115.453s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/navigation/experimental
+[115.453s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/navigation/experimental/navigation_interface_base.hpp
+[115.454s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/navigation/experimental/local_position_measurement_interface.hpp
+[115.454s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/navigation/experimental/global_position_measurement_interface.hpp
+[115.454s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/navigation/groups.dox
+[115.455s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control
+[115.455s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types
+[115.455s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/goto.hpp
+[115.456s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/direct_actuators.hpp
+[115.456s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental
+[115.456s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental/attitude.hpp
+[115.457s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental/trajectory.hpp
+[115.457s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/experimental/rates.hpp
+[115.457s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/setpoint_types/groups.dox
+[115.457s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/groups.dox
+[115.457s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/control/peripheral_actuators.hpp
+[115.458s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/odometry
+[115.458s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/odometry/local_position.hpp
+[115.458s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/odometry/subscription.hpp
+[115.458s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/odometry/global_position.hpp
+[115.459s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/include/px4_ros2/odometry/groups.dox
+[115.459s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib/libpx4_ros2_cpp.so
+[115.522s] -- Set runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib/libpx4_ros2_cpp.so" to ""
+[115.522s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/ament_index/resource_index/package_run_dependencies/px4_ros2_cpp
+[115.522s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/ament_index/resource_index/parent_prefix_path/px4_ros2_cpp
+[115.522s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/environment/ament_prefix_path.sh
+[115.523s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/environment/ament_prefix_path.dsv
+[115.523s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/environment/path.sh
+[115.523s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/environment/path.dsv
+[115.524s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/local_setup.bash
+[115.524s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/local_setup.sh
+[115.524s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/local_setup.zsh
+[115.525s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/local_setup.dsv
+[115.525s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.dsv
+[115.525s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/ament_index/resource_index/packages/px4_ros2_cpp
+[115.526s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/px4_ros2_cppExport.cmake
+[115.526s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/px4_ros2_cppExport-noconfig.cmake
+[115.526s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/ament_cmake_export_targets-extras.cmake
+[115.526s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/ament_cmake_export_dependencies-extras.cmake
+[115.527s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/px4_ros2_cppConfig.cmake
+[115.528s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/cmake/px4_ros2_cppConfig-version.cmake
+[115.528s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/share/px4_ros2_cpp/package.xml
+[115.532s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp' returned '0': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros2_cpp

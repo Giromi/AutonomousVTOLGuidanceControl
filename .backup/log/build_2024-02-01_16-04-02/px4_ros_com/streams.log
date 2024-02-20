@@ -1,0 +1,59 @@
+[0.225s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.264s] -- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.921s] -- Found builtin_interfaces: 1.2.1 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[1.010s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.017s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.036s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.070s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.119s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.163s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.169s] -- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)
+[1.463s] -- Found px4_msgs: 2.0.1 (/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/share/px4_msgs/cmake)
+[1.584s] -- Found rclcpp: 16.0.8 (/opt/ros/humble/share/rclcpp/cmake)
+[1.729s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.734s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.041s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.372s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[2.654s] -- Found ament_lint_auto: 0.12.10 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[2.811s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.822s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.824s] -- Configured cppcheck include dirs: /home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include;$<BUILD_INTERFACE:/home/giromi/Repos/ws_sensor_combined_src/src/px4_ros_com/include/px4_ros_com>
+[2.825s] -- Configured cppcheck exclude dirs and/or files: 
+[2.838s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.838s] -- Configured cpplint exclude dirs and/or files: 
+[2.840s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.843s] -- Added test 'lint_cmake' to check CMake code style
+[2.844s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[2.855s] -- Added test 'uncrustify' to check C / C++ code style
+[2.855s] -- Configured uncrustify additional arguments: 
+[2.857s] -- Added test 'xmllint' to check XML markup files
+[2.862s] -- Configuring done (2.6s)
+[2.874s] [31mCMake Error at CMakeLists.txt:80 (add_executable):
+[2.874s]   Cannot find source file:
+[2.874s] 
+[2.874s]     src/examples/.cpp
+[2.874s] 
+[2.874s]   Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm
+[2.875s]   .ccm .cxxm .c++m .h .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90
+[2.875s]   .f95 .f03 .hip .ispc
+[2.875s] 
+[2.875s] [0m
+[2.879s] [31mCMake Error at CMakeLists.txt:80 (add_executable):
+[2.879s]   No SOURCES given to target: sensor_combined_listener
+[2.879s] 
+[2.879s] [0m
+[2.879s] [31mCMake Error at CMakeLists.txt:80 (add_executable):
+[2.879s]   No SOURCES given to target: vehicle_gps_position_listener
+[2.879s] 
+[2.880s] [0m
+[2.880s] [31mCMake Error at CMakeLists.txt:80 (add_executable):
+[2.880s]   No SOURCES given to target: debug_vect_advertiser
+[2.880s] 
+[2.880s] [0m
+[2.880s] [31mCMake Error at CMakeLists.txt:80 (add_executable):
+[2.880s]   No SOURCES given to target: offboard_control
+[2.880s] 
+[2.880s] [0m
+[2.880s] [0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+[2.899s] gmake: *** [Makefile:431: cmake_check_build_system] Error 1
+[2.903s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '2': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8

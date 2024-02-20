@@ -1,0 +1,68 @@
+[0.286s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/key_event:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[1.265s] [  5%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[1.303s] [ 16%] Built target sensor_combined_listener
+[1.304s] [ 27%] Built target frame_transforms
+[1.304s] [ 38%] Built target Dubins
+[1.305s] [ 50%] Built target vehicle_gps_position_listener
+[1.306s] [ 61%] Built target debug_vect_advertiser
+[1.455s] [ 72%] Built target key_event_sub
+[1.458s] [ 77%] [32mBuilding CXX object CMakeFiles/key_event_pub.dir/src/main/key_event_pub.cpp.o[0m
+[7.097s] [ 83%] [32m[1mLinking CXX executable key_event_pub[0m
+[8.253s] [ 83%] Built target key_event_pub
+[12.910s] [ 88%] [32m[1mLinking CXX shared library libOffboardControl.so[0m
+[13.520s] [ 88%] Built target OffboardControl
+[13.595s] [ 94%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/main/offboard_control.cpp.o[0m
+[16.900s] [100%] [32m[1mLinking CXX executable offboard_control[0m
+[17.146s] [100%] Built target offboard_control
+[17.154s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/key_event:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[17.231s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/key_event:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com
+[17.235s] -- Install configuration: ""
+[17.271s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/sensor_combined_listener
+[17.289s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/vehicle_gps_position_listener
+[17.315s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/debug_vect_advertiser
+[17.333s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/offboard_control
+[17.340s] -- Set non-toolchain portion of runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/offboard_control" to ""
+[17.360s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/key_event_pub
+[17.366s] -- Set non-toolchain portion of runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/key_event_pub" to ""
+[17.386s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/px4_ros_com/key_event_sub
+[17.387s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.sh
+[17.388s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/library_path.dsv
+[17.388s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com
+[17.389s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/frame_transforms.h
+[17.389s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/ServoControlPublisher.hpp
+[17.389s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/Dubins.hpp
+[17.390s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/include/px4_ros_com/OffboardControl.hpp
+[17.412s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/libframe_transforms.so
+[17.434s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/libOffboardControl.so
+[17.472s] -- Set non-toolchain portion of runtime path of "/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/libOffboardControl.so" to ""
+[17.473s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib/libDubins.so
+[17.474s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//launch
+[17.480s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//launch/offboard_control_launch.yaml
+[17.480s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//launch/sensor_combined_listener.launch.py
+[17.481s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test
+[17.481s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/__init__.py
+[17.481s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/pipeline_io_test.py
+[17.481s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/test_output.py
+[17.481s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com//test/test_input.py
+[17.481s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/package_run_dependencies/px4_ros_com
+[17.488s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/parent_prefix_path/px4_ros_com
+[17.488s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.sh
+[17.489s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/ament_prefix_path.dsv
+[17.489s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/path.sh
+[17.489s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/environment/path.dsv
+[17.489s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.bash
+[17.489s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.sh
+[17.490s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.zsh
+[17.490s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/local_setup.dsv
+[17.490s] -- Installing: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.dsv
+[17.500s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/ament_index/resource_index/packages/px4_ros_com
+[17.538s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport.cmake
+[17.539s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/export_frame_transformsExport-noconfig.cmake
+[17.539s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_dependencies-extras.cmake
+[17.539s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_targets-extras.cmake
+[17.540s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_include_directories-extras.cmake
+[17.540s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/ament_cmake_export_libraries-extras.cmake
+[17.540s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig.cmake
+[17.541s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/cmake/px4_ros_comConfig-version.cmake
+[17.541s] -- Up-to-date: /home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/share/px4_ros_com/package.xml
+[17.551s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '0': CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_with_executor_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_rtl_replacement_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_manual_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_mode_goto_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_local_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/example_global_navigation_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control_cpp:/home/giromi/Repos/ws_sensor_combined_src/install/key_event:/home/giromi/Repos/ws_sensor_combined_src/install/px4_control:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros_com/lib:/home/giromi/Repos/ws_sensor_combined_src/install/px4_ros2_cpp/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/local/bin/cmake --install /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com

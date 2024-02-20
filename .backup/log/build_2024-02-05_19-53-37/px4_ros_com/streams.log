@@ -1,0 +1,23 @@
+[0.136s] Invoking command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8
+[0.199s] [ 14%] Built target frame_transforms
+[0.201s] [ 28%] Built target sensor_combined_listener
+[0.205s] [ 42%] Built target vehicle_gps_position_listener
+[0.206s] [ 57%] Built target debug_vect_advertiser
+[0.210s] [ 64%] [32mBuilding CXX object CMakeFiles/OffboardControl.dir/src/lib/OffboardControl.cpp.o[0m
+[0.218s] [ 71%] [32mBuilding CXX object CMakeFiles/Dubins.dir/src/lib/Dubins.cpp.o[0m
+[5.295s] [ 78%] [32m[1mLinking CXX shared library libDubins.so[0m
+[5.577s] [ 78%] Built target Dubins
+[15.658s] [ 85%] [32m[1mLinking CXX shared library libOffboardControl.so[0m
+[16.524s] [ 85%] Built target OffboardControl
+[16.558s] [ 92%] [32mBuilding CXX object CMakeFiles/offboard_control.dir/src/offboard/offboard_control.cpp.o[0m
+[21.409s] [100%] [32m[1mLinking CXX executable offboard_control[0m
+[21.776s] /usr/bin/ld: libOffboardControl.so: undefined reference to `Dubins::Dubins(std::array<double, 3ul>, std::array<double, 3ul>, double)'
+[21.777s] /usr/bin/ld: libOffboardControl.so: undefined reference to `Dubins::path_sample_many(double, int (*)(double*, double, void*), void*)'
+[21.778s] /usr/bin/ld: libOffboardControl.so: undefined reference to `OffboardControl::_dubins_path_points'
+[21.779s] /usr/bin/ld: libOffboardControl.so: undefined reference to `Dubins::shortest_path()'
+[21.779s] /usr/bin/ld: libOffboardControl.so: undefined reference to `Dubins::~Dubins()'
+[21.786s] collect2: error: ld returned 1 exit status
+[21.788s] gmake[2]: *** [CMakeFiles/offboard_control.dir/build.make:184: offboard_control] Error 1
+[21.788s] gmake[1]: *** [CMakeFiles/Makefile2:305: CMakeFiles/offboard_control.dir/all] Error 2
+[21.789s] gmake: *** [Makefile:146: all] Error 2
+[21.791s] Invoked command in '/home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com' returned '2': AMENT_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs:/opt/ros/humble LD_LIBRARY_PATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/giromi/Repos/ws_sensor_combined_src/install/px4_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/local/bin/cmake --build /home/giromi/Repos/ws_sensor_combined_src/build/px4_ros_com -- -j8 -l8

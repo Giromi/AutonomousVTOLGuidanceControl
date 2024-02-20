@@ -1,0 +1,14 @@
+[35m[1mConsolidate compiler generated dependencies of target listener[0m
+[ 50%] Built target talker
+[ 75%] [32mBuilding CXX object CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o[0m
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/src/subscriber_member_function.cpp:[m[K In constructor ‘[01m[KMinimalSubscriber::MinimalSubscriber()[m[K’:
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/src/subscriber_member_function.cpp:27:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass mavsdk::Mavsdk[m[K’ has no member named ‘[01m[Kis_connected[m[K’
+   27 |         while (!mavsdk_.[01;31m[Kis_connected[m[K()) {
+      |                         [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/giromi/Repos/ws_sensor_combined_src/src/px4_control_cpp/src/subscriber_member_function.cpp:33:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass mavsdk::Mavsdk[m[K’ has no member named ‘[01m[Ksystem[m[K’; did you mean ‘[01m[Ksystems[m[K’?
+   33 |         system_ = std::make_shared<System>(mavsdk_.[01;31m[Ksystem[m[K());
+      |                                                    [01;31m[K^~~~~~[m[K
+      |                                                    [32m[Ksystems[m[K
+gmake[2]: *** [CMakeFiles/listener.dir/build.make:76: CMakeFiles/listener.dir/src/subscriber_member_function.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:165: CMakeFiles/listener.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

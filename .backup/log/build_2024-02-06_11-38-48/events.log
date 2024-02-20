@@ -1,0 +1,95 @@
+[0.000000] (-) TimerEvent: {}
+[0.000937] (-) JobUnselected: {'identifier': 'example_global_navigation_cpp'}
+[0.001050] (-) JobUnselected: {'identifier': 'example_local_navigation_cpp'}
+[0.001090] (-) JobUnselected: {'identifier': 'example_mode_goto_cpp'}
+[0.001111] (-) JobUnselected: {'identifier': 'example_mode_manual_cpp'}
+[0.001129] (-) JobUnselected: {'identifier': 'example_mode_rtl_replacement_cpp'}
+[0.001146] (-) JobUnselected: {'identifier': 'example_mode_with_executor_cpp'}
+[0.001164] (-) JobUnselected: {'identifier': 'px4_msgs'}
+[0.001216] (-) JobUnselected: {'identifier': 'px4_ros2_cpp'}
+[0.001273] (-) JobUnselected: {'identifier': 'px4_ros_com'}
+[0.001343] (keyboard_handler) JobQueued: {'identifier': 'keyboard_handler', 'dependencies': OrderedDict()}
+[0.001422] (keyboard_handler) JobStarted: {'identifier': 'keyboard_handler'}
+[0.099653] (-) TimerEvent: {}
+[0.161095] (keyboard_handler) JobProgress: {'identifier': 'keyboard_handler', 'progress': 'cmake'}
+[0.161620] (keyboard_handler) Command: {'cmd': ['/usr/local/bin/cmake', '/home/giromi/Repos/ws_sensor_combined_src/src/keyboard_handler', '-DCMAKE_EXPORT_COMPILE_COMMANDS=ON', '-DCMAKE_INSTALL_PREFIX=/home/giromi/Repos/ws_sensor_combined_src/install/keyboard_handler'], 'cwd': '/home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('TMUX', '/tmp/tmux-1000/default,6016,2'), ('USER', 'giromi'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/giromi'), ('OLDPWD', '/home/giromi/Repos/PX4-Autopilot'), ('TERM_PROGRAM_VERSION', '3.2a'), ('DESKTOP_SESSION', 'ubuntu'), ('NVM_BIN', '/home/giromi/.nvm/versions/node/v20.11.0/bin'), ('NVM_INC', '/home/giromi/.nvm/versions/node/v20.11.0/include/node'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('SYSTEMD_EXEC_PID', '2016'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('NVM_DIR', '/home/giromi/.nvm'), ('COLCON_PREFIX_PATH', '/home/giromi/Repos/ros2_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'giromi'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'giromi'), ('TERM', 'screen-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/home/giromi/.nvm/versions/node/v20.11.0/bin:/opt/ros/humble/bin:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/giromi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/ubuntu22:@/tmp/.ICE-unix/1993,unix/ubuntu22:/tmp/.ICE-unix/1993'), ('XDG_MENU_PREFIX', 'gnome-'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/61dc51e2_3940_481a_9b64_0d9a0d6fd2f9'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.91'), ('TERM_PROGRAM', 'tmux'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/giromi/Repos/ws_sensor_combined_src/build/keyboard_handler'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('NVM_CD_FLAGS', ''), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('TMUX_PLUGIN_MANAGER_PATH', '/home/giromi/.tmux/plugins/'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('TMUX_PANE', '%6'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.199791] (-) TimerEvent: {}
+[0.300191] (-) TimerEvent: {}
+[0.400758] (-) TimerEvent: {}
+[0.501261] (-) TimerEvent: {}
+[0.601910] (-) TimerEvent: {}
+[0.702670] (-) TimerEvent: {}
+[0.803398] (-) TimerEvent: {}
+[0.904010] (-) TimerEvent: {}
+[1.004600] (-) TimerEvent: {}
+[1.105295] (-) TimerEvent: {}
+[1.205989] (-) TimerEvent: {}
+[1.306714] (-) TimerEvent: {}
+[1.407314] (-) TimerEvent: {}
+[1.498971] (keyboard_handler) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[1.507441] (-) TimerEvent: {}
+[1.607816] (-) TimerEvent: {}
+[1.708589] (-) TimerEvent: {}
+[1.809340] (-) TimerEvent: {}
+[1.910098] (-) TimerEvent: {}
+[2.010753] (-) TimerEvent: {}
+[2.111168] (-) TimerEvent: {}
+[2.211950] (-) TimerEvent: {}
+[2.302287] (keyboard_handler) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[2.312052] (-) TimerEvent: {}
+[2.412399] (-) TimerEvent: {}
+[2.480732] (keyboard_handler) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[2.512611] (-) TimerEvent: {}
+[2.613375] (-) TimerEvent: {}
+[2.714045] (-) TimerEvent: {}
+[2.814623] (-) TimerEvent: {}
+[2.915273] (-) TimerEvent: {}
+[2.920648] (keyboard_handler) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[2.933725] (keyboard_handler) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[2.934268] (keyboard_handler) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[2.942785] (keyboard_handler) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[2.988550] (keyboard_handler) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.015453] (-) TimerEvent: {}
+[3.116089] (-) TimerEvent: {}
+[3.216886] (-) TimerEvent: {}
+[3.309866] (keyboard_handler) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.316963] (-) TimerEvent: {}
+[3.323482] (keyboard_handler) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[3.323922] (keyboard_handler) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.324499] (keyboard_handler) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.385840] (keyboard_handler) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.7 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.417213] (-) TimerEvent: {}
+[3.518007] (-) TimerEvent: {}
+[3.618436] (-) TimerEvent: {}
+[3.718675] (-) TimerEvent: {}
+[3.818977] (-) TimerEvent: {}
+[3.919229] (-) TimerEvent: {}
+[4.019469] (-) TimerEvent: {}
+[4.061650] (keyboard_handler) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter \n'}
+[4.119618] (-) TimerEvent: {}
+[4.219978] (-) TimerEvent: {}
+[4.320413] (-) TimerEvent: {}
+[4.420851] (-) TimerEvent: {}
+[4.437760] (keyboard_handler) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:14 (find_package):\n'}
+[4.438180] (keyboard_handler) StderrLine: {'line': b'  By not providing "Findncurses.cmake" in CMAKE_MODULE_PATH this project has\n'}
+[4.438424] (keyboard_handler) StderrLine: {'line': b'  asked CMake to find a package configuration file provided by "ncurses", but\n'}
+[4.438675] (keyboard_handler) StderrLine: {'line': b'  CMake did not find one.\n'}
+[4.438883] (keyboard_handler) StderrLine: {'line': b'\n'}
+[4.439088] (keyboard_handler) StderrLine: {'line': b'  Could not find a package configuration file provided by "ncurses" with any\n'}
+[4.439277] (keyboard_handler) StderrLine: {'line': b'  of the following names:\n'}
+[4.439462] (keyboard_handler) StderrLine: {'line': b'\n'}
+[4.439660] (keyboard_handler) StderrLine: {'line': b'    ncursesConfig.cmake\n'}
+[4.439834] (keyboard_handler) StderrLine: {'line': b'    ncurses-config.cmake\n'}
+[4.439999] (keyboard_handler) StderrLine: {'line': b'\n'}
+[4.440190] (keyboard_handler) StderrLine: {'line': b'  Add the installation prefix of "ncurses" to CMAKE_PREFIX_PATH or set\n'}
+[4.440356] (keyboard_handler) StderrLine: {'line': b'  "ncurses_DIR" to a directory containing one of the above files.  If\n'}
+[4.440519] (keyboard_handler) StderrLine: {'line': b'  "ncurses" provides a separate development package or SDK, be sure it has\n'}
+[4.440689] (keyboard_handler) StderrLine: {'line': b'  been installed.\n'}
+[4.440856] (keyboard_handler) StderrLine: {'line': b'\n'}
+[4.441024] (keyboard_handler) StderrLine: {'line': b'\x1b[0m\n'}
+[4.441187] (keyboard_handler) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[4.445699] (keyboard_handler) CommandEnded: {'returncode': 1}
+[4.521050] (-) TimerEvent: {}
+[4.622080] (-) TimerEvent: {}
+[4.632220] (keyboard_handler) JobEnded: {'identifier': 'keyboard_handler', 'rc': 1}
+[4.642693] (-) EventReactorShutdown: {}
