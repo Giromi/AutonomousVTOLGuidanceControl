@@ -70,10 +70,10 @@ https://askubuntu.com/questions/1024593/failed-to-execute-child-process-net-when
 
 
 integer_value(x) -> integer
-real_value(x) -> real
+real_value(x) -> realmavros_offboard_cpp
 
 
-
+https://docs.px4.io/main/en/ros/mavros_offboard_cpp.html
 2024.02.19
 # ActuatorServos msg
 https://github.com/PX4/PX4-Autopilot/blob/main/msg/ActuatorServos.msg
@@ -84,3 +84,24 @@ https://docs.px4.io/main/en/flight_modes/offboard.html
 
 액츄에이터 표
 https://docs.px4.io/main/en/config/actuators.html
+
+# Mavlink
+https://mavlink.io/en/messages/common.html#HIL_ACTUATOR_CONTROLS
+https://kwangpil.tistory.com/80 #Mavlink 설치
+
+
+https://github.com/PX4/PX4-Autopilot/blob/main/launch/mavros_posix_sitl.launch
+
+
+# group mixer
+https://docs.px4.io/v1.12/en/concept/mixing.html
+
+# cam
+https://404warehouse.net/2015/12/20/autopilot-offboard-control-using-mavros-package-on-ros/
+
+# actuator output function, how to use it ?
+https://github.com/PX4/PX4-Autopilot/issues/19190
+
+# checkhealths_telescope
+https://github.com/BurntSushi/ripgrep
+https://github.com/sharkdp/fd

@@ -53,6 +53,10 @@ public:
     static int set_dubins_path_point(double q[3], double x, void* user_data);
 private:
     // static std::queue<std::array<float, 4>> way_points_;
+    void	   _initializeSubscribers(void);
+    void	   _initializePublishers(void);
+    void	   _initializeClients(void);
+
     static std::queue<WayPoint>         _way_points;
     static std::queue<DubinsPathPoint>  _dubins_path_points;
     bool is_reach_way_point_with_square(std::array<float, 3> target);
@@ -70,8 +74,8 @@ private:
 
     std::array<float, 4> _local_position;
 	std::atomic<uint64_t> _timestamp;       //!< common synced timestamped
-	uint64_t _offboard_setpoint_counter;    //!< counter for the number of setpoints sent
     size_t _norm = 0;
+	uint64_t _offboard_setpoint_counter = 0;    //!< counter for the number of setpoints sent
     int      _pwm;
     float    _pwm_nomallize;
                                             //
