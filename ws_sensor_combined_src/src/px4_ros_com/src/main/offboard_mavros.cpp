@@ -89,9 +89,9 @@ private:
 
     void publishPose() {
         geometry_msgs::msg::PoseStamped pose;
-        pose.pose.position.x = 0;//local_position_[EAST];
-        pose.pose.position.y = 0;//local_position_[NORTH];
-        pose.pose.position.z = 3;//local_position_[DOWN];
+        pose.pose.position.x = local_position_[EAST];
+        pose.pose.position.y = local_position_[NORTH];
+        pose.pose.position.z = local_position_[DOWN];
         local_pos_pub_->publish(pose);
     }
 
@@ -125,50 +125,41 @@ private:
         OffboardMavros::action_func_[i]();
     }
 
-
     static void action_go_north_(void) {
-        if (std::numeric_limits<unsigned long>::max() - local_position_[NORTH] >= offset_) {
-            return ;
-        }
+        //TODO make threshold
         local_position_[NORTH] += offset_;
+        std::cout << local_position_[NORTH] << std::endl;
     }
 
     static void action_go_east_(void) {
-        if (std::numeric_limits<unsigned long>::max() - local_position_[EAST] < offset_) {
-            return ;
-        }
+        //TODO make threshold
         local_position_[EAST] += offset_;
+        std::cout << local_position_[EAST] << std::endl;
     }
 
     static void action_go_down_(void) {
-        if (local_position_[DOWN] < offset_) {
-            return ;
-        }
-        local_position_[DOWN] += offset_;
+        //TODO make threshold
+        local_position_[DOWN] -= offset_;
+        std::cout << local_position_[DOWN] << std::endl;
     }
 
     static void action_go_south_(void) {
-        if (local_position_[NORTH] < offset_) {
-            return ;
-        }
+        //TODO make threshold
         local_position_[NORTH] -= offset_;
+        std::cout << local_position_[NORTH] << std::endl;
     }
 
     static void action_go_west_(void) {
-        if (local_position_[EAST] < offset_) {
-            return ;
-        }
+        //TODO make threshold
         local_position_[EAST] -= offset_;
+        std::cout << local_position_[EAST] << std::endl;
     }
 
     static void action_go_up_(void) {
-        if (local_position_[DOWN] < offset_) {
-            return ;
-        }
-        local_position_[DOWN] -= offset_;
+        //TODO make threshold
+        local_position_[DOWN] += offset_;
+        std::cout << local_position_[DOWN] << std::endl;
     }
-
-
 
     //
     /* -- Members Variables -- */
@@ -182,31 +173,30 @@ private:
     mavros_msgs::msg::State                                             current_state_;
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
-    static std::array<unsigned int, 3>		local_position_;
+    static std::array<float, 3>		        local_position_;
 
     static const std::string				arrow_string_;
-    static unsigned int                     offset_;
+    static float                            offset_;
 
     static const std::array<std::string, 16>      action_string_array_;
     static void                                   (*action_func_[])(void);
 };
 
 
-std::array<unsigned int, 3>		        OffboardMavros::local_position_{};
+std::array<float, 3>		            OffboardMavros::local_position_{0.0, 0.0, 0.0};
 const std::array<std::string, 16>		OffboardMavros::action_string_array_ 
     = { "8", "6", "↓", "4", "2", "↑" };
 
 void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_north_,
     &OffboardMavros::action_go_east_,
-    &OffboardMavros::action_go_up_,
+    &OffboardMavros::action_go_down_,
     &OffboardMavros::action_go_west_,
     &OffboardMavros::action_go_south_,
-    &OffboardMavros::action_go_down_,
-
+    &OffboardMavros::action_go_up_
 };
 
-unsigned int                    OffboardMavros::offset_ = 1;
+float                    OffboardMavros::offset_ = 1.0f;
 
 
 int main(int argc, char* argv[]) {
