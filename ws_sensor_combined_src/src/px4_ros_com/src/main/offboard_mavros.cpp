@@ -91,7 +91,7 @@ private:
         geometry_msgs::msg::PoseStamped pose;
         pose.pose.position.x = local_position_[EAST];
         pose.pose.position.y = local_position_[NORTH];
-        pose.pose.position.z = local_position_[DOWN];
+        pose.pose.position.z = local_position_[UP];
         local_pos_pub_->publish(pose);
     }
 
@@ -125,6 +125,7 @@ private:
         OffboardMavros::action_func_[i]();
     }
 
+
     static void action_go_north_(void) {
         //TODO make threshold
         local_position_[NORTH] += offset_;
@@ -139,8 +140,11 @@ private:
 
     static void action_go_down_(void) {
         //TODO make threshold
-        local_position_[DOWN] -= offset_;
-        std::cout << local_position_[DOWN] << std::endl;
+        local_position_[UP] -= offset_;
+        if (local_position_[UP] < 0.0){
+            local_position_[UP] = 0.0;
+        }
+        std::cout << local_position_[UP] << std::endl;
     }
 
     static void action_go_south_(void) {
@@ -157,8 +161,8 @@ private:
 
     static void action_go_up_(void) {
         //TODO make threshold
-        local_position_[DOWN] += offset_;
-        std::cout << local_position_[DOWN] << std::endl;
+        local_position_[UP] += offset_;
+        std::cout << local_position_[UP] << std::endl;
     }
 
     //
