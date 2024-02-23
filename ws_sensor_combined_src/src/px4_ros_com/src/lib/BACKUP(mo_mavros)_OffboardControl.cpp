@@ -60,14 +60,14 @@ OffboardControl::OffboardControl() : Node("offboard_control"), _pwm(800), _pwm_n
                               << std::setw(width) << _way_points.front().north << "\n"
                           << "East : " << std::setw(width) << _local_position[EAST]  << " ➔ " 
                               << std::setw(width) << _way_points.front().east << "\n"
-                          << "Down : " << std::setw(width) << _local_position[DOWN]  << " ➔ " 
+                          << "Down : " << std::setw(width) << _local_position[UP]  << " ➔ " 
                               << std::setw(width) << _way_points.front().down << "\n"
                           << "Yaw  : " << std::setw(width) << _local_position[YAW]   << " | " 
                               << std::setw(width) << _way_points.front().yaw << "\n"
                           << "---------------------------------------------------\n"
                           << "(way point length) => " << sqrt(pow(_local_position[NORTH] - _way_points.front().north
                                 , 2) + pow(_local_position[EAST] - _way_points.front().east, 2) 
-                                + pow(_local_position[DOWN] - _way_points.front().down, 2)) << "\n"
+                                + pow(_local_position[UP] - _way_points.front().down, 2)) << "\n"
                           << "(dubins path length) => " << sqrt(pow(_local_position[NORTH] - _dubins_path_points.front().north , 2) + pow(_local_position[EAST] - _dubins_path_points.front().east, 2)) << "\n"
                           << "===================================================\n"
                           << "Left way points         : " << _way_points.size() << "\n"
@@ -200,13 +200,13 @@ void OffboardControl::make_dubins_trajectory_setpoint(TrajectorySetpoint& msg) {
 bool OffboardControl::is_reach_way_point_with_square(std::array<float, 3> target) {
     return (abs(_local_position[NORTH] - target[NORTH]) < 1.0 &&
         abs(_local_position[EAST] - target[EAST]) < 1.0 &&
-        abs(_local_position[DOWN] - target[DOWN]) < 1.0);
+        abs(_local_position[UP] - target[UP]) < 1.0);
 }
 
 bool OffboardControl::is_reach_way_point_with_norm(std::array<float, 3> target) {
     return sqrt(pow(_local_position[NORTH] - target[NORTH] , 2) +
                  pow(_local_position[EAST] - target[EAST], 2) +
-                 pow(_local_position[DOWN] - target[DOWN], 2)) < 10.0;
+                 pow(_local_position[UP] - target[UP], 2)) < 10.0;
 }
 
 bool OffboardControl::is_reach_way_point_with_norm(std::array<float, 2> target) {
@@ -251,7 +251,7 @@ void OffboardControl::set_way_point(WayPoint way_point) {
 int OffboardControl::set_dubins_path_point(double q[3], double x, void* user_data) {
     static_cast<void>(x); // for unused
     LocalPosition* local_position = static_cast<LocalPosition *>(user_data);  
-    DubinsPathPoint dubins_path_point(q[0], q[1], (*local_position)[DOWN], q[2], x);
+    DubinsPathPoint dubins_path_point(q[0], q[1], (*local_position)[UP], q[2], x);
     OffboardControl::_dubins_path_points.push(dubins_path_point);
     return 0;
 }

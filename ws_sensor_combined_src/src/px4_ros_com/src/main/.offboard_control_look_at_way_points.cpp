@@ -55,7 +55,7 @@ using namespace std::chrono;
 using namespace std::chrono_literals;
 using namespace px4_msgs::msg;
 
-enum e_coordinate {NORTH, EAST, DOWN, YAW};
+enum e_coordinate {NORTH, EAST, UP, YAW};
 
 class OffboardControl : public rclcpp::Node
 {
@@ -76,13 +76,13 @@ public:
                         << "============================="   << std::endl
                         << "local_position_x  : " << local_position_[NORTH] << std::endl
                         << "local_position_y  : " << local_position_[EAST] << std::endl
-                        << "local_position_z  : " << local_position_[DOWN] << std::endl
+                        << "local_position_z  : " << local_position_[UP] << std::endl
                         << "local_position_yaw: " << local_position_[YAW] << std::endl
                         << "============================="   << std::endl
                         << "current_target x, y, z, yaw: " 
                                         << way_points_.front()[NORTH] << ", "
                                         << way_points_.front()[EAST] << ", "
-                                        << way_points_.front()[DOWN] << ", "
+                                        << way_points_.front()[UP] << ", "
                                         << way_points_.front()[YAW] << std::endl
                         << "left_way_points: " << way_points_.size() << std::endl
                         << "============================="   << std::endl;
@@ -188,7 +188,7 @@ void OffboardControl::publish_offboard_control_mode()
 void OffboardControl::publish_trajectory_setpoint()
 {
 	TrajectorySetpoint msg{};
-	msg.position = {way_points_.front()[NORTH], way_points_.front()[EAST], way_points_.front()[DOWN]};
+	msg.position = {way_points_.front()[NORTH], way_points_.front()[EAST], way_points_.front()[UP]};
     msg.yaw = way_points_.front()[YAW] ? way_points_.front()[YAW]
                 : atan2(way_points_.front()[EAST] - local_position_[EAST], 
                         way_points_.front()[NORTH] - local_position_[NORTH]); // -pi ~ pi
@@ -199,7 +199,7 @@ void OffboardControl::publish_trajectory_setpoint()
     }
     if (abs(local_position_[NORTH] - way_points_.front()[NORTH]) < 1.0 &&
         abs(local_position_[EAST] - way_points_.front()[EAST]) < 1.0 &&
-        abs(local_position_[DOWN] - way_points_.front()[DOWN]) < 1.0) {
+        abs(local_position_[UP] - way_points_.front()[UP]) < 1.0) {
         std::cout << "way point reached" << std::endl;
         way_points_.pop();
     }
