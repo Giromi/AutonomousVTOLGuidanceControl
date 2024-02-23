@@ -1,0 +1,14 @@
+
+
+
+int main(void) {
+    long a = 4;
+
+
+
+
+    64 --> 8byte
+    32 --> 4byte
+
+
+}
