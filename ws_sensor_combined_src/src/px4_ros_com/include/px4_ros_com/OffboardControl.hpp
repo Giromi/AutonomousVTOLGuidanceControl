@@ -12,6 +12,7 @@
 # include <array>
 # include <queue>
 #include <std_msgs/msg/string.hpp>
+# include "px4_ros_com/setting/coordinate.hpp"
 using namespace std::chrono;
 using namespace std::chrono_literals;
 using namespace px4_msgs::msg;
@@ -36,8 +37,6 @@ struct DubinsPathPoint : public WayPoint {
         : WayPoint(north, east, down, yaw, is_dubins_path), time_stamp(time_stamp) { }
     double time_stamp;
 };
-
-enum e_coordinate {NORTH, EAST, DOWN, YAW};
 
 class OffboardControl : public rclcpp::Node
 {
