@@ -116,7 +116,7 @@ void OffboardControl::publish_offboard_control_mode()
 void OffboardControl::publish_trajectory_setpoint()
 {
 	TrajectorySetpoint msg{};
-	msg.position = {way_points_.front()[NORTH], way_points_.front()[EAST], way_points_.front()[DOWN]};
+	msg.position = {way_points_.front()[NORTH], way_points_.front()[EAST], way_points_.front()[UP]};
     msg.yaw = way_points_.front()[YAW] ? way_points_.front()[YAW]
                 : atan2(way_points_.front()[EAST] - local_position_[EAST], 
                         way_points_.front()[NORTH] - local_position_[NORTH]); // -pi ~ pi
@@ -127,7 +127,7 @@ void OffboardControl::publish_trajectory_setpoint()
     }
     if (abs(local_position_[NORTH] - way_points_.front()[NORTH]) < 1.0 &&
         abs(local_position_[EAST] - way_points_.front()[EAST]) < 1.0 &&
-        abs(local_position_[DOWN] - way_points_.front()[DOWN]) < 1.0) {
+        abs(local_position_[UP] - way_points_.front()[UP]) < 1.0) {
         std::cout << "way point reached" << std::endl;
         way_points_.pop();
     }

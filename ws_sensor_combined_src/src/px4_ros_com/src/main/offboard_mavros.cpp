@@ -129,13 +129,13 @@ private:
     static void action_go_north_(void) {
         //TODO make threshold
         local_position_[NORTH] += offset_;
-        std::cout << local_position_[NORTH] << std::endl;
+        OffboardMavros::print_reference_input();
     }
 
     static void action_go_east_(void) {
         //TODO make threshold
         local_position_[EAST] += offset_;
-        std::cout << local_position_[EAST] << std::endl;
+        OffboardMavros::print_reference_input();
     }
 
     static void action_go_down_(void) {
@@ -144,25 +144,40 @@ private:
         if (local_position_[UP] < 0.0){
             local_position_[UP] = 0.0;
         }
-        std::cout << local_position_[UP] << std::endl;
+        OffboardMavros::print_reference_input();
     }
 
     static void action_go_south_(void) {
         //TODO make threshold
         local_position_[NORTH] -= offset_;
-        std::cout << local_position_[NORTH] << std::endl;
+        OffboardMavros::print_reference_input();
     }
 
     static void action_go_west_(void) {
         //TODO make threshold
         local_position_[EAST] -= offset_;
-        std::cout << local_position_[EAST] << std::endl;
+        OffboardMavros::print_reference_input();
     }
 
     static void action_go_up_(void) {
         //TODO make threshold
         local_position_[UP] += offset_;
-        std::cout << local_position_[UP] << std::endl;
+        OffboardMavros::print_reference_input();
+    }
+
+    static void action_return_home(void) {
+        //TODO make threshold
+        local_position_[NORTH] = 0.0;
+        local_position_[EAST] = 0.0;
+        OffboardMavros::print_reference_input();
+    }
+
+    static void print_reference_input(void) {
+        std::cout << "Position Command {"
+                  << local_position_[NORTH] << ", "
+                  << local_position_[EAST] << ", "
+                  << local_position_[UP] << "} (North, East, Up)"
+                  << std::endl;
     }
 
     //
@@ -189,7 +204,7 @@ private:
 
 std::array<float, 3>		            OffboardMavros::local_position_{};
 const std::array<std::string, 16>		OffboardMavros::action_string_array_ 
-    = { "8", "6", "↓", "4", "2", "↑" };
+    = { "8", "6", "↓", "4", "2", "↑", "h" };
 
 void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_north_,
@@ -197,11 +212,11 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_down_,
     &OffboardMavros::action_go_west_,
     &OffboardMavros::action_go_south_,
-    &OffboardMavros::action_go_up_
+    &OffboardMavros::action_go_up_,
+    &OffboardMavros::action_return_home
 };
 
-float                    OffboardMavros::offset_ = 1.0f;
-
+float                    OffboardMavros::offset_ = 1.0;
 
 int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
