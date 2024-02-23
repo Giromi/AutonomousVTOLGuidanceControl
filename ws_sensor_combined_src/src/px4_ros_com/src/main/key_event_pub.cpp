@@ -55,16 +55,15 @@ public:
 private:
 
     void _processInput() {
-        char c;
         while (rclcpp::ok() 
-               && _check_running(c)
-               && _action(c)
-               && _publish(c));
+               && _get_is_running()
+               && _action()
+               && _publish());
     }
 
-    bool _publish(const char c) {
+    bool _publish(void) {
         auto message = std_msgs::msg::String();
-        message.data = std::string(1, c);
+        message.data = (c == '\0') ? key : std::string(1, c);
         RCLCPP_INFO(this->get_logger(), "Publishing: '%s'\n", message.data.c_str());
         _publisher->publish(message);
         return true;
@@ -83,47 +82,116 @@ private:
         return result;
     }
 
-    static bool _check_running(char& c) {
+    static bool _action(void) {
         std::cout << "VTOL Shell: ";
         c = std::getchar();
-        const bool result = _get_is_running();
-        return result;
-    }
-
-    static bool _action(const char c) {
-        std::cout << "'" << c << "'"<< std::endl;
         std::size_t i = KeyPublisher::_key_string.find(c);
         if (i == std::string::npos) //  못찼으면 std::string::npos 반환    
             return true;
-        const bool result = KeyPublisher::_key_func[i](c);
+        const bool result = KeyPublisher::_key_func[i]();
         _set_is_running(result);
         return result;
     }
 
-    static bool _press_help(const char c) {
-        static_cast<void>(c);
+    static bool _press_h(void) {
         std::cout << ">>> Help <<< \n" << std::endl;
         std::cout << "< COMMAND >" << std::endl;
         std::cout << "  q: Quit" << std::endl;
         std::cout << "  h: Home" << std::endl;
         std::cout << "  b: Back" << std::endl;
+        std::cout << "  ↑: Z axis ↑" << std::endl;
+        std::cout << "  ↓: Z axis ↓" << std::endl;
+        std::cout << "  6: X axis ↑" << std::endl;
+        std::cout << "  4: X axis ↓" << std::endl;
+        std::cout << "  8: Y axis ↑" << std::endl;
+        std::cout << "  2: Y axis ↓" << std::endl;
+        std::cout << "  ←: not yet" << std::endl;
+        std::cout << "  →: not yet" << std::endl;
         std::cout << std::endl;
         return true;
     }
 
-    static bool _press_quit(const char c) {
+    static bool _press_q(void) {
         std::cout << "Really Want? Press q to quit\n(if you don't, push any key)" << std::endl;
-        const char q = std::getchar();
-        if (c == q) {
+        c = std::getchar();
+        if (c == 'q') {
             rclcpp::shutdown();
             return false;
         }
         return true;
     }
 
-    static bool _press_back(const char c) {
-        static_cast<void>(c);
-        std::cout << ">>> Back <<< \n" << std::endl;
+    static bool _press_b(void) {
+        std::cout << ">>> Back <<<\n" << std::endl;
+        return true;
+    }
+
+    static bool press_arrow(void) {
+        if (std::getchar() == '[') {
+            c = std::getchar();
+        }
+        switch (c) {
+            case 'A': // 위쪽 방향키
+                press_arrow_up();
+                break;
+            case 'B': // 아래쪽 방향키
+                press_arrow_down();
+                break;
+            case 'C': // 오른쪽 방향키
+                press_arrow_right();
+                break;
+            case 'D': // 왼쪽 방향키
+                press_arrow_left();
+                break;
+            default:
+                break;
+        }
+        c = '\0';
+        return true;
+    }
+
+    static bool press_arrow_up(void) {
+        key = "↑";
+        std::cout << ">>> Z axis ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_arrow_down(void) {
+        key = "↓";
+        std::cout << ">>> Z axis -- <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_arrow_left(void) {
+        key = "←";
+        std::cout << ">>> not yet ← <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_arrow_right(void) {
+        key = "→";
+        std::cout << ">>> not yet → <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_6(void) {
+        std::cout << ">>> X axis ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_4(void) {
+        std::cout << ">>> X axis -- <<< \n" << std::endl;
+        return true;
+    }
+
+
+    static bool press_8(void) {
+        std::cout << ">>> Y axis ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_2(void) {
+        std::cout << ">>> Y axis -- <<< \n" << std::endl;
         return true;
     }
 
@@ -133,26 +201,35 @@ private:
 
     static bool                 _is_running;
     static const std::string    _key_string;
-    static bool (*_key_func[])(const char c);
+    static const std::string    _arrow_string;
+    static bool (*_key_func[])(void);
     static std::mutex _mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
+    static char                 c;
+    static std::string          key;
 };
 
 std::mutex KeyPublisher::_mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
 bool KeyPublisher::_is_running = true;
-const std::string KeyPublisher::_key_string = "qhb";
-bool (*KeyPublisher::_key_func[])(const char c) = {
+const std::string KeyPublisher::_key_string = "\033qhb2468";
+bool (*KeyPublisher::_key_func[])() = {
     // & 의미 생략 가능, 가독성을 위해 추가
-    &KeyPublisher::_press_quit,
-    &KeyPublisher::_press_help,
-    &KeyPublisher::_press_back
+    &KeyPublisher::press_arrow,
+    &KeyPublisher::_press_q,
+    &KeyPublisher::_press_h,
+    &KeyPublisher::_press_b,
+    &KeyPublisher::press_2,
+    &KeyPublisher::press_4,
+    &KeyPublisher::press_6,
+    &KeyPublisher::press_8
+
 };
+char KeyPublisher::c = '\0';
+std::string KeyPublisher::key = "";
 
 int main(int argc, char **argv) {
 	signal(SIGINT, KeyPublisher::sigint_handler);
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<KeyPublisher>();
-    rclcpp::spin(node);
+    rclcpp::spin(std::make_shared<KeyPublisher>());
     rclcpp::shutdown();
     return 0;
 }
-

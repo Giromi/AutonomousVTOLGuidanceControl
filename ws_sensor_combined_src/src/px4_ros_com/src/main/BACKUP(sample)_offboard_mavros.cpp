@@ -89,7 +89,7 @@ private:
         geometry_msgs::msg::PoseStamped pose;
         pose.pose.position.x = 0;
         pose.pose.position.y = 0;
-        pose.pose.position.z = 2;
+        pose.pose.position.z = 1;
         _local_pos_pub->publish(pose);
     }
 
