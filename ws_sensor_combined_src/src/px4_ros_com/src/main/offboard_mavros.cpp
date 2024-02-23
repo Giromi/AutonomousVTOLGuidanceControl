@@ -89,9 +89,9 @@ private:
 
     void publishPose() {
         geometry_msgs::msg::PoseStamped pose;
-        pose.pose.position.x = local_position_[EAST];
-        pose.pose.position.y = local_position_[NORTH];
-        pose.pose.position.z = local_position_[DOWN];
+        pose.pose.position.x = 0;//local_position_[EAST];
+        pose.pose.position.y = 0;//local_position_[NORTH];
+        pose.pose.position.z = 3;//local_position_[DOWN];
         local_pos_pub_->publish(pose);
     }
 
