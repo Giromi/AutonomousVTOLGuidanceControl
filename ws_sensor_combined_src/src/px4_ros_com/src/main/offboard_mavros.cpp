@@ -5,6 +5,7 @@
 #include <mavros_msgs/msg/state.hpp>
 #include <mavros_msgs/msg/actuator_control.hpp>
 #include <mavros_msgs/msg/override_rc_in.hpp>
+#include <mavros_msgs/srv/command_tol.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <array>
 #include <limits>
@@ -16,6 +17,7 @@ public:
         initializePublishers();
         initializeSubscribers();
         initializeClients();
+        initializeArrays();
         initializeTimers(50);
     }
 
@@ -35,7 +37,12 @@ private:
 
     void initializeClients(void) {
         arming_client_ = create_client<mavros_msgs::srv::CommandBool>("mavros/cmd/arming");
+        landing_client_ = create_client<mavros_msgs::srv::CommandTOL>("mavros/cmd/land");
         set_mode_client_ = create_client<mavros_msgs::srv::SetMode>("mavros/set_mode");
+    }
+
+    void initializeArrays() {
+        //TODO: local_position_ 초기화
     }
 
     void initializeTimers(const int rate_hz) {
@@ -60,13 +67,44 @@ private:
         }
     }
 
+    bool is_state_disarming() {
+        return (!current_state_.armed && (this->now() - last_request_).seconds() > 5.0);
+    }
+
+    bool is_state_arming() {
+        return (current_state_.armed && (this->now() - last_request_).seconds() > 5.0);
+    }
+
     void updateArmingStatus() {
-        if (!current_state_.armed && (this->now() - last_request_).seconds() > 5.0) {
+        if  (is_state_disarming()) {
             auto request = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
             request->value = true;
             arming_client_->async_send_request(request, std::bind(&OffboardMavros::armingResponseCallback, this, std::placeholders::_1));
             last_request_ = this->now();
         }
+    }
+
+    void updateDisarmingStatus() {
+        if  (is_state_arming()) {
+            auto request = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
+            request->value = false;
+            arming_client_->async_send_request(request, std::bind(&OffboardMavros::armingResponseCallback, this, std::placeholders::_1));
+            last_request_ = this->now();
+        }
+    }
+
+    void executeLanding_(void) {
+        if (local_position_[DOWN] != -1.0f) {
+            return ;
+        }
+        auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
+        request->altitude = 0;
+        request->latitude = 0;
+        request->longitude = 0;
+        request->min_pitch = 0;
+        request->yaw = 0;
+        landing_client_->async_send_request(request,
+                std::bind(&OffboardMavros::landingResponseCallback, this, std::placeholders::_1));
     }
 
     void offboardModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
@@ -84,6 +122,16 @@ private:
             RCLCPP_INFO(this->get_logger(), "Vehicle armed");
         } else {
             RCLCPP_ERROR(this->get_logger(), "Arming failed");
+        }
+    }
+
+    void landingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future) {
+        auto response = future.get();
+        if (response->success) {
+            RCLCPP_INFO(this->get_logger(), "Land command sent successfully");
+            updateDisarmingStatus();
+        } else {
+            RCLCPP_INFO(this->get_logger(), "Failed to send land command");
         }
     }
 
@@ -112,7 +160,6 @@ private:
         actuator_control_pub_->publish(actuator_control_msg);
     }
 
-
     void chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
         RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
 
@@ -124,7 +171,6 @@ private:
         }
         OffboardMavros::action_func_[i]();
     }
-
 
     static void action_go_north_(void) {
         //TODO make threshold
@@ -165,6 +211,11 @@ private:
         OffboardMavros::print_reference_input();
     }
 
+    static void action_landing_(void) {
+        local_position_[DOWN] = -1;
+    }
+    //TODO: 현재 위치를 확인해서 도달했을 disarm하는 함수를 만들어야함
+
     static void action_return_home(void) {
         //TODO make threshold
         local_position_[NORTH] = 0.0;
@@ -186,12 +237,15 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub_;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub_;
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client_;
+    rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_;
     rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr                set_mode_client_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription_;
     rclcpp::TimerBase::SharedPtr                                        timer_;
     mavros_msgs::msg::State                                             current_state_;
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
+
+    //TODO: static 지워서 멤버변수로 변경
     static std::array<float, 3>		        local_position_;
 
     static const std::string				arrow_string_;
@@ -203,8 +257,10 @@ private:
 
 
 std::array<float, 3>		            OffboardMavros::local_position_{};
-const std::array<std::string, 16>		OffboardMavros::action_string_array_ 
-    = { "8", "6", "↓", "4", "2", "↑", "h" };
+const std::array<std::string, 16>		OffboardMavros::action_string_array_
+    = { "8", "6", "↓", "4", "2", "↑", "h", "l" };
+rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_ = nullptr;
+
 
 void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_north_,
@@ -213,10 +269,11 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_west_,
     &OffboardMavros::action_go_south_,
     &OffboardMavros::action_go_up_,
-    &OffboardMavros::action_return_home
+    &OffboardMavros::action_return_home,
+    &OffboardMavros::action_landing_
 };
 
-float                    OffboardMavros::offset_ = 1.0;
+float                    OffboardMavros::offset_ = 0.5f;
 
 int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
