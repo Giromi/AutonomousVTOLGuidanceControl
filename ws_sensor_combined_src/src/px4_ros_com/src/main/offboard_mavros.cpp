@@ -49,7 +49,7 @@ private:
         const int rate_ms = 1000 / rate_hz;
         timer_ = this->create_wall_timer(
                 std::chrono::milliseconds(rate_ms),
-                std::bind(&OffboardMavros::publishPose, this));
+                std::bind(&OffboardMavros::publish, this));
     }
 
     void stateCallback(const mavros_msgs::msg::State::SharedPtr msg) {
@@ -93,8 +93,8 @@ private:
         }
     }
 
-    void executeLanding_(void) {
-        if (local_position_[UP] != -1.0f) {
+    void callLanding_(void) {
+        if (local_position_[UP] != -0.5f) {
             return ;
         }
         auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
@@ -133,6 +133,11 @@ private:
         } else {
             RCLCPP_INFO(this->get_logger(), "Failed to send land command");
         }
+    }
+
+    void publish(void) {
+        publishPose();
+        callLanding_();
     }
 
     void publishPose() {
@@ -212,7 +217,7 @@ private:
     }
 
     static void action_landing_(void) {
-        local_position_[UP] = -1;
+        local_position_[UP] = -1.0f;
     }
     //TODO: 현재 위치를 확인해서 도달했을 disarm하는 함수를 만들어야함
 
