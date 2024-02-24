@@ -94,7 +94,7 @@ private:
     }
 
     void executeLanding_(void) {
-        if (local_position_[DOWN] != -1.0f) {
+        if (local_position_[UP] != -1.0f) {
             return ;
         }
         auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
@@ -212,7 +212,7 @@ private:
     }
 
     static void action_landing_(void) {
-        local_position_[DOWN] = -1;
+        local_position_[UP] = -1;
     }
     //TODO: 현재 위치를 확인해서 도달했을 disarm하는 함수를 만들어야함
 
