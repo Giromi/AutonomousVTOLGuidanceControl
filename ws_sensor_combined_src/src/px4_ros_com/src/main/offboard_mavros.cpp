@@ -93,16 +93,19 @@ private:
         }
     }
 
-    // void executeLanding_(void) {
-    //     auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
-    //     request->altitude = 0;
-    //     request->latitude = 0;
-    //     request->longitude = 0;
-    //     request->min_pitch = 0;
-    //     request->yaw = 0;
-    //     landing_client_->async_send_request(request,
-    //             std::bind(&OffboardMavros::landingResponseCallback, this, std::placeholders::_1));
-    // }
+    void executeLanding_(void) {
+        if (local_position_[DOWN] != -1.0f) {
+            return ;
+        }
+        auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
+        request->altitude = 0;
+        request->latitude = 0;
+        request->longitude = 0;
+        request->min_pitch = 0;
+        request->yaw = 0;
+        landing_client_->async_send_request(request,
+                std::bind(&OffboardMavros::landingResponseCallback, this, std::placeholders::_1));
+    }
 
     void offboardModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
         auto response = future.get();
@@ -122,16 +125,15 @@ private:
         }
     }
 
-    void landingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future) {
+    void landingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future) {
         auto response = future.get();
         if (response->success) {
             RCLCPP_INFO(this->get_logger(), "Land command sent successfully");
+            updateDisarmingStatus();
         } else {
             RCLCPP_INFO(this->get_logger(), "Failed to send land command");
         }
     }
-
-
 
     void publishPose() {
         geometry_msgs::msg::PoseStamped pose;
@@ -212,6 +214,10 @@ private:
         local_position_[DOWN] -= offset_;
     }
 
+    static void action_landing_(void) {
+        local_position_[DOWN] = -1;
+    }
+
     //TODO: 현재 위치를 확인해서 도달했을 disarm하는 함수를 만들어야함
     //
     /* -- Members Variables -- */
@@ -251,7 +257,7 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_west_,
     &OffboardMavros::action_go_south_,
     &OffboardMavros::action_go_down_,
-    // &OffboardMavros::executeLanding
+    &OffboardMavros::action_landing_
 };
 
 unsigned int                    OffboardMavros::offset_ = 1;
