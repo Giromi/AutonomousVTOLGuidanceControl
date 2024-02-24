@@ -94,7 +94,7 @@ private:
     }
 
     void callLanding_(void) {
-        if (local_position_[UP] != -0.5f) {
+        if (local_position_[UP] > 1) {
             return ;
         }
         auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
@@ -142,8 +142,8 @@ private:
 
     void publishPose() {
         geometry_msgs::msg::PoseStamped pose;
-        pose.pose.position.x = local_position_[EAST];
-        pose.pose.position.y = local_position_[NORTH];
+        pose.pose.position.x = local_position_[NORTH];
+        pose.pose.position.y = local_position_[EAST];
         pose.pose.position.z = local_position_[UP];
         local_pos_pub_->publish(pose);
     }
@@ -192,9 +192,6 @@ private:
     static void action_go_down_(void) {
         //TODO make threshold
         local_position_[UP] -= offset_;
-        if (local_position_[UP] < 0.0){
-            local_position_[UP] = 0.0;
-        }
         OffboardMavros::print_reference_input();
     }
 
