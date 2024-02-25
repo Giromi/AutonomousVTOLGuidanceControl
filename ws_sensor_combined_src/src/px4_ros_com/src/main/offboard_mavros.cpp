@@ -94,7 +94,7 @@ private:
     }
 
     void callLanding_(void) {
-        if (local_position_[UP] > 1) {
+        if (!is_landing || local_position_[UP] > 1) {
             return ;
         }
         auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
@@ -142,8 +142,8 @@ private:
 
     void publishPose() {
         geometry_msgs::msg::PoseStamped pose;
-        pose.pose.position.x = local_position_[NORTH];
-        pose.pose.position.y = local_position_[EAST];
+        pose.pose.position.x = local_position_[EAST];
+        pose.pose.position.y = local_position_[NORTH];
         pose.pose.position.z = local_position_[UP];
         local_pos_pub_->publish(pose);
     }
@@ -215,6 +215,7 @@ private:
 
     static void action_landing_(void) {
         local_position_[UP] = -1.0f;
+        is_landing = true;
     }
     //TODO: 현재 위치를 확인해서 도달했을 disarm하는 함수를 만들어야함
 
@@ -255,6 +256,8 @@ private:
 
     static const std::array<std::string, 16>      action_string_array_;
     static void                                   (*action_func_[])(void);
+    static bool                                   is_landing;
+
 };
 
 
@@ -276,6 +279,7 @@ void (*OffboardMavros::action_func_[])(void) = {
 };
 
 float                    OffboardMavros::offset_ = 0.5f;
+bool                     OffboardMavros::is_landing = false;
 
 int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
