@@ -94,20 +94,7 @@ private:
     }
 
     static bool _press_h(void) {
-        std::cout << ">>> Help <<< \n" << std::endl;
-        std::cout << "< COMMAND >" << std::endl;
-        std::cout << "  q: Quit" << std::endl;
-        std::cout << "  h: Home" << std::endl;
-        std::cout << "  b: Back" << std::endl;
-        std::cout << "  ↑: Z axis ↑" << std::endl;
-        std::cout << "  ↓: Z axis ↓" << std::endl;
-        std::cout << "  6: X axis ↑" << std::endl;
-        std::cout << "  4: X axis ↓" << std::endl;
-        std::cout << "  8: Y axis ↑" << std::endl;
-        std::cout << "  2: Y axis ↓" << std::endl;
-        std::cout << "  ←: not yet" << std::endl;
-        std::cout << "  →: not yet" << std::endl;
-        std::cout << std::endl;
+        std::cout << ">>> Return to Home <<<\n" << std::endl;
         return true;
     }
 
@@ -195,6 +182,24 @@ private:
         return true;
     }
 
+    static bool _press_questionmark(void) {
+        std::cout << ">>> Help <<< \n" << std::endl;
+        std::cout << "< COMMAND >" << std::endl;
+        std::cout << "  q: Quit" << std::endl;
+        std::cout << "  h: Home" << std::endl;
+        std::cout << "  b: Back" << std::endl;
+        std::cout << "  ↑: Z axis ↑" << std::endl;
+        std::cout << "  ↓: Z axis ↓" << std::endl;
+        std::cout << "  6: X axis ↑" << std::endl;
+        std::cout << "  4: X axis ↓" << std::endl;
+        std::cout << "  8: Y axis ↑" << std::endl;
+        std::cout << "  2: Y axis ↓" << std::endl;
+        std::cout << "  ←: not yet" << std::endl;
+        std::cout << "  →: not yet" << std::endl;
+        std::cout << std::endl;
+        return true;
+    }
+
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _publisher;
     std::thread                 _input_thread;
     TerminalMode                _rawMode;
@@ -210,7 +215,7 @@ private:
 
 std::mutex KeyPublisher::_mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
 bool KeyPublisher::_is_running = true;
-const std::string KeyPublisher::_key_string = "\033qhb2468";
+const std::string KeyPublisher::_key_string = "\033qhb2468?";
 bool (*KeyPublisher::_key_func[])() = {
     // & 의미 생략 가능, 가독성을 위해 추가
     &KeyPublisher::press_arrow,
@@ -220,8 +225,8 @@ bool (*KeyPublisher::_key_func[])() = {
     &KeyPublisher::press_2,
     &KeyPublisher::press_4,
     &KeyPublisher::press_6,
-    &KeyPublisher::press_8
-
+    &KeyPublisher::press_8,
+    &KeyPublisher::_press_questionmark
 };
 char KeyPublisher::c = '\0';
 std::string KeyPublisher::key = "";
