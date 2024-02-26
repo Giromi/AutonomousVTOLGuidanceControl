@@ -274,6 +274,7 @@ private:
 
 
 std::array<float, 3>		            OffboardMavros::local_position_{};
+std::array<double, 3>		            OffboardMavros::current_position_{};
 const std::array<std::string, 16>		OffboardMavros::action_string_array_
     = { "8", "6", "↓", "4", "2", "↑", "h", "l" };
 rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_ = nullptr;
