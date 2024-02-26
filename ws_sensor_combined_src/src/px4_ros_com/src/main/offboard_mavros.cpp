@@ -146,19 +146,11 @@ private:
     }
 
     void publishPose() {
-<<<<<<< HEAD
         geometry_msgs::msg::PoseStamped pose;
         pose.pose.position.x = local_position_[EAST];
         pose.pose.position.y = local_position_[NORTH];
         pose.pose.position.z = local_position_[UP];
         local_pos_pub_->publish(pose);
-=======
-        auto msg = std::make_shared<geometry_msgs::msg::PoseStamped>();
-        msg->pose.position.x =0;// local_position_[EAST];
-        msg->pose.position.y =0;// local_position_[NORTH];
-        msg->pose.position.z =2;// local_position_[DOWN];
-        local_pos_pub_->publish(*msg);
->>>>>>> 5dfef806 (hotfix: return before 4th branch)
     }
 
     void publishActuatorControls() {
@@ -186,8 +178,6 @@ private:
         OffboardMavros::action_func_[i]();
     }
 
-<<<<<<< HEAD
-=======
     void currentpositionCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
         current_position_ = {msg->pose.pose.position.x, msg->pose.pose.position.y, msg->pose.pose.position.z};
 
@@ -197,7 +187,6 @@ private:
         << "z : " << current_position_[2] << std::endl;
     }
 
->>>>>>> 5dfef806 (hotfix: return before 4th branch)
     static void action_go_north_(void) {
         //TODO make threshold
         local_position_[NORTH] += offset_;
@@ -269,15 +258,10 @@ private:
     mavros_msgs::msg::State                                             current_state_;
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
-<<<<<<< HEAD
 
     //TODO: static 지워서 멤버변수로 변경
     static std::array<float, 3>		        local_position_;
-
-=======
-    static std::array<unsigned int, 3>		local_position_;
     static std::array<double, 3>		    current_position_;
->>>>>>> 5dfef806 (hotfix: return before 4th branch)
     static const std::string				arrow_string_;
     static float                            offset_;
 
@@ -287,19 +271,12 @@ private:
 
 };
 
-<<<<<<< HEAD
 
 std::array<float, 3>		            OffboardMavros::local_position_{};
 const std::array<std::string, 16>		OffboardMavros::action_string_array_
     = { "8", "6", "↓", "4", "2", "↑", "h", "l" };
 rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_ = nullptr;
 
-=======
-std::array<double, 3>		            OffboardMavros::current_position_{};
-std::array<unsigned int, 3>		        OffboardMavros::local_position_{};
-const std::array<std::string, 16>		OffboardMavros::action_string_array_ 
-    = { "8", "6", "↓", "4", "2", "↑" };
->>>>>>> 5dfef806 (hotfix: return before 4th branch)
 
 void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_north_,
