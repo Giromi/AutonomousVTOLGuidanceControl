@@ -259,6 +259,7 @@ private:
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
 
+
     //TODO: static 지워서 멤버변수로 변경
     static std::array<float, 3>		        local_position_;
     static std::array<double, 3>		    current_position_;
