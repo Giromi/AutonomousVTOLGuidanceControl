@@ -93,12 +93,12 @@ private:
         return result;
     }
 
-    static bool _press_h(void) {
+    static bool press_h(void) {
         std::cout << ">>> Return to Home <<<\n" << std::endl;
         return true;
     }
 
-    static bool _press_q(void) {
+    static bool press_q(void) {
         std::cout << "Really Want? Press q to quit\n(if you don't, push any key)" << std::endl;
         c = std::getchar();
         if (c == 'q') {
@@ -108,7 +108,7 @@ private:
         return true;
     }
 
-    static bool _press_b(void) {
+    static bool press_b(void) {
         std::cout << ">>> Back <<<\n" << std::endl;
         return true;
     }
@@ -139,25 +139,35 @@ private:
 
     static bool press_arrow_up(void) {
         key = "↑";
-        std::cout << ">>> Z axis ++ <<< \n" << std::endl;
+        std::cout << ">>> N axis ++ <<< \n" << std::endl;
         return true;
     }
 
     static bool press_arrow_down(void) {
         key = "↓";
-        std::cout << ">>> Z axis -- <<< \n" << std::endl;
+        std::cout << ">>> N axis -- <<< \n" << std::endl;
         return true;
     }
 
     static bool press_arrow_left(void) {
         key = "←";
-        std::cout << ">>> not yet ← <<< \n" << std::endl;
+        std::cout << ">>> E axis -- <<< \n" << std::endl;
         return true;
     }
 
     static bool press_arrow_right(void) {
         key = "→";
-        std::cout << ">>> not yet → <<< \n" << std::endl;
+        std::cout << ">>> E axis ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_u(void){
+        std::cout << ">>> U axis ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_d(void){
+        std::cout << ">>> U axis ++ <<< \n" << std::endl;
         return true;
     }
 
@@ -182,7 +192,7 @@ private:
         return true;
     }
 
-    static bool _press_questionmark(void) {
+    static bool press_questionmark(void) {
         std::cout << ">>> Help <<< \n" << std::endl;
         std::cout << "< COMMAND >" << std::endl;
         std::cout << "  q: Quit" << std::endl;
@@ -215,18 +225,20 @@ private:
 
 std::mutex KeyPublisher::_mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
 bool KeyPublisher::_is_running = true;
-const std::string KeyPublisher::_key_string = "\033qhb2468?";
+const std::string KeyPublisher::_key_string = "\033udqhb2468?";
 bool (*KeyPublisher::_key_func[])() = {
     // & 의미 생략 가능, 가독성을 위해 추가
-    &KeyPublisher::press_arrow,
-    &KeyPublisher::_press_q,
-    &KeyPublisher::_press_h,
-    &KeyPublisher::_press_b,
+    &KeyPublisher::press_arrow,         // 지평방향 position control 제어
+    &KeyPublisher::press_u,            // 고도++
+    &KeyPublisher::press_d,            // 고도--
+    &KeyPublisher::press_q,
+    &KeyPublisher::press_h,
+    &KeyPublisher::press_b,
     &KeyPublisher::press_2,
     &KeyPublisher::press_4,
     &KeyPublisher::press_6,
     &KeyPublisher::press_8,
-    &KeyPublisher::_press_questionmark
+    &KeyPublisher::press_questionmark
 };
 char KeyPublisher::c = '\0';
 std::string KeyPublisher::key = "";
