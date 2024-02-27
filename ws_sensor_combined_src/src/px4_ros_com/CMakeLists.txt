@@ -26,6 +26,7 @@ find_package(px4_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 # pkg-config 지원 활성화
 find_package(PkgConfig REQUIRED)
 
@@ -54,6 +55,7 @@ function(setup_target target_name)
     sensor_msgs
     std_msgs
     mavros_msgs
+    nav_msgs
   )
 endfunction()
 
