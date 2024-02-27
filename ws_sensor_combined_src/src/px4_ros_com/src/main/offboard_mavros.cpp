@@ -177,6 +177,7 @@ private:
             return ;
         }
         OffboardMavros::action_func_[i]();
+        OffboardMavros::print_reference_input();
     }
 
     void currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
@@ -191,37 +192,31 @@ private:
     static void action_go_north_(void) {
         //TODO make threshold
         local_position_[NORTH] += offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_east_(void) {
         //TODO make threshold
         local_position_[EAST] += offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_down_(void) {
         //TODO make threshold
         local_position_[UP] -= offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_south_(void) {
         //TODO make threshold
         local_position_[NORTH] -= offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_west_(void) {
         //TODO make threshold
         local_position_[EAST] -= offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_up_(void) {
         //TODO make threshold
         local_position_[UP] += offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_landing_(void) {
@@ -230,11 +225,10 @@ private:
     }
     //TODO: 현재 위치를 확인해서 도달했을 disarm하는 함수를 만들어야함
 
-    static void action_return_home(void) {
+    static void action_return_home_(void) {
         //TODO make threshold
         local_position_[NORTH] = 0.0;
         local_position_[EAST] = 0.0;
-        OffboardMavros::print_reference_input();
     }
 
     static void print_reference_input(void) {
@@ -290,7 +284,7 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_west_,
     &OffboardMavros::action_go_south_,
     &OffboardMavros::action_go_up_,
-    &OffboardMavros::action_return_home,
+    &OffboardMavros::action_return_home_,
     &OffboardMavros::action_landing_
 };
 
