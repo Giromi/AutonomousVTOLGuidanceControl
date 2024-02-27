@@ -10,6 +10,7 @@
 #include <array>
 #include <limits>
 #include "px4_ros_com/setting/coordinate.hpp"
+//#include <nav_msgs/msg/odometry.hpp>
 
 class OffboardMavros : public rclcpp::Node {
 public:
@@ -32,6 +33,10 @@ private:
                 "mavros/state", 10, std::bind(&OffboardMavros::stateCallback, this, std::placeholders::_1));
         subscription_ = this->create_subscription<std_msgs::msg::String>( "chatter", 10,
                 std::bind( &OffboardMavros::chatterCallback, this, std::placeholders::_1
+        ));
+        auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
+        current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
+        std::bind(&OffboardMavros::currentpositionCallback, this, std::placeholders::_1
         ));
     }
 
@@ -66,6 +71,7 @@ private:
             last_request_ = this->now();
         }
     }
+
 
     bool is_state_disarming() {
         return (!current_state_.armed && (this->now() - last_request_).seconds() > 5.0);
@@ -156,10 +162,6 @@ private:
         actuator_control_msg.controls[0] = 1.0f;
         actuator_control_msg.controls[1] = 1.0f;
         actuator_control_msg.controls[2] = 1.0f;
-        actuator_control_msg.controls[3] = 1.0f;
-        actuator_control_msg.controls[4] = 1.0f;
-        actuator_control_msg.controls[5] = 1.0f;
-        actuator_control_msg.controls[6] = 1.0f;
         actuator_control_msg.controls[7] = 1.0f;
         RCLCPP_INFO(this->get_logger(), "publishing actuator controls");
         actuator_control_pub_->publish(actuator_control_msg);
@@ -176,6 +178,15 @@ private:
         }
         OffboardMavros::action_func_[i]();
         OffboardMavros::print_reference_input();
+    }
+
+    void currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+        current_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
+        std::cout.precision(2);
+        std::cout << "현재 위치" << std::endl;
+        std::cout << "x : " << current_position_[EAST] << "\n"
+        << "y : " << current_position_[NORTH] << "\n"
+        << "z : " << current_position_[UP] << std::endl;
     }
 
     static void action_go_north_(void) {
@@ -232,6 +243,7 @@ private:
     /* -- Members Variables -- */
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub_;
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub_;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub_;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub_;
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client_;
     rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_;
@@ -242,9 +254,10 @@ private:
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
 
+
     //TODO: static 지워서 멤버변수로 변경
     static std::array<float, 3>		        local_position_;
-
+    static std::array<double, 3>		    current_position_;
     static const std::string				arrow_string_;
     static float                            offset_;
 
@@ -255,7 +268,10 @@ private:
 };
 
 
+
+
 std::array<float, 3>		            OffboardMavros::local_position_{};
+std::array<double, 3>		            OffboardMavros::current_position_{};
 const std::array<std::string, 16>		OffboardMavros::action_string_array_
     = { "8", "6", "↓", "4", "2", "↑", "h", "l" };
 rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_ = nullptr;
