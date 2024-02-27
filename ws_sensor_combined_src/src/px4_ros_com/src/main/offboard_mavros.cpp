@@ -17,7 +17,6 @@ public:
         initializePublishers();
         initializeSubscribers();
         initializeClients();
-        initializeArrays();
         initializeTimers(50);
     }
 
@@ -58,9 +57,6 @@ private:
                 std::bind(&OffboardMavros::publish, this));
     }
 
-    void initializeArrays() {
-    }
-
     void publish(void) {
         publishPose();
     }
@@ -80,7 +76,7 @@ private:
         if (landFlag) {
             return ;
         }
-        const std::string& cur_mode = 'POSCTL';
+        // const std::string& cur_mode = 'OFFBOARD';
         if (current_state_.mode == "OFFBOARD") {
             return ;
         }
@@ -107,7 +103,6 @@ private:
             last_request_ = this->now();
         }
     }
-
 
     // state
     bool call_takeoff_(const std::string& key) {
@@ -206,7 +201,6 @@ private:
         return (callArming_(key) || call_takeoff_(key) || callLanding_(key));
     }
 
-
     /* -- Callback Functions -- */
 
     void chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
@@ -279,7 +273,6 @@ private:
         return (current_state_.armed);
     }
 
-
     /* -- Static Functions -- */
 
     static void action_go_north_(void) {
@@ -330,6 +323,7 @@ private:
         OffboardMavros::print_reference_input();
     }
 
+
     static void print_reference_input(void) {
         std::cout << "Position Command {"
                   << local_position_[NORTH] << ", "
@@ -351,8 +345,7 @@ private:
 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription_;
-
-    rclcpp::TimerBase::SharedPtr                                        timer_;
+rclcpp::TimerBase::SharedPtr                                        timer_;
     mavros_msgs::msg::State                                             current_state_;
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
