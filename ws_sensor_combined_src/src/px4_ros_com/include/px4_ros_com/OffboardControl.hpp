@@ -11,8 +11,8 @@
 # include <stdint.h>
 # include <array>
 # include <queue>
-#include <std_msgs/msg/string.hpp>
-# include "px4_ros_com/setting/coordinate.hpp"
+# include <std_msgs/msg/string.hpp>
+# include "px4_ros_com/convention.hpp"
 using namespace std::chrono;
 using namespace std::chrono_literals;
 using namespace px4_msgs::msg;

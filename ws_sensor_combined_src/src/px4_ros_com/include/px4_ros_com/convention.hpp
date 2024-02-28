@@ -1,0 +1,83 @@
+#ifndef CONVENTION_HPP
+#define CONVENTION_HPP
+
+
+
+namespace vtol {
+    //숫자로 사용
+    enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
+
+    // disarm 2^0, arm 2^1, takeoff 2^2, land 2^3 
+    enum Bit {
+        BIT_READY       =   0b10000000, // Before arming
+        BIT_ARMED       =	0b00000001,
+        BIT_FLY         =	0b00000010,
+        BIT_TAKEOFF     =	0b00000100,
+        BIT_LAND        =	0b00001000,
+        BIT_START       =	0b00010000,
+    };
+
+    enum Result {
+        SUCCESS = 0,
+        FAIL = 1
+    };
+
+    enum Status {                     // enum class 타입 안정성 사용
+        INIT,
+        READY       =   BIT_READY,              // Before arming
+        ARMED       =   READY   | BIT_ARMED,      // After arming
+        FLY         =   ARMED   | BIT_FLY,    // After takeoff
+        TAKEOFF     =   FLY     | BIT_TAKEOFF,    // After takeoff
+        LAND        =   FLY     | BIT_LAND,       // After land
+        START       =   FLY     | BIT_START      // Before takeoff
+    };
+
+    enum Position {
+        INIT_NORTH  = 0,
+        INIT_EAST   = 0, 
+        INIT_UP     = 1, 
+        INIT_YAW    = 0
+    };
+
+    struct GeographicCoordinate {
+        float altitude;
+        float latitude;
+        float longitude;
+        float min_pitch;
+        float yaw;
+    };
+
+    constexpr int   ACTION_SIZE     = 20;
+
+    constexpr char  FCU_ARM[]       = "AUTO.RTL";
+    constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
+    constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";
+    constexpr char	FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
+    constexpr char	FCU_LAND[]      = "AUTO.LAND";
+}
+
+
+#endif
+
+/*
+namespace flight {
+    enum Status {
+        INIT, ARMED, DISARMED, TAKEOFF, LAND
+    };
+}
+
+// 사용 예
+flight::Status status = flight::ARMED;
+
+*/
+
+/*
+namespace flight {
+    enum class Status {
+        INIT, ARMED, DISARMED, TAKEOFF, LAND
+    };
+}
+
+// 사용 예
+flight::Status status = flight::Status::ARMED;
+*/
