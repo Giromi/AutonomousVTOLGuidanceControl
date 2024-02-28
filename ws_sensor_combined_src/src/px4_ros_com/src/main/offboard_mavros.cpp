@@ -1,4 +1,4 @@
-#include <rclcpp/rclcpp.hpp>
+include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <mavros_msgs/srv/command_bool.hpp>
 #include <mavros_msgs/srv/set_mode.hpp>
@@ -12,6 +12,9 @@
 #include <array>
 #include "px4_ros_com/convention.hpp"
 #include "DEBUG.hpp"
+#include <array>
+#include <limits>
+//#include <nav_msgs/msg/odometry.hpp>
 
 class OffboardMavros : public rclcpp::Node {
 public:
@@ -36,12 +39,11 @@ private:
 
         subscription_ = this->create_subscription<std_msgs::msg::String>("/chatter", 10,
                 std::bind( &OffboardMavros::chatterCallback, this, std::placeholders::_1
-                    ));
-
-        // auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
-        // current_pos_sub_ = create_subscription<nav_msgs::msg::Odometry>("/mavros/local_position/odom", default_qos,
-        // std::bind(&OffboardMavros::currentpositionCallback, this, std::placeholders::_1
-        // ));
+        ));
+        auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
+        current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
+        std::bind(&OffboardMavros::currentpositionCallback, this, std::placeholders::_1
+        ));
     }
 
     void initializeClients(void) {
@@ -321,6 +323,7 @@ private:
             return ;
         }
         OffboardMavros::action_func_[i]();
+        OffboardMavros::print_reference_input();
     }
 
 
@@ -383,50 +386,43 @@ private:
     // }
 
     /* -- Static Functions -- */
-
-    void currentpositionCallback(const nav_msgs::msg::Odometry::SharedPtr msg) {
-        current_position_ = {msg->pose.pose.position.x, msg->pose.pose.position.y, msg->pose.pose.position.z};
-
+    void currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+        current_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
+        std::cout.precision(2);
         std::cout << "현재 위치" << std::endl;
-        std::cout << "x : " << current_position_[0] << "\n"
-        << "y : " << current_position_[1] << "\n"
-        << "z : " << current_position_[2] << std::endl;
+        std::cout << "x : " << current_position_[EAST] << "\n"
+        << "y : " << current_position_[NORTH] << "\n"
+        << "z : " << current_position_[UP] << std::endl;
     }
 
     static void action_go_north_(void) {
         //TODO make threshold
         local_position_[vtol::NORTH] += offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_east_(void) {
         //TODO make threshold
         local_position_[vtol::EAST] += offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_down_(void) {
         //TODO make threshold
         local_position_[vtol::UP] -= offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_south_(void) {
         //TODO make threshold
         local_position_[vtol::NORTH] -= offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_west_(void) {
         //TODO make threshold
         local_position_[vtol::EAST] -= offset_;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_go_up_(void) {
         //TODO make threshold
         local_position_[vtol::UP] += offset_;
-        OffboardMavros::print_reference_input();
     }
 
     // static void action_landing_(void) {
@@ -434,11 +430,10 @@ private:
     // }
     //TODO: 현재 위치를 확인해서 도달했을 disarm하는 함수를 만들어야함
 
-    static void action_return_home(void) {
+    static void action_return_home_(void) {
         //TODO make threshold
         local_position_[vtol::NORTH] = 0.0;
         local_position_[vtol::EAST] = 0.0;
-        OffboardMavros::print_reference_input();
     }
 
     static void action_arming_(void) {
@@ -507,7 +502,7 @@ private:
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub_;
-    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr            current_pos_sub_;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub_;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub_;
 
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client_;
@@ -545,6 +540,7 @@ std::array<double, 3>		            OffboardMavros::current_position_{};
 const std::array<std::string, vtol::ACTION_SIZE>		OffboardMavros::action_string_array_ = { 
     "8", "6", "↓", "4", "2", "↑", "h", "a", "d", "t", "l", "s"
 };
+
 
 void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_north_,
