@@ -22,21 +22,30 @@
 #define BOLDMAGENTA     "\033[1m\033[35m"       /* Bold Magenta */
 #define BOLDCYAN        "\033[1m\033[36m"       /* Bold Cyan */
 #define BOLDWHITE       "\033[1m\033[37m"       /* Bold White */
+#define DEBUG_HEADER    BOLDWHITE << "[DEBUG] " << RESET
 
 namespace DEBUG {
     template <typename T>
-    void print_binary(T target) {
-        std::cout << YELLOW << std::bitset<8>(target) << RESET << std::endl;
+    void print_binary(const std::string& msg, const T& target, const char* color) {
+        std::cout << DEBUG_HEADER << color 
+                  << msg << std::bitset<8>(target) << RESET << std::endl;
     }
 
     template <typename T>
-    void print_just(T target) {
-        std::cout << CYAN << target << RESET << std::endl;
+    void print_bool(const std::string& msg, const T& target, const char* color) {
+        std::cout << DEBUG_HEADER << color 
+                  << msg << std::boolalpha << target << RESET << std::endl;
     }
 
     template <typename T>
-    void print_bool(T target) {
-        std::cout << RED << std::boolalpha << target << RESET << std::endl;
+    void print(const std::string& msg, const T& target, const char* color) {
+        std::cout << DEBUG_HEADER << color 
+                  << msg << target << RESET << std::endl;
+    }
+
+    template <typename T>
+    void msg(const std::string& msg, const T& target, const char* color = BOLDWHITE) {
+        std::cout << color << msg << target << RESET << std::endl;
     }
 }
 
