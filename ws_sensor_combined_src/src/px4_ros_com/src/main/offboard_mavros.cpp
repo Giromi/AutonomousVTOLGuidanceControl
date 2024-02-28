@@ -40,10 +40,10 @@ private:
         subscription_ = this->create_subscription<std_msgs::msg::String>("/chatter", 10,
                 std::bind( &OffboardMavros::chatterCallback, this, std::placeholders::_1
         ));
-        auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
-        current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
-        std::bind(&OffboardMavros::currentpositionCallback, this, std::placeholders::_1
-        ));
+        // auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
+        // current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
+        // std::bind(&OffboardMavros::currentpositionCallback, this, std::placeholders::_1
+        // ));
     }
 
     void initializeClients(void) {
@@ -390,9 +390,9 @@ private:
         current_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
         std::cout.precision(2);
         std::cout << "현재 위치" << std::endl;
-        std::cout << "x : " << current_position_[EAST] << "\n"
-        << "y : " << current_position_[NORTH] << "\n"
-        << "z : " << current_position_[UP] << std::endl;
+        std::cout << "x : " << current_position_[vtol::EAST] << "\n"
+                  << "y : " << current_position_[vtol::NORTH] << "\n"
+                  << "z : " << current_position_[vtol::UP] << std::endl;
     }
 
     static void action_go_north_(void) {
@@ -549,7 +549,7 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_go_west_,
     &OffboardMavros::action_go_south_,
     &OffboardMavros::action_go_up_,
-    &OffboardMavros::action_return_home,
+    &OffboardMavros::action_return_home_,
     &OffboardMavros::action_arming_,
     &OffboardMavros::action_disarming_,
     &OffboardMavros::action_takeoff_,
