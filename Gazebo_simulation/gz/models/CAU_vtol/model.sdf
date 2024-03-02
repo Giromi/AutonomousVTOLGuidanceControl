@@ -42,7 +42,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://twostone1/meshes/test.dae</uri>
+            <uri>model://CAU_vtol/meshes/test.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -133,7 +133,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://twostone1/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://CAU_vtol/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -196,7 +196,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://twostone1/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://CAU_vtol/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -259,7 +259,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://twostone1/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://CAU_vtol/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -322,7 +322,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://twostone1/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://CAU_vtol/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -386,7 +386,7 @@
         <geometry>
           <mesh>
             <scale>0.8 0.8 0.8</scale>
-            <uri>model://twostone1/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://CAU_vtol/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
