@@ -6,4 +6,4 @@ launch:
 
 - node:
     pkg: "px4_ros_com"
-    exec: "key_event_sub"
+    exec: "current_position_sub"
