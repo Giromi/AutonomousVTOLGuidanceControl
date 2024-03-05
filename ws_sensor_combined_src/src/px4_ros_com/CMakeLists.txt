@@ -78,11 +78,13 @@ endforeach()
 #     $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
 # )
 
+
 # Executables
 set(EXECUTABLES
   listeners/sensor_combined_listener
   listeners/vehicle_gps_position_listener
   advertisers/debug_vect_advertiser
+  main/current_position_sub
   main/offboard_control
   main/key_event_pub
   main/key_event_sub
