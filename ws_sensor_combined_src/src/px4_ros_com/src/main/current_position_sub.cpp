@@ -3,7 +3,7 @@
 
 class CurrentPostionSubscriber : public rclcpp::Node {
 public: 
-    CurrentPostionSubscriber() : Node("offboard_mavros_local_position") {
+    CurrentPostionSubscriber() : Node("current_position_sub") {
        auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
         current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
         std::bind(&CurrentPostionSubscriber::currentpositionCallback, this, std::placeholders::_1
