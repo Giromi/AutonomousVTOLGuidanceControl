@@ -91,6 +91,7 @@ set(EXECUTABLES
   main/pwm_aux_output
   main/gripper_servo
   main/offboard_mavros
+  main/current_position_sub
 )
 
 foreach(exec ${EXECUTABLES})

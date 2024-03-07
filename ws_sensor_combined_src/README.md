@@ -29,3 +29,15 @@ colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON --packages-select p
 source install/setup.bash
 ```
 cmake 인자로  `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`를 추가해줍니다.
+
+#### Launch file source
+
+```shell
+cd ~/ws_sensor_combined/src
+source install/local_setup.bash
+```
+#### Run launch file
+
+```shell
+ros2 launch px4_ros_com offboard_offboard_launch.yaml
+```

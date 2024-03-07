@@ -12,7 +12,6 @@
 #include <array>
 #include "px4_ros_com/convention.hpp"
 #include "DEBUG.hpp"
-#include <array>
 #include <limits>
 //#include <nav_msgs/msg/odometry.hpp>
 
@@ -92,6 +91,7 @@ private:
             }
         }
         if (OffboardMavros::cmdFlag_ == vtol::READY) {
+    
             if (fcuState_.mode != vtol::FCU_HOLD) {
                 update_disarming_status_();
                 update_hold_mode_();
