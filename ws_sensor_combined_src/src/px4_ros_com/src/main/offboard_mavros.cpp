@@ -317,15 +317,23 @@ private:
         RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
 
 
-        size_t i = 0;
-        for (; msg->data != OffboardMavros::action_string_array_[i]; ++i);
-
-        if (i == OffboardMavros::action_string_array_.size()) {
-            std::cout << "Invalid input" << std::endl;
+        size_t i = 0, j = 0;
+        for (; i < OffboardMavros::action_string_array_.size() && msg->data != OffboardMavros::action_string_array_[i]; ++i);
+        
+        if (i != OffboardMavros::action_string_array_.size()) {
+            OffboardMavros::action_func_[i]();
+            OffboardMavros::print_reference_input();
             return ;
         }
-        OffboardMavros::action_func_[i]();
-        OffboardMavros::print_reference_input();
+
+        for (; j < OffboardMavros::status_string_array_.size() && msg->data != OffboardMavros::status_string_array_[j]; ++j)
+
+        if (j != OffboardMavros::status_string_array_.size()) {
+            OffboardMavros::status_func_[j]();
+            return ;
+        }
+
+        std::cout << "Invalid input" << std::endl;
     }
 
 
