@@ -316,8 +316,8 @@ private:
     void chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
         RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
 
-
         size_t i = 0, j = 0;
+
         for (; i < OffboardMavros::action_string_array_.size() && msg->data != OffboardMavros::action_string_array_[i]; ++i);
         
         if (i != OffboardMavros::action_string_array_.size()) {
