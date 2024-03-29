@@ -40,7 +40,7 @@ private:
                 std::bind( &OffboardMavros::chatterCallback, this, std::placeholders::_1
         ));
         auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
-        current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
+        current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/current_position_sub", default_qos,
         std::bind(&OffboardMavros::currentpositionCallback, this, std::placeholders::_1
         ));
     }
@@ -90,6 +90,7 @@ private:
                 OffboardMavros::cmdFlag_ = vtol::READY;
             }
         }
+
         if (OffboardMavros::cmdFlag_ == vtol::READY) {
     
             if (fcuState_.mode != vtol::FCU_HOLD) {
@@ -98,6 +99,7 @@ private:
                 update_custom_mode_(vtol::FCU_HOLD, &OffboardMavros::hold_response_callback_);
             }
         }
+
         if (OffboardMavros::cmdFlag_ == vtol::ARMED) {
             DEBUG::print("", ">> ARMED <<", BOLDGREEN);
             if (fcuState_.armed != true) {
@@ -111,6 +113,7 @@ private:
             }
             std::cout << "Flying..." << std::endl;
         }
+
         if (OffboardMavros::cmdFlag_ == vtol::TAKEOFF) {
             DEBUG::print("", ">> Take Off <<", BOLDGREEN);
             // 순서 중요
@@ -160,22 +163,6 @@ private:
         // }
     }
 
-    // void status_init_(void) {
-    // }
-
-    void status_ready_(void) {
-        if (OffboardMavros::cmdFlag_ != vtol::READY) {
-            return ;
-        }
-
-        if (fcuState_.mode != vtol::FCU_HOLD) {
-            OffboardMavros::cmdFlag_ = vtol::READY;
-            update_custom_mode_("AUTO.LOITER", &OffboardMavros::hold_response_callback_);
-            update_disarming_status_();
-        }
-    }
-
-
 
     /* -- Publish Functions -- */
 
@@ -208,7 +195,9 @@ private:
         actuator_control_pub_->publish(actuator_control_msg);
     }
 
+
     /* -- Update Functions -- */
+
     void update_arming_status_(void) {
         request_arming_status_(true, &OffboardMavros::arming_response_callback);
     }
@@ -284,7 +273,6 @@ private:
     // shared_future를 사용하는 이유는 비동기로 요청을 보내기 때문에 요청에 대한 응답을 받아야하기 때문이다.
     
     //return request
-    //
     void location_response_callback_(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future) {
         const char* msg[] = {
             "Location command sent successfully", 
@@ -330,7 +318,7 @@ private:
 
 
         size_t i = 0;
-        for (; i < OffboardMavros::action_string_array_.size() && msg->data != OffboardMavros::action_string_array_[i]; ++i);
+        for (; msg->data != OffboardMavros::action_string_array_[i]; ++i);
 
         if (i == OffboardMavros::action_string_array_.size()) {
             std::cout << "Invalid input" << std::endl;
@@ -339,8 +327,6 @@ private:
         OffboardMavros::action_func_[i]();
         OffboardMavros::print_reference_input();
     }
-
-
 
 
     void arming_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future) {
@@ -367,9 +353,8 @@ private:
         }
     }
 
+
     /* -- Is Functions -- */
-
-
 
     bool is_five_seconds_passed_() {
         return (this->now() - last_request_).seconds() > 5.0;
@@ -399,7 +384,7 @@ private:
     //     return (current_state_.armed);
     // }
 
-    /* -- Static Functions -- */
+
     void currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
         current_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
 
@@ -410,6 +395,12 @@ private:
         }
     }
 
+
+    /* -- Static Functions -- */
+
+
+    /* -- Action Functions -- */
+    
     static void action_go_north_(void) {
         //TODO make threshold
         local_position_[vtol::NORTH] += offset_;
@@ -485,7 +476,6 @@ private:
         OffboardMavros::cmdFlag_ = vtol::LAND;
     }
 
-
     static void action_start_(void) {
         if (OffboardMavros::cmdFlag_ == vtol::FLY) {
             OffboardMavros::cmdFlag_ = vtol::START;
@@ -502,6 +492,22 @@ private:
         OffboardMavros::cmdFlag_ = vtol::INIT;
     }
 
+
+    /* -- Action Functions -- */
+
+    static void status_ready_(void) {
+        if (OffboardMavros::cmdFlag_ != vtol::READY) {
+            return ;
+        }
+
+        if (fcuState_.mode != vtol::FCU_HOLD) {
+            OffboardMavros::cmdFlag_ = vtol::READY;
+            update_custom_mode_("AUTO.LOITER", &OffboardMavros::hold_response_callback_);
+            update_disarming_status_();
+        }
+    }
+
+
     /* -- Print Functions -- */
 
     static void print_reference_input(void) {
@@ -514,6 +520,7 @@ private:
 
 
     /* -- Members Variables -- */
+   
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub_;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub_;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub_;
@@ -530,8 +537,6 @@ private:
     mavros_msgs::msg::State                                             fcuState_;
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
-    // static const std::array<std::string, vtol::ACTION_SIZE>        action_string_array_;
-
     static unsigned char                                                       cmdFlag_;
 
     //TODO: static 지워서 멤버변수로 변경
@@ -541,7 +546,9 @@ private:
     static float                            offset_;
 
     static const std::array<std::string, vtol::ACTION_SIZE>        action_string_array_;
+    static const std::array<std::string, vtol::STATUS_SIZE>		   status_string_array_;
     static void                                   (*action_func_[])(void);
+    static void                                   (*status_func_[])(void);
 
 
 };
@@ -552,6 +559,9 @@ std::array<float, 3>		            OffboardMavros::local_position_{vtol::INIT_NOR
 std::array<double, 3>		            OffboardMavros::current_position_{};
 const std::array<std::string, vtol::ACTION_SIZE>		OffboardMavros::action_string_array_ = { 
     "8", "6", "↓", "4", "2", "↑", "h", "a", "d", "t", "l", "s", "0"
+};
+const std::array<std::string, vtol::STATUS_SIZE>		OffboardMavros::status_string_array_ = { 
+    "r"
 };
 
 void (*OffboardMavros::action_func_[])(void) = {
@@ -569,6 +579,11 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_start_,
     &OffboardMavros::action_init_
 };
+
+void (*OffboardMavros::status_func_[])(void) = {
+    &OffboardMavros::status_ready_
+
+}
 
 float                    OffboardMavros::offset_ = 0.5f;
 
