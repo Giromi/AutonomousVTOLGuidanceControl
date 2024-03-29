@@ -48,6 +48,8 @@ namespace vtol {
     };
 
     constexpr int   ACTION_SIZE     = 20;
+    constexpr int   STATUS_SIZE     = 20;
+
 
     constexpr char  FCU_ARM[]       = "AUTO.RTL";
     constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
