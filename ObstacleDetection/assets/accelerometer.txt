@@ -1,0 +1,3 @@
+# accelerometer data
+# file: 'rgbd_dataset_freiburg3_structure_notexture_far.bag'
+# timestamp ax ay az
