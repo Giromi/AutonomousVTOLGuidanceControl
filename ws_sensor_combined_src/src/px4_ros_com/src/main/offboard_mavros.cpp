@@ -7,6 +7,7 @@
 #include <mavros_msgs/msg/override_rc_in.hpp>
 #include <mavros_msgs/srv/command_tol.hpp>
 #include <mavros_msgs/srv/command_long.hpp>
+#include <mavros_msgs/srv/command_vtol_transition.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <array>
@@ -51,6 +52,7 @@ private:
         takeoff_client_ = create_client<mavros_msgs::srv::CommandTOL>("/mavros/cmd/takeoff");
         landing_client_ = create_client<mavros_msgs::srv::CommandTOL>("/mavros/cmd/land");
         location_client_ = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
+        transition_client_ = this->create_client<mavros_msgs::srv::CommandVtolTransition>("/mavros/cmd/vtol_transition");
     }
 
 
@@ -125,6 +127,14 @@ private:
             if (fcuState_.mode == vtol::FCU_HOLD) {
                 update_offboard_mode_();
             }
+        }
+
+        if (OffboardMavros::cmdFlag_ == vtol::TO_FIXED) {
+            update_transition_fixed_status_();
+        }
+
+        if (OffboardMavros::cmdFlag_ == vtol::TO_QUAD) {
+            update_transition_quad_status_();
         }
 
         if (OffboardMavros::cmdFlag_ == vtol::LAND) {
@@ -216,6 +226,30 @@ private:
     void update_disarming_status_(void) {
         request_arming_status_(false, &OffboardMavros::disarming_response_callback);
     }
+
+    void update_transition_fixed_status_(void) {
+        // if (fcuState_.mode == vtol::MC) {
+        request_transition_status_(vtol::FW, &OffboardMavros::transition_response_callback);
+        // } else {
+            // request_transition_status_(vtol::MC, &OffboardMavros::transition_response_callback);
+    }
+
+    void update_transition_quad_status_(void) {
+        // if (fcuState_.mode == vtol::MC) {
+        request_transition_status_(vtol::MC, &OffboardMavros::transition_response_callback);
+        // } else {
+            // request_transition_status_(vtol::MC, &OffboardMavros::transition_response_callback);
+    }
+
+    void request_transition_status_(const int input,
+            void (OffboardMavros::*response_callback)
+            (const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture)) {
+        auto request = std::make_shared<mavros_msgs::srv::CommandVtolTransition::Request>();
+        request->state = input;
+        transition_client_->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
+        last_request_ = this->now();
+    }
+
 
     void request_arming_status_(const bool& input,
             void (OffboardMavros::*response_callback)
@@ -359,6 +393,14 @@ private:
         print_success_info_(future.get()->success, msg);
     }
 
+    void transition_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture future) {
+        const char* msg[] = {
+            "Transition success", 
+            "Transition failed"
+        };
+        print_success_info_(future.get()->success, msg);
+    }
+
     void print_success_info_(bool success, const char* msg[]) const {
         if (success) {
             RCLCPP_INFO(this->get_logger(), "%s", msg[vtol::SUCCESS]);
@@ -401,14 +443,40 @@ private:
 
     /* -- Static Functions -- */
     void currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-        current_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
+        cur_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
 
         if (cmdFlag_ == vtol::TAKEOFF) {
-            if (current_position_[vtol::UP] > 0.5) {
+            if (cur_position_[vtol::UP] > vtol::INIT_UP - 1) {
                 cmdFlag_ = vtol::FLY;
+                prev_position_[vtol::NORTH] = cur_position_[vtol::NORTH];
+                prev_position_[vtol::EAST] = cur_position_[vtol::EAST];
+                DEBUG::print("Landing point North :", prev_position_[vtol::NORTH], BOLDYELLOW);
+                DEBUG::print("Landing point East  :", prev_position_[vtol::EAST], BOLDYELLOW);
             }
+        } else if (cmdFlag_ == vtol::TO_FIXED) {
+            DEBUG::print("North :", cur_position_[vtol::NORTH], WHITE);
+            DEBUG::print("East  :", cur_position_[vtol::EAST], WHITE);
+            if (cur_position_[vtol::NORTH] > prev_position_[vtol::NORTH] + 1 
+                || cur_position_[vtol::EAST] > prev_position_[vtol::EAST] + 1) {
+                DEBUG::print("Transition success North :", cur_position_[vtol::NORTH], BOLDYELLOW);
+                DEBUG::print("Transition success East  :", cur_position_[vtol::EAST], BOLDYELLOW);
+                cmdFlag_ = vtol::FIXED;
+            }
+        } else if (cmdFlag_ == vtol::TO_QUAD) {
+            if (cur_position_[vtol::NORTH] - prev_position_[vtol::NORTH] < 0.1
+                && cur_position_[vtol::EAST] - prev_position_[vtol::EAST] < 0.1) {
+                DEBUG::print("Transition success North :", cur_position_[vtol::NORTH], BOLDYELLOW);
+                DEBUG::print("Transition success East  :", cur_position_[vtol::EAST], BOLDYELLOW);
+                // cmdFlag_ &= ~vtol::BIT_TRANSITION;
+                cmdFlag_ = vtol::QUAD;
+            }
+            prev_position_[vtol::NORTH] = cur_position_[vtol::NORTH];
+            prev_position_[vtol::EAST] = cur_position_[vtol::EAST];
         }
     }
+
+
+
 
     static void action_go_north_(void) {
         //TODO make threshold
@@ -502,6 +570,16 @@ private:
         OffboardMavros::cmdFlag_ = vtol::INIT;
     }
 
+    static void action_transition_(void) {
+
+        if (OffboardMavros::cmdFlag_ == vtol::QUAD) {
+            OffboardMavros::cmdFlag_ = vtol::TO_FIXED;
+        } else if (OffboardMavros::cmdFlag_ == vtol::FIXED) {
+            OffboardMavros::cmdFlag_ = vtol::TO_QUAD;
+        }
+
+    }
+
     /* -- Print Functions -- */
 
     static void print_reference_input(void) {
@@ -511,7 +589,6 @@ private:
                   << local_position_[vtol::UP] << "} (North, East, Up)"
                   << std::endl;
     }
-
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub_;
@@ -523,6 +600,7 @@ private:
     rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_;
     rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr                set_mode_client_;
     rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            location_client_;
+    rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client_;
 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription_;
@@ -536,7 +614,8 @@ private:
 
     //TODO: static 지워서 멤버변수로 변경
     static std::array<float, 3>		        local_position_;
-    static std::array<double, 3>		    current_position_;
+    static std::array<double, 3>		    cur_position_;
+    static std::array<double, 3>		    prev_position_;
     static const std::string				arrow_string_;
     static float                            offset_;
 
@@ -549,9 +628,10 @@ private:
 
 unsigned char                           OffboardMavros::cmdFlag_ = vtol::INIT;
 std::array<float, 3>		            OffboardMavros::local_position_{vtol::INIT_NORTH, vtol::INIT_EAST, vtol::INIT_UP};
-std::array<double, 3>		            OffboardMavros::current_position_{};
+std::array<double, 3>		            OffboardMavros::cur_position_{};
+std::array<double, 3>		            OffboardMavros::prev_position_{};
 const std::array<std::string, vtol::ACTION_SIZE>		OffboardMavros::action_string_array_ = { 
-    "8", "6", "↓", "4", "2", "↑", "h", "a", "d", "t", "l", "s", "0"
+    "8", "6", "↓", "4", "2", "↑", "h", "a", "d", "t", "l", "s", "0", "w"
 };
 
 void (*OffboardMavros::action_func_[])(void) = {
@@ -567,7 +647,8 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_takeoff_,
     &OffboardMavros::action_landing_,
     &OffboardMavros::action_start_,
-    &OffboardMavros::action_init_
+    &OffboardMavros::action_init_,
+    &OffboardMavros::action_transition_,
 };
 
 float                    OffboardMavros::offset_ = 0.5f;
