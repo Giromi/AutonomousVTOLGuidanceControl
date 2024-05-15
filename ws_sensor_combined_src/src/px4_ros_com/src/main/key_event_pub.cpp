@@ -192,6 +192,11 @@ private:
         return true;
     }
 
+    static bool press_w(void) {
+        std::cout << ">>> VTOL Transition <<< \n" << std::endl;
+        return true;
+    }
+
     static bool press_questionmark(void) {
         std::cout << ">>> Help <<< \n" << std::endl;
         std::cout << "< COMMAND >" << std::endl;
@@ -238,7 +243,8 @@ bool (*KeyPublisher::_key_func[])() = {
     &KeyPublisher::press_4,
     &KeyPublisher::press_6,
     &KeyPublisher::press_8,
-    &KeyPublisher::press_questionmark
+    &KeyPublisher::press_questionmark,
+    &KeyPublisher::press_w,
 };
 char KeyPublisher::c = '\0';
 std::string KeyPublisher::key = "";
