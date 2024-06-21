@@ -1,10 +1,12 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
+#include <geometry_msgs/msg/twist_stamped.hpp>
 #include <mavros_msgs/srv/command_bool.hpp>
 #include <mavros_msgs/srv/set_mode.hpp>
 #include <mavros_msgs/msg/state.hpp>
 #include <mavros_msgs/msg/actuator_control.hpp>
 #include <mavros_msgs/msg/override_rc_in.hpp>
+#include <mavros_msgs/msg/position_target.hpp>
 #include <mavros_msgs/srv/command_tol.hpp>
 #include <mavros_msgs/srv/command_long.hpp>
 #include <mavros_msgs/srv/command_vtol_transition.hpp>
@@ -30,6 +32,10 @@ public:
 private:
     void initializePublishers(void) {
         local_pos_pub_ = create_publisher<geometry_msgs::msg::PoseStamped>("/mavros/setpoint_position/local", 10);
+
+        local_vel_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mavros/setpoint_velocity/cmd_vel", 10);
+        local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("mavros/setpoint_raw/local", 10);
+        att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("mavros/setpoint_attitude/cmd_vel", 10);
         actuator_control_pub_ = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
     }
 
@@ -185,8 +191,6 @@ private:
         }
     }
 
-
-
     /* -- Publish Functions -- */
 
     void publish(void) {
@@ -194,7 +198,10 @@ private:
             return ;
         }
         std::cout << "Publishing..." << std::endl;
-        publishPose();
+        // publishPose();
+        // publish_velocity_();
+        publish_local_();
+        // publish_attitude_(); // orbit 안사라짐
     }
 
     void publishPose() {
@@ -217,6 +224,54 @@ private:
         RCLCPP_INFO(this->get_logger(), "publishing actuator controls");
         actuator_control_pub_->publish(actuator_control_msg);
     }
+
+
+    void publish_velocity_(void) {
+        geometry_msgs::msg::TwistStamped vel;
+        vel.twist.linear.x = local_velocity_[0];
+        vel.twist.linear.y = local_velocity_[1];
+        vel.twist.linear.z = local_velocity_[2];
+        vel.twist.angular.x = local_velocity_[3];
+        vel.twist.angular.y = local_velocity_[4];
+        vel.twist.angular.z = local_velocity_[5];
+        local_vel_pub->publish(vel);
+    }
+
+
+    void publish_attitude_(void) {
+        geometry_msgs::msg::TwistStamped att;
+        att.twist.linear.x = local_velocity_[0];
+        att.twist.linear.y = local_velocity_[1];
+        att.twist.linear.z = local_velocity_[2];
+        att.twist.angular.x = local_velocity_[3];
+        att.twist.angular.y = local_velocity_[4];
+        att.twist.angular.z = local_velocity_[5];
+        att_pub->publish(att);
+    }
+
+
+    void publish_local_(void) {
+        mavros_msgs::msg::PositionTarget local_msg;
+
+        local_msg.header.stamp = this->now();
+        local_msg.header.frame_id = "standard_vtol_0";
+        local_msg.coordinate_frame = mavros_msgs::msg::PositionTarget::FRAME_LOCAL_NED;
+        local_msg.type_mask = //mavros_msgs::msg::PositionTarget::IGNORE_PX |
+                              //mavros_msgs::msg::PositionTarget::IGNORE_PY |
+                              //mavros_msgs::msg::PositionTarget::IGNORE_PZ |
+                              mavros_msgs::msg::PositionTarget::IGNORE_AFX |
+                              mavros_msgs::msg::PositionTarget::IGNORE_AFY |
+                              mavros_msgs::msg::PositionTarget::IGNORE_AFZ;
+                              //mavros_msgs::msg::PositionTarget::IGNORE_VZ;
+                              //mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
+        local_msg.velocity.x = local_velocity_[0];
+        local_msg.velocity.y = local_velocity_[1];
+        local_msg.velocity.z = local_velocity_[2];
+        local_msg.yaw = local_velocity_[4];
+        local_msg.yaw_rate = local_velocity_[5];
+        local_pub->publish(local_msg);
+    }
+
 
     /* -- Update Functions -- */
     void update_arming_status_(void) {
@@ -508,10 +563,68 @@ private:
         local_position_[vtol::UP] += offset_;
     }
 
+    static void action_velocity_plus_x_(void) {
+        local_velocity_[0] += offset_;
+    }
+
+    static void action_velocity_plus_y_(void) {
+        local_velocity_[1] += offset_;
+    }
+
+    static void action_velocity_plus_z_(void) {
+        local_velocity_[2] += offset_;
+    }
+
+    static void action_velocity_minus_x_(void) {
+        local_velocity_[0] -= offset_;
+    }
+
+    static void action_velocity_minus_y_(void) {
+        local_velocity_[1] -= offset_;
+    }
+
+    static void action_velocity_minus_z_(void) {
+        local_velocity_[2] -= offset_;
+    }
+
+    static void action_velocity_plus_roll_(void) {
+        local_velocity_[3] += offset_;
+    }
+
+    static void action_velocity_plus_pitch_(void) {
+        local_velocity_[4] += offset_;
+    }
+
+    static void action_velocity_plus_yaw_(void) {
+        local_velocity_[5] += offset_;
+    }
+
+    static void action_velocity_minus_roll_(void) {
+        local_velocity_[3] -= offset_;
+    }
+
+    static void action_velocity_minus_pitch_(void) {
+        local_velocity_[4] -= offset_;
+    }
+
+    static void action_velocity_minus_yaw_(void) {
+        local_velocity_[5] -= offset_;
+    }
+
+    // static void action_velocity_minus_yaw_(void) {
+    //     local_velocity_[5] -= offset_;
+    // }
+
     static void action_return_home_(void) {
         //TODO make threshold
-        local_position_[vtol::NORTH] = 0.0;
-        local_position_[vtol::EAST] = 0.0;
+        // local_position_[vtol::NORTH] = 0.0;
+        // local_position_[vtol::EAST] = 0.0;
+        local_velocity_[0] = 0.0;
+        local_velocity_[1] = 0.0;
+        local_velocity_[2] = 0.0;
+        local_velocity_[3] = 0.0;
+        local_velocity_[4] = 0.0;
+        local_velocity_[5] = 0.0;
     }
 
     static void action_arming_(void) {
@@ -555,7 +668,7 @@ private:
 
 
     static void action_start_(void) {
-        if (OffboardMavros::cmdFlag_ == vtol::FLY) {
+        if (OffboardMavros::cmdFlag_ == vtol::QUAD || OffboardMavros::cmdFlag_ == vtol::FIXED) {
             OffboardMavros::cmdFlag_ = vtol::START;
         } else if (OffboardMavros::cmdFlag_ == vtol::START) {
             OffboardMavros::cmdFlag_ = vtol::FLY;
@@ -592,6 +705,9 @@ private:
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub_;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      local_vel_pub;
+    rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      local_pub;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub_;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub_;
 
@@ -613,11 +729,12 @@ private:
     static unsigned char                                                       cmdFlag_;
 
     //TODO: static 지워서 멤버변수로 변경
-    static std::array<float, 3>		        local_position_;
+    static std::array<double, 3>		        local_position_;
+    static std::array<double, 6>		    local_velocity_;
     static std::array<double, 3>		    cur_position_;
     static std::array<double, 3>		    prev_position_;
     static const std::string				arrow_string_;
-    static float                            offset_;
+    static double                            offset_;
 
     static const std::array<std::string, vtol::ACTION_SIZE>        action_string_array_;
     static void                                   (*action_func_[])(void);
@@ -627,31 +744,41 @@ private:
 
 
 unsigned char                           OffboardMavros::cmdFlag_ = vtol::INIT;
-std::array<float, 3>		            OffboardMavros::local_position_{vtol::INIT_NORTH, vtol::INIT_EAST, vtol::INIT_UP};
+std::array<double, 3>		            OffboardMavros::local_position_{vtol::INIT_NORTH, vtol::INIT_EAST, vtol::INIT_UP};
+std::array<double, 6>		            OffboardMavros::local_velocity_{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};  
 std::array<double, 3>		            OffboardMavros::cur_position_{};
 std::array<double, 3>		            OffboardMavros::prev_position_{};
-const std::array<std::string, vtol::ACTION_SIZE>		OffboardMavros::action_string_array_ = { 
-    "8", "6", "↓", "4", "2", "↑", "h", "a", "d", "t", "l", "s", "0", "w"
+
+const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::action_string_array_ = { 
+    "2", "4", "6", "3", "5", "7", 
+    "↑", "↓", "→", "←", "+", "-", 
+    "h", "a", "d", "t", "l", "s", "0", "w",  
 };
 
 void (*OffboardMavros::action_func_[])(void) = {
-    &OffboardMavros::action_go_north_,
-    &OffboardMavros::action_go_east_,
-    &OffboardMavros::action_go_down_,
-    &OffboardMavros::action_go_west_,
-    &OffboardMavros::action_go_south_,
-    &OffboardMavros::action_go_up_,
-    &OffboardMavros::action_return_home_,
-    &OffboardMavros::action_arming_,
-    &OffboardMavros::action_disarming_,
-    &OffboardMavros::action_takeoff_,
-    &OffboardMavros::action_landing_,
-    &OffboardMavros::action_start_,
-    &OffboardMavros::action_init_,
-    &OffboardMavros::action_transition_,
+    &OffboardMavros::action_velocity_plus_roll_, // 2
+    &OffboardMavros::action_velocity_plus_pitch_,// 4
+    &OffboardMavros::action_velocity_plus_yaw_,  // 6
+    &OffboardMavros::action_velocity_minus_roll_,  // 3
+    &OffboardMavros::action_velocity_minus_pitch_,  // 5
+    &OffboardMavros::action_velocity_minus_yaw_,    // 7
+    &OffboardMavros::action_velocity_plus_z_,           // ↑ up
+    &OffboardMavros::action_velocity_minus_z_,          // ↓ down
+    &OffboardMavros::action_velocity_minus_y_,      // ← south
+    &OffboardMavros::action_velocity_plus_y_,       // → north
+    &OffboardMavros::action_velocity_plus_x_,       // + east
+    &OffboardMavros::action_velocity_minus_x_,      // - west
+    &OffboardMavros::action_return_home_,       // h
+    &OffboardMavros::action_arming_,            // a
+    &OffboardMavros::action_disarming_,         // d
+    &OffboardMavros::action_takeoff_,           // t
+    &OffboardMavros::action_landing_,           // l
+    &OffboardMavros::action_start_,             // s
+    &OffboardMavros::action_init_,              // 0
+    &OffboardMavros::action_transition_,        // w
 };
 
-float                    OffboardMavros::offset_ = 0.5f;
+double                    OffboardMavros::offset_ = 0.5;
 
 int main(int argc, char* argv[]) {
 

@@ -63,7 +63,7 @@ private:
 
     bool _publish(void) {
         auto message = std_msgs::msg::String();
-        message.data = (c == '\0') ? key : std::string(1, c);
+        message.data = (c == '\0') ? arrow_str : std::string(1, c);
         RCLCPP_INFO(this->get_logger(), "Publishing: '%s'\n", message.data.c_str());
         _publisher->publish(message);
         return true;
@@ -138,25 +138,25 @@ private:
     }
 
     static bool press_arrow_up(void) {
-        key = "↑";
+        arrow_str = "↑";
         std::cout << ">>> N axis ++ <<< \n" << std::endl;
         return true;
     }
 
     static bool press_arrow_down(void) {
-        key = "↓";
+        arrow_str = "↓";
         std::cout << ">>> N axis -- <<< \n" << std::endl;
         return true;
     }
 
     static bool press_arrow_left(void) {
-        key = "←";
+        arrow_str = "←";
         std::cout << ">>> E axis -- <<< \n" << std::endl;
         return true;
     }
 
     static bool press_arrow_right(void) {
-        key = "→";
+        arrow_str = "→";
         std::cout << ">>> E axis ++ <<< \n" << std::endl;
         return true;
     }
@@ -171,15 +171,6 @@ private:
         return true;
     }
 
-    static bool press_6(void) {
-        std::cout << ">>> X axis ++ <<< \n" << std::endl;
-        return true;
-    }
-
-    static bool press_4(void) {
-        std::cout << ">>> X axis -- <<< \n" << std::endl;
-        return true;
-    }
 
 
     static bool press_8(void) {
@@ -188,12 +179,48 @@ private:
     }
 
     static bool press_2(void) {
-        std::cout << ">>> Y axis -- <<< \n" << std::endl;
+        std::cout << ">>> Roll ++ <<< \n" << std::endl;
         return true;
     }
 
+    static bool press_3(void) {
+        std::cout << ">>> Roll -- <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_4(void) {
+        std::cout << ">>> Pitch ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_5(void) {
+        std::cout << ">>> Pitch -- <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_6(void) {
+        std::cout << ">>> Yaw ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_7(void) {
+        std::cout << ">>> Yaw -- <<< \n" << std::endl;
+        return true;
+    }
+
+
     static bool press_w(void) {
         std::cout << ">>> VTOL Transition <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_plus(void) {
+        std::cout << ">>> U axis ++ <<< \n" << std::endl;
+        return true;
+    }
+
+    static bool press_minus(void) {
+        std::cout << ">>> U axis -- <<< \n" << std::endl;
         return true;
     }
 
@@ -225,12 +252,12 @@ private:
     static bool (*_key_func[])(void);
     static std::mutex _mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
     static char                 c;
-    static std::string          key;
+    static std::string          arrow_str;
 };
 
 std::mutex KeyPublisher::_mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
 bool KeyPublisher::_is_running = true;
-const std::string KeyPublisher::_key_string = "\033udqhb2468?";
+const std::string KeyPublisher::_key_string = "\033udqhb2345678?w+-";
 bool (*KeyPublisher::_key_func[])() = {
     // & 의미 생략 가능, 가독성을 위해 추가
     &KeyPublisher::press_arrow,         // 지평방향 position control 제어
@@ -240,14 +267,19 @@ bool (*KeyPublisher::_key_func[])() = {
     &KeyPublisher::press_h,
     &KeyPublisher::press_b,
     &KeyPublisher::press_2,
+    &KeyPublisher::press_3,
     &KeyPublisher::press_4,
+    &KeyPublisher::press_5,
     &KeyPublisher::press_6,
+    &KeyPublisher::press_7,
     &KeyPublisher::press_8,
     &KeyPublisher::press_questionmark,
     &KeyPublisher::press_w,
+    &KeyPublisher::press_plus,
+    &KeyPublisher::press_minus
 };
 char KeyPublisher::c = '\0';
-std::string KeyPublisher::key = "";
+std::string KeyPublisher::arrow_str = "";
 
 int main(int argc, char **argv) {
 	signal(SIGINT, KeyPublisher::sigint_handler);
