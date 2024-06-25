@@ -41,6 +41,7 @@ include_directories(include)
 # Add frame_transforms lib
 add_library(frame_transforms SHARED src/lib/frame_transforms.cpp)
 add_library(OffboardControl SHARED src/lib/OffboardControl.cpp)
+add_library(OffboardMavros SHARED src/lib/OffboardMavros.cpp)
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
 
@@ -61,7 +62,7 @@ endfunction()
 # ament_target_dependencies(frame_transforms Eigen3 geometry_msgs sensor_msgs)
 # ament_target_dependencies(OffboardControl rclcpp px4_msgs)
 
-foreach(lib frame_transforms OffboardControl Dubins ServoControlPublisher)
+foreach(lib frame_transforms OffboardControl OffboardMavros Dubins ServoControlPublisher)
   setup_target(${lib})
   target_include_directories(${lib} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}>
@@ -103,7 +104,9 @@ foreach(exec ${EXECUTABLES})
   # elseif("${exec_name}" STREQUAL "key_event_pub" OR "${exec_name}" STREQUAL "key_event_sub")
   #     target_link_libraries(${exec_name} frame_transforms)
   elseif("${exec_name}" STREQUAL "pwm_aux_output")
-      target_link_libraries(${exec_name} ServoControlPublisher frame_transforms ${UUID_LIBRARIES})
+    target_link_libraries(${exec_name} ServoControlPublisher frame_transforms ${UUID_LIBRARIES})
+  elseif("${exec_name}" STREQUAL "offboard_mavros")
+    target_link_libraries(${exec_name} OffboardMavros)
   endif()
   install(TARGETS ${exec_name} DESTINATION lib/${PROJECT_NAME})
 endforeach()
