@@ -225,6 +225,7 @@ void OffboardControl::set_way_point(WayPoint way_point) {
 int OffboardControl::set_dubins_path_point(double q[3], double x, void* user_data) {
     static_cast<void>(x); // for unused
     LocalPosition* local_position = static_cast<LocalPosition *>(user_data);  
+ 
     DubinsPathPoint dubins_path_point(q[0], q[1], (*local_position)[vtol::UP], q[2], x);
     OffboardControl::_dubins_path_points.push(dubins_path_point);
     return 0;

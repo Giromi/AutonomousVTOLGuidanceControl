@@ -4,9 +4,8 @@
 
 int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<Ofs;dfjasdfasdfasdfasdfasdf fboardMavros>());
+    rclcpp::spin(std::make_shared<OffboardMavros>());
     rclcpp::shutdown();
     return 0;
 }
-
 

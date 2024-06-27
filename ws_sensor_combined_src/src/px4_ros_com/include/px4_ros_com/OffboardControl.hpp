@@ -19,10 +19,10 @@ using namespace px4_msgs::msg;
 
 
 struct WayPoint {
-    WayPoint(void) : north(0.0f), east(0.0f), down(0.0f), yaw(0.0f), is_dubins_path(false) {}
+    WayPoint(void) : north(0.0f), east(0.0f), down(0.0f), yaw(0.0f), is_dubins_path(false) { }
 
     WayPoint(float north, float east, float down, float yaw, bool is_dubins_path = false) 
-        : north(north), east(east), down(down), yaw(yaw), is_dubins_path(is_dubins_path) {}
+        : north(north), east(east), down(down), yaw(yaw), is_dubins_path(is_dubins_path) { }
 
     float north;
     float east;
@@ -38,8 +38,7 @@ struct DubinsPathPoint : public WayPoint {
     double time_stamp;
 };
 
-class OffboardControl : public rclcpp::Node
-{
+class OffboardControl : public rclcpp::Node {
 private:
     typedef std::array<float, 4> LocalPosition;
 public:

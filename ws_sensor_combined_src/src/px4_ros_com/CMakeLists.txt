@@ -41,7 +41,7 @@ include_directories(include)
 # Add frame_transforms lib
 add_library(frame_transforms SHARED src/lib/frame_transforms.cpp)
 add_library(OffboardControl SHARED src/lib/OffboardControl.cpp)
-add_library(OffboardMavros SHARED src/lib/OffboardMavros.cpp)
+add_library(OffboardMavros SHARED src/lib/OffboardMavros/OffboardMavros_General.cpp)
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
 
@@ -175,6 +175,14 @@ install(TARGETS Dubins
 
 install(TARGETS ServoControlPublisher
   EXPORT export_ServoControlPublisher
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
+)
+
+install(TARGETS OffboardMavros
+  EXPORT export_OffboardMavros
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
