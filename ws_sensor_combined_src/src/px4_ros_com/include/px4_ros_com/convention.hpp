@@ -9,12 +9,14 @@ namespace vtol {
 
     // disarm 2^0, arm 2^1, takeoff 2^2, land 2^3 
     enum Bit {
-        BIT_READY       =   0b10000000, // Before arming
+        BIT_READY       =   0b10000000,
         BIT_ARMED       =	0b00000001,
         BIT_FLY         =	0b00000010,
         BIT_TAKEOFF     =	0b00000100,
         BIT_LAND        =	0b00001000,
         BIT_START       =	0b00010000,
+        BIT_FIXED       =	0b00100000,
+        BIT_TRANSITION  =	0b01000000,
     };
 
     enum Result {
@@ -27,16 +29,28 @@ namespace vtol {
         READY       =   BIT_READY,              // Before arming
         ARMED       =   READY   | BIT_ARMED,      // After arming
         FLY         =   ARMED   | BIT_FLY,    // After takeoff
-        TAKEOFF     =   FLY     | BIT_TAKEOFF,    // After takeoff
-        LAND        =   FLY     | BIT_LAND,       // After land
-        START       =   FLY     | BIT_START      // Before takeoff
+        TAKEOFF     =   FLY    | BIT_TAKEOFF,    // After takeoff
+        LAND        =   FLY    | BIT_LAND,       // After land
+        START       =   FLY    | BIT_START,     // Before takeoff
+                                                 //
+        QUAD        =   FLY,
+        FIXED       =   FLY   | BIT_FIXED,      // Before transition
+        TO_FIXED    =   QUAD  | BIT_TRANSITION, // Before transition
+        TO_QUAD     =   FIXED | BIT_TRANSITION, // Before transition
+                                                  //
     };
 
     enum Position {
         INIT_NORTH  = 0,
         INIT_EAST   = 0, 
-        INIT_UP     = 1, 
+        INIT_UP     = 10, 
         INIT_YAW    = 0
+    };
+
+
+    enum State {
+        MC = 3,
+        FW = 4
     };
 
     struct GeographicCoordinate {
