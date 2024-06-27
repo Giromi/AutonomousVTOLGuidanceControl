@@ -42,8 +42,8 @@ namespace vtol {
 
     enum Position {
         INIT_NORTH  = 0,
-        INIT_EAST   = 0, 
-        INIT_UP     = 10, 
+        INIT_EAST   = 0,
+        INIT_UP     = 9, 
         INIT_YAW    = 0
     };
 
@@ -62,7 +62,6 @@ namespace vtol {
     };
 
     constexpr int   ACTION_SIZE     = 20;
-
     constexpr char  FCU_ARM[]       = "AUTO.RTL";
     constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";

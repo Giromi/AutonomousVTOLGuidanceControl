@@ -7,11 +7,6 @@ std::array<double, 3>		            OffboardMavros::cur_position_{};
 std::array<double, 3>		            OffboardMavros::prev_position_{};
 double                                  OffboardMavros::offset_ = 0.5;
 
-const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::action_string_array_ = { 
-    "2", "4", "6", "3", "5", "7", 
-    "↑", "↓", "→", "←", "+", "-", 
-    "h", "a", "d", "t", "l", "s", "0", "w",  
-};
 /**
  * @brief OffboardMavros 생성자
  */
@@ -639,6 +634,12 @@ void OffboardMavros::print_reference_input(void) {
         << local_position_[vtol::UP] << "} (North, East, Up)"
         << std::endl;
 }
+
+const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::action_string_array_ = { 
+    "2", "4", "6", "3", "5", "7", 
+    "↑", "↓", "→", "←", "+", "-", 
+    "h", "a", "d", "t", "l", "s", "0", "w",  
+};
 
 void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_velocity_plus_roll, // 2
