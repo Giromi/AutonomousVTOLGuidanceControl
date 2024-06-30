@@ -27,6 +27,8 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+# find_package(rosidl_default_generators REQUIRED) #1
+# find_package(rosidl_typesupport_c REQUIRED) #2
 # pkg-config 지원 활성화
 find_package(PkgConfig REQUIRED)
 
@@ -41,7 +43,15 @@ include_directories(include)
 # Add frame_transforms lib
 add_library(frame_transforms SHARED src/lib/frame_transforms.cpp)
 add_library(OffboardControl SHARED src/lib/OffboardControl.cpp)
-add_library(OffboardMavros SHARED src/lib/OffboardMavros/OffboardMavros_General.cpp)
+add_library(OffboardMavros SHARED 
+  src/lib/OffboardMavros/OffboardMavros_General.cpp
+  src/lib/OffboardMavros/OffboardMavros_Utile.cpp
+  src/lib/OffboardMavros/OffboardMavros_Update.cpp
+  src/lib/OffboardMavros/OffboardMavros_CallbackFunctions.cpp
+  src/lib/OffboardMavros/OffboardMavros_InitializeFunctions.cpp
+  src/lib/OffboardMavros/OffboardMavros_PublishFunctions.cpp
+  )
+
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
 
