@@ -14,6 +14,7 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 	# add_compile_options(-Wall -Wextra -Wpedantic -fsanitize=address)
     add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+    # add_compile_options(-g)
 endif()
 
 # find dependencies
@@ -50,8 +51,8 @@ add_library(OffboardMavros SHARED
   src/lib/OffboardMavros/OffboardMavros_CallbackFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_InitializeFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_PublishFunctions.cpp
+  src/lib/OffboardMavros/OffboardMavros_Action.cpp
   )
-
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
 
