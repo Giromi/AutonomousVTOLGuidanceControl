@@ -28,8 +28,7 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
-# find_package(rosidl_default_generators REQUIRED) #1
-# find_package(rosidl_typesupport_c REQUIRED) #2
+
 # pkg-config 지원 활성화
 find_package(PkgConfig REQUIRED)
 
