@@ -11,16 +11,20 @@ void OffboardMavros::initializePublishers(void) {
 }
 
 void OffboardMavros::initializeSubscribers(void) {
+    auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
+    
     state_sub_ = create_subscription<mavros_msgs::msg::State>(
-            "mavros/state", 10, std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1));
+            "mavros/state", default_qos, std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1));
 
     subscription_ = this->create_subscription<std_msgs::msg::String>("/chatter", 10,
             std::bind( &OffboardMavros::chatterCallback, this, std::placeholders::_1
                 ));
-    auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     current_pos_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
             std::bind(&OffboardMavros::currentpositionCallback, this, std::placeholders::_1
                 ));
+
+    pose_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>(
+            "/mavros/local_position/pose", default_qos, std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1));
 }
 
 void    OffboardMavros::initializeClients(void) {
