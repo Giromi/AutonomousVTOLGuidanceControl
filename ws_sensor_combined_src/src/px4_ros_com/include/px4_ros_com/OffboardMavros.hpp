@@ -20,6 +20,9 @@
 #include <limits>
 //#include <nav_msgs/msg/odometry.hpp>
 #include "DEBUG.hpp"
+#include <cmath>
+#include <sensor_msgs/msg/nav_sat_fix.hpp>
+#include <cstdio>
 
 class OffboardMavros : public rclcpp::Node {
 public:
@@ -28,13 +31,17 @@ public:
 private:
     typedef std::array<double, 3> t_position;
 
+
     /* -- Initialize Functions -- */
-    void    initializePublishers(void);
-    void    initializeSubscribers(void);
-    void    initializeClients(void); 
-    void    initializeTimers(const int rate_hz);
+    void        initializePublishers(void);
+    void        initializeSubscribers(void);
+    void        initializeClients(void); 
+    void        initializeTimers(const int rate_hz);
+    void        initializeConstant(void);
 
     /* -- Callback Functions -- */
+    void    gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
+    void    poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
     void    StatusReady(void);
 
@@ -131,17 +138,23 @@ private:
     rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            location_client_;
     rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client_;
 
+    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        gps_sub_;  
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub_; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription_;
     rclcpp::TimerBase::SharedPtr                                        timer_;
     mavros_msgs::msg::State                                             fcuState_;
     rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
 
+    double                                                              yaw_current;
+    std::array<float, 3>		                                        init_global_position;
+    
     // static const std::array<std::string, vtol::ACTION_SIZE>        action_string_array_;
 
     //TODO: static 지워서 멤버변수로 변경
     static unsigned char                                                cmdFlag_;
     static std::array<double, 3>		                                local_position_;
+    static std::array<float, 3>		                                    global_position_;
     static std::array<double, 6>		                                local_velocity_;
     static std::array<double, 3>		                                cur_position_;
     static std::array<double, 3>		                                prev_position_;
