@@ -16,59 +16,33 @@ public:
     static void	sigint_handler(int signum);
 
 private:
-
     void _processInput();
-
     bool _publish(void);
-
+    
     static void _set_is_running(const bool flag);
-
     static bool _get_is_running(void);
-
     static bool _action(void);
 
     static bool press_h(void);
-
     static bool press_q(void);
-
     static bool press_b(void);
-
     static bool press_arrow(void);
     static bool press_arrow_up(void);
-
     static bool press_arrow_down(void);
-
     static bool press_arrow_left(void);
-
     static bool press_arrow_right(void);
-
     static bool press_u(void);
-
     static bool press_d(void);
-
-
-
     static bool press_8(void);
-
     static bool press_2(void);
-
     static bool press_3(void);
-
     static bool press_4(void);
-
     static bool press_5(void);
-
     static bool press_6(void);
-
     static bool press_7(void);
-
-
     static bool press_w(void);
-
     static bool press_plus(void);
-
     static bool press_minus(void);
-
     static bool press_questionmark(void);
 
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr _publisher;

@@ -1,7 +1,6 @@
 #include "key_event/KeyPublisher.hpp"
 
 
-
 KeyPublisher::KeyPublisher() : Node("KeyPublisher") {
     _publisher = this->create_publisher<std_msgs::msg::String>("chatter", 10);
     // 비동기적으로 키보드 입력을 처리
@@ -10,7 +9,6 @@ KeyPublisher::KeyPublisher() : Node("KeyPublisher") {
     _input_thread = std::thread([this]() { _processInput(); });
 }
 
-
 KeyPublisher::~KeyPublisher(void) {
     KeyPublisher::_set_is_running(false);
     if (_input_thread.joinable()) {
@@ -18,13 +16,12 @@ KeyPublisher::~KeyPublisher(void) {
     }
 }
 
-void	KeyPublisher::sigint_handler(int signum) {
+void KeyPublisher::sigint_handler(int signum) {
     KeyPublisher::_set_is_running(false);
     if (signum == SIGINT) {
         rclcpp::shutdown();
     }
 }
-
 
 void KeyPublisher::_processInput() {
     while (rclcpp::ok() 
@@ -143,8 +140,6 @@ bool KeyPublisher::press_arrow_down(void) {
     return true;
 }
 
-
-
  bool KeyPublisher::press_8(void) {
     std::cout << ">>> Y axis ++ <<< \n" << std::endl;
     return true;
@@ -179,7 +174,6 @@ bool KeyPublisher::press_arrow_down(void) {
     std::cout << ">>> Yaw -- <<< \n" << std::endl;
     return true;
 }
-
 
  bool KeyPublisher::press_w(void) {
     std::cout << ">>> VTOL Transition <<< \n" << std::endl;
@@ -238,5 +232,6 @@ bool (*KeyPublisher::_key_func[])() = {
     &KeyPublisher::press_plus,
     &KeyPublisher::press_minus
 };
+
 char KeyPublisher::c = '\0';
 std::string KeyPublisher::arrow_str = "";
