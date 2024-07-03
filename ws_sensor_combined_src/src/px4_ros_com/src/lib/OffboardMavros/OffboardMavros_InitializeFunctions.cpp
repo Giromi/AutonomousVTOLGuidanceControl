@@ -8,6 +8,8 @@ void OffboardMavros::initializePublishers(void) {
     local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("mavros/setpoint_raw/local", 10);
     att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("mavros/setpoint_attitude/cmd_vel", 10);
     actuator_control_pub_ = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
+
+
 }
 
 void OffboardMavros::initializeSubscribers(void) {
@@ -34,6 +36,7 @@ void    OffboardMavros::initializeClients(void) {
     landing_client_ = create_client<mavros_msgs::srv::CommandTOL>("/mavros/cmd/land");
     location_client_ = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
     transition_client_ = this->create_client<mavros_msgs::srv::CommandVtolTransition>("/mavros/cmd/vtol_transition");
+    cmd_client = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
 }
 
 void OffboardMavros::initializeTimers(const int rate_hz) {

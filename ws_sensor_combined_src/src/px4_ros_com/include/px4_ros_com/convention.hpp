@@ -6,6 +6,10 @@
 namespace vtol {
     //숫자로 사용
     enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
+                                            //
+    enum Mav {
+        MAV_CMD_CONDITION_YAW = 115,
+    };
 
     // disarm 2^0, arm 2^1, takeoff 2^2, land 2^3 
     enum Bit {

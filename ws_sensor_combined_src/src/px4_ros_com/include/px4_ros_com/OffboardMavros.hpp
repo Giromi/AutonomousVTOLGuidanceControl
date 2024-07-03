@@ -13,6 +13,7 @@
 #include <mavros_msgs/srv/command_tol.hpp>
 #include <mavros_msgs/srv/command_long.hpp>
 #include <mavros_msgs/srv/command_vtol_transition.hpp>
+#include <mavros_msgs/msg/command_code.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <array>
@@ -72,6 +73,7 @@ private:
             void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture));
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             make_request_takeoff_land_message(const vtol::GeographicCoordinate& input);
+    void    sendFixedHeadingCommand(void);
 
     /* -- Callback Functions -- */
     void	offboard_response_callback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
@@ -84,6 +86,7 @@ private:
     void    land_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
     void    location_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
+    void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
 
     /* -- Action Functions -- */
     static void	    action_go_north(void);
@@ -133,7 +136,7 @@ private:
     rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr                set_mode_client_;
     rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            location_client_;
     rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client_;
-
+    rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            cmd_client;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub_; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub_;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription_;

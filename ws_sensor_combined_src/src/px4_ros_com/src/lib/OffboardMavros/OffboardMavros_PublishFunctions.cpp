@@ -8,8 +8,8 @@ void    OffboardMavros::publish(void) {
     }
     std::cout << "Publishing..." << std::endl;
     // publishPose();
-    // publish_velocity_();
-    publish_local();
+    publish_velocity();
+    // publish_local();
     // publish_attitude_(); // orbit 안사라짐
 }
 
@@ -58,22 +58,28 @@ void OffboardMavros::publish_attitude(void) {
 
 void OffboardMavros::publish_local(void) {
     mavros_msgs::msg::PositionTarget local_msg;
-
     local_msg.header.stamp = this->now();
     local_msg.header.frame_id = "standard_vtol_0";
     local_msg.coordinate_frame = mavros_msgs::msg::PositionTarget::FRAME_LOCAL_NED;
-    local_msg.type_mask = //mavros_msgs::msg::PositionTarget::IGNORE_PX |
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PY |
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PZ |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFX |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFY |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFZ;
-    //mavros_msgs::msg::PositionTarget::IGNORE_VZ;
-    //mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
-    local_msg.velocity.x = local_velocity_[0];
-    local_msg.velocity.y = local_velocity_[1];
-    local_msg.velocity.z = local_velocity_[2];
-    local_msg.yaw = local_velocity_[4];
-    local_msg.yaw_rate = local_velocity_[5];
+    local_msg.type_mask = mavros_msgs::msg::PositionTarget::FORCE |
+                          mavros_msgs::msg::PositionTarget::IGNORE_PX |
+                          mavros_msgs::msg::PositionTarget::IGNORE_PY |
+                          mavros_msgs::msg::PositionTarget::IGNORE_PZ |
+                          mavros_msgs::msg::PositionTarget::IGNORE_VX |
+                          mavros_msgs::msg::PositionTarget::IGNORE_VY |
+                          mavros_msgs::msg::PositionTarget::IGNORE_VZ;
+                          // mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE |
+                          // mavros_msgs::msg::PositionTarget::IGNORE_YAW;
+        // mavros_msgs::msg::PositionTarget::IGNORE_AFX |
+        // mavros_msgs::msg::PositionTarget::IGNORE_AFY |
+        // mavros_msgs::msg::PositionTarget::IGNORE_AFZ;
+    // local_msg.velocity.x = local_velocity_[0];
+    // local_msg.velocity.y = local_velocity_[1];
+    // local_msg.velocity.z = local_velocity_[2];
+    local_msg.acceleration_or_force.x = local_velocity_[0]; // e
+    local_msg.acceleration_or_force.y = local_velocity_[1]; // n
+    local_msg.acceleration_or_force.z = local_velocity_[2]; // u
+    // local_msg.yaw = local_velocity_[4];
+    // local_msg.yaw_rate = local_velocity_[5];
     local_pub->publish(local_msg);
 }
