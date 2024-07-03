@@ -55,8 +55,8 @@ add_library(OffboardMavros SHARED
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
 add_library(KeyEventPub SHARED 
-  src/main/KeyPublisher.cpp
-  src/main/TerminalMode.cpp
+  src/lib/KeyPublisher.cpp
+  src/lib/TerminalMode.cpp
 )
 
 # Function to setup ament dependencies for targets
@@ -100,11 +100,11 @@ set(EXECUTABLES
   listeners/vehicle_gps_position_listener
   advertisers/debug_vect_advertiser
   main/position_sub
-  main/offboard_control
+  PRACTICE/offboard_control
   main/key_event_pub
-  main/key_event_sub
-  main/pwm_aux_output
-  main/gripper_servo
+  PRACTICE/key_event_sub
+  PRACTICE/pwm_aux_output
+  PRACTICE/gripper_servo
   main/offboard_mavros
   main/current_position_sub
 )
