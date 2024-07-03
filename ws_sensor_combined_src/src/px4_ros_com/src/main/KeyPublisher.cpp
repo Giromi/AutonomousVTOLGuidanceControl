@@ -57,7 +57,7 @@ bool KeyPublisher::_action(void) {
     std::size_t i = KeyPublisher::_key_string.find(c);
     if (i == std::string::npos) //  못찼으면 std::string::npos 반환    
         return true;
-    const bool result = KeyPublisher::_keyFunc[i]();
+    const bool result = KeyPublisher::keyFunc[i]();
     KeyPublisher::_setIsRunning(result);
     return result;
 }
@@ -212,7 +212,7 @@ bool KeyPublisher::_pressArrowDown(void) {
 std::mutex KeyPublisher::_mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
 bool KeyPublisher::_is_running = true;
 const std::string KeyPublisher::_key_string = "\033udqhb2345678?w+-";
-bool (*KeyPublisher::_keyFunc[])() = {
+bool (*KeyPublisher::keyFunc[])() = {
     // & 의미 생략 가능, 가독성을 위해 추가
     &KeyPublisher::_pressArrow,         // 지평방향 position control 제어
     &KeyPublisher::_pressU,            // 고도++

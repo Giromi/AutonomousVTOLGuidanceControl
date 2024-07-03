@@ -52,7 +52,7 @@ private:
     static bool                 _is_running;
     static const std::string    _key_string;
     static const std::string    _arrow_string;
-    static bool (*_keyFunc[])(void);
+    static bool (*keyFunc[])(void);
     static std::mutex _mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
     static char                 c;
     static std::string          _arrow_str;
