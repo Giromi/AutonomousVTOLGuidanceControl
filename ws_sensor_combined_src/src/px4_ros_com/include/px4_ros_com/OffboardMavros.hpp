@@ -13,6 +13,7 @@
 #include <mavros_msgs/srv/command_tol.hpp>
 #include <mavros_msgs/srv/command_long.hpp>
 #include <mavros_msgs/srv/command_vtol_transition.hpp>
+#include <mavros_msgs/msg/command_code.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <array>
@@ -21,8 +22,8 @@
 //#include <nav_msgs/msg/odometry.hpp>
 #include "DEBUG.hpp"
 #include <cmath>
-
-
+#include <sensor_msgs/msg/nav_sat_fix.hpp>
+#include <cstdio>
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
@@ -30,13 +31,16 @@ public:
 private:
     typedef std::array<double, 3> t_position;
 
+
     /* -- Initialize Functions -- */
-    void    initializePublishers(void);
-    void    initializeSubscribers(void);
-    void    initializeClients(void); 
-    void    initializeTimers(const int rate_hz);
+    void        initializePublishers(void);
+    void        initializeSubscribers(void);
+    void        initializeClients(void); 
+    void        initializeTimers(const int rate_hz);
+    void        initializeConstant(void);
 
     /* -- Callback Functions -- */
+    void    gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
     void    poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
     void    statusReady(void);
@@ -48,7 +52,8 @@ private:
     void    publishVelocity(void); 
     void    publishAttitude(void);
     void    publishLocal(void);
-
+    void    publishLocalFixed(void);
+  
     /* -- Update Functions -- */
     void    updateArmingStatus(void); 
     void    updateDisarmingStatus(void); 
@@ -72,6 +77,8 @@ private:
             void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture));
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
+    void    sendFixedHeadingCommand(void);
+
 
     /* -- Callback Functions -- */
     void	offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
@@ -84,6 +91,8 @@ private:
     void    landResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
     void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
+    void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
+
 
     /* -- Action Functions -- */
     static void	    _actionGoNorth(void);
@@ -123,7 +132,9 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      local_vel_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      local_pub;
+    rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      target_local_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
+  
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
 
@@ -154,6 +165,7 @@ private:
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
+
 };
 
 #endif

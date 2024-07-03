@@ -165,12 +165,12 @@ void (*OffboardMavros::actionFunc[])(void) = {
     &OffboardMavros::_actionVelocityMinusRoll,  // 3
     &OffboardMavros::_actionVelocityMinusPitch,  // 5
     &OffboardMavros::_actionVelocityMinusYaw,    // 7
-    &OffboardMavros::_actionVelocityPlusZ,           // ↑ up
-    &OffboardMavros::_actionVelocityMinusZ,          // ↓ down
     &OffboardMavros::_actionVelocityMinusY,      // ← south
     &OffboardMavros::_actionVelocityPlusY,       // → north
     &OffboardMavros::_actionVelocityPlusX,       // + east
     &OffboardMavros::_actionVelocityMinusX,      // - west
+    &OffboardMavros::_actionVelocityPlusZ,           // ↑ up
+    &OffboardMavros::_actionVelocityMinusZ,          // ↓ down
     &OffboardMavros::_actionReturnHome,       // h
     &OffboardMavros::_actionArming,            // a
     &OffboardMavros::_actionDisarming,         // d
@@ -179,4 +179,4 @@ void (*OffboardMavros::actionFunc[])(void) = {
     &OffboardMavros::_actionStart,             // s
     &OffboardMavros::_actionInit,              // 0
     &OffboardMavros::_actionTransition,        // w
-};
+

@@ -14,16 +14,30 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
     // DEBUG::print("[Pose] Yaw current: ", yaw_current,GREEN);
 }
 
+void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
+
+    global_position_[vtol::ALT]=msg->altitude;
+    global_position_[vtol::LAT]=msg->latitude;
+    global_position_[vtol::LON]=msg->longitude;
+
+
+    DEBUG::print("gps_alt: ", global_position_[vtol::ALT], GREEN);
+    DEBUG::print("gps_lat: ", global_position_[vtol::LAT], GREEN);
+    DEBUG::print("gps_lon: ", global_position_[vtol::LON], GREEN);
+}
+
+
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
     fcu_state = *msg;
 
     DEBUG::msg("\n[DEBUG] ", "-----------------");
     DEBUG::print("Mode : ", msg->mode, CYAN);
-    DEBUG::printBool("Arming : ", msg->armed, RED);
-    DEBUG::printBinary("Command flag : ", _cmd_flag, YELLOW);
-    DEBUG::print("System status : ", fcu_state.system_status, BLUE);
-    DEBUG::print("[State] Yaw current: ", yaw_current, GREEN);
+    DEBUG::print_bool("Arming : ", msg->armed, RED);
+    DEBUG::print_binary("Command flag : ", cmdFlag_, YELLOW);
+    DEBUG::print("System status : ", fcuState_.system_status, BLUE);
+    DEBUG::print("Yaw current: ", yaw_current, GREEN);
+    DEBUG::printArray("local_velocity_: ", local_velocity_, 3, MAGENTA);
     DEBUG::msg("[DEBUG] ", "-----------------\n");
 
     // if ((statusFlag == vtol::LAND) && is_real_arming_status_() && isFiveSecondsPassed()) {
@@ -31,7 +45,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     // }
     // TODO: status_XXX_() 함수를 만들어서 사용
 
-
+//ros::Time::now() - last_request > ros::Duration(5.0)
     // TODO: 생성자에서 초기화
     if (OffboardMavros::_cmd_flag == vtol::INIT) {
         if (fcu_state.armed == true) {
@@ -68,7 +82,15 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
             updateTakeoffStatus();
         } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
             updateArmingStatus();
+        if (global_position_[0] >= 0 && global_position_[1] >= 0 && global_position_[2] >= 0) {
+            if (fcuState_.mode != vtol::FCU_TAKEOFF && fcuState_.armed == true) {
+                update_takeoff_status();
+            } else if (fcuState_.mode == vtol::FCU_TAKEOFF && fcuState_.armed == false) {
+                update_arming_status();
+            }
         }
+
+        
     }
 
     if (OffboardMavros::_cmd_flag == vtol::START) {
@@ -200,13 +222,14 @@ void OffboardMavros::locationResponseCallback(const rclcpp::Client<mavros_msgs::
 void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
     _cur_position = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
 
-    if (_cmd_flag == vtol::TAKEOFF) {
-        if (_cur_position[vtol::UP] > vtol::INIT_UP - 1) {
-            _cmd_flag = vtol::FLY;
-            _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
-            _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
-            DEBUG::print("Landing point North :", _prev_position[vtol::NORTH], BOLDYELLOW);
-            DEBUG::print("Landing point East  :", _prev_position[vtol::EAST], BOLDYELLOW);
+
+    if (cmdFlag_ == vtol::TAKEOFF) {
+        if (global_position_[vtol::ALT] > init_global_position[vtol::ALT] - 1) {
+            cmdFlag_ = vtol::FLY;
+            prev_position_[vtol::NORTH] = cur_position_[vtol::NORTH];
+            prev_position_[vtol::EAST] = cur_position_[vtol::EAST];
+            DEBUG::print("Landing point North :", prev_position_[vtol::NORTH], BOLDYELLOW);
+            DEBUG::print("Landing point East  :", prev_position_[vtol::EAST], BOLDYELLOW);
         }
     } else if (_cmd_flag == vtol::TO_FIXED) {
         DEBUG::print("North :", _cur_position[vtol::NORTH], WHITE);

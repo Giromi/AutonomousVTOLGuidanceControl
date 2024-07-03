@@ -44,9 +44,19 @@ namespace DEBUG {
     }
 
     template <typename T>
+    void printArray(const std::string& msg, const T& target, const size_t len, const char* color="WHITE") {
+        std::cout << DEBUG_HEADER << color << msg;
+        for (size_t i = 0; i < len; i++) {
+            std::cout << target[i] << ", ";
+        }
+        std::cout << RESET << std::endl;
+    }
+
+    template <typename T>
     void msg(const std::string& msg, const T& target, const char* color = BOLDWHITE) {
         std::cout << color << msg << target << RESET << std::endl;
     }
+
 }
 
 #endif
