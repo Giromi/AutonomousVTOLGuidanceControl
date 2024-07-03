@@ -4,43 +4,43 @@
 std::queue<WayPoint> OffboardControl::_way_points;
 std::queue<DubinsPathPoint> OffboardControl::_dubins_path_points;
 
-double OffboardControl::turning_radius = 10.0;
-double OffboardControl::sampling_interval = 2.0;
+double OffboardControl::_turning_radius = 10.0;
+double OffboardControl::_sampling_interval = 2.0;
 
 OffboardControl::OffboardControl()
-    : Node("offboard_control"), _pwm(800), _pwm_nomallize(-1.0) {
-    _initializePublishers();
-    _initializeSubscribers();
-    _initializeClients();
+    : Node("offboard_control"), pwm(800), pwm_nomallize(-1.0) {
+    initializePublishers();
+    initializeSubscribers();
+    initializeClients();
 
     auto timer_callback = [this]() -> void {
-        if (_offboard_setpoint_counter == 10) {
+        if (offboard_setpoint_counter == 10) {
             // Change to Offboard mode after 10 setpoints
-            this->publish_vehicle_command(VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
+            this->publishVehicleCommand(VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
 
             // Arm the vehicle
             this->arm();
         }
 
         // offboard_control_mode needs to be paired with trajectory_setpoint
-        publish_offboard_control_mode();
-        // publish_trajectory_setpoint();
-        _publish_pwm_output_message();
+        publishOffboardControlMode();
+        // publishTrajectorySetpoint();
+        publishPwmOutputMessage();
         // stop the counter after reaching 11
-        if (_offboard_setpoint_counter < 11) {
-            _offboard_setpoint_counter++;
+        if (offboard_setpoint_counter < 11) {
+            offboard_setpoint_counter++;
         }
     };
-    timer_ = this->create_wall_timer(1000ms, timer_callback);
+    timer = this->create_wall_timer(1000ms, timer_callback);
 }
 
 
-void OffboardControl::_initializeSubscribers() {
+void OffboardControl::initializeSubscribers() {
     rmw_qos_profile_t qos_profile = rmw_qos_profile_sensor_data;
     auto qos = rclcpp::QoS(rclcpp::QoSInitialization(qos_profile.history, 5), qos_profile);
 
-    vehicle_local_position_subscription_ = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, [this](const px4_msgs::msg::VehicleLocalPosition::UniquePtr msg) {
-            _local_position = {msg->x, msg->y, msg->z, msg->heading};
+    vehicle_local_position_subscription = this->create_subscription<px4_msgs::msg::VehicleLocalPosition>("/fmu/out/vehicle_local_position", qos, [this](const px4_msgs::msg::VehicleLocalPosition::UniquePtr msg) {
+            local_position = {msg->x, msg->y, msg->z, msg->heading};
             const int width = 10;
             std::cout << std::fixed << std::setprecision(2); // 소수점 이하 두 자리까지만 표시
             std::cout << "\n\n"
@@ -48,19 +48,19 @@ void OffboardControl::_initializeSubscribers() {
             << "===================================================\n"
             << "  Local Position  |  Way Point\n"
             << "===================================================\n"
-            << "North: " << std::setw(width) << _local_position[vtol::NORTH] << " ➔ " 
+            << "North: " << std::setw(width) << local_position[vtol::NORTH] << " ➔ " 
             << std::setw(width) << _way_points.front().north << "\n"
-            << "East : " << std::setw(width) << _local_position[vtol::EAST]  << " ➔ " 
+            << "East : " << std::setw(width) << local_position[vtol::EAST]  << " ➔ " 
             << std::setw(width) << _way_points.front().east << "\n"
-            << "Down : " << std::setw(width) << _local_position[vtol::UP]  << " ➔ " 
+            << "Down : " << std::setw(width) << local_position[vtol::UP]  << " ➔ " 
             << std::setw(width) << _way_points.front().down << "\n"
-            << "Yaw  : " << std::setw(width) << _local_position[vtol::YAW]   << " | " 
+            << "Yaw  : " << std::setw(width) << local_position[vtol::YAW]   << " | " 
             << std::setw(width) << _way_points.front().yaw << "\n"
             << "---------------------------------------------------\n"
-            << "(way point length) => " << sqrt(pow(_local_position[vtol::NORTH] - _way_points.front().north
-                        , 2) + pow(_local_position[vtol::EAST] - _way_points.front().east, 2) 
-                    + pow(_local_position[vtol::UP] - _way_points.front().down, 2)) << "\n"
-            << "(dubins path length) => " << sqrt(pow(_local_position[vtol::NORTH] - _dubins_path_points.front().north , 2) + pow(_local_position[vtol::EAST] - _dubins_path_points.front().east, 2)) << "\n"
+            << "(way point length) => " << sqrt(pow(local_position[vtol::NORTH] - _way_points.front().north
+                        , 2) + pow(local_position[vtol::EAST] - _way_points.front().east, 2) 
+                    + pow(local_position[vtol::UP] - _way_points.front().down, 2)) << "\n"
+            << "(dubins path length) => " << sqrt(pow(local_position[vtol::NORTH] - _dubins_path_points.front().north , 2) + pow(local_position[vtol::EAST] - _dubins_path_points.front().east, 2)) << "\n"
             << "===================================================\n"
             << "Left way points         : " << _way_points.size() << "\n"
             << "Left Dubins path points : " << _dubins_path_points.size() << "\n"
@@ -69,15 +69,15 @@ void OffboardControl::_initializeSubscribers() {
 
 }
 
-void OffboardControl::_initializePublishers() {
-    offboard_control_mode_publisher_ = this->create_publisher<OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
-    trajectory_setpoint_publisher_ = this->create_publisher<TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
-    vehicle_command_publisher_ = this->create_publisher<VehicleCommand>("/fmu/in/vehicle_command", 10);
-    _publisher_arm = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
+void OffboardControl::initializePublishers() {
+    offboard_control_mode_publisher = this->create_publisher<OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
+    trajectory_setpoint_publisher = this->create_publisher<TrajectorySetpoint>("/fmu/in/trajectory_setpoint", 10);
+    vehicle_command_publisher = this->create_publisher<VehicleCommand>("/fmu/in/vehicle_command", 10);
+    publisher_arm = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
 
 }
 
-void OffboardControl::_initializeClients() {
+void OffboardControl::initializeClients() {
 
 }
 
@@ -86,7 +86,7 @@ void OffboardControl::_initializeClients() {
  */
 void OffboardControl::arm()
 {
-    publish_vehicle_command(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0);
+    publishVehicleCommand(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 1.0);
 
     RCLCPP_INFO(this->get_logger(), "Arm command send");
 }
@@ -94,9 +94,9 @@ void OffboardControl::arm()
 /**
  * @brief Send a command to Disarm the vehicle
  */
-void OffboardControl::disarm()
+void OffboardControl::disArm()
 {
-    publish_vehicle_command(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
+    publishVehicleCommand(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
 
     RCLCPP_INFO(this->get_logger(), "Disarm command send");
 }
@@ -105,7 +105,7 @@ void OffboardControl::disarm()
  * @brief Publish the offboard control mode.
  *        For this example, only position and altitude controls are active.
  */
-void OffboardControl::publish_offboard_control_mode()
+void OffboardControl::publishOffboardControlMode()
 {
     OffboardControlMode msg{};
     msg.position = true;
@@ -114,7 +114,7 @@ void OffboardControl::publish_offboard_control_mode()
     msg.attitude = false;
     msg.body_rate = false;
     msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-    offboard_control_mode_publisher_->publish(msg);
+    offboard_control_mode_publisher->publish(msg);
 }
 
 /**
@@ -122,72 +122,72 @@ void OffboardControl::publish_offboard_control_mode()
  *        For this example, it sends a trajectory setpoint to make the
  *        vehicle hover at 5 meters with a yaw angle of 180 degrees.
  */
-void OffboardControl::publish_trajectory_setpoint(void)
+void OffboardControl::publishTrajectorySetpoint(void)
 {
     TrajectorySetpoint msg{};
     std::array<float, 3> norm = {_way_points.front().north, _way_points.front().east, _way_points.front().down};
     if (_way_points.front().is_dubins_path 
-            && !is_reach_way_point_with_norm(norm)) {
-        make_dubins_trajectory_setpoint(msg);
+            && !isReachWayPointWithNorm(norm)) {
+        makeDubinsTrajectorySetpoint(msg);
     } else {
-        make_general_trajectory_setpoint(msg);
+        makeGeneralTrajectorySetpoint(msg);
     }
-    trajectory_setpoint_publisher_->publish(msg);
+    trajectory_setpoint_publisher->publish(msg);
 }
 
-void OffboardControl::make_general_trajectory_setpoint(TrajectorySetpoint& msg) {
+void OffboardControl::makeGeneralTrajectorySetpoint(TrajectorySetpoint& msg) {
     msg.position = {_way_points.front().north, _way_points.front().east, _way_points.front().down};
     msg.yaw = _way_points.front().yaw ? _way_points.front().yaw
-        : atan2(_way_points.front().east - _local_position[vtol::EAST], 
-                _way_points.front().north - _local_position[vtol::NORTH]); // -pi ~ pi
+        : atan2(_way_points.front().east - local_position[vtol::EAST], 
+                _way_points.front().north - local_position[vtol::NORTH]); // -pi ~ pi
     msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
     if (_way_points.size() == 1) {
         return ;
     }
-    if (is_reach_way_point_with_norm(msg.position)) {
+    if (isReachWayPointWithNorm(msg.position)) {
         std::cout << "way point reached" << std::endl;
         _way_points.pop();
     }
 }
 
-void OffboardControl::make_dubins_trajectory_setpoint(TrajectorySetpoint& msg) {
+void OffboardControl::makeDubinsTrajectorySetpoint(TrajectorySetpoint& msg) {
     if (_dubins_path_points.empty()) {
         std::cout << "dubins path planning" << std::endl;
-        const std::array<double, 3> start = {_local_position[vtol::NORTH], _local_position[vtol::EAST], _local_position[vtol::YAW]};
+        const std::array<double, 3> start = {local_position[vtol::NORTH], local_position[vtol::EAST], local_position[vtol::YAW]};
         const std::array<double, 3> end = {_way_points.front().north, _way_points.front().east, _way_points.front().yaw};
-        Dubins dubins(start, end, OffboardControl::turning_radius);
-        dubins.shortest_path();
-        dubins.path_sample_many(OffboardControl::sampling_interval, OffboardControl::set_dubins_path_point, &_local_position);
+        Dubins dubins(start, end, OffboardControl::_turning_radius);
+        dubins.shortestPath();
+        dubins.pathSampleMany(OffboardControl::_sampling_interval, OffboardControl::_setDubinsPathPoint, &local_position);
     }
     msg.position = {_dubins_path_points.front().north, _dubins_path_points.front().east, _dubins_path_points.front().down};
     msg.yaw = _dubins_path_points.front().yaw ? _dubins_path_points.front().yaw
-        : atan2(_dubins_path_points.front().east - _local_position[vtol::EAST], 
-                _dubins_path_points.front().north - _local_position[vtol::NORTH]); // -pi ~ pi
+        : atan2(_dubins_path_points.front().east - local_position[vtol::EAST], 
+                _dubins_path_points.front().north - local_position[vtol::NORTH]); // -pi ~ pi
     msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
     const std::array<float, 2> planar = {msg.position[vtol::NORTH], msg.position[vtol::EAST]};
-    if (is_reach_way_point_with_norm(planar)) {
+    if (isReachWayPointWithNorm(planar)) {
         std::cout << "way point reached" << std::endl;
         _dubins_path_points.pop();
     }
 }
 
-bool OffboardControl::is_reach_way_point_with_square(std::array<float, 3> target) {
-    return (abs(_local_position[vtol::NORTH] - target[vtol::NORTH]) < 1.0 &&
-            abs(_local_position[vtol::EAST] - target[vtol::EAST]) < 1.0 &&
-            abs(_local_position[vtol::UP] - target[vtol::UP]) < 1.0);
+bool OffboardControl::isReachWayPointWithSquare(std::array<float, 3> target) {
+    return (abs(local_position[vtol::NORTH] - target[vtol::NORTH]) < 1.0 &&
+            abs(local_position[vtol::EAST] - target[vtol::EAST]) < 1.0 &&
+            abs(local_position[vtol::UP] - target[vtol::UP]) < 1.0);
 }
 
-bool OffboardControl::is_reach_way_point_with_norm(std::array<float, 3> target) {
-    return sqrt(pow(_local_position[vtol::NORTH] - target[vtol::NORTH] , 2) +
-            pow(_local_position[vtol::EAST] - target[vtol::EAST], 2) +
-            pow(_local_position[vtol::UP] - target[vtol::UP], 2)) < 10.0;
+bool OffboardControl::isReachWayPointWithNorm(std::array<float, 3> target) {
+    return sqrt(pow(local_position[vtol::NORTH] - target[vtol::NORTH] , 2) +
+            pow(local_position[vtol::EAST] - target[vtol::EAST], 2) +
+            pow(local_position[vtol::UP] - target[vtol::UP], 2)) < 10.0;
 }
 
-bool OffboardControl::is_reach_way_point_with_norm(std::array<float, 2> target) {
-    return sqrt(pow(_local_position[vtol::NORTH] - target[vtol::NORTH] , 2) +
-            pow(_local_position[vtol::EAST] - target[vtol::EAST], 2)) < 10.0;
+bool OffboardControl::isReachWayPointWithNorm(std::array<float, 2> target) {
+    return sqrt(pow(local_position[vtol::NORTH] - target[vtol::NORTH] , 2) +
+            pow(local_position[vtol::EAST] - target[vtol::EAST], 2)) < 10.0;
 }
-// abs(_local_position[vtol::YAW] - _way_points.front()[vtol::YAW]) < 1.0) {
+// abs(local_position[vtol::YAW] - _way_points.front()[vtol::YAW]) < 1.0) {
 
 /**
  * @brief Publish vehicle commands
@@ -195,7 +195,7 @@ bool OffboardControl::is_reach_way_point_with_norm(std::array<float, 2> target) 
  * @param param1    Command parameter 1
  * @param param2    Command parameter 2
  */
-void OffboardControl::publish_vehicle_command(uint16_t command, float param1, float param2)
+void OffboardControl::publishVehicleCommand(uint16_t command, float param1, float param2)
 {
     VehicleCommand msg{};
     msg.param1 = param1;
@@ -207,22 +207,22 @@ void OffboardControl::publish_vehicle_command(uint16_t command, float param1, fl
     msg.source_component = 1;
     msg.from_external = true;
     msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-    vehicle_command_publisher_->publish(msg);
+    vehicle_command_publisher->publish(msg);
 }
 
-// void OffboardControl::dubins_path_planning(float x, float y) {
+// void OffboardControl::dubinsPathPlanning(float x, float y) {
 //
 // }
 
-// void OffboardControl::set_way_point(std::array<float, 4> way_point) {
+// void OffboardControl::_setWayPoint(std::array<float, 4> way_point) {
 //     OffboardControl::_way_points.push(way_point); 
 // }
 
-void OffboardControl::set_way_point(WayPoint way_point) {
+void OffboardControl::_setWayPoint(WayPoint way_point) {
     OffboardControl::_way_points.push(way_point); 
 }
 
-int OffboardControl::set_dubins_path_point(double q[3], double x, void* user_data) {
+int OffboardControl::_setDubinsPathPoint(double q[3], double x, void* user_data) {
     static_cast<void>(x); // for unused
     LocalPosition* local_position = static_cast<LocalPosition *>(user_data);  
  
@@ -235,21 +235,21 @@ int OffboardControl::set_dubins_path_point(double q[3], double x, void* user_dat
 //     RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
 // }
 
-void OffboardControl::_publish_pwm_output_message(void) {
-    _publish_arm_control_message();
+void OffboardControl::publishPwmOutputMessage(void) {
+    publishArmControlMessage();
     // _publish_disarm_control_message();
     // _publish_disarm_control_message2();
     // _publish_disarm_control_message_param();
 }
 
-void OffboardControl::_publish_arm_control_message(void) {
+void OffboardControl::publishArmControlMessage(void) {
     auto actuator_control_msg = mavros_msgs::msg::ActuatorControl();
     actuator_control_msg.header.stamp = this->now();
     actuator_control_msg.header.frame_id = "camera_servo";
     actuator_control_msg.group_mix = 2;  // Use group 2 for AUX channels in PX4
                                          // actuator_control_msg->controls.resize(8);  // 사용할 채널 수에 따라 크기 조정
-    actuator_control_msg.controls[0] = _pwm_nomallize;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    _pwm_nomallize += (_pwm_nomallize < 0.9) * 0.1;
-    std::cout << "Publishing arm control message" << _pwm_nomallize << std::endl;
-    _publisher_arm->publish(actuator_control_msg);
+    actuator_control_msg.controls[0] = pwm_nomallize;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
+    pwm_nomallize += (pwm_nomallize < 0.9) * 0.1;
+    std::cout << "Publishing arm control message" << pwm_nomallize << std::endl;
+    publisher_arm->publish(actuator_control_msg);
 }

@@ -44,51 +44,51 @@ private:
 public:
 	OffboardControl(void);
 	void        arm(void);
-	void        disarm(void);
+	void        disArm(void);
 
-    void        dubins_path_planning(void);
-    static void set_way_point(WayPoint way_point);
-    static int set_dubins_path_point(double q[3], double x, void* user_data);
+    void        dubinsPathPlanning(void);
+    static void _setWayPoint(WayPoint way_point);
+    static int _setDubinsPathPoint(double q[3], double x, void* user_data);
 private:
     // static std::queue<std::array<float, 4>> way_points_;
-    void	   _initializeSubscribers(void);
-    void	   _initializePublishers(void);
-    void	   _initializeClients(void);
+    void	   initializeSubscribers(void);
+    void	   initializePublishers(void);
+    void	   initializeClients(void);
 
     static std::queue<WayPoint>         _way_points;
     static std::queue<DubinsPathPoint>  _dubins_path_points;
-    bool is_reach_way_point_with_square(std::array<float, 3> target);
-    bool is_reach_way_point_with_norm(std::array<float, 3> target);
-    bool is_reach_way_point_with_norm(std::array<float, 2> target);
+    bool isReachWayPointWithSquare(std::array<float, 3> target);
+    bool isReachWayPointWithNorm(std::array<float, 3> target);
+    bool isReachWayPointWithNorm(std::array<float, 2> target);
 
-	rclcpp::TimerBase::SharedPtr timer_;
-	rclcpp::Publisher<OffboardControlMode>::SharedPtr offboard_control_mode_publisher_;
-	rclcpp::Publisher<TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher_;
-	rclcpp::Publisher<VehicleCommand>::SharedPtr vehicle_command_publisher_;
-    rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     _publisher_arm;
+	rclcpp::TimerBase::SharedPtr timer;
+	rclcpp::Publisher<OffboardControlMode>::SharedPtr offboard_control_mode_publisher;
+	rclcpp::Publisher<TrajectorySetpoint>::SharedPtr trajectory_setpoint_publisher;
+	rclcpp::Publisher<VehicleCommand>::SharedPtr vehicle_command_publisher;
+    rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     publisher_arm;
 
-	rclcpp::Subscription<px4_msgs::msg::VehicleLocalPosition>::SharedPtr vehicle_local_position_subscription_;
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr _key_event_subscription;
+	rclcpp::Subscription<px4_msgs::msg::VehicleLocalPosition>::SharedPtr vehicle_local_position_subscription;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr key_event_subscription;
 
-    std::array<float, 4> _local_position;
-	std::atomic<uint64_t> _timestamp;       //!< common synced timestamped
+    std::array<float, 4> local_position;
+	std::atomic<uint64_t> timestamp;       //!< common synced timestamped
     size_t _norm = 0;
-	uint64_t _offboard_setpoint_counter = 0;    //!< counter for the number of setpoints sent
-    int      _pwm;
-    float    _pwm_nomallize;
+	uint64_t offboard_setpoint_counter = 0;    //!< counter for the number of setpoints sent
+    int      pwm;
+    float    pwm_nomallize;
                                             //
-	void publish_offboard_control_mode(void);
-	void publish_trajectory_setpoint(void);
-    void publish_trajectory_setpoint_dubins_path(void);
-	void publish_vehicle_command(uint16_t command, float param1 = 0.0, float param2 = 0.0);
-    void make_general_trajectory_setpoint(TrajectorySetpoint& msg);
-    void make_dubins_trajectory_setpoint(TrajectorySetpoint& msg);
-    void _publish_arm_control_message(void);
-    void _publish_pwm_output_message(void);
+	void publishOffboardControlMode(void);
+	void publishTrajectorySetpoint(void);
+    void publishTrajectorySetpointDubinsPath(void);
+	void publishVehicleCommand(uint16_t command, float param1 = 0.0, float param2 = 0.0);
+    void makeGeneralTrajectorySetpoint(TrajectorySetpoint& msg);
+    void makeDubinsTrajectorySetpoint(TrajectorySetpoint& msg);
+    void publishArmControlMessage(void);
+    void publishPwmOutputMessage(void);
     void chatterCallback(const std_msgs::msg::String::SharedPtr msg);
 
-    static double turning_radius;
-    static double sampling_interval;
+    static double _turning_radius;
+    static double _sampling_interval;
     
 };
 
