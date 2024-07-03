@@ -14,6 +14,19 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
     // DEBUG::print("[Pose] Yaw current: ", yaw_current,GREEN);
 }
 
+void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
+
+    global_position_[vtol::ALT]=msg->altitude;
+    global_position_[vtol::LAT]=msg->latitude;
+    global_position_[vtol::LON]=msg->longitude;
+
+
+    DEBUG::print("gps_alt: ", global_position_[vtol::ALT], GREEN);
+    DEBUG::print("gps_lat: ", global_position_[vtol::LAT], GREEN);
+    DEBUG::print("gps_lon: ", global_position_[vtol::LON], GREEN);
+}
+
+
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
     fcuState_ = *msg;
@@ -64,11 +77,15 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     if (OffboardMavros::cmdFlag_ == vtol::TAKEOFF) {
         DEBUG::print("", ">> Take Off <<", BOLDGREEN);
         // 순서 중요
-        if (fcuState_.mode != vtol::FCU_TAKEOFF && fcuState_.armed == true) {
-            update_takeoff_status();
-        } else if (fcuState_.mode == vtol::FCU_TAKEOFF && fcuState_.armed == false) {
-            update_arming_status();
+        if (global_position_[0] >= 0 && global_position_[1] >= 0 && global_position_[2] >= 0) {
+            if (fcuState_.mode != vtol::FCU_TAKEOFF && fcuState_.armed == true) {
+                update_takeoff_status();
+            } else if (fcuState_.mode == vtol::FCU_TAKEOFF && fcuState_.armed == false) {
+                update_arming_status();
+            }
         }
+
+        
     }
 
     if (OffboardMavros::cmdFlag_ == vtol::START) {
@@ -201,7 +218,7 @@ void OffboardMavros::currentpositionCallback(const geometry_msgs::msg::PoseStamp
     cur_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
 
     if (cmdFlag_ == vtol::TAKEOFF) {
-        if (cur_position_[vtol::UP] > vtol::INIT_UP - 1) {
+        if (global_position_[vtol::ALT] > init_global_position[vtol::ALT] - 1) {
             cmdFlag_ = vtol::FLY;
             prev_position_[vtol::NORTH] = cur_position_[vtol::NORTH];
             prev_position_[vtol::EAST] = cur_position_[vtol::EAST];
