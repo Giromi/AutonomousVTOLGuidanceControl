@@ -1,6 +1,6 @@
 #ifndef CONVENTION_HPP
 #define CONVENTION_HPP
-
+#include <cmath>
 
 
 namespace vtol {
@@ -73,6 +73,7 @@ namespace vtol {
     constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";
     constexpr char	FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
     constexpr char	FCU_LAND[]      = "AUTO.LAND";
+    constexpr double RAD_2_DEG = 180 / M_PI;
 }
 
 

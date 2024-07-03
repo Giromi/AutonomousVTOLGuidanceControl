@@ -26,6 +26,7 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
     DEBUG::print("gps_lon: ", global_position_[vtol::LON], GREEN);
 }
 
+
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
     fcuState_ = *msg;
@@ -35,6 +36,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     DEBUG::print_bool("Arming : ", msg->armed, RED);
     DEBUG::print_binary("Command flag : ", cmdFlag_, YELLOW);
     DEBUG::print("System status : ", fcuState_.system_status, BLUE);
+    DEBUG::print("[State] Yaw current: ", yaw_current, GREEN);
     DEBUG::msg("[DEBUG] ", "-----------------\n");
 
     // if ((statusFlag == vtol::LAND) && is_real_arming_status_() && is_five_seconds_passed()) {

@@ -54,6 +54,10 @@ add_library(OffboardMavros SHARED
   )
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
+add_library(KeyEventPub SHARED 
+  src/main/KeyPublisher.cpp
+  src/main/TerminalMode.cpp
+)
 
 # Function to setup ament dependencies for targets
 function(setup_target target_name)
@@ -72,7 +76,7 @@ endfunction()
 # ament_target_dependencies(frame_transforms Eigen3 geometry_msgs sensor_msgs)
 # ament_target_dependencies(OffboardControl rclcpp px4_msgs)
 
-foreach(lib frame_transforms OffboardControl OffboardMavros Dubins ServoControlPublisher)
+foreach(lib frame_transforms OffboardControl OffboardMavros Dubins KeyEventPub ServoControlPublisher)
   setup_target(${lib})
   target_include_directories(${lib} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}>
@@ -117,6 +121,8 @@ foreach(exec ${EXECUTABLES})
     target_link_libraries(${exec_name} ServoControlPublisher frame_transforms ${UUID_LIBRARIES})
   elseif("${exec_name}" STREQUAL "offboard_mavros")
     target_link_libraries(${exec_name} OffboardMavros)
+  elseif("${exec_name}" STREQUAL "key_event_pub")
+    target_link_libraries(${exec_name} KeyEventPub)
   endif()
   install(TARGETS ${exec_name} DESTINATION lib/${PROJECT_NAME})
 endforeach()
@@ -199,6 +205,13 @@ install(TARGETS OffboardMavros
   INCLUDES DESTINATION include
 )
 
+install(TARGETS KeyEventPub 
+  EXPORT export_KeyEventPub
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin
+  INCLUDES DESTINATION include
+)
 
 # Install launch files.
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)

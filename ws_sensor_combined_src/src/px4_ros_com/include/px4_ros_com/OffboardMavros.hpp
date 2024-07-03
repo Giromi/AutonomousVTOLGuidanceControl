@@ -23,7 +23,6 @@
 #include <cmath>
 #include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <cstdio>
-
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
@@ -148,7 +147,7 @@ private:
 
     double                                                              yaw_current;
     std::array<float, 3>		                                        init_global_position;
-    
+
     // static const std::array<std::string, vtol::ACTION_SIZE>        action_string_array_;
 
     //TODO: static 지워서 멤버변수로 변경
