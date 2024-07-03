@@ -20,8 +20,8 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
 
     DEBUG::msg("\n[DEBUG] ", "-----------------");
     DEBUG::print("Mode : ", msg->mode, CYAN);
-    DEBUG::print_bool("Arming : ", msg->armed, RED);
-    DEBUG::print_binary("Command flag : ", _cmd_flag, YELLOW);
+    DEBUG::printBool("Arming : ", msg->armed, RED);
+    DEBUG::printBinary("Command flag : ", _cmd_flag, YELLOW);
     DEBUG::print("System status : ", fcu_state.system_status, BLUE);
     DEBUG::print("[State] Yaw current: ", yaw_current, GREEN);
     DEBUG::msg("[DEBUG] ", "-----------------\n");

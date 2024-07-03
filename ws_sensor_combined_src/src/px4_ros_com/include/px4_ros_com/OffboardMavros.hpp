@@ -53,7 +53,7 @@ private:
     void    updateArmingStatus(void); 
     void    updateDisarmingStatus(void); 
     void    updateTransitionFixedStatus(void); 
-    void	updateTransitionQuadStatus(void); 
+    void    updateTransitionQuadStatus(void); 
     
     void    requestTransitionStatus(const int input,
             void (OffboardMavros::*response_callback)
