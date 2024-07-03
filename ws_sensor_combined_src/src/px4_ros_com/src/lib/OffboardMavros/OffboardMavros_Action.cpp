@@ -96,7 +96,7 @@ void OffboardMavros::_actionReturnHome(void) {
 void OffboardMavros::_actionArming(void) {
     if (OffboardMavros::_cmd_flag != vtol::READY) {
         std::cout << "Vehicle is NOT READY status" << std::endl;
-        return ;
+        // return ;
     }
     OffboardMavros::_cmd_flag = vtol::ARMED;
 }
@@ -179,4 +179,5 @@ void (*OffboardMavros::actionFunc[])(void) = {
     &OffboardMavros::_actionStart,             // s
     &OffboardMavros::_actionInit,              // 0
     &OffboardMavros::_actionTransition,        // w
+};
 

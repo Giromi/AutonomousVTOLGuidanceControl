@@ -2,10 +2,10 @@
 
 void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
 
-    const double q1=msg->pose.orientation.x;
-    const double q2=msg->pose.orientation.y;
-    const double q3=msg->pose.orientation.z;
-    const double q4=msg->pose.orientation.w;
+    const double q1 = msg->pose.orientation.x;
+    const double q2 = msg->pose.orientation.y;
+    const double q3 = msg->pose.orientation.z;
+    const double q4 = msg->pose.orientation.w;
 
     const double t1 = 2 *(q4*q3+q1*q2);
     const double t2 = 1 - 2 *(q2*q2+q3*q3);
@@ -16,28 +16,39 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
 
 void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
 
-    global_position_[vtol::ALT]=msg->altitude;
-    global_position_[vtol::LAT]=msg->latitude;
-    global_position_[vtol::LON]=msg->longitude;
+    if (_global_position[0] == -1.0f || _global_position[1] == -1.0f || _global_position[2] == -1.0f) {
+        _init_global_position[vtol::ALT] = msg->altitude + 5.0f;
+        _init_global_position[vtol::LAT] = msg->latitude;
+        _init_global_position[vtol::LON] = msg->longitude;
+        DEBUG::print("alt: ", _init_global_position[vtol::ALT],BLUE);
+        DEBUG::print("lat: ", _init_global_position[vtol::LAT],BLUE);
+        DEBUG::print("lon: ", _init_global_position[vtol::LON],BLUE);
+    }
+    _global_position[vtol::ALT] = msg->altitude;
+    _global_position[vtol::LAT] = msg->latitude;
+    _global_position[vtol::LON] = msg->longitude;
 
-
-    DEBUG::print("gps_alt: ", global_position_[vtol::ALT], GREEN);
-    DEBUG::print("gps_lat: ", global_position_[vtol::LAT], GREEN);
-    DEBUG::print("gps_lon: ", global_position_[vtol::LON], GREEN);
+    DEBUG::print("gps_alt: ", _global_position[vtol::ALT], GREEN);
+    DEBUG::print("gps_lat: ", _global_position[vtol::LAT], GREEN);
+    DEBUG::print("gps_lon: ", _global_position[vtol::LON], GREEN);
 }
 
 
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
+    if (_global_position[0] == -1.0f || _global_position[1] == -1.0f || _global_position[2] == -1.0f) {
+        return ;
+    }
+
     fcu_state = *msg;
 
     DEBUG::msg("\n[DEBUG] ", "-----------------");
     DEBUG::print("Mode : ", msg->mode, CYAN);
-    DEBUG::print_bool("Arming : ", msg->armed, RED);
-    DEBUG::print_binary("Command flag : ", cmdFlag_, YELLOW);
-    DEBUG::print("System status : ", fcuState_.system_status, BLUE);
+    DEBUG::printBool("Arming : ", msg->armed, RED);
+    DEBUG::printBinary("Command flag : ", _cmd_flag, YELLOW);
+    DEBUG::print("System status : ", fcu_state.system_status, BLUE);
     DEBUG::print("Yaw current: ", yaw_current, GREEN);
-    DEBUG::printArray("local_velocity_: ", local_velocity_, 3, MAGENTA);
+    DEBUG::printArray("local_velocity_: ", _local_velocity, 3, MAGENTA);
     DEBUG::msg("[DEBUG] ", "-----------------\n");
 
     // if ((statusFlag == vtol::LAND) && is_real_arming_status_() && isFiveSecondsPassed()) {
@@ -82,15 +93,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
             updateTakeoffStatus();
         } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
             updateArmingStatus();
-        if (global_position_[0] >= 0 && global_position_[1] >= 0 && global_position_[2] >= 0) {
-            if (fcuState_.mode != vtol::FCU_TAKEOFF && fcuState_.armed == true) {
-                update_takeoff_status();
-            } else if (fcuState_.mode == vtol::FCU_TAKEOFF && fcuState_.armed == false) {
-                update_arming_status();
-            }
         }
-
-        
     }
 
     if (OffboardMavros::_cmd_flag == vtol::START) {
@@ -223,13 +226,13 @@ void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamp
     _cur_position = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
 
 
-    if (cmdFlag_ == vtol::TAKEOFF) {
-        if (global_position_[vtol::ALT] > init_global_position[vtol::ALT] - 1) {
-            cmdFlag_ = vtol::FLY;
-            prev_position_[vtol::NORTH] = cur_position_[vtol::NORTH];
-            prev_position_[vtol::EAST] = cur_position_[vtol::EAST];
-            DEBUG::print("Landing point North :", prev_position_[vtol::NORTH], BOLDYELLOW);
-            DEBUG::print("Landing point East  :", prev_position_[vtol::EAST], BOLDYELLOW);
+    if (_cmd_flag == vtol::TAKEOFF) {
+        if (_global_position[vtol::ALT] > _init_global_position[vtol::ALT] - 1) {
+            _cmd_flag = vtol::FLY;
+            _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
+            _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
+            DEBUG::print("Landing point North :", _prev_position[vtol::NORTH], BOLDYELLOW);
+            DEBUG::print("Landing point East  :", _prev_position[vtol::EAST], BOLDYELLOW);
         }
     } else if (_cmd_flag == vtol::TO_FIXED) {
         DEBUG::print("North :", _cur_position[vtol::NORTH], WHITE);

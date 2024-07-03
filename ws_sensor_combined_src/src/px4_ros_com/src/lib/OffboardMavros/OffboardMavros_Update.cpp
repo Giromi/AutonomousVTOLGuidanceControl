@@ -41,7 +41,7 @@ void OffboardMavros::cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::
         "CommandLong command sent successfully",
         "Failed to send CommandLong command"
     };
-    print_success_info(future.get()->success, msg);
+    printSuccessInfo(future.get()->success, msg);
 }
 
 void OffboardMavros::requestTransitionStatus(const int input,
@@ -65,11 +65,10 @@ void OffboardMavros::requestArmingStatus(const bool& input,
 
 void OffboardMavros::updateTakeoffStatus(void) {
     auto request = makeRequestTakeoffLandMessage(
-            vtol::GeographicCoordinate{global_position_[vtol::ALT]+20, global_position_[vtol::LAT], global_position_[vtol::LON], 0, 0});
+            vtol::GeographicCoordinate{_global_position[vtol::ALT]+20, _global_position[vtol::LAT], _global_position[vtol::LON], 0, 0});
     takeoff_client->async_send_request(request,
             std::bind(&OffboardMavros::takeoffResponseCallback, this, std::placeholders::_1));
     last_request = this->now();
-=======
 }
 
 void OffboardMavros::updateLandingStatus(void) {

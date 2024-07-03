@@ -5,7 +5,6 @@
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/twist_stamped.hpp>
 #include <mavros_msgs/srv/command_bool.hpp>
-#include <mavros_msgs/srv/set_mode.hpp>
 #include <mavros_msgs/msg/state.hpp>
 #include <mavros_msgs/msg/actuator_control.hpp>
 #include <mavros_msgs/msg/override_rc_in.hpp>
@@ -14,16 +13,18 @@
 #include <mavros_msgs/srv/command_long.hpp>
 #include <mavros_msgs/srv/command_vtol_transition.hpp>
 #include <mavros_msgs/msg/command_code.hpp>
+#include <mavros_msgs/srv/set_mode.hpp>
 #include <std_msgs/msg/string.hpp>
 #include <nav_msgs/msg/odometry.hpp>
+#include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <array>
 #include "px4_ros_com/convention.hpp"
 #include <limits>
 //#include <nav_msgs/msg/odometry.hpp>
 #include "DEBUG.hpp"
 #include <cmath>
-#include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <cstdio>
+
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
@@ -59,7 +60,6 @@ private:
     void    updateDisarmingStatus(void); 
     void    updateTransitionFixedStatus(void); 
     void    updateTransitionQuadStatus(void); 
-    
     void    requestTransitionStatus(const int input,
             void (OffboardMavros::*response_callback)
             (const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture));
@@ -130,7 +130,7 @@ private:
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
-    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      local_vel_pub;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr             local_vel_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      local_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      target_local_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
@@ -141,10 +141,12 @@ private:
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client;
     rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             takeoff_client;
     rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client;
+    rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            cmd_client;
     rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr                set_mode_client;
     rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            location_client;
     rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client;
 
+    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        gps_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
@@ -153,11 +155,14 @@ private:
     rclcpp::Time                                                        last_request{0, 0, RCL_ROS_TIME};
 
     double yaw_current;
+    std::array<float, 3>		                                        _init_global_position;
     // static const std::array<std::string, vtol::ACTION_SIZE>        _action_string_array;
+    //
 
     //TODO: static 지워서 멤버변수로 변경
     static unsigned char                                                _cmd_flag;
     static std::array<double, 3>		                                _local_position;
+    static std::array<float, 3>		                                    _global_position;
     static std::array<double, 6>		                                _local_velocity;
     static std::array<double, 3>		                                _cur_position;
     static std::array<double, 3>		                                _prev_position;
