@@ -1,8 +1,8 @@
 
 #include "px4_ros_com/ServoControlPublisher.hpp"
 
-int ServoControlPublisher::_pwm = 800;
-float ServoControlPublisher::_pwm_nomallize = -1.0;
+int ServoControlPublisher::pwm = 800;
+float ServoControlPublisher::pwm_nomallize = -1.0;
 
 ServoControlPublisher::ServoControlPublisher(void) : Node("servo_control_publisher") {
     _publisher_arm = this->create_publisher<mavros_msgs::msg::ActuatorControl>("/mavros/actuator_control", 10);
@@ -11,10 +11,10 @@ ServoControlPublisher::ServoControlPublisher(void) : Node("servo_control_publish
     _parameters_client = std::make_shared<rclcpp::SyncParametersClient>(this, "/mavros/param");  // 파라미터 클라이언트 초기화
     _timer = this->create_wall_timer(
             std::chrono::milliseconds(1000),
-            std::bind(&ServoControlPublisher::_publish_pwm_output_message, this));
+            std::bind(&ServoControlPublisher::_publishpwm_output_message, this));
 }
 
-void ServoControlPublisher::_publish_pwm_output_message(void) {
+void ServoControlPublisher::_publishpwm_output_message(void) {
     _publish_arm_control_message();
     // _publish_disarm_control_message();
     // _publish_disarm_control_message2();
@@ -22,15 +22,15 @@ void ServoControlPublisher::_publish_pwm_output_message(void) {
 }
 
 void ServoControlPublisher::_publish_arm_control_message(void) {
-    if (ServoControlPublisher::_pwm < 1)
-        ServoControlPublisher::_pwm += 0.1;
+    if (ServoControlPublisher::pwm < 1)
+        ServoControlPublisher::pwm += 0.1;
     auto message = mavros_msgs::msg::ActuatorControl();
     message.header.stamp = this->get_clock()->now();
     message.header.frame_id = "camera_servo";
     message.group_mix = 2;  // Use group 2 for AUX channels in PX4
     message.controls[0] = 1;  // Example: set midpoint (1500 μs in PWM) for the first AUX channel
-    ServoControlPublisher::_pwm_nomallize += (ServoControlPublisher::_pwm_nomallize < 0.9) * 0.1;
-    std::cout << "Publishing arm control message" << _pwm_nomallize << std::endl;
+    ServoControlPublisher::pwm_nomallize += (ServoControlPublisher::pwm_nomallize < 0.9) * 0.1;
+    std::cout << "Publishing arm control message" << pwm_nomallize << std::endl;
     _publisher_arm->publish(message);
 }
 
@@ -72,10 +72,10 @@ void ServoControlPublisher::_publish_disarm_control_message2(void) {
 }
 
 void ServoControlPublisher::_publish_disarm_control_message_param(void) {
-    std::cout << "Publishing disarm control message " << _pwm << std::endl;
-    // _set_mavros_param("PWM_AUX_DIS1", _pwm);
-    _set_ros_param("PWM_AUX_DIS1", _pwm);
-    _pwm += (ServoControlPublisher::_pwm < 2000) * 100;
+    std::cout << "Publishing disarm control message " << pwm << std::endl;
+    // _set_mavros_param("PWM_AUX_DIS1", pwm);
+    _set_ros_param("PWM_AUX_DIS1", pwm);
+    pwm += (ServoControlPublisher::pwm < 2000) * 100;
 }
 
 void ServoControlPublisher::_set_mavros_param(const std::string& param_name, int param_value) {

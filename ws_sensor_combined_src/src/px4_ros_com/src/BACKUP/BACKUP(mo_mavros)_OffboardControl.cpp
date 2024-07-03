@@ -120,7 +120,7 @@ void OffboardControl::arm()
 /**
  * @brief Send a command to Disarm the vehicle
  */
-void OffboardControl::disarm()
+void OffboardControl::disArm()
 {
 	publish_vehicle_command(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
 
