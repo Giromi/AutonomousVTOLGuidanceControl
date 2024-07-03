@@ -3,180 +3,180 @@
   
   /* -- Static Functions -- */
 
-void OffboardMavros::action_go_north(void) {
+void OffboardMavros::_actionGoNorth(void) {
     //TODO make threshold
-    local_position_[vtol::NORTH] += offset_;
+    _local_position[vtol::NORTH] += _offset;
 }
 
-void OffboardMavros::action_go_east(void) {
+void OffboardMavros::_actionGoEast(void) {
     //TODO make threshold
-    local_position_[vtol::EAST] += offset_;
+    _local_position[vtol::EAST] += _offset;
 }
 
-void OffboardMavros::action_go_down(void) {
+void OffboardMavros::_actionGoDown(void) {
     //TODO make threshold
-    local_position_[vtol::UP] -= offset_;
+    _local_position[vtol::UP] -= _offset;
 }
 
-void OffboardMavros::action_go_south(void) {
+void OffboardMavros::_actionGoSouth(void) {
     //TODO make threshold
-    local_position_[vtol::NORTH] -= offset_;
+    _local_position[vtol::NORTH] -= _offset;
 }
 
-void OffboardMavros::action_go_west(void) {
+void OffboardMavros::_actionGoWest(void) {
     //TODO make threshold
-    local_position_[vtol::EAST] -= offset_;
+    _local_position[vtol::EAST] -= _offset;
 }
 
-void OffboardMavros::action_go_up(void) {
+void OffboardMavros::_actionGoUp(void) {
     //TODO make threshold
-    local_position_[vtol::UP] += offset_;
+    _local_position[vtol::UP] += _offset;
 }
 
-void OffboardMavros::action_velocity_plus_x(void) {
-    local_velocity_[0] += offset_;
+void OffboardMavros::_actionVelocityPlusX(void) {
+    _local_velocity[0] += _offset;
 }
 
-void OffboardMavros::action_velocity_plus_y(void) {
-    local_velocity_[1] += offset_;
+void OffboardMavros::_actionVelocityPlusY(void) {
+    _local_velocity[1] += _offset;
 }
 
-void OffboardMavros::action_velocity_plus_z(void) {
-    local_velocity_[2] += offset_;
+void OffboardMavros::_actionVelocityPlusZ(void) {
+    _local_velocity[2] += _offset;
 }
 
-void OffboardMavros::action_velocity_minus_x(void) {
-    local_velocity_[0] -= offset_;
+void OffboardMavros::_actionVelocityMinusX(void) {
+    _local_velocity[0] -= _offset;
 }
 
-void OffboardMavros::action_velocity_minus_y(void) {
-    local_velocity_[1] -= offset_;
+void OffboardMavros::_actionVelocityMinusY(void) {
+    _local_velocity[1] -= _offset;
 }
 
-void OffboardMavros::action_velocity_minus_z(void) {
-    local_velocity_[2] -= offset_;
+void OffboardMavros::_actionVelocityMinusZ(void) {
+    _local_velocity[2] -= _offset;
 }
 
-void OffboardMavros::action_velocity_plus_roll(void) {
-    local_velocity_[3] += offset_;
+void OffboardMavros::_actionVelocityPlusRoll(void) {
+    _local_velocity[3] += _offset;
 }
 
-void OffboardMavros::action_velocity_plus_pitch(void) {
-    local_velocity_[4] += offset_;
+void OffboardMavros::_actionVelocityPlusPitch(void) {
+    _local_velocity[4] += _offset;
 }
 
-void OffboardMavros::action_velocity_plus_yaw(void) {
-    local_velocity_[5] += offset_;
+void OffboardMavros::_actionVelocityPlusYaw(void) {
+    _local_velocity[5] += _offset;
 }
 
-void OffboardMavros::action_velocity_minus_roll(void) {
-    local_velocity_[3] -= offset_;
+void OffboardMavros::_actionVelocityMinusRoll(void) {
+    _local_velocity[3] -= _offset;
 }
 
-void OffboardMavros::action_velocity_minus_pitch(void) {
-    local_velocity_[4] -= offset_;
+void OffboardMavros::_actionVelocityMinusPitch(void) {
+    _local_velocity[4] -= _offset;
 }
 
-void OffboardMavros::action_velocity_minus_yaw(void) {
-    local_velocity_[5] -= offset_;
+void OffboardMavros::_actionVelocityMinusYaw(void) {
+    _local_velocity[5] -= _offset;
 }
 
-void OffboardMavros::action_return_home(void) {
+void OffboardMavros::_actionReturnHome(void) {
     //TODO make threshold
-    // local_position_[vtol::NORTH] = 0.0;
-    // local_position_[vtol::EAST] = 0.0;
-    local_velocity_[0] = 0.0;
-    local_velocity_[1] = 0.0;
-    local_velocity_[2] = 0.0;
-    local_velocity_[3] = 0.0;
-    local_velocity_[4] = 0.0;
-    local_velocity_[5] = 0.0;
+    // _local_position[vtol::NORTH] = 0.0;
+    // _local_position[vtol::EAST] = 0.0;
+    _local_velocity[0] = 0.0;
+    _local_velocity[1] = 0.0;
+    _local_velocity[2] = 0.0;
+    _local_velocity[3] = 0.0;
+    _local_velocity[4] = 0.0;
+    _local_velocity[5] = 0.0;
 }
 
-void OffboardMavros::action_arming(void) {
-    if (OffboardMavros::cmdFlag_ != vtol::READY) {
+void OffboardMavros::_actionArming(void) {
+    if (OffboardMavros::_cmd_flag != vtol::READY) {
         std::cout << "Vehicle is NOT READY status" << std::endl;
         return ;
     }
-    OffboardMavros::cmdFlag_ = vtol::ARMED;
+    OffboardMavros::_cmd_flag = vtol::ARMED;
 }
 
-void OffboardMavros::action_disarming(void) {
-    if (OffboardMavros::cmdFlag_ != vtol::ARMED) {
+void OffboardMavros::_actionDisarming(void) {
+    if (OffboardMavros::_cmd_flag != vtol::ARMED) {
         std::cout << "Vehicle is NOT ARMED status" << std::endl;
         return ;
     }
-    OffboardMavros::cmdFlag_ = vtol::READY;
+    OffboardMavros::_cmd_flag = vtol::READY;
 }
 
-void OffboardMavros::action_takeoff(void) {
+void OffboardMavros::_actionTakeoff(void) {
 
     // if (!(statusFlag & vtol::BIT_FLY)) {
     //     RCLCPP_INFO(this->get_logger(), "Vehicle is NOT ARMED status");
     //     return true;
-    if (OffboardMavros::cmdFlag_ == vtol::READY) {
+    if (OffboardMavros::_cmd_flag == vtol::READY) {
         std::cout << "Vehicle is NOT ARMED status" << std::endl;
         return ;
-    } else if (OffboardMavros::cmdFlag_ == vtol::ARMED) {
+    } else if (OffboardMavros::_cmd_flag == vtol::ARMED) {
         std::cout << "Calling takeoff service ..." << std::endl;
     }
-    OffboardMavros::cmdFlag_ = vtol::TAKEOFF;
+    OffboardMavros::_cmd_flag = vtol::TAKEOFF;
 }
 
-void OffboardMavros::action_landing(void) {
-    OffboardMavros::cmdFlag_ = vtol::LAND;
+void OffboardMavros::_actionLanding(void) {
+    OffboardMavros::_cmd_flag = vtol::LAND;
 }
 
-void OffboardMavros::action_start(void) {
-    if (OffboardMavros::cmdFlag_ == vtol::QUAD || OffboardMavros::cmdFlag_ == vtol::FIXED) {
-        OffboardMavros::cmdFlag_ = vtol::START;
-    } else if (OffboardMavros::cmdFlag_ == vtol::START) {
-        OffboardMavros::cmdFlag_ = vtol::FLY;
+void OffboardMavros::_actionStart(void) {
+    if (OffboardMavros::_cmd_flag == vtol::QUAD || OffboardMavros::_cmd_flag == vtol::FIXED) {
+        OffboardMavros::_cmd_flag = vtol::START;
+    } else if (OffboardMavros::_cmd_flag == vtol::START) {
+        OffboardMavros::_cmd_flag = vtol::FLY;
     }
 }
 
-void OffboardMavros::action_hold(void) {
-    OffboardMavros::cmdFlag_ = vtol::FLY;
+void OffboardMavros::_actionHold(void) {
+    OffboardMavros::_cmd_flag = vtol::FLY;
 }
 
-void OffboardMavros::action_init(void) {
-    OffboardMavros::cmdFlag_ = vtol::INIT;
+void OffboardMavros::_actionInit(void) {
+    OffboardMavros::_cmd_flag = vtol::INIT;
 }
 
-void OffboardMavros::action_transition(void) {
-    if (OffboardMavros::cmdFlag_ == vtol::QUAD) {
-        OffboardMavros::cmdFlag_ = vtol::TO_FIXED;
-    } else if (OffboardMavros::cmdFlag_ == vtol::FIXED) {
-        OffboardMavros::cmdFlag_ = vtol::TO_QUAD;
+void OffboardMavros::_actionTransition(void) {
+    if (OffboardMavros::_cmd_flag == vtol::QUAD) {
+        OffboardMavros::_cmd_flag = vtol::TO_FIXED;
+    } else if (OffboardMavros::_cmd_flag == vtol::FIXED) {
+        OffboardMavros::_cmd_flag = vtol::TO_QUAD;
     }
 }
 
 
-const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::action_string_array_ = { 
+const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::_action_string_array = { 
     "2", "4", "6", "3", "5", "7", 
     "↑", "↓", "→", "←", "+", "-", 
     "h", "a", "d", "t", "l", "s", "0", "w",  
 };
 
-void (*OffboardMavros::action_func_[])(void) = {
-    &OffboardMavros::action_velocity_plus_roll, // 2
-    &OffboardMavros::action_velocity_plus_pitch,// 4
-    &OffboardMavros::action_velocity_plus_yaw,  // 6
-    &OffboardMavros::action_velocity_minus_roll,  // 3
-    &OffboardMavros::action_velocity_minus_pitch,  // 5
-    &OffboardMavros::action_velocity_minus_yaw,    // 7
-    &OffboardMavros::action_velocity_plus_z,           // ↑ up
-    &OffboardMavros::action_velocity_minus_z,          // ↓ down
-    &OffboardMavros::action_velocity_minus_y,      // ← south
-    &OffboardMavros::action_velocity_plus_y,       // → north
-    &OffboardMavros::action_velocity_plus_x,       // + east
-    &OffboardMavros::action_velocity_minus_x,      // - west
-    &OffboardMavros::action_return_home,       // h
-    &OffboardMavros::action_arming,            // a
-    &OffboardMavros::action_disarming,         // d
-    &OffboardMavros::action_takeoff,           // t
-    &OffboardMavros::action_landing,           // l
-    &OffboardMavros::action_start,             // s
-    &OffboardMavros::action_init,              // 0
-    &OffboardMavros::action_transition,        // w
+void (*OffboardMavros::actionFunc[])(void) = {
+    &OffboardMavros::_actionVelocityPlusRoll, // 2
+    &OffboardMavros::_actionVelocityPlusPitch,// 4
+    &OffboardMavros::_actionVelocityPlusYaw,  // 6
+    &OffboardMavros::_actionVelocityMinusRoll,  // 3
+    &OffboardMavros::_actionVelocityMinusPitch,  // 5
+    &OffboardMavros::_actionVelocityMinusYaw,    // 7
+    &OffboardMavros::_actionVelocityPlusZ,           // ↑ up
+    &OffboardMavros::_actionVelocityMinusZ,          // ↓ down
+    &OffboardMavros::_actionVelocityMinusY,      // ← south
+    &OffboardMavros::_actionVelocityPlusY,       // → north
+    &OffboardMavros::_actionVelocityPlusX,       // + east
+    &OffboardMavros::_actionVelocityMinusX,      // - west
+    &OffboardMavros::_actionReturnHome,       // h
+    &OffboardMavros::_actionArming,            // a
+    &OffboardMavros::_actionDisarming,         // d
+    &OffboardMavros::_actionTakeoff,           // t
+    &OffboardMavros::_actionLanding,           // l
+    &OffboardMavros::_actionStart,             // s
+    &OffboardMavros::_actionInit,              // 0
+    &OffboardMavros::_actionTransition,        // w
 };

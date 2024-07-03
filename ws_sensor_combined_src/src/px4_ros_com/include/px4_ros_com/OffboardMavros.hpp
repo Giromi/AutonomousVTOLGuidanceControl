@@ -39,121 +39,121 @@ private:
     /* -- Callback Functions -- */
     void    poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
-    void    StatusReady(void);
+    void    statusReady(void);
 
     /* -- Publish Functions -- */
     void    publish(void);
     void    publishPose(void);
     void    publishActuatorControls(void);
-    void    publish_velocity(void); 
-    void    publish_attitude(void);
-    void    publish_local(void);
+    void    publishVelocity(void); 
+    void    publishAttitude(void);
+    void    publishLocal(void);
 
     /* -- Update Functions -- */
-    void    update_arming_status(void); 
-    void    update_disarming_status(void); 
-    void	update_transition_fixed_status(void); 
-    void	update_transition_quad_status(void); 
+    void    updateArmingStatus(void); 
+    void    updateDisarmingStatus(void); 
+    void    updateTransitionFixedStatus(void); 
+    void	updateTransitionQuadStatus(void); 
     
-    void    request_transition_status(const int input,
+    void    requestTransitionStatus(const int input,
             void (OffboardMavros::*response_callback)
             (const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture));
 
-    void    request_arming_status(const bool& input,
+    void    requestArmingStatus(const bool& input,
             void (OffboardMavros::*response_callback)
             (const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture));
 
-    void    update_takeoff_status(void);
-    void    update_landing_status(void);
-    void    update_location_(std::array<double, 3> input);
-    void    update_hold_mode(void);
-    void    update_offboard_mode(void); 
-    void    update_custom_mode(const std::string& input_mode,
+    void    updateTakeoffStatus(void);
+    void    updateLandingStatus(void);
+    void    updateLocation(std::array<double, 3> input);
+    void    updateHoldMode(void);
+    void    updateOffboardMode(void); 
+    void    updateCustomMode(const std::string& input_mode,
             void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture));
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
-            make_request_takeoff_land_message(const vtol::GeographicCoordinate& input);
+            makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
 
     /* -- Callback Functions -- */
-    void	offboard_response_callback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
-    void	hold_response_callback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
+    void	offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
+    void	holdResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
     void	chatterCallback(const std_msgs::msg::String::SharedPtr msg);
-    void	arming_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
-    void	disarming_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
-    void	transition_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture future);
-    void    takeoff_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
-    void    land_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
-    void    location_response_callback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
-    void    currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
+    void	armingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
+    void	disarmingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
+    void	transitionResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture future);
+    void    takeoffResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
+    void    landResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
+    void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
+    void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
 
     /* -- Action Functions -- */
-    static void	    action_go_north(void);
-    static void	    action_go_east(void);
-    static void	    action_go_down(void);
-    static void	    action_go_south(void);
-    static void	    action_go_west(void);
-    static void	    action_go_up(void);
-    static void	    action_velocity_plus_x(void);
-    static void	    action_velocity_plus_y(void);
-    static void	    action_velocity_plus_z(void);
-    static void	    action_velocity_minus_x(void);
-    static void	    action_velocity_minus_y(void);
-    static void	    action_velocity_minus_z(void);
-    static void	    action_velocity_plus_roll(void);
-    static void	    action_velocity_plus_pitch(void);
-    static void	    action_velocity_plus_yaw(void);
-    static void	    action_velocity_minus_roll(void);
-    static void	    action_velocity_minus_pitch(void);
-    static void	    action_velocity_minus_yaw(void);
-    static void	    action_return_home(void);
-    static void	    action_arming(void);
-    static void	    action_disarming(void);
-    static void	    action_takeoff(void);
-    static void	    action_landing(void);
-    static void	    action_start(void);
-    static void	    action_hold(void);
-    static void	    action_init(void);
-    static void	    action_transition(void);
+    static void	    _actionGoNorth(void);
+    static void	    _actionGoEast(void);
+    static void	    _actionGoDown(void);
+    static void	    _actionGoSouth(void);
+    static void	    _actionGoWest(void);
+    static void	    _actionGoUp(void);
+    static void	    _actionVelocityPlusX(void);
+    static void	    _actionVelocityPlusY(void);
+    static void	    _actionVelocityPlusZ(void);
+    static void	    _actionVelocityMinusX(void);
+    static void	    _actionVelocityMinusY(void);
+    static void	    _actionVelocityMinusZ(void);
+    static void	    _actionVelocityPlusRoll(void);
+    static void	    _actionVelocityPlusPitch(void);
+    static void	    _actionVelocityPlusYaw(void);
+    static void	    _actionVelocityMinusRoll(void);
+    static void	    _actionVelocityMinusPitch(void);
+    static void	    _actionVelocityMinusYaw(void);
+    static void	    _actionReturnHome(void);
+    static void	    _actionArming(void);
+    static void	    _actionDisarming(void);
+    static void	    _actionTakeoff(void);
+    static void	    _actionLanding(void);
+    static void	    _actionStart(void);
+    static void	    _actionHold(void);
+    static void	    _actionInit(void);
+    static void	    _actionTransition(void);
 
     /* -- Utile Functions -- */
-    bool            is_five_seconds_passed();
-    void            print_success_info(bool success, const char* msg[]) const;
-    static void     print_reference_input(void); 
+    bool            isFiveSecondsPassed();
+    void            printSuccessInfo(bool success, const char* msg[]) const;
+    static void     printReferenceInput(void); 
 
     /* -- Members Variables -- */
-    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub_;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      local_vel_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      local_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub_;
-    rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub_;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
+    rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
 
-    rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client_;
-    rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             takeoff_client_;
-    rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client_;
-    rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr                set_mode_client_;
-    rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            location_client_;
-    rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client_;
+    rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client;
+    rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             takeoff_client;
+    rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             landing_client;
+    rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr                set_mode_client;
+    rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            location_client;
+    rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client;
 
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub_; 
-    rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub_;
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription_;
-    rclcpp::TimerBase::SharedPtr                                        timer_;
-    mavros_msgs::msg::State                                             fcuState_;
-    rclcpp::Time                                                        last_request_{0, 0, RCL_ROS_TIME};
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
+    rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
+    rclcpp::TimerBase::SharedPtr                                        timer;
+    mavros_msgs::msg::State                                             fcu_state;
+    rclcpp::Time                                                        last_request{0, 0, RCL_ROS_TIME};
 
     double yaw_current;
-    // static const std::array<std::string, vtol::ACTION_SIZE>        action_string_array_;
+    // static const std::array<std::string, vtol::ACTION_SIZE>        _action_string_array;
 
     //TODO: static 지워서 멤버변수로 변경
-    static unsigned char                                                cmdFlag_;
-    static std::array<double, 3>		                                local_position_;
-    static std::array<double, 6>		                                local_velocity_;
-    static std::array<double, 3>		                                cur_position_;
-    static std::array<double, 3>		                                prev_position_;
-    static const std::string				                            arrow_string_;
-    static double                                                       offset_;
-    static const std::array<std::string, vtol::ACTION_SIZE>             action_string_array_;
-    static void                                                         (*action_func_[])(void);
+    static unsigned char                                                _cmd_flag;
+    static std::array<double, 3>		                                _local_position;
+    static std::array<double, 6>		                                _local_velocity;
+    static std::array<double, 3>		                                _cur_position;
+    static std::array<double, 3>		                                _prev_position;
+    static const std::string				                            _arrow_string;
+    static double                                                       _offset;
+    static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
+    static void                                                         (*actionFunc[])(void);
 };
 
 #endif
