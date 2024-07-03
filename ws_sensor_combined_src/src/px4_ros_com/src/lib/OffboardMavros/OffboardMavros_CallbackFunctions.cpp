@@ -31,7 +31,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     // }
     // TODO: status_XXX_() 함수를 만들어서 사용
 
-
+//ros::Time::now() - last_request > ros::Duration(5.0)
     // TODO: 생성자에서 초기화
     if (OffboardMavros::cmdFlag_ == vtol::INIT) {
         if (fcuState_.armed == true) {
@@ -46,6 +46,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
             update_hold_mode();
             update_custom_mode(vtol::FCU_HOLD, 
                     &OffboardMavros::hold_response_callback);
+            sendFixedHeadingCommand();
         }
     }
     if (OffboardMavros::cmdFlag_ == vtol::ARMED) {
