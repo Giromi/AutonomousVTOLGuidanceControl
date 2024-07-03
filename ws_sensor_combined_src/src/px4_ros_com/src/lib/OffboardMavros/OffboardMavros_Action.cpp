@@ -37,20 +37,19 @@ void OffboardMavros::action_velocity_plus_x(void) {
     local_velocity_[0] += offset_;
 }
 
-void OffboardMavros::action_velocity_plus_y(void) {
-    local_velocity_[1] += offset_;
-}
-
-void OffboardMavros::action_velocity_plus_z(void) {
-    local_velocity_[2] += offset_;
-}
-
 void OffboardMavros::action_velocity_minus_x(void) {
     local_velocity_[0] -= offset_;
 }
 
+void OffboardMavros::action_velocity_plus_y(void) {
+    local_velocity_[1] += offset_;
+}
+
 void OffboardMavros::action_velocity_minus_y(void) {
     local_velocity_[1] -= offset_;
+}
+void OffboardMavros::action_velocity_plus_z(void) {
+    local_velocity_[2] += offset_;
 }
 
 void OffboardMavros::action_velocity_minus_z(void) {
@@ -165,12 +164,12 @@ void (*OffboardMavros::action_func_[])(void) = {
     &OffboardMavros::action_velocity_minus_roll,  // 3
     &OffboardMavros::action_velocity_minus_pitch,  // 5
     &OffboardMavros::action_velocity_minus_yaw,    // 7
-    &OffboardMavros::action_velocity_plus_z,           // ↑ up
-    &OffboardMavros::action_velocity_minus_z,          // ↓ down
-    &OffboardMavros::action_velocity_minus_y,      // ← south
-    &OffboardMavros::action_velocity_plus_y,       // → north
-    &OffboardMavros::action_velocity_plus_x,       // + east
-    &OffboardMavros::action_velocity_minus_x,      // - west
+    &OffboardMavros::action_velocity_plus_y,       // ↑ west
+    &OffboardMavros::action_velocity_minus_y,      // ↓ south
+    &OffboardMavros::action_velocity_plus_x,       // → 
+    &OffboardMavros::action_velocity_minus_x,      // ← east
+    &OffboardMavros::action_velocity_plus_z,       // + up
+    &OffboardMavros::action_velocity_minus_z,      // - down
     &OffboardMavros::action_return_home,       // h
     &OffboardMavros::action_arming,            // a
     &OffboardMavros::action_disarming,         // d

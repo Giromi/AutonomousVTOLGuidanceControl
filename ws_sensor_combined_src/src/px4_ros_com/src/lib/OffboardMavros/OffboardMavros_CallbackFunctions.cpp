@@ -36,7 +36,8 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     DEBUG::print_bool("Arming : ", msg->armed, RED);
     DEBUG::print_binary("Command flag : ", cmdFlag_, YELLOW);
     DEBUG::print("System status : ", fcuState_.system_status, BLUE);
-    DEBUG::print("[State] Yaw current: ", yaw_current, GREEN);
+    DEBUG::print("Yaw current: ", yaw_current, GREEN);
+    DEBUG::printArray("local_velocity_: ", local_velocity_, 3, MAGENTA);
     DEBUG::msg("[DEBUG] ", "-----------------\n");
 
     // if ((statusFlag == vtol::LAND) && is_real_arming_status_() && is_five_seconds_passed()) {
@@ -44,7 +45,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     // }
     // TODO: status_XXX_() 함수를 만들어서 사용
 
-
+//ros::Time::now() - last_request > ros::Duration(5.0)
     // TODO: 생성자에서 초기화
     if (OffboardMavros::cmdFlag_ == vtol::INIT) {
         if (fcuState_.armed == true) {
