@@ -1,6 +1,18 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
+
  /* -- Initialize Functions -- */
+
+void OffboardMavros::initializeConstant(void) {
+    init_global_position[vtol::ALT] = std::atoi(std::getenv("PX4_HOME_ALT"))+40;
+    init_global_position[vtol::LAT] = std::atoi(std::getenv("PX4_HOME_LAT"));
+    init_global_position[vtol::LON] = std::atoi(std::getenv("PX4_HOME_LON"));
+
+    DEBUG::print("alt: ", init_global_position[vtol::ALT],BLUE);
+    DEBUG::print("lat: ", init_global_position[vtol::LAT],BLUE);
+    DEBUG::print("lon: ", init_global_position[vtol::LON],BLUE);
+}
+
 void OffboardMavros::initializePublishers(void) {
     local_pos_pub_ = create_publisher<geometry_msgs::msg::PoseStamped>("/mavros/setpoint_position/local", 10);
     local_vel_pub = this->create_publisher<geometry_msgs::msg::Twist>("/mavros/setpoint_velocity/cmd_vel_unstamped", 10);
@@ -24,6 +36,9 @@ void OffboardMavros::initializeSubscribers(void) {
 
     pose_sub_ = create_subscription<geometry_msgs::msg::PoseStamped>(
             "/mavros/local_position/pose", default_qos, std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1));
+
+    gps_sub_=create_subscription<sensor_msgs::msg::NavSatFix>(
+            "/mavros/global_position/global", default_qos, std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1));
 }
 
 void    OffboardMavros::initializeClients(void) {

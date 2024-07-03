@@ -6,10 +6,12 @@
 namespace vtol {
     //숫자로 사용
     enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
-                                            //
+  
     enum Mav {
         MAV_CMD_CONDITION_YAW = 115,
     };
+  
+    enum GlobalFrame {ALT, LAT, LON}; 
 
     // disarm 2^0, arm 2^1, takeoff 2^2, land 2^3 
     enum Bit {
@@ -47,10 +49,15 @@ namespace vtol {
     enum Position {
         INIT_NORTH  = 0,
         INIT_EAST   = 0,
-        INIT_UP     = 9, 
+        INIT_UP     = 20,
         INIT_YAW    = 0
     };
 
+    //  enum GlobalPosition {
+    //      INIT_ALT    = global_position_[0] + 30, // 35:초기위치, 30:상승고도
+    //      INIT_LAT    = global_position_[1],
+    //      INIT_LON    = global_position_[2],
+    //  };
 
     enum State {
         MC = 3,
