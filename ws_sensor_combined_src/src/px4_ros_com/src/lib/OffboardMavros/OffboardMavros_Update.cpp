@@ -26,8 +26,8 @@ void OffboardMavros::update_transition_quad_status(void) {
 void OffboardMavros::sendFixedHeadingCommand(void) {
     auto request = std::make_shared<mavros_msgs::srv::CommandLong::Request>();
     request->command = vtol::MAV_CMD_CONDITION_YAW;
-    request->param1 = 0;
-    request->param2 = 10;  // 회전 속도 (0이면 즉시 적용)
+    request->param1 = yaw_current;  // 목표 yaw 각도
+    request->param2 = 0;  // 회전 속도 (0이면 즉시 적용)
     request->param3 = 0;  // 1: CW, -1: CCW, 0: 가장 짧은 방향
     request->param4 = 0;  // 1: Relative, 0: Absolute
     request->confirmation = 0;
