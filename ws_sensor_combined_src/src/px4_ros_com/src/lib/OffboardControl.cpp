@@ -94,7 +94,7 @@ void OffboardControl::arm()
 /**
  * @brief Send a command to Disarm the vehicle
  */
-void OffboardControl::disArm()
+void OffboardControl::disarm()
 {
     publish_vehicle_command(VehicleCommand::VEHICLE_CMD_COMPONENT_ARM_DISARM, 0.0);
 
@@ -210,7 +210,7 @@ void OffboardControl::publish_vehicle_command(uint16_t command, float param1, fl
     vehicle_command_publisher_->publish(msg);
 }
 
-// void OffboardControl::dubinsPathPlanning(float x, float y) {
+// void OffboardControl::dubins_path_planning(float x, float y) {
 //
 // }
 
@@ -224,7 +224,7 @@ void OffboardControl::set_way_point(WayPoint way_point) {
 
 int OffboardControl::set_dubins_path_point(double q[3], double x, void* user_data) {
     static_cast<void>(x); // for unused
-    local_position* local_position = static_cast<local_position *>(user_data);  
+    LocalPosition* local_position = static_cast<LocalPosition *>(user_data);  
  
     DubinsPathPoint dubins_path_point(q[0], q[1], (*local_position)[vtol::UP], q[2], x);
     OffboardControl::_dubins_path_points.push(dubins_path_point);
