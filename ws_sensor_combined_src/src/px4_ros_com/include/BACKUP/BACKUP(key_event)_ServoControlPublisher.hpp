@@ -9,11 +9,11 @@ class ServoControlPublisher : public rclcpp::Node {
 public:
     ServoControlPublisher(void);
 private:
-    int      _pwm;
-    float    _pwm_nomallize;
+    int      pwm;
+    float    pwm_nomallize;
 
     /* 1 */
-    void _publish_pwm_output_message(void);
+    void _publishpwm_output_message(void);
     void _publish_disarm_control_message(void);
     void _response_callback(rclcpp::Client<mavros_msgs::srv::ParamSetV2>::SharedFuture future);
     std::string generate_uuid(void);

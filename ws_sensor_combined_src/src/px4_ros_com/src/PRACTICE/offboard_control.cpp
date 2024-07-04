@@ -68,17 +68,17 @@ static std::array<WayPoint, 2> _basic_array = {{
 template <typename T>
 static void _iter_way_points(const T& way_points) {
     for (const WayPoint& wp : way_points) {
-        OffboardControl::set_way_point(wp);
+        OffboardControl::_setWayPoint(wp);
     }
 }
 
 
 static void _ready_for_test(void) {
-    OffboardControl::set_way_point({0.0, 0.0, -5.0, -3.14});
+    OffboardControl::_setWayPoint({0.0, 0.0, -5.0, -3.14});
     // _iter_way_points(_square_array1);
     _iter_way_points(_star_array);
-    OffboardControl::set_way_point({0.0, 0.0, -5.0, -3.14});
-    OffboardControl::set_way_point({0.0, 0.0, 0.0, -3.14});
+    OffboardControl::_setWayPoint({0.0, 0.0, -5.0, -3.14});
+    OffboardControl::_setWayPoint({0.0, 0.0, 0.0, -3.14});
 }
 
 int main(int argc, char *argv[])

@@ -6,45 +6,45 @@ KeyPublisher::KeyPublisher() : Node("KeyPublisher") {
     // 비동기적으로 키보드 입력을 처리
     // 이 스레드는 노드의 메인 루프와 별도로 실행되므로, 
     // rclcpp::spin(node) 호출에 의해 블로킹되지 않고 키보드 입력을 계속 받을 수 있음
-    _input_thread = std::thread([this]() { _processInput(); });
+    input_thread = std::thread([this]() { processInput(); });
 }
 
 KeyPublisher::~KeyPublisher(void) {
-    KeyPublisher::_set_is_running(false);
-    if (_input_thread.joinable()) {
-        _input_thread.join();
+    KeyPublisher::_setIsRunning(false);
+    if (input_thread.joinable()) {
+        input_thread.join();
     }
 }
 
-void KeyPublisher::sigint_handler(int signum) {
-    KeyPublisher::_set_is_running(false);
+void KeyPublisher::sigintHandler(int signum) {
+    KeyPublisher::_setIsRunning(false);
     if (signum == SIGINT) {
         rclcpp::shutdown();
     }
 }
 
-void KeyPublisher::_processInput() {
+void KeyPublisher::processInput() {
     while (rclcpp::ok() 
-            && KeyPublisher::_get_is_running()
+            && KeyPublisher::_getIsRunning()
             && KeyPublisher::_action()
-            && KeyPublisher::_publish());
+            && KeyPublisher::publish());
 }
 
-bool KeyPublisher::_publish(void) {
+bool KeyPublisher::publish(void) {
     auto message = std_msgs::msg::String();
-    message.data = (c == '\0') ? arrow_str : std::string(1, c);
+    message.data = (c == '\0') ? _arrow_str : std::string(1, c);
     RCLCPP_INFO(this->get_logger(), "Publishing: '%s'\n", message.data.c_str());
     _publisher->publish(message);
     return true;
 }
 
-void KeyPublisher::_set_is_running(const bool flag) {
+void KeyPublisher::_setIsRunning(const bool flag) {
     _mtx.lock();
     _is_running = flag;
     _mtx.unlock();
 }
 
-bool KeyPublisher::_get_is_running(void) {
+bool KeyPublisher::_getIsRunning(void) {
     _mtx.lock();
     const bool result = _is_running;
     _mtx.unlock();
@@ -57,17 +57,17 @@ bool KeyPublisher::_action(void) {
     std::size_t i = KeyPublisher::_key_string.find(c);
     if (i == std::string::npos) //  못찼으면 std::string::npos 반환    
         return true;
-    const bool result = KeyPublisher::_key_func[i]();
-    KeyPublisher::_set_is_running(result);
+    const bool result = KeyPublisher::keyFunc[i]();
+    KeyPublisher::_setIsRunning(result);
     return result;
 }
 
-bool KeyPublisher::press_h(void) {
+bool KeyPublisher::_pressH(void) {
     std::cout << ">>> Return to Home <<<\n" << std::endl;
     return true;
 }
 
-bool KeyPublisher::press_q(void) {
+bool KeyPublisher::_pressQ(void) {
     std::cout << "Really Want? Press q to quit\n(if you don't, push any key)" << std::endl;
     c = std::getchar();
     if (c == 'q') {
@@ -77,27 +77,27 @@ bool KeyPublisher::press_q(void) {
     return true;
 }
 
-bool KeyPublisher::press_b(void) {
+bool KeyPublisher::_pressB(void) {
     std::cout << ">>> Back <<<\n" << std::endl;
     return true;
 }
 
-bool KeyPublisher::press_arrow(void) {
+bool KeyPublisher::_pressArrow(void) {
     if (std::getchar() == '[') {
         c = std::getchar();
     }
     switch (c) {
         case 'A': // 위쪽 방향키
-           KeyPublisher::press_arrow_up();
+           KeyPublisher::_pressArrowUp();
             break;
         case 'B': // 아래쪽 방향키
-            KeyPublisher::press_arrow_down();
+            KeyPublisher::_pressArrowDown();
             break;
         case 'C': // 오른쪽 방향키
-            KeyPublisher::press_arrow_right();
+            KeyPublisher::_pressArrowRight();
             break;
         case 'D': // 왼쪽 방향키
-            KeyPublisher::press_arrow_left();
+            KeyPublisher::_pressArrowLeft();
             break;
         default:
             break;
@@ -106,91 +106,91 @@ bool KeyPublisher::press_arrow(void) {
     return true;
 }
 
-bool KeyPublisher::press_arrow_up(void) {
-    arrow_str = "↑";
+bool KeyPublisher::_pressArrowUp(void) {
+    _arrow_str = "↑";
     std::cout << ">>> N axis ++ <<< \n" << std::endl;
     return true;
 }
 
-bool KeyPublisher::press_arrow_down(void) {
-    arrow_str = "↓";
+bool KeyPublisher::_pressArrowDown(void) {
+    _arrow_str = "↓";
     std::cout << ">>> N axis -- <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_arrow_left(void) {
-    arrow_str = "←";
+ bool KeyPublisher::_pressArrowLeft(void) {
+    _arrow_str = "←";
     std::cout << ">>> E axis -- <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_arrow_right(void) {
-    arrow_str = "→";
+ bool KeyPublisher::_pressArrowRight(void) {
+    _arrow_str = "→";
     std::cout << ">>> E axis ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_u(void){
+ bool KeyPublisher::_pressU(void){
     std::cout << ">>> U axis ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_d(void){
+ bool KeyPublisher::_pressD(void){
     std::cout << ">>> U axis ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_8(void) {
+ bool KeyPublisher::_press8(void) {
     std::cout << ">>> Y axis ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_2(void) {
+ bool KeyPublisher::_press2(void) {
     std::cout << ">>> Roll ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_3(void) {
+ bool KeyPublisher::_press3(void) {
     std::cout << ">>> Roll -- <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_4(void) {
+ bool KeyPublisher::_press4(void) {
     std::cout << ">>> Pitch ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_5(void) {
+ bool KeyPublisher::_press5(void) {
     std::cout << ">>> Pitch -- <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_6(void) {
+ bool KeyPublisher::_press6(void) {
     std::cout << ">>> Yaw ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_7(void) {
+ bool KeyPublisher::_press7(void) {
     std::cout << ">>> Yaw -- <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_w(void) {
+ bool KeyPublisher::_pressW(void) {
     std::cout << ">>> VTOL Transition <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_plus(void) {
+ bool KeyPublisher::_pressPlus(void) {
     std::cout << ">>> U axis ++ <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_minus(void) {
+ bool KeyPublisher::_pressMinus(void) {
     std::cout << ">>> U axis -- <<< \n" << std::endl;
     return true;
 }
 
- bool KeyPublisher::press_questionmark(void) {
+ bool KeyPublisher::_pressQuestionmark(void) {
     std::cout << ">>> Help <<< \n" << std::endl;
     std::cout << "< COMMAND >" << std::endl;
     std::cout << "  q: Quit" << std::endl;
@@ -212,26 +212,26 @@ bool KeyPublisher::press_arrow_down(void) {
 std::mutex KeyPublisher::_mtx;  // 공유 데이터에 대한 접근을 보호하기 위한 뮤텍스
 bool KeyPublisher::_is_running = true;
 const std::string KeyPublisher::_key_string = "\033udqhb2345678?w+-";
-bool (*KeyPublisher::_key_func[])() = {
+bool (*KeyPublisher::keyFunc[])() = {
     // & 의미 생략 가능, 가독성을 위해 추가
-    &KeyPublisher::press_arrow,         // 지평방향 position control 제어
-    &KeyPublisher::press_u,            // 고도++
-    &KeyPublisher::press_d,            // 고도--
-    &KeyPublisher::press_q,
-    &KeyPublisher::press_h,
-    &KeyPublisher::press_b,
-    &KeyPublisher::press_2,
-    &KeyPublisher::press_3,
-    &KeyPublisher::press_4,
-    &KeyPublisher::press_5,
-    &KeyPublisher::press_6,
-    &KeyPublisher::press_7,
-    &KeyPublisher::press_8,
-    &KeyPublisher::press_questionmark,
-    &KeyPublisher::press_w,
-    &KeyPublisher::press_plus,
-    &KeyPublisher::press_minus
+    &KeyPublisher::_pressArrow,         // 지평방향 position control 제어
+    &KeyPublisher::_pressU,            // 고도++
+    &KeyPublisher::_pressD,            // 고도--
+    &KeyPublisher::_pressQ,
+    &KeyPublisher::_pressH,
+    &KeyPublisher::_pressB,
+    &KeyPublisher::_press2,
+    &KeyPublisher::_press3,
+    &KeyPublisher::_press4,
+    &KeyPublisher::_press5,
+    &KeyPublisher::_press6,
+    &KeyPublisher::_press7,
+    &KeyPublisher::_press8,
+    &KeyPublisher::_pressQuestionmark,
+    &KeyPublisher::_pressW,
+    &KeyPublisher::_pressPlus,
+    &KeyPublisher::_pressMinus
 };
 
 char KeyPublisher::c = '\0';
-std::string KeyPublisher::arrow_str = "";
+std::string KeyPublisher::_arrow_str = "";

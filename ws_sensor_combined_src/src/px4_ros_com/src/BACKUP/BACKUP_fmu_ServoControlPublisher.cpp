@@ -2,13 +2,13 @@
 
 
 ServoControlPublisher::ServoControlPublisher(void)
-    : Node("servo_control_publisher"), _pwm(800), _pwm_nomallize(0.0f), _offboard_setpoint_counter(0) {
+    : Node("servo_control_publisher"), pwm(800), pwm_nomallize(0.0f), _offboard_setpoint_counter(0) {
         _offboard_control_mode_publisher = this->create_publisher<px4_msgs::msg::OffboardControlMode>("/fmu/in/offboard_control_mode", 10);
         _publisher_arm = this->create_publisher<px4_msgs::msg::ActuatorServos>( "/fmu/in/actuator_servos", 10);
     _vehicle_command_publisher = this->create_publisher<px4_msgs::msg::VehicleCommand>("/fmu/in/vehicle_command", 10);
     _timer = this->create_wall_timer(
             std::chrono::milliseconds(100),
-            std::bind(&ServoControlPublisher::_publish_pwm_output_message, this));
+            std::bind(&ServoControlPublisher::_publishpwm_output_message, this));
 }
 
 void ServoControlPublisher::_publish_offboard_control_mode() {
@@ -24,8 +24,8 @@ void ServoControlPublisher::_publish_offboard_control_mode() {
 	_offboard_control_mode_publisher->publish(msg);
 }
 
-void ServoControlPublisher::_publish_pwm_output_message(void) {
-    // if (_pwm_nomallize == -1.0) {
+void ServoControlPublisher::_publishpwm_output_message(void) {
+    // if (pwm_nomallize == -1.0) {
         // this->_publish_vehicle_command(px4_msgs::msg::VehicleCommand::VEHICLE_CMD_DO_SET_MODE, 1, 6);
         // this->_arm();
     // }
@@ -42,10 +42,10 @@ void ServoControlPublisher::_publish_arm_control_message(void) {
     px4_msgs::msg::ActuatorServos msg{};
     // auto message = mavros_msgs::msg::ActuatorControl();
 	msg.timestamp = this->get_clock()->now().nanoseconds() / 1000;
-    msg.control[0] = _pwm_nomallize;
-    msg.control[1] = _pwm_nomallize;
-    std::cout << "Publishing arm control message " << _pwm_nomallize << std::endl;
-    _pwm_nomallize = _offboard_setpoint_counter <= 25 ? 0.25f : 
+    msg.control[0] = pwm_nomallize;
+    msg.control[1] = pwm_nomallize;
+    std::cout << "Publishing arm control message " << pwm_nomallize << std::endl;
+    pwm_nomallize = _offboard_setpoint_counter <= 25 ? 0.25f : 
                      _offboard_setpoint_counter <= 50 ? 0.5f :
                      _offboard_setpoint_counter <= 75 ? 0.25f :
                      _offboard_setpoint_counter <= 100 ? 0.0f : 

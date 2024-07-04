@@ -1,26 +1,26 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 /* -- Update Functions -- */
 
-void OffboardMavros::update_arming_status(void) {
-    request_arming_status(true, &OffboardMavros::arming_response_callback);
+void OffboardMavros::updateArmingStatus(void) {
+    requestArmingStatus(true, &OffboardMavros::armingResponseCallback);
 }
 
-void OffboardMavros::update_disarming_status(void) {
-    request_arming_status(false, &OffboardMavros::disarming_response_callback);
+void OffboardMavros::updateDisarmingStatus(void) {
+    requestArmingStatus(false, &OffboardMavros::disarmingResponseCallback);
 }
 
-void OffboardMavros::update_transition_fixed_status(void) {
-    // if (fcuState_.mode == vtol::MC) {
-    request_transition_status(vtol::FW, &OffboardMavros::transition_response_callback);
+void OffboardMavros::updateTransitionFixedStatus(void) {
+    // if (fcu_state.mode == vtol::MC) {
+    requestTransitionStatus(vtol::FW, &OffboardMavros::transitionResponseCallback);
     // } else {
-    // request_transition_status_(vtol::MC, &OffboardMavros::transition_response_callback);
+    // request_transition_status_(vtol::MC, &OffboardMavros::transitionResponseCallback);
 }
 
-void OffboardMavros::update_transition_quad_status(void) {
-    // if (fcuState_.mode == vtol::MC) {
-    request_transition_status(vtol::MC, &OffboardMavros::transition_response_callback);
+void OffboardMavros::updateTransitionQuadStatus(void) {
+    // if (fcu_state.mode == vtol::MC) {
+    requestTransitionStatus(vtol::MC, &OffboardMavros::transitionResponseCallback);
     // } else {
-    // request_transition_status_(vtol::MC, &OffboardMavros::transition_response_callback);
+    // request_transition_status_(vtol::MC, &OffboardMavros::transitionResponseCallback);
 }
 
 void OffboardMavros::sendFixedHeadingCommand(void) {
@@ -41,60 +41,45 @@ void OffboardMavros::cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::
         "CommandLong command sent successfully",
         "Failed to send CommandLong command"
     };
-    print_success_info(future.get()->success, msg);
+    printSuccessInfo(future.get()->success, msg);
 }
 
-
-void OffboardMavros::request_transition_status(const int input,
+void OffboardMavros::requestTransitionStatus(const int input,
         void (OffboardMavros::*response_callback)
         (const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture)) {
     auto request = std::make_shared<mavros_msgs::srv::CommandVtolTransition::Request>();
     request->state = input;
-    // auto result_future = transition_client_->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
-    auto result_future = transition_client_->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
-    last_request_ = this->now();
-
-//       // 결과를 비동기적으로 처리하고자 할 때
-//     result_future.then([this](rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture future) {
-//     try {
-//         if (future.get()->success) {
-//             RCLCPP_INFO(this->get_logger(), "Transition command executed successfully.");
-//         } else {
-//             RCLCPP_ERROR(this->get_logger(), "Failed to execute transition command.");
-//         }
-//     } catch (const std::exception& e) {
-//         RCLCPP_ERROR(this->get_logger(), "Exception while getting future result: %s", e.what());
-//     }
-// });
+    transition_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
+    last_request = this->now();
 }
 
 
-void OffboardMavros::request_arming_status(const bool& input,
+void OffboardMavros::requestArmingStatus(const bool& input,
         void (OffboardMavros::*response_callback)
         (const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture)) {
     auto request = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
     request->value = input;
-    arming_client_->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
-    last_request_ = this->now();
+    arming_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
+    last_request = this->now();
 }
 
-void OffboardMavros::update_takeoff_status(void) {
-    auto request = make_request_takeoff_land_message(
-            vtol::GeographicCoordinate{global_position_[vtol::ALT]+20, global_position_[vtol::LAT], global_position_[vtol::LON], 0, 0});
-    takeoff_client_->async_send_request(request,
-            std::bind(&OffboardMavros::takeoff_response_callback, this, std::placeholders::_1));
-    last_request_ = this->now();
+void OffboardMavros::updateTakeoffStatus(void) {
+    auto request = makeRequestTakeoffLandMessage(
+            vtol::GeographicCoordinate{_global_position[vtol::ALT]+20, _global_position[vtol::LAT], _global_position[vtol::LON], 0, 0});
+    takeoff_client->async_send_request(request,
+            std::bind(&OffboardMavros::takeoffResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
 }
 
-void OffboardMavros::update_landing_status(void) {
-    auto request = make_request_takeoff_land_message(
+void OffboardMavros::updateLandingStatus(void) {
+    auto request = makeRequestTakeoffLandMessage(
             vtol::GeographicCoordinate{0, 0, 0, 0, 0});
-    landing_client_->async_send_request(request,
-            std::bind(&OffboardMavros::land_response_callback, this, std::placeholders::_1));
-    last_request_ = this->now();
+    landing_client->async_send_request(request,
+            std::bind(&OffboardMavros::landResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
 }
 
-std::shared_ptr<mavros_msgs::srv::CommandTOL::Request> OffboardMavros::make_request_takeoff_land_message(const vtol::GeographicCoordinate& input) {
+std::shared_ptr<mavros_msgs::srv::CommandTOL::Request> OffboardMavros::makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input) {
     auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
     request->altitude   = input.altitude;
     request->latitude   = input.latitude;
@@ -104,29 +89,29 @@ std::shared_ptr<mavros_msgs::srv::CommandTOL::Request> OffboardMavros::make_requ
     return request;
 }
 
-void OffboardMavros::update_location_(std::array<double, 3> input) {
+void OffboardMavros::updateLocation(std::array<double, 3> input) {
     auto request = std::make_shared<mavros_msgs::srv::CommandLong::Request>();
     request->command = 16;
     request->param5 = input[vtol::NORTH]; // latitude
     request->param6 = input[vtol::EAST]; // longitude
     request->param7 = input[vtol::UP]; // altitude
-    location_client_->async_send_request(request, 
-            std::bind(&OffboardMavros::location_response_callback, this, std::placeholders::_1));
-    last_request_ = this->now();
+    location_client->async_send_request(request, 
+            std::bind(&OffboardMavros::locationResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
 }
 
-void OffboardMavros::update_hold_mode(void) {
-    update_custom_mode("AUTO.LOITER", &OffboardMavros::hold_response_callback);
+void OffboardMavros::updateHoldMode(void) {
+    updateCustomMode("AUTO.LOITER", &OffboardMavros::holdResponseCallback);
 }
 
-void OffboardMavros::update_offboard_mode(void) {
-    update_custom_mode("OFFBOARD", &OffboardMavros::offboard_response_callback);
+void OffboardMavros::updateOffboardMode(void) {
+    updateCustomMode("OFFBOARD", &OffboardMavros::offboardResponseCallback);
 }
 
-void OffboardMavros::update_custom_mode(const std::string& input_mode,
+void OffboardMavros::updateCustomMode(const std::string& input_mode,
         void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture)) {
     auto request = std::make_shared<mavros_msgs::srv::SetMode::Request>();
     request->custom_mode = input_mode;
-    set_mode_client_->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
-    last_request_ = this->now();
+    set_mode_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
+    last_request = this->now();
 }

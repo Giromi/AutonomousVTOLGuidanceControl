@@ -15,18 +15,18 @@ class ServoControlPublisher : public rclcpp::Node {
 public:
     ServoControlPublisher(void);
 private:
-    int      _pwm;
-    float    _pwm_nomallize;
-	uint64_t _offboard_setpoint_counter;    //!< counter for the number of setpoints sent
+    int      pwm;
+    float    pwm_nomallize;
+	uint64_t offboard_setpoint_counter;    //!< counter for the number of setpoints sent
 
     /* 2 */
-    void _publish_arm_control_message(void);
-    void _publish_pwm_output_message(void);
-	void _publish_vehicle_command(uint16_t command, float param1 = 0.0, float param2 = 0.0);
-    void _publish_offboard_control_mode();
+    void publishArmControlMessage(void);
+    void publishPwmOutputMessage(void);
+	void publishVehicleCommand(uint16_t command, float param1 = 0.0, float param2 = 0.0);
+    void publishOffboardControlMode();
 
-    void _arm();
-    void _disarm();
+    void arm();
+    void disArm();
 
 
 
@@ -37,15 +37,15 @@ private:
     // void _set_ros_param(const std::string& param_name, int param_value);
     // 복사 생성자와 할당 연산자 금지
 
-    rclcpp::TimerBase::SharedPtr                                        _timer;
-    std::shared_ptr<rclcpp::SyncParametersClient>                       _parameters_client;
-	rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr         _vehicle_command_publisher;
-    rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr    _offboard_control_mode_publisher;
-    rclcpp::Publisher<px4_msgs::msg::ActuatorServos>::SharedPtr         _publisher_arm;
-    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              _subscription;
+    rclcpp::TimerBase::SharedPtr                                        timer;
+    std::shared_ptr<rclcpp::SyncParametersClient>                       parameters_client;
+	rclcpp::Publisher<px4_msgs::msg::VehicleCommand>::SharedPtr         vehicle_command_publisher;
+    rclcpp::Publisher<px4_msgs::msg::OffboardControlMode>::SharedPtr    offboard_control_mode_publisher;
+    rclcpp::Publisher<px4_msgs::msg::ActuatorServos>::SharedPtr         publisher_arm;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
 
-    rclcpp::Publisher<mavros_msgs::msg::OverrideRCIn>::SharedPtr        _publisher_disarm;
-    rclcpp::Client<mavros_msgs::srv::ParamSetV2>::SharedPtr _param_client;
+    rclcpp::Publisher<mavros_msgs::msg::OverrideRCIn>::SharedPtr        publisher_disarm;
+    rclcpp::Client<mavros_msgs::srv::ParamSetV2>::SharedPtr param_client;
 
 
 };

@@ -11,51 +11,51 @@ const Dubins::PathType Dubins::_allPathTypes[] = {
 };
 
 Dubins::Dubins(std::array<double, 3> q0, std::array<double, 3> q1, double turning_radius)
-    : _q0(q0), _q1(q1), _rho(turning_radius) { }
+    : q0(q0), q1(q1), rho(turning_radius) { }
 
-Dubins::PathType Dubins::get_path_type(void) const { return _type; }
-double Dubins::get_path_length(void) const {
-    double length = _param[0] + _param[1] + _param[2];
-    length = length * _rho;
+Dubins::PathType Dubins::getPathType(void) const { return type; }
+double Dubins::getPathLength(void) const {
+    double length = param[0] + param[1] + param[2];
+    length = length * rho;
     return length;
 
 }
 
-void Dubins::set_rho(const double rho) { _rho = rho; }
-void Dubins::set_type(const Dubins::PathType type) { _type = type; }
+void Dubins::setRho(const double rho) { this->rho = rho; }
+void Dubins::setType(const Dubins::PathType type) { this->type = type; }
 
-void Dubins::set_qi(const std::array<double, 3>& qi) {
-    _qi[0] = qi[0];
-    _qi[1] = qi[1];
-    _qi[2] = qi[2];
+void Dubins::setQi(const std::array<double, 3>& qi) {
+    this->qi[0] = qi[0];
+    this->qi[1] = qi[1];
+    this->qi[2] = qi[2];
 }
 
-void Dubins::set_param(const std::array<double, 3>& param) {
-    _param[0] = param[0];
-    _param[1] = param[1];
-    _param[2] = param[2];
+void Dubins::setParam(const std::array<double, 3>& param) {
+    this->param[0] = param[0];
+    this->param[1] = param[1];
+    this->param[2] = param[2];
 }
 
-int Dubins::_word(Dubins::PathType pathType, double param[3]) {
+int Dubins::word(Dubins::PathType pathType, double param[3]) {
     int result;
     switch(pathType) {
     case Dubins::PathType::LSL:
-        result = _cal_LSL(param);
+        result = calLSL(param);
         break;
     case Dubins::PathType::RSL:
-        result = _cal_RSL(param);
+        result = calRSL(param);
         break;
     case Dubins::PathType::LSR:
-        result = _cal_LSR(param);
+        result = calLSR(param);
         break;
     case Dubins::PathType::RSR:
-        result = _cal_RSR(param);
+        result = calRSR(param);
         break;
     case Dubins::PathType::LRL:
-        result = _cal_LRL(param);
+        result = calLRL(param);
         break;
     case Dubins::PathType::RLR:
-        result = _cal_RLR(param);
+        result = calRLR(param);
         break;
     default:
         result = EDUBNOPATH;
@@ -63,110 +63,110 @@ int Dubins::_word(Dubins::PathType pathType, double param[3]) {
     return result;
 }
 
-int Dubins::_cal_LSL(double param[3]) {
-    const double p_sq = 2 + _in.d_sq - (2*_in.c_ab) + (2 * _in.d * (_in.sa - _in.sb));
+int Dubins::calLSL(double param[3]) {
+    const double p_sq = 2 + In.d_sq - (2*In.c_ab) + (2 * In.d * (In.sa - In.sb));
     if(p_sq >= 0) {
-        const double tmp0 = _in.d + _in.sa - _in.sb;
-        const double tmp1 = atan2((_in.cb - _in.ca), tmp0);
-        param[0] = _mod2pi(tmp1 - _in.alpha);
+        const double tmp0 = In.d + In.sa - In.sb;
+        const double tmp1 = atan2((In.cb - In.ca), tmp0);
+        param[0] = _mod2Pi(tmp1 - In.alpha);
         param[1] = sqrt(p_sq);
-        param[2] = _mod2pi(_in.beta - tmp1);
+        param[2] = _mod2Pi(In.beta - tmp1);
         return EDUBOK;
     }
     return EDUBNOPATH;
 }
 
-int Dubins::_cal_RSR(double param[3]) {
-    const double p_sq = 2 + _in.d_sq - (2 * _in.c_ab) + (2 * _in.d * (_in.sb - _in.sa));
+int Dubins::calRSR(double param[3]) {
+    const double p_sq = 2 + In.d_sq - (2 * In.c_ab) + (2 * In.d * (In.sb - In.sa));
     if( p_sq >= 0 ) {
-        const double tmp0 = _in.d - _in.sa + _in.sb;
-        const double tmp1 = atan2((_in.ca - _in.cb), tmp0);
-        param[0] = _mod2pi(_in.alpha - tmp1);
+        const double tmp0 = In.d - In.sa + In.sb;
+        const double tmp1 = atan2((In.ca - In.cb), tmp0);
+        param[0] = _mod2Pi(In.alpha - tmp1);
         param[1] = sqrt(p_sq);
-        param[2] = _mod2pi(tmp1 -_in.beta);
+        param[2] = _mod2Pi(tmp1 -In.beta);
         return EDUBOK;
     }
     return EDUBNOPATH;
 }
 
-int Dubins::_cal_LSR(double param[3]) {
-    const double p_sq = -2 + (_in.d_sq) + (2 * _in.c_ab) + (2 * _in.d * (_in.sa + _in.sb));
+int Dubins::calLSR(double param[3]) {
+    const double p_sq = -2 + (In.d_sq) + (2 * In.c_ab) + (2 * In.d * (In.sa + In.sb));
     if( p_sq >= 0 ) {
         const double p    = sqrt(p_sq);
-        const double tmp0 = atan2( (-_in.ca - _in.cb), (_in.d + _in.sa + _in.sb) ) - atan2(-2.0, p);
-        param[0] = _mod2pi(tmp0 - _in.alpha);
+        const double tmp0 = atan2( (-In.ca - In.cb), (In.d + In.sa + In.sb) ) - atan2(-2.0, p);
+        param[0] = _mod2Pi(tmp0 - In.alpha);
         param[1] = p;
-        param[2] = _mod2pi(tmp0 - _mod2pi(_in.beta));
+        param[2] = _mod2Pi(tmp0 - _mod2Pi(In.beta));
         return EDUBOK;
     }
     return EDUBNOPATH;
 }
 
-int Dubins::_cal_RSL(double param[3]) {
-    const double p_sq = -2 + _in.d_sq + (2 * _in.c_ab) - (2 * _in.d * (_in.sa + _in.sb));
+int Dubins::calRSL(double param[3]) {
+    const double p_sq = -2 + In.d_sq + (2 * In.c_ab) - (2 * In.d * (In.sa + In.sb));
     if( p_sq >= 0 ) {
         double p    = sqrt(p_sq);
-        double tmp0 = atan2( (_in.ca + _in.cb), (_in.d - _in.sa - _in.sb) ) - atan2(2.0, p);
-        param[0] = _mod2pi(_in.alpha - tmp0);
+        double tmp0 = atan2( (In.ca + In.cb), (In.d - In.sa - In.sb) ) - atan2(2.0, p);
+        param[0] = _mod2Pi(In.alpha - tmp0);
         param[1] = p;
-        param[2] = _mod2pi(_in.beta - tmp0);
+        param[2] = _mod2Pi(In.beta - tmp0);
         return EDUBOK;
     }
     return EDUBNOPATH;
 }
 
-int Dubins::_cal_RLR(double param[3]) {
-    double tmp0 = (6. - _in.d_sq + 2*_in.c_ab + 2*_in.d*(_in.sa - _in.sb)) / 8.;
-    double phi  = atan2( _in.ca - _in.cb, _in.d - _in.sa + _in.sb );
+int Dubins::calRLR(double param[3]) {
+    double tmp0 = (6. - In.d_sq + 2*In.c_ab + 2*In.d*(In.sa - In.sb)) / 8.;
+    double phi  = atan2( In.ca - In.cb, In.d - In.sa + In.sb );
     if( fabs(tmp0) <= 1) {
-        double p = _mod2pi((2*M_PI) - acos(tmp0) );
-        double t = _mod2pi(_in.alpha - phi + _mod2pi(p/2.));
+        double p = _mod2Pi((2*M_PI) - acos(tmp0) );
+        double t = _mod2Pi(In.alpha - phi + _mod2Pi(p/2.));
         param[0] = t;
         param[1] = p;
-        param[2] = _mod2pi(_in.alpha - _in.beta - t + _mod2pi(p));
+        param[2] = _mod2Pi(In.alpha - In.beta - t + _mod2Pi(p));
         return EDUBOK;
     }
     return EDUBNOPATH;
 }
 
-int Dubins::_cal_LRL(double param[3]) {
-    double tmp0 = (6. - _in.d_sq + 2*_in.c_ab + 2*_in.d*(_in.sb - _in.sa)) / 8.;
-    double phi = atan2( _in.ca - _in.cb, _in.d + _in.sa - _in.sb );
+int Dubins::calLRL(double param[3]) {
+    double tmp0 = (6. - In.d_sq + 2*In.c_ab + 2*In.d*(In.sb - In.sa)) / 8.;
+    double phi = atan2( In.ca - In.cb, In.d + In.sa - In.sb );
     if( fabs(tmp0) <= 1) {
-        double p = _mod2pi( 2*M_PI - acos( tmp0) );
-        double t = _mod2pi(-_in.alpha - phi + p/2.);
+        double p = _mod2Pi( 2*M_PI - acos( tmp0) );
+        double t = _mod2Pi(-In.alpha - phi + p/2.);
         param[0] = t;
         param[1] = p;
-        param[2] = _mod2pi(_mod2pi(_in.beta) - _in.alpha - t + _mod2pi(p));
+        param[2] = _mod2Pi(_mod2Pi(In.beta) - In.alpha - t + _mod2Pi(p));
         return EDUBOK;
     }
     return EDUBNOPATH;
 }
 
-int Dubins::shortest_path() {
+int Dubins::shortestPath() {
 
     double param[3];
-    _errcode = _intermediate_results();
-    if(_errcode != EDUBOK) {
-        return _errcode;
+    errcode = intermediateResults();
+    if(errcode != EDUBOK) {
+        return errcode;
     }
-    _qi[0] = _q0[0];
-    _qi[1] = _q0[1];
-    _qi[2] = _q0[2];
+    this->qi[0] = q0[0];
+    this->qi[1] = q0[1];
+    this->qi[2] = q0[2];
 
     int     best_word = -1;
     double  best_cost = INFINITY;
     for (PathType cur_type : _allPathTypes) {
-        _errcode = _word(cur_type, param);
-        if(_errcode == EDUBOK) {
+        errcode = word(cur_type, param);
+        if(errcode == EDUBOK) {
             const double cost = param[0] + param[1] + param[2];
             if(cost < best_cost) {
                 best_word = static_cast<int>(cur_type);
                 best_cost = cost;
-                _param[0] = param[0];
-                _param[1] = param[1];
-                _param[2] = param[2];
-                _type = cur_type;
+                this->param[0] = param[0];
+                this->param[1] = param[1];
+                this->param[2] = param[2];
+                type = cur_type;
             }
         }
     }
@@ -179,40 +179,40 @@ int Dubins::shortest_path() {
 int Dubins::path(double q0[3], double q1[3], double rho, PathType pathType)
 {
     static_cast<void>(q1); // unused
-    _errcode = _intermediate_results();
-    if(_errcode == EDUBOK) {
+    errcode = intermediateResults();
+    if(errcode == EDUBOK) {
         double param[3];
-        _errcode = _word(pathType, param);
-        if(_errcode == EDUBOK) {
-            _param[0] = param[0];
-            _param[1] = param[1];
-            _param[2] = param[2];
-            _qi[0] = q0[0];
-            _qi[1] = q0[1];
-            _qi[2] = q0[2];
-            _rho = rho;
-            _type = pathType;
+        errcode = word(pathType, param);
+        if(errcode == EDUBOK) {
+            this->param[0] = param[0];
+            this->param[1] = param[1];
+            this->param[2] = param[2];
+            this->qi[0] = q0[0];
+            this->qi[1] = q0[1];
+            this->qi[2] = q0[2];
+            this->rho = rho;
+            this->type = pathType;
         }
     }
-    return _errcode;
+    return errcode;
 }
 
 
-double Dubins::segment_length(int i) {
+double Dubins::segmentLength(int i) {
     if((i < 0) || (i > 2)) {
         return INFINITY;
     }
-    return _param[i] * _rho;
+    return param[i] * rho;
 }
 
-double Dubins::segment_length_normalized(int i) {
+double Dubins::segmentLengthNormalized(int i) {
     if((i < 0) || (i > 2)) {
         return INFINITY;
     }
-    return _param[i];
+    return param[i];
 } 
 
-void Dubins::_segment(double t, const double qi[3], double qt[3], const SegmentType& type) {
+void Dubins::segment(double t, const double qi[3], double qt[3], const SegmentType& type) {
     double st = sin(qi[2]);
     double ct = cos(qi[2]);
     if( type == L_SEG ) {
@@ -233,48 +233,48 @@ void Dubins::_segment(double t, const double qi[3], double qt[3], const SegmentT
     qt[2] += qi[2];
 }
 
-int Dubins::path_sample(double t)
+int Dubins::pathSample(double t)
 {
     /* tprime is the normalised variant of the parameter t */
-    double tprime = t / _rho;
+    double tprime = t / rho;
 
-    if( t < 0 || t > get_path_length() ) {
+    if( t < 0 || t > getPathLength() ) {
         return EDUBPARAM;
     }
 
     /* initial configuration */
-    const double qi[] = {0.0, 0.0, _qi[2]};
+    const double qi[] = {0.0, 0.0, qi[2]};
 
     /* generate the target configuration */
-    const double p1 = _param[0];
-    const double p2 = _param[1];
+    const double p1 = param[0];
+    const double p2 = param[1];
 
     double q1[3]; /* end-of segment 1 */
     double q2[3]; /* end-of segment 2 */
-    const SegmentType* types = DIRDATA[static_cast<int>(_type)];
-    _segment(p1, qi, q1, types[0]);
-    _segment(p2, q1, q2, types[1]);
+    const SegmentType* types = DIRDATA[static_cast<int>(type)];
+    segment(p1, qi, q1, types[0]);
+    segment(p2, q1, q2, types[1]);
     if(tprime < p1) {
-        _segment( tprime, qi, _q, types[0] );
+        segment( tprime, qi, q, types[0] );
     } else if(tprime < (p1 + p2)) {
-        _segment( tprime - p1, q1, _q,  types[1] );
+        segment( tprime - p1, q1, q,  types[1] );
     } else {
-        _segment( tprime - p1 - p2, q2, _q,  types[2] );
+        segment( tprime - p1 - p2, q2, q,  types[2] );
     }
     /* scale the target configuration, translate back to the original starting point */
-    _q[0] = _q[0] * _rho + _qi[0];
-    _q[1] = _q[1] * _rho + _qi[1];
-    _q[2] = _mod2pi(_q[2]);
+    q[0] = q[0] * rho + qi[0];
+    q[1] = q[1] * rho + qi[1];
+    q[2] = _mod2Pi(q[2]);
     return EDUBOK;
 }
 
-int Dubins::path_sample_many(double step_size, DubinsPathSamplingCallback callback_func, void* user_data) {
+int Dubins::pathSampleMany(double step_size, DubinsPathSamplingCallback callback_func, void* user_data) {
     int retcode;
     double x = 0.0;
-    double length = get_path_length();
+    double length = getPathLength();
     while( x <  length ) {
-        path_sample(x);
-        retcode = callback_func(_q, x, user_data);
+        pathSample(x);
+        retcode = callback_func(q, x, user_data);
         if( retcode != 0 ) {
             return retcode;
         }
@@ -284,63 +284,63 @@ int Dubins::path_sample_many(double step_size, DubinsPathSamplingCallback callba
 }
 
 
-int Dubins::extract_subpath(double t, Dubins& newpath) {
+int Dubins::extractSubpath(double t, Dubins& newpath) {
     /* calculate the true parameter */
-    double tprime = t / _rho;
+    double tprime = t / rho;
 
-    if((t < 0) || (t > get_path_length())) {
+    if((t < 0) || (t > getPathLength())) {
         return EDUBPARAM; 
     }
 
     /* copy most of the data */
-    newpath.set_qi(_qi);
-    newpath.set_rho(_rho);
-    newpath.set_type(_type);
+    newpath.setQi(qi);
+    newpath.setRho(rho);
+    newpath.setType(type);
 
     /* fix the parameters */
-    const std::array<double, 3> new_param = {fmin(_param[0], tprime ),
-                                             fmin(_param[1], tprime - _param[0]),
-                                             fmin(_param[2], tprime - _param[0] - _param[1])};
-    newpath.set_param(new_param);
+    const std::array<double, 3> new_param = {fmin(param[0], tprime ),
+                                             fmin(param[1], tprime - param[0]),
+                                             fmin(param[2], tprime - param[0] - param[1])};
+    newpath.setParam(new_param);
     return 0;
 }
 
-int Dubins::_intermediate_results(void)
+int Dubins::intermediateResults(void)
 {
-    if( _rho <= 0.0 ) {
+    if( rho <= 0.0 ) {
         return EDUBBADRHO;
     }
-    const double dx = _q1[0] - _q0[0];
-    const double dy = _q1[1] - _q0[1];
+    const double dx = q1[0] - q0[0];
+    const double dy = q1[1] - q0[1];
     const double D = sqrt( dx * dx + dy * dy );
-    const double d = D / _rho;
+    const double d = D / rho;
     /* test required to prevent domain errors if dx=0 and dy=0 */
-    const double theta = d > 0 ? _mod2pi(atan2( dy, dx )) : 0;
-    const double alpha = _mod2pi(_q0[2] - theta);
-    const double beta  = _mod2pi(_q1[2] - theta);
+    const double theta = d > 0 ? _mod2Pi(atan2( dy, dx )) : 0;
+    const double alpha = _mod2Pi(q0[2] - theta);
+    const double beta  = _mod2Pi(q1[2] - theta);
 
-    _in.alpha = alpha;
-    _in.beta  = beta;
-    _in.d     = d;
-    _in.sa    = sin(alpha);
-    _in.sb    = sin(beta);
-    _in.ca    = cos(alpha);
-    _in.cb    = cos(beta);
-    _in.c_ab  = cos(alpha - beta);
-    _in.d_sq  = d * d;
+    In.alpha = alpha;
+    In.beta  = beta;
+    In.d     = d;
+    In.sa    = sin(alpha);
+    In.sb    = sin(beta);
+    In.ca    = cos(alpha);
+    In.cb    = cos(beta);
+    In.c_ab  = cos(alpha - beta);
+    In.d_sq  = d * d;
 
     return EDUBOK;
 }
 
-int Dubins::path_endpoint(void) {
-    return path_sample(get_path_length() - EPSILON);
+int Dubins::pathEndpoint(void) {
+    return pathSample(getPathLength() - EPSILON);
 }
 
-double Dubins::_fmodr(double x, double y) {
+double Dubins::_fModr(double x, double y) {
     return x - y*floor(x/y);
 }
-double Dubins::_mod2pi(double theta) {
-    return _fmodr( theta, 2 * M_PI );
+double Dubins::_mod2Pi(double theta) {
+    return _fModr( theta, 2 * M_PI );
 }
 /**
  * Floating point modulus suitable for rings

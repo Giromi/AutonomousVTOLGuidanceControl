@@ -3,18 +3,18 @@
 #include <uuid/uuid.h>
 
 ServoControlPublisher::ServoControlPublisher(void)
-    // : Node("servo_control_publisher_" + generate_uuid()), _pwm(800), _pwm_nomallize(-1.0) {
-    : Node("servo_control_publisher"), _pwm(800), _pwm_nomallize(-1.0) {
+    // : Node("servo_control_publisher_" + generate_uuid()), pwm(800), pwm_nomallize(-1.0) {
+    : Node("servo_control_publisher"), pwm(800), pwm_nomallize(-1.0) {
     _param_client = this->create_client<mavros_msgs::srv::ParamSetV2>("/mavros/param/set");
     _subscription = this->create_subscription<std_msgs::msg::String>( "chatter", 10,
             std::bind( &ServoControlPublisher::_chatterCallback, this, std::placeholders::_1
     ));
     // _timer = this->create_wall_timer(
     //         std::chrono::milliseconds(1000),
-    //         std::bind(&ServoControlPublisher::_publish_pwm_output_message, this));
+    //         std::bind(&ServoControlPublisher::_publishpwm_output_message, this));
 }
 
-void ServoControlPublisher::_publish_pwm_output_message(void) {
+void ServoControlPublisher::_publishpwm_output_message(void) {
     // _publish_arm_control_message();
     _publish_disarm_control_message();
     // _publish_disarm_control_message2();
@@ -30,7 +30,7 @@ void ServoControlPublisher::_publish_disarm_control_message(void) {
     auto request = std::make_shared<mavros_msgs::srv::ParamSetV2::Request>();
     request->force_set = false;
     request->param_id = "PWM_AUX_DIS1";
-    request->value.integer_value = _pwm;
+    request->value.integer_value = pwm;
     request->value.type = rcl_interfaces::msg::ParameterType::PARAMETER_INTEGER;
 
     auto future = _param_client->async_send_request(request, std::bind(&ServoControlPublisher::_response_callback, this, std::placeholders::_1));
@@ -82,12 +82,12 @@ void ServoControlPublisher::_chatterCallback(const std_msgs::msg::String::Shared
 
     switch (msg->data.c_str()[0]) {
         case 'w':
-            _pwm += (_pwm < 2000) * 200;
-            _publish_pwm_output_message();
+            pwm += (pwm < 2000) * 200;
+            _publishpwm_output_message();
             break;
         case 's':
-            _pwm -= (_pwm > 800) * 200;
-            _publish_pwm_output_message();
+            pwm -= (pwm > 800) * 200;
+            _publishpwm_output_message();
             break;
         default:
             break;

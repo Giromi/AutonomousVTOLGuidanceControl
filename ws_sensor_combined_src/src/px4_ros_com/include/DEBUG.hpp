@@ -26,13 +26,13 @@
 
 namespace DEBUG {
     template <typename T>
-    void print_binary(const std::string& msg, const T& target, const char* color) {
+    void printBinary(const std::string& msg, const T& target, const char* color) {
         std::cout << DEBUG_HEADER << color 
                   << msg << std::bitset<8>(target) << RESET << std::endl;
     }
 
     template <typename T>
-    void print_bool(const std::string& msg, const T& target, const char* color) {
+    void printBool(const std::string& msg, const T& target, const char* color) {
         std::cout << DEBUG_HEADER << color 
                   << msg << std::boolalpha << target << RESET << std::endl;
     }

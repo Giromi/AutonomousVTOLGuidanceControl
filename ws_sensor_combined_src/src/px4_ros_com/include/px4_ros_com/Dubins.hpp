@@ -54,16 +54,16 @@ public:
 
     Dubins(std::array<double, 3> q0, std::array<double, 3> q1, double turning_radius);
 
-    Dubins::PathType    get_path_type(void) const;
-    double              get_path_length(void) const;
-    double              get_param(int i) const { return _param[i]; }
-    double              get_rho(void) const { return _rho; }
-    double              get_qi_one(int i) const { return _qi[i]; }
+    Dubins::PathType    getPathType(void) const;
+    double              getPathLength(void) const;
+    double              getParam(int i) const { return param[i]; }
+    double              getRho(void) const { return rho; }
+    double              getQiOne(int i) const { return qi[i]; }
 
-    void                set_qi(const std::array<double, 3>& qi);
-    void                set_param(const std::array<double, 3>& param);
-    void                set_rho(const double value);
-    void                set_type(const PathType value);
+    void                setQi(const std::array<double, 3>& qi);
+    void                setParam(const std::array<double, 3>& param);
+    void                setRho(const double value);
+    void                setType(const PathType value);
 
 
     /* 지정된 경로 유형에 대한 Dubins 경로를 계산 */
@@ -71,28 +71,28 @@ public:
 
     /* 시작지점 q0에서 목표지점 q1까지의 최단 Dubins경로를 계산
      * 이 함수는 가능한 모든 경로 유형을 시도하고 최소 비용(가장 짧은)가진 경로를 반환 */
-    int    shortest_path(void);
+    int    shortestPath(void);
 
     /* 각각 Dubins 경로의 특정 세그먼트 길이를 반환 */
     /* 실제 길이*/
-    double segment_length(int i);
+    double segmentLength(int i);
     /* 정규화된 길이(회전 반경을 고려하지 않은 길이)를 반환 */
-    double segment_length_normalized(int i );
+    double segmentLengthNormalized(int i );
 
     /* 경로의 유형을 반환 */
 
     /* 경로를 따라 특정 지점을 샘플링 */
     /* 경로 상의 단일 지점을 샘플링 */
-    int path_sample(double t);
+    int pathSample(double t);
     /* 경로를 따라 여러 지점을 샘플링 */
-    int path_sample_many(double step_size, DubinsPathSamplingCallback cb, void* user_data);
+    int pathSampleMany(double step_size, DubinsPathSamplingCallback cb, void* user_data);
 
     /* 경로의 경로의 끝점을 계산합니다. */
-    int path_endpoint(void);
+    int pathEndpoint(void);
 
 
     /* Dubins 경로의 특정 부분을 추출 */
-    int extract_subpath(double t, Dubins& new_path);
+    int extractSubpath(double t, Dubins& new_path);
 
 
 
@@ -100,35 +100,35 @@ public:
 
 private:
     /* Dubins 경로의 총 길이를 반환합니다. */
-    static double                           _mod2pi(double theta);
-    static double                           _fmodr(double x, double y);
+    static double                           _mod2Pi(double theta);
+    static double                           _fModr(double x, double y);
 
-    int _intermediate_results(void);
-    void _segment(double t, const double qi[3], double qt[3], const SegmentType& type);
-    int _word(PathType pathType, double param[3]);
+    int intermediateResults(void);
+    void segment(double t, const double qi[3], double qt[3], const SegmentType& type);
+    int word(PathType pathType, double param[3]);
 
-    int _cal_LSL(double param[3]);
-    int _cal_RSR(double param[3]);
-    int _cal_LSR(double param[3]);
-    int _cal_RSL(double param[3]);
-    int _cal_RLR(double param[3]);
-    int _cal_LRL(double param[3]);
+    int calLSL(double param[3]);
+    int calRSR(double param[3]);
+    int calLSR(double param[3]);
+    int calRSL(double param[3]);
+    int calRLR(double param[3]);
+    int calLRL(double param[3]);
 
     // Essential data
     static const Dubins::PathType           _allPathTypes[];
-    int _errcode;
-    PathType _type; /* the path type described */
-    IntermediateResults _in;
+    int errcode;
+    PathType type; /* the path type described */
+    IntermediateResults In;
 
     // Input
-    std::array<double, 3> _q0;
-    std::array<double, 3> _q1;
-    double _rho;              /* model forward velocity / model angular velocity */
+    std::array<double, 3> q0;
+    std::array<double, 3> q1;
+    double rho;              /* model forward velocity / model angular velocity */
 
     // Calculated
-    std::array<double, 3> _qi;          /* the initial configuration */
-    std::array<double, 3> _param;       /* the lengths of the three segments */
-    double _q[3];       /* the lengths of the three segments */
+    std::array<double, 3> qi;          /* the initial configuration */
+    std::array<double, 3> param;       /* the lengths of the three segments */
+    double q[3];       /* the lengths of the three segments */
 };
 
 #endif /* DUBINS_HPP */
