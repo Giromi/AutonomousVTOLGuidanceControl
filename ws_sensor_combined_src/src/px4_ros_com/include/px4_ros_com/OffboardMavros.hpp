@@ -17,6 +17,7 @@
 #include <std_msgs/msg/string.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <sensor_msgs/msg/nav_sat_fix.hpp>
+#include <functional>
 #include <array>
 #include "px4_ros_com/convention.hpp"
 #include <limits>
@@ -34,12 +35,15 @@ private:
 
 
     /* -- Initialize Functions -- */
+
     void        initializePublishers(void);
     void        initializeSubscribers(void);
     void        initializeClients(void); 
     void        initializeTimers(const int rate_hz);
     void        initializeConstant(void);
-
+    void        initializeFunctionPointer(void);
+    void        initializeVariables(void);
+        
     /* -- Callback Functions -- */
     void    gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
     void    poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
@@ -78,6 +82,8 @@ private:
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
     void    sendFixedHeadingCommand(void);
+    void    stateCommandInit(void);
+    void    stateCommandReady(void);
 
 
     /* -- Callback Functions -- */
@@ -170,6 +176,10 @@ private:
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
+    std::array<vtol::State, vtol::STATE_SIZE>                           state_value_array;
+    std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
+
+
 
 };
 

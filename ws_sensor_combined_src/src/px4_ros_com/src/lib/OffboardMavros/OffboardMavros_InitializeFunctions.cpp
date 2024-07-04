@@ -1,6 +1,5 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
-
  /* -- Initialize Functions -- */
 
 void OffboardMavros::initializeConstant(void) {
@@ -33,12 +32,12 @@ void OffboardMavros::initializePublishers(void) {
 void OffboardMavros::initializeSubscribers(void) {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     
-    state_sub = create_subscription<mavros_msgs::msg::State>(
-            "mavros/state", default_qos, std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1));
+    const std::function<void(const mavros_msgs::msg::State::SharedPtr)> state_bind = std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1);
+    const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
 
-    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10,
-            std::bind( &OffboardMavros::chatterCallback, this, std::placeholders::_1
-                ));
+    state_sub = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
+    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
+
     current_pos_sub = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
             std::bind(&OffboardMavros::currentPositionCallback, this, std::placeholders::_1
                 ));
@@ -66,3 +65,21 @@ void OffboardMavros::initializeTimers(const int rate_hz) {
             std::chrono::milliseconds(rate_ms),
             std::bind(&OffboardMavros::publish, this));
 }
+
+void OffboardMavros::initializeVariables(void) {
+    state_value_array = { vtol::INIT, vtol::READY, };
+}
+
+void OffboardMavros::initializeFunctionPointer(void) {
+    // stateFunc[0] =
+    stateFunc[0] = std::bind(&OffboardMavros::stateCommandInit, this);
+    stateFunc[1] = std::bind(&OffboardMavros::stateCommandReady,this);
+    // void (*OffboardMavros::stateFunc[])(void) = {
+    //     std::bind(&OffboardMavros::stateCommandInit, this),   
+    //     std::bind(&OffboardMavros::stateCommandReady,this),
+    // };
+
+
+}
+
+
