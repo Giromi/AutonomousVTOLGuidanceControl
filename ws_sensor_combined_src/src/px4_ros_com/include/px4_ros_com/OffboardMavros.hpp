@@ -41,8 +41,12 @@ private:
     void        initializeClients(void); 
     void        initializeTimers(const int rate_hz);
     void        initializeConstant(void);
-    void        initializeFunctionPointer(void);
+    void        initializeFunctionPointerArray(void);
     void        initializeVariables(void);
+    void        initializeStateFuncPointerArray(const std::array<std::function <void(void)>, 
+                                                vtol::STATE_SIZE>& input);
+
+
         
     /* -- Callback Functions -- */
     void    gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg);

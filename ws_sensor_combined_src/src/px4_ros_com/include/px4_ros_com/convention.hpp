@@ -72,8 +72,8 @@ namespace vtol {
         float yaw;
     };
 
-    constexpr int   ACTION_SIZE     = 20;
-    constexpr int   STATE_SIZE      = 2;
+    constexpr size_t   ACTION_SIZE     = 20;
+    constexpr size_t   STATE_SIZE      = 2;
     constexpr char  FCU_ARM[]       = "AUTO.RTL";
     constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";
