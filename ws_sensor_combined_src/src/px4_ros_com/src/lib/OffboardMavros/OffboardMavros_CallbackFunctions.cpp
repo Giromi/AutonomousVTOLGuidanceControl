@@ -33,6 +33,7 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
     DEBUG::print("gps_lon: ", _global_position[vtol::LON], GREEN);
 }
 void OffboardMavros::stateCommandInit(void){
+    RCLCPP_INFO(this->get_logger(), "< State Command Init >");
     if (fcu_state.armed == true) {
         updateLandingStatus();
     } else {
@@ -41,8 +42,8 @@ void OffboardMavros::stateCommandInit(void){
 }
 
 void OffboardMavros::stateCommandReady(void) {
-
-    if (fcu_state.mode != vtol::FCU_HOLD) {
+    RCLCPP_INFO(this->get_logger(), "< State Command Ready >");
+    if (fcu_state.mode != vtol::FCU_HOLD) {    
         updateDisarmingStatus();
         updateHoldMode();
         updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdResponseCallback);
