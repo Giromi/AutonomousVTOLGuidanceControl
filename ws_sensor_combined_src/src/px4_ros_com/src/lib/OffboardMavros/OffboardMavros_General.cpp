@@ -14,8 +14,12 @@ double                                  OffboardMavros::_offset = 1.0;
  * @brief OffboardMavros 생성자
  */
 OffboardMavros::OffboardMavros(void) : Node("offboard_mavros") {
-    // initializeConstant();
+     // initializeConstant();
     // DEBUG::print("OffboardMavros Constant", true, BOLDGREEN);
+    initializeVariables();
+    DEBUG::print("OffboardMavros Variables", true, BOLDGREEN);
+    initializeFunctionPointerArray();
+    DEBUG::print("OffboardMavros FuctionPointer", true, BOLDGREEN);
     initializePublishers();
     DEBUG::print("OffboardMavros Publishers", true, BOLDGREEN);
     initializeSubscribers();

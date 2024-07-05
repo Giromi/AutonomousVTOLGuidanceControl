@@ -30,7 +30,7 @@ namespace vtol {
         FAIL = 1
     };
 
-    enum Status {                     // enum class 타입 안정성 사용
+    enum State {                     // enum class 타입 안정성 사용
         INIT,
         READY       =   BIT_READY,              // Before arming
         ARMED       =   READY   | BIT_ARMED,      // After arming
@@ -59,7 +59,7 @@ namespace vtol {
     //      INIT_LON    = global_position_[2],
     //  };
 
-    enum State {
+    enum Mode {
         MC = 3,
         FW = 4
     };
@@ -72,7 +72,8 @@ namespace vtol {
         float yaw;
     };
 
-    constexpr int   ACTION_SIZE     = 20;
+    constexpr size_t   ACTION_SIZE     = 20;
+    constexpr size_t   STATE_SIZE      = 2;
     constexpr char  FCU_ARM[]       = "AUTO.RTL";
     constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";
@@ -86,23 +87,23 @@ namespace vtol {
 
 /*
 namespace flight {
-    enum Status {
+    enum State {
         INIT, ARMED, DISARMED, TAKEOFF, LAND
     };
 }
 
 // 사용 예
-flight::Status status = flight::ARMED;
+flight::State status = flight::ARMED;
 
 */
 
 /*
 namespace flight {
-    enum class Status {
+    enum class State {
         INIT, ARMED, DISARMED, TAKEOFF, LAND
     };
 }
 
 // 사용 예
-flight::Status status = flight::Status::ARMED;
+flight::State status = flight::State::ARMED;
 */
