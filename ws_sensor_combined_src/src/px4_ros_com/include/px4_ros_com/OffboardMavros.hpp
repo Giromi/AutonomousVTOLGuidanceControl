@@ -18,6 +18,8 @@
 #include <nav_msgs/msg/odometry.hpp>
 #include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <functional>
+#include <vector>
+#include <algorithm>
 #include <array>
 #include "px4_ros_com/convention.hpp"
 #include <limits>
@@ -86,8 +88,17 @@ private:
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
     void    sendFixedHeadingCommand(void);
+
+    /* -- StateCommand Function*/
     void    stateCommandInit(void);
     void    stateCommandReady(void);
+    void    stateCommandArmed (void);
+    void    stateCommandFly (void);
+    void    stateCommandTakeOff (void);
+    void    stateCommandStart (void);
+    void    stateCommandToFixed (void);
+    void    stateCommandToQuad (void);
+    void    stateCommandLand (void);
 
 
     /* -- Callback Functions -- */
@@ -102,6 +113,7 @@ private:
     void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
+    int  StateArrayDistance(const std::vector<int>::const_iterator first, const std::vector<int>::const_iterator last);
 
 
     /* -- Action Functions -- */
@@ -132,6 +144,8 @@ private:
     static void	    _actionHold(void);
     static void	    _actionInit(void);
     static void	    _actionTransition(void);
+
+
 
     /* -- Utile Functions -- */
     bool            isFiveSecondsPassed();

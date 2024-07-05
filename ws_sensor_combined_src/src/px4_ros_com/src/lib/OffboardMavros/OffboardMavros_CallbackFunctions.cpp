@@ -32,6 +32,8 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
     DEBUG::print("gps_lat: ", _global_position[vtol::LAT], GREEN);
     DEBUG::print("gps_lon: ", _global_position[vtol::LON], GREEN);
 }
+
+    /* -- StateCommand Function*/
 void OffboardMavros::stateCommandInit(void){
     RCLCPP_INFO(this->get_logger(), "< State Command Init >");
     if (fcu_state.armed == true) {
@@ -50,7 +52,75 @@ void OffboardMavros::stateCommandReady(void) {
     }
 
 }
-    
+
+void OffboardMavros::stateCommandArmed (void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command Armed >");
+    if (OffboardMavros::_cmd_flag == vtol::ARMED) {
+    DEBUG::print("", ">> ARMED <<", BOLDGREEN);
+    if (fcu_state.armed != true) {
+        updateArmingStatus();
+    }
+    }
+}
+void OffboardMavros::stateCommandFly (void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command Fly >");
+    if (OffboardMavros::_cmd_flag == vtol::FLY) {
+        if (fcu_state.mode != vtol::FCU_HOLD) {
+            updateHoldMode();
+        }
+        std::cout << "Flying..." << std::endl;
+    }
+}
+void OffboardMavros::stateCommandTakeOff (void){
+    RCLCPP_INFO(this->get_logger(), "< State Command Take Off >");
+    if (OffboardMavros::_cmd_flag == vtol::TAKEOFF) {
+    DEBUG::print("", ">> Take Off <<", BOLDGREEN);
+    // 순서 중요
+    if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
+        updateTakeoffStatus();
+    } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
+        updateArmingStatus();
+    }
+    }
+}
+
+void OffboardMavros::stateCommandStart (void) { 
+    RCLCPP_INFO(this->get_logger(), "< State Command Start >");
+    if (OffboardMavros::_cmd_flag == vtol::START) {
+        if (fcu_state.mode == vtol::FCU_HOLD) {
+            updateOffboardMode();
+        }
+    }
+}
+
+void OffboardMavros::stateCommandToFixed (void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command To Fixed >");
+    if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
+    updateTransitionFixedStatus();
+    }
+}
+
+void OffboardMavros::stateCommandToQuad (void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command To Quad >");
+    if (OffboardMavros::_cmd_flag == vtol::TO_QUAD) {
+    updateTransitionQuadStatus();
+    }   
+}
+void OffboardMavros::stateCommandLand (void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command Land >");
+    if (OffboardMavros::_cmd_flag == vtol::LAND) {
+        if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
+            updateLandingStatus();
+        } else if (fcu_state.mode == vtol::FCU_HOLD) {
+            std::cout << "Landing success" << std::endl;
+            OffboardMavros::_cmd_flag = vtol::READY;
+        }
+    }
+}
+
+int OffboardMavros::StateArrayDistance(const std::vector<int>::const_iterator first, const std::vector<int>::const_iterator last) {
+    return last - first;
+}
 
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
@@ -77,6 +147,14 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
 
 //ros::Time::now() - last_request > ros::Duration(5.0)
 // convention : stateCommand + Init()
+    // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  i;
+    // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  state_func_begin = stateFunc.begin();
+    // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  state_func_end = stateFunc.end();
+
+    // i = std::find(state_func_begin, state_func_end, _cmd_flag);
+    // if (i < OffboardMavros::state_value_array.size()) {
+    //     stateFunc(std::distance(stateFunc.begin(), i));
+    // }
 
     size_t i = 0;
     for (; i < OffboardMavros::state_value_array.size() && OffboardMavros::_cmd_flag != OffboardMavros::state_value_array[i]; ++i);
@@ -105,51 +183,51 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     //     }
     // }
 
-    if (OffboardMavros::_cmd_flag == vtol::ARMED) {
-        DEBUG::print("", ">> ARMED <<", BOLDGREEN);
-        if (fcu_state.armed != true) {
-            updateArmingStatus();
-        }
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::ARMED) {
+    //     DEBUG::print("", ">> ARMED <<", BOLDGREEN);
+    //     if (fcu_state.armed != true) {
+    //         updateArmingStatus();
+    //     }
+    // }
 
-    if (OffboardMavros::_cmd_flag == vtol::FLY) {
-        if (fcu_state.mode != vtol::FCU_HOLD) {
-            updateHoldMode();
-        }
-        std::cout << "Flying..." << std::endl;
-    }
-    if (OffboardMavros::_cmd_flag == vtol::TAKEOFF) {
-        DEBUG::print("", ">> Take Off <<", BOLDGREEN);
-        // 순서 중요
-        if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-            updateTakeoffStatus();
-        } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
-            updateArmingStatus();
-        }
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::FLY) {
+    //     if (fcu_state.mode != vtol::FCU_HOLD) {
+    //         updateHoldMode();
+    //     }
+    //     std::cout << "Flying..." << std::endl;
+    // }
+    // if (OffboardMavros::_cmd_flag == vtol::TAKEOFF) {
+    //     DEBUG::print("", ">> Take Off <<", BOLDGREEN);
+    //     // 순서 중요
+    //     if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
+    //         updateTakeoffStatus();
+    //     } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
+    //         updateArmingStatus();
+    //     }
+    // }
 
-    if (OffboardMavros::_cmd_flag == vtol::START) {
-        if (fcu_state.mode == vtol::FCU_HOLD) {
-            updateOffboardMode();
-        }
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::START) {
+    //     if (fcu_state.mode == vtol::FCU_HOLD) {
+    //         updateOffboardMode();
+    //     }
+    // }
 
-    if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
-        updateTransitionFixedStatus();
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
+    //     updateTransitionFixedStatus();
+    // }
 
-    if (OffboardMavros::_cmd_flag == vtol::TO_QUAD) {
-        updateTransitionQuadStatus();
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::TO_QUAD) {
+    //     updateTransitionQuadStatus();
+    // }
 
-    if (OffboardMavros::_cmd_flag == vtol::LAND) {
-        if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
-            updateLandingStatus();
-        } else if (fcu_state.mode == vtol::FCU_HOLD) {
-            std::cout << "Landing success" << std::endl;
-            OffboardMavros::_cmd_flag = vtol::READY;
-        }
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::LAND) {
+    //     if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
+    //         updateLandingStatus();
+    //     } else if (fcu_state.mode == vtol::FCU_HOLD) {
+    //         std::cout << "Landing success" << std::endl;
+    //         OffboardMavros::_cmd_flag = vtol::READY;
+    //     }
+    // }
 }
 
 void    OffboardMavros::statusReady(void) {
