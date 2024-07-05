@@ -28,9 +28,9 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
     _global_position[vtol::LAT] = msg->latitude;
     _global_position[vtol::LON] = msg->longitude;
 
-    DEBUG::print("gps_alt: ", _global_position[vtol::ALT], GREEN);
-    DEBUG::print("gps_lat: ", _global_position[vtol::LAT], GREEN);
-    DEBUG::print("gps_lon: ", _global_position[vtol::LON], GREEN);
+    // DEBUG::print("gps_alt: ", _global_position[vtol::ALT], GREEN);
+    // DEBUG::print("gps_lat: ", _global_position[vtol::LAT], GREEN);
+    // DEBUG::print("gps_lon: ", _global_position[vtol::LON], GREEN);
 }
 
     /* -- StateCommand Function*/
@@ -62,6 +62,7 @@ void OffboardMavros::stateCommandArmed (void) {
     }
     }
 }
+
 void OffboardMavros::stateCommandFly (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Fly >");
     if (OffboardMavros::_cmd_flag == vtol::FLY) {
@@ -71,6 +72,7 @@ void OffboardMavros::stateCommandFly (void) {
         std::cout << "Flying..." << std::endl;
     }
 }
+
 void OffboardMavros::stateCommandTakeOff (void){
     RCLCPP_INFO(this->get_logger(), "< State Command Take Off >");
     if (OffboardMavros::_cmd_flag == vtol::TAKEOFF) {
@@ -106,6 +108,7 @@ void OffboardMavros::stateCommandToQuad (void) {
     updateTransitionQuadStatus();
     }   
 }
+
 void OffboardMavros::stateCommandLand (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Land >");
     if (OffboardMavros::_cmd_flag == vtol::LAND) {
@@ -118,9 +121,7 @@ void OffboardMavros::stateCommandLand (void) {
     }
 }
 
-int OffboardMavros::StateArrayDistance(const std::vector<int>::const_iterator first, const std::vector<int>::const_iterator last) {
-    return last - first;
-}
+
 
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
@@ -147,25 +148,27 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
 
 //ros::Time::now() - last_request > ros::Duration(5.0)
 // convention : stateCommand + Init()
-    // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  i;
-    // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  state_func_begin = stateFunc.begin();
+    // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  state_func_begin = stateFunc.begin()
     // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  state_func_end = stateFunc.end();
+    const std::array<vtol::State,vtol::STATE_SIZE>::iterator  it = std::find(state_value_array.begin(), state_value_array.end(), OffboardMavros::_cmd_flag);
 
-    // i = std::find(state_func_begin, state_func_end, _cmd_flag);
-    // if (i < OffboardMavros::state_value_array.size()) {
-    //     stateFunc(std::distance(stateFunc.begin(), i));
-    // }
+    if (it == state_value_array.end()) {
+        RCLCPP_ERROR(this->get_logger(), " Invalid State ");
+        return;
+    }
+    const size_t i = std::distance(state_value_array.begin(), it);
+    stateFunc[i]();
 
-    size_t i = 0;
-    for (; i < OffboardMavros::state_value_array.size() && OffboardMavros::_cmd_flag != OffboardMavros::state_value_array[i]; ++i);
+    // size_t i = 0;
+    // for (; i < OffboardMavros::state_value_array.size() && OffboardMavros::_cmd_flag != OffboardMavros::state_value_array[i]; ++i);
 
     // if (i == OffboardMavros::state_value_array.size()) {
     //     std::cout << "Invalid State" << std::endl;
     //     return ;
     // }
-    if (i < OffboardMavros::state_value_array.size()) {
-        OffboardMavros::stateFunc[i]();
-    }
+    // if (i < OffboardMavros::state_value_array.size()) {
+    //  OffboardMavros::stateFunc[i]();
+    // }
     // if (OffboardMavros::_cmd_flag == vtol::INIT) {
     //     if (fcu_state.armed == true) {
     //         updateLandingStatus();

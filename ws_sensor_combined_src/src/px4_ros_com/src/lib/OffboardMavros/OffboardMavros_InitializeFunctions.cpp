@@ -96,10 +96,10 @@ void OffboardMavros::initializeFunctionPointerArray(void) {
                                        std::bind(&OffboardMavros::stateCommandArmed, this),
                                        std::bind(&OffboardMavros::stateCommandFly, this),
                                        std::bind(&OffboardMavros::stateCommandTakeOff, this),
+                                       std::bind(&OffboardMavros::stateCommandLand, this),
                                        std::bind(&OffboardMavros::stateCommandStart, this),
                                        std::bind(&OffboardMavros::stateCommandToFixed, this),
-                                       std::bind(&OffboardMavros::stateCommandToQuad, this),
-                                       std::bind(&OffboardMavros::stateCommandLand, this)
+                                       std::bind(&OffboardMavros::stateCommandToQuad, this)
                                     } );
 
         // // stateFunc[0] =

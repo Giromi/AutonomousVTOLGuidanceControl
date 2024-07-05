@@ -18,7 +18,6 @@
 #include <nav_msgs/msg/odometry.hpp>
 #include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <functional>
-#include <vector>
 #include <algorithm>
 #include <array>
 #include "px4_ros_com/convention.hpp"
@@ -113,7 +112,6 @@ private:
     void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
-    int  StateArrayDistance(const std::vector<int>::const_iterator first, const std::vector<int>::const_iterator last);
 
 
     /* -- Action Functions -- */
@@ -184,7 +182,7 @@ private:
     //
 
     //TODO: static 지워서 멤버변수로 변경
-    static unsigned char                                                _cmd_flag;
+    static vtol::State                                               _cmd_flag;
     static std::array<double, 3>		                                _local_position;
     static std::array<float, 3>		                                    _global_position;
     static std::array<double, 6>		                                _local_velocity;
