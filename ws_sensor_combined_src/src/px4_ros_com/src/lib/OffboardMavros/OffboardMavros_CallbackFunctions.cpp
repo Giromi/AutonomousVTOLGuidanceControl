@@ -32,7 +32,25 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
     DEBUG::print("gps_lat: ", _global_position[vtol::LAT], GREEN);
     DEBUG::print("gps_lon: ", _global_position[vtol::LON], GREEN);
 }
+void OffboardMavros::stateCommandInit(void){
+    RCLCPP_INFO(this->get_logger(), "< State Command Init >");
+    if (fcu_state.armed == true) {
+        updateLandingStatus();
+    } else {
+        OffboardMavros::_cmd_flag = vtol::READY;
+    }
+}
 
+void OffboardMavros::stateCommandReady(void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command Ready >");
+    if (fcu_state.mode != vtol::FCU_HOLD) {    
+        updateDisarmingStatus();
+        updateHoldMode();
+        updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdResponseCallback);
+    }
+
+}
+    
 
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
@@ -56,23 +74,37 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     // }
     // TODO: status_XXX_() 함수를 만들어서 사용
 
+
 //ros::Time::now() - last_request > ros::Duration(5.0)
-    // TODO: 생성자에서 초기화
-    if (OffboardMavros::_cmd_flag == vtol::INIT) {
-        if (fcu_state.armed == true) {
-            updateLandingStatus();
-        } else {
-            OffboardMavros::_cmd_flag = vtol::READY;
-        }
+// convention : stateCommand + Init()
+
+    size_t i = 0;
+    for (; i < OffboardMavros::state_value_array.size() && OffboardMavros::_cmd_flag != OffboardMavros::state_value_array[i]; ++i);
+
+    // if (i == OffboardMavros::state_value_array.size()) {
+    //     std::cout << "Invalid State" << std::endl;
+    //     return ;
+    // }
+    if (i < OffboardMavros::state_value_array.size()) {
+        OffboardMavros::stateFunc[i]();
     }
-    if (OffboardMavros::_cmd_flag == vtol::READY) {
-        if (fcu_state.mode != vtol::FCU_HOLD) {
-            updateDisarmingStatus();
-            updateHoldMode();
-            updateCustomMode(vtol::FCU_HOLD, 
-                    &OffboardMavros::holdResponseCallback);
-        }
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::INIT) {
+    //     if (fcu_state.armed == true) {
+    //         updateLandingStatus();
+    //     } else {
+    //         OffboardMavros::_cmd_flag = vtol::READY;
+    //     }
+    // }
+
+    // if (OffboardMavros::_cmd_flag == vtol::READY) {
+    //     if (fcu_state.mode != vtol::FCU_HOLD) {
+    //         updateDisarmingStatus();
+    //         updateHoldMode();
+    //         updateCustomMode(vtol::FCU_HOLD, 
+    //                 &OffboardMavros::holdResponseCallback);
+    //     }
+    // }
+
     if (OffboardMavros::_cmd_flag == vtol::ARMED) {
         DEBUG::print("", ">> ARMED <<", BOLDGREEN);
         if (fcu_state.armed != true) {
