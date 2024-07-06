@@ -79,6 +79,7 @@ namespace vtol {
     constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";
     constexpr char	FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
     constexpr char	FCU_LAND[]      = "AUTO.LAND";
+    constexpr char  FCU_MISSION[]   = "AUTO.MISSION";
     constexpr double RAD_2_DEG = 180 / M_PI;
 }
 
