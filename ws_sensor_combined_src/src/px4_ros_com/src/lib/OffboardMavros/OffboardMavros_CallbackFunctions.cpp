@@ -95,6 +95,13 @@ void OffboardMavros::stateCommandStart (void) {
     }
 }
 
+void OffboardMavros::stateCommandMission(void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command Mission >");
+    if (fcu_state.mode == vtol::FCU_HOLD) {
+        updateMissionMode();
+    }
+}
+
 void OffboardMavros::stateCommandToFixed (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command To Fixed >");
     if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
@@ -132,8 +139,8 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     fcu_state = *msg;
 
     DEBUG::msg("\n[DEBUG] ", "-----------------");
-    DEBUG::print("Mode : ", msg->mode, CYAN);
-    DEBUG::printBool("Arming : ", msg->armed, RED);
+    DEBUG::print("Mode : ", fcu_state.mode, CYAN);
+    DEBUG::printBool("Arming : ", fcu_state.armed, RED);
     DEBUG::printBinary("Command flag : ", _cmd_flag, YELLOW);
     DEBUG::print("System status : ", fcu_state.system_status, BLUE);
     DEBUG::print("Yaw current: ", yaw_current, GREEN);
@@ -282,6 +289,15 @@ void OffboardMavros::offboardResponseCallback(const rclcpp::Client<mavros_msgs::
     };
     printSuccessInfo(future.get()->mode_sent, msg);
 }
+
+void OffboardMavros::missionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
+    const char* msg[] = {
+        "Mission mode sent successfully", 
+        "Failed to send Mission mode"
+    };
+    printSuccessInfo(future.get()->mode_sent, msg);
+}
+
 
 void OffboardMavros::holdResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
     const char* msg[] = {
