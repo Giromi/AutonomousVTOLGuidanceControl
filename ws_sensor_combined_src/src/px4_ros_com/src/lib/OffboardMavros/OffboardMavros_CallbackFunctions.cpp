@@ -145,12 +145,39 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     // }
     // TODO: status_XXX_() 함수를 만들어서 사용
 
+<<<<<<< HEAD
 
 //ros::Time::now() - last_request > ros::Duration(5.0)
 // convention : stateCommand + Init()
     // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  state_func_begin = stateFunc.begin()
     // std::array<std::function <void(void)> ,vtol::STATE_SIZE>::iterator  state_func_end = stateFunc.end();
     const std::array<vtol::State,vtol::STATE_SIZE>::iterator  it = std::find(state_value_array.begin(), state_value_array.end(), OffboardMavros::_cmd_flag);
+=======
+//ros::Time::now() - last_request > ros::Duration(5.0)
+    // TODO: 생성자에서 초기화
+    if (OffboardMavros::cmdFlag_ == vtol::INIT) {
+        if (fcuState_.armed == true) {
+            update_landing_status();
+        } else {
+            OffboardMavros::cmdFlag_ = vtol::READY;
+        }
+    }
+    if (OffboardMavros::cmdFlag_ == vtol::READY) {
+        if (fcuState_.mode != vtol::FCU_HOLD) {
+            update_disarming_status();
+            update_hold_mode();
+            update_custom_mode(vtol::FCU_HOLD, 
+                    &OffboardMavros::hold_response_callback);
+            sendFixedHeadingCommand();
+        }
+    }
+    if (OffboardMavros::cmdFlag_ == vtol::ARMED) {
+        DEBUG::print("", ">> ARMED <<", BOLDGREEN);
+        if (fcuState_.armed != true) {
+            update_arming_status();
+        }
+    }
+>>>>>>> a5fc226b (feat: fix transition add callback)
 
     if (it == state_value_array.end()) {
         RCLCPP_ERROR(this->get_logger(), " Invalid State ");

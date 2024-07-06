@@ -1,31 +1,35 @@
 #ifndef OFFBOARD_MAVROS_HPP
 # define OFFBOARD_MAVROS_HPP
 
-#include <rclcpp/rclcpp.hpp>
-#include <geometry_msgs/msg/pose_stamped.hpp>
-#include <geometry_msgs/msg/twist_stamped.hpp>
-#include <mavros_msgs/srv/command_bool.hpp>
-#include <mavros_msgs/msg/state.hpp>
-#include <mavros_msgs/msg/actuator_control.hpp>
-#include <mavros_msgs/msg/override_rc_in.hpp>
-#include <mavros_msgs/msg/position_target.hpp>
-#include <mavros_msgs/srv/command_tol.hpp>
-#include <mavros_msgs/srv/command_long.hpp>
-#include <mavros_msgs/srv/command_vtol_transition.hpp>
-#include <mavros_msgs/msg/command_code.hpp>
-#include <mavros_msgs/srv/set_mode.hpp>
-#include <std_msgs/msg/string.hpp>
-#include <nav_msgs/msg/odometry.hpp>
-#include <sensor_msgs/msg/nav_sat_fix.hpp>
-#include <functional>
-#include <algorithm>
-#include <array>
-#include "px4_ros_com/convention.hpp"
-#include <limits>
+
+# include <rclcpp/rclcpp.hpp>
+# include <geometry_msgs/msg/pose_stamped.hpp>
+# include <geometry_msgs/msg/twist_stamped.hpp>
+# include <mavros_msgs/srv/command_bool.hpp>
+# include <mavros_msgs/msg/state.hpp>
+# include <mavros_msgs/msg/actuator_control.hpp>
+# include <mavros_msgs/msg/override_rc_in.hpp>
+# include <mavros_msgs/msg/position_target.hpp>
+# include <mavros_msgs/srv/command_tol.hpp>
+# include <mavros_msgs/srv/command_long.hpp>
+# include <mavros_msgs/srv/command_vtol_transition.hpp>
+# include <mavros_msgs/msg/command_code.hpp>
+# include <mavros_msgs/srv/set_mode.hpp>
+# include <mavros_msgs/msg/waypoint_list.hpp>
+# include <std_msgs/msg/string.hpp>
+# include <nav_msgs/msg/odometry.hpp>
+# include <sensor_msgs/msg/nav_sat_fix.hpp>
 //#include <nav_msgs/msg/odometry.hpp>
-#include "DEBUG.hpp"
-#include <cmath>
-#include <cstdio>
+# include <functional>
+# include <algorithm>
+# include <array>
+# include <limits>
+# include <cmath>
+# include <cstdio>
+# include <queue>
+# include <deque>
+# include "px4_ros_com/convention.hpp"
+# include "DEBUG.hpp"
 
 class OffboardMavros : public rclcpp::Node {
 public:
@@ -33,6 +37,7 @@ public:
 
 private:
     typedef std::array<double, 3> t_position;
+
 
 
     /* -- Initialize Functions -- */
@@ -46,6 +51,8 @@ private:
     void        initializeVariables(void);
     void        initializeStateFuncPointerArray(const std::array<std::function <void(void)>, 
                                                 vtol::STATE_SIZE>& input);
+    void        initializeWaypointsVariable(const std::queue<vtol::Waypoint>& input);
+
 
 
         
@@ -63,6 +70,7 @@ private:
     void    publishAttitude(void);
     void    publishLocal(void);
     void    publishLocalFixed(void);
+    void    publishWaypoint(void);
   
     /* -- Update Functions -- */
     void    updateArmingStatus(void); 
@@ -82,6 +90,8 @@ private:
     void    updateLocation(std::array<double, 3> input);
     void    updateHoldMode(void);
     void    updateOffboardMode(void); 
+    void    updateMissionMode(void);
+
     void    updateCustomMode(const std::string& input_mode,
             void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture));
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
@@ -95,6 +105,7 @@ private:
     void    stateCommandFly (void);
     void    stateCommandTakeOff (void);
     void    stateCommandStart (void);
+    void    stateCommandMission(void);
     void    stateCommandToFixed (void);
     void    stateCommandToQuad (void);
     void    stateCommandLand (void);
@@ -102,6 +113,7 @@ private:
 
     /* -- Callback Functions -- */
     void	offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
+    void	missionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
     void	holdResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
     void	chatterCallback(const std_msgs::msg::String::SharedPtr msg);
     void	armingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
@@ -139,6 +151,7 @@ private:
     static void	    _actionTakeoff(void);
     static void	    _actionLanding(void);
     static void	    _actionStart(void);
+    static void     _actionMission(void);
     static void	    _actionHold(void);
     static void	    _actionInit(void);
     static void	    _actionTransition(void);
@@ -159,6 +172,7 @@ private:
   
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
+    rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
 
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client;
     rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             takeoff_client;
@@ -194,8 +208,7 @@ private:
     static void                                                         (*actionFunc[])(void);
     std::array<vtol::State, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
-
-
+    std::queue<vtol::Waypoint>                                          waypoints;
 
 };
 

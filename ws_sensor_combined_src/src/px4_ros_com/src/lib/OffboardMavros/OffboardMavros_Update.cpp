@@ -101,11 +101,15 @@ void OffboardMavros::updateLocation(std::array<double, 3> input) {
 }
 
 void OffboardMavros::updateHoldMode(void) {
-    updateCustomMode("AUTO.LOITER", &OffboardMavros::holdResponseCallback);
+    updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdResponseCallback);
 }
 
 void OffboardMavros::updateOffboardMode(void) {
-    updateCustomMode("OFFBOARD", &OffboardMavros::offboardResponseCallback);
+    updateCustomMode(vtol::FCU_OFFBOARD, &OffboardMavros::offboardResponseCallback);
+}
+
+void OffboardMavros::updateMissionMode(void) {
+    updateCustomMode(vtol::FCU_MISSION, &OffboardMavros::missionResponseCallback);
 }
 
 void OffboardMavros::updateCustomMode(const std::string& input_mode,

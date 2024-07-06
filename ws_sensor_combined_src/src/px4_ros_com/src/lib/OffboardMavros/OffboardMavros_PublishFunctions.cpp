@@ -6,9 +6,12 @@ void    OffboardMavros::publish(void) {
     if (_cmd_flag != vtol::START) {
         return ;
     }
-    // publishPose();
-    publishLocal();
-    publishLocalFixed();
+
+    if (fcu_state.mode == "OFFBOARD") {
+        publishLocal(); // publishLocalFixed();
+    } else if (fcu_state.mode == "AUTO.MISSION") {
+        publishWaypoint();
+    }
 }
 void OffboardMavros::publishPose(void) {
     geometry_msgs::msg::PoseStamped pose;
@@ -92,4 +95,33 @@ void OffboardMavros::publishLocalFixed(void) {
 
     local_pub->publish(local_msg);
 }
+
+
+void OffboardMavros::publishWaypoint(void) {
+    if (waypoints.empty()) { // 넣을게 없으면 그냥 나가기
+        return ;
+    }
+    mavros_msgs::msg::Waypoint      msg_waypoint;
+    msg_waypoint.frame = mavros_msgs::msg::Waypoint::FRAME_LOCAL_NED;
+    msg_waypoint.command = mavros_msgs::msg::CommandCode::NAV_WAYPOINT;
+    msg_waypoint.is_current = true;
+    msg_waypoint.autocontinue = true;
+    msg_waypoint.param1 = 0;
+    msg_waypoint.param2 = 0;
+    msg_waypoint.param3 = 0;
+    msg_waypoint.param4 = 0;
+    msg_waypoint.x_lat = waypoints.front().x;
+    msg_waypoint.y_long = waypoints.front().y;
+    msg_waypoint.z_alt = waypoints.front().z;
+
+    mavros_msgs::msg::WaypointList  msg_waypoint_list;
+    msg_waypoint_list.waypoints.push_back(msg_waypoint);
+    waypoints.pop();
+
+    if (waypoints.size()) { // 넣을게 있으면 publish 나중에 하기
+        return ;
+    }
+    waypoints_pub->publish(msg_waypoint_list);
+}
+
 

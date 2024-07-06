@@ -45,8 +45,7 @@ void OffboardMavros::_actionVelocityPlusZ(void) {
     _local_velocity[2] += _offset;
 }
 
-void OffboardMavros::_actionVelocityMinusX(void) {
-    _local_velocity[0] -= _offset;
+void OffboardMavros::_actionVelocityMinusX(void) { _local_velocity[0] -= _offset;
 }
 
 void OffboardMavros::_actionVelocityMinusY(void) {
@@ -128,11 +127,16 @@ void OffboardMavros::_actionLanding(void) {
 }
 
 void OffboardMavros::_actionStart(void) {
-    if (OffboardMavros::_cmd_flag == vtol::QUAD || OffboardMavros::_cmd_flag == vtol::FIXED) {
+    if (OffboardMavros::_cmd_flag == vtol::FLY || OffboardMavros::_cmd_flag == vtol::FIXED) {
         OffboardMavros::_cmd_flag = vtol::START;
-    } else if (OffboardMavros::_cmd_flag == vtol::START) {
+    } else if (OffboardMavros::_cmd_flag == vtol::START 
+            || OffboardMavros::_cmd_flag == vtol::MISSION) {
         OffboardMavros::_cmd_flag = vtol::FLY;
     }
+}
+
+void OffboardMavros::_actionMission(void) {
+    OffboardMavros::_cmd_flag = vtol::MISSION;
 }
 
 void OffboardMavros::_actionHold(void) {
@@ -155,7 +159,7 @@ void OffboardMavros::_actionTransition(void) {
 const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::_action_string_array = { 
     "2", "4", "6", "3", "5", "7", 
     "↑", "↓", "→", "←", "+", "-", 
-    "h", "a", "d", "t", "l", "s", "0", "w",  
+    "h", "a", "d", "t", "l", "s", "0", "w", "m",
 };
 
 void (*OffboardMavros::actionFunc[])(void) = {
@@ -179,5 +183,6 @@ void (*OffboardMavros::actionFunc[])(void) = {
     &OffboardMavros::_actionStart,             // s
     &OffboardMavros::_actionInit,              // 0
     &OffboardMavros::_actionTransition,        // w
+    &OffboardMavros::_actionMission,           // m
 };
 

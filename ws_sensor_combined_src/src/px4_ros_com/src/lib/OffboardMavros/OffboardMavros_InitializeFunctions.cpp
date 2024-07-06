@@ -16,9 +16,9 @@ void OffboardMavros::initializeConstant(void) {
     _init_global_position[vtol::LAT] = std::atoi(home_lat);
     _init_global_position[vtol::LON] = std::atoi(home_lon);
 
-    DEBUG::print("alt: ", _init_global_position[vtol::ALT],BLUE);
-    DEBUG::print("lat: ", _init_global_position[vtol::LAT],BLUE);
-    DEBUG::print("lon: ", _init_global_position[vtol::LON],BLUE);
+    // DEBUG::print("alt: ", _init_global_position[vtol::ALT],BLUE);
+    // DEBUG::print("lat: ", _init_global_position[vtol::LAT],BLUE);
+    // DEBUG::print("lon: ", _init_global_position[vtol::LON],BLUE);
 }
 
 void OffboardMavros::initializePublishers(void) {
@@ -27,6 +27,8 @@ void OffboardMavros::initializePublishers(void) {
     local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("mavros/setpoint_raw/local", 10);
     att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("mavros/setpoint_attitude/cmd_vel", 10);
     actuator_control_pub = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
+
+    waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", 10);
 }
 
 void OffboardMavros::initializeSubscribers(void) {
@@ -66,6 +68,7 @@ void OffboardMavros::initializeTimers(const int rate_hz) {
             std::bind(&OffboardMavros::publish, this));
 }
 
+
 void OffboardMavros::initializeVariables(void) {
     state_value_array = { 
         vtol::INIT, 
@@ -78,6 +81,21 @@ void OffboardMavros::initializeVariables(void) {
         vtol::TO_FIXED,
         vtol::TO_QUAD
     };
+
+    // queue는 리스트초기화 안됨
+    // deque로 초기화 후 queue로 이동했음
+    const std::deque<vtol::Waypoint> input({ 
+        {0.0f, 0.0f, 0.0f},
+        {0.0f, 0.0f, 2.0f},
+        {0.0f, 2.0f, 2.0f},
+        {2.0f, 2.0f, 2.0f},
+        {2.0f, 0.0f, 2.0f},
+        {0.0f, 0.0f, 2.0f},
+        {0.0f, 0.0f, 0.0f}
+    });
+
+    // 이동 시멘틱을 사용하여 operator=으로 std::queue 초기화
+    waypoints = std::queue<vtol::Waypoint>(std::move(input));
 }
 
 void OffboardMavros::initializeStateFuncPointerArray(
@@ -101,27 +119,8 @@ void OffboardMavros::initializeFunctionPointerArray(void) {
                                        std::bind(&OffboardMavros::stateCommandToFixed, this),
                                        std::bind(&OffboardMavros::stateCommandToQuad, this)
                                     } );
-
-        // // stateFunc[0] =
-    // char str[];
-
-    // // str = "hello world"
-
-    // char str_tmp[] = "Hello world";
-
-    // for (size_t i = 0; i < str_tmp.size(); ++i) {
-    //     str[i] = str_tmp[i];
-    // }
-
-    // stateFunc[0] = std::bind(&OffboardMavros::stateCommandInit, this);
-    // stateFunc[1] = std::bind(&OffboardMavros::stateCommandReady,this);
-    // void (*OffboardMavros::stateFunc[])(void) = {
-    //     std::bind(&OffboardMavros::stateCommandInit, this),   
-    //     std::bind(&OffboardMavros::stateCommandReady,this),
-    // };
-
-
 }
+
 
 
     
