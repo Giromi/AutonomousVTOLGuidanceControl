@@ -34,6 +34,7 @@
           </box>
         </geometry>
       </collision>
+      <!--
       <sensor name="IMX214" type="camera">
         <pose>0.01233 -0.03 .01878 0 0 0</pose>
         <camera>
@@ -71,6 +72,7 @@
         <visualize>true</visualize>
         <topic>depth_camera</topic>
       </sensor>
+      -->
       <sensor name="rgbd_camera" type="rgbd_camera">
         <camera>
           <horizontal_fov>1.047</horizontal_fov>

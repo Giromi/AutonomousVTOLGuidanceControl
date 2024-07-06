@@ -2,6 +2,15 @@
 <sdf version='1.10'>
   <model name='CAU_vtol'>
     <pose>0 0 0.246 0 0 0</pose>
+    <include merge='true'>
+      <uri>model://OakD-Lite</uri>
+      <pose>.12 .03 .242 0 0 0</pose>
+    </include>
+    <joint name="CameraJoint" type="fixed">
+      <parent>base_link</parent>
+      <child>OakD-Lite/base_link</child>
+      <pose relative_to="base_link">.12 .03 .242 0 0 0</pose>
+    </joint>
     <link name='base_link'>
       <pose>0 0 0 0 0 0</pose>
       <inertial>
@@ -112,6 +121,7 @@
           </linear_acceleration>
         </imu>
       </sensor>
+      <!--
       <sensor name="ms5611" type="altimeter">
         <always_on>true</always_on>
         <update_rate>10</update_rate>
@@ -138,6 +148,7 @@
         <always_on>true</always_on>
         <update_rate>50</update_rate>
       </sensor>
+      -->
       <sensor name="air_pressure_sensor" type="air_pressure">
         <always_on>1</always_on>
         <update_rate>50</update_rate>
@@ -153,6 +164,21 @@
       <sensor name="navsat_sensor" type="navsat">
         <always_on>1</always_on>
         <update_rate>30</update_rate>
+      </sensor>
+      <sensor name="air_speed" type="air_speed">
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <topic>air_pressure</topic>
+        <enable_metrics>true</enable_metrics>
+        <air_speed>
+          <pressure>
+            <noise type="gaussian">
+              <mean>0.2</mean>
+              <stddev>0.1</stddev>
+            </noise>
+          </pressure>
+        </air_speed>
       </sensor>
     </link>
     <link name='rotor_0'>
@@ -473,7 +499,7 @@
       </axis>
     </joint>
 
-    <link name="left_elevon">
+    <link name="left_aileron">
       <inertial>
         <mass>0.01</mass>
         <inertia>
@@ -489,7 +515,7 @@
 
 
     </link>
-    <link name="right_elevon">
+    <link name="right_aileron">
       <inertial>
         <mass>0.01</mass>
         <inertia>
@@ -500,28 +526,28 @@
           <iyz>-9.2883e-07</iyz>
           <izz>1.0353567e-04</izz>
         </inertia>
-        <pose>0 -0.6 0 0.00 0 0.0</pose>
+        <pose>0 0.3 0 0.00 0 0.0</pose>
       </inertial>
 
 
     </link>
     <link name="elevator">
       <inertial>
-        <mass>0.01</mass>
+        <mass>0.006</mass>
         <inertia>
-          <ixx>1.02071386e-04</ixx>
-          <ixy>5.455779e-06</ixy>
-          <iyy>3.494873e-06</iyy>
-          <ixz>-2.22915e-07</ixz>
-          <iyz>-9.2883e-07</iyz>
-          <izz>1.0353567e-04</izz>
+          <ixx>4.5813687e-05</ixx>
+          <ixy>2.0442566e-05</ixy>
+          <iyy>7.4952191e-05</iyy>
+          <ixz>-4.23333e-07</ixz>
+          <iyz>2.12496e-07</iyz>
+          <izz>5.0807083e-05</izz>
         </inertia>
         <pose> -0.5 0 0 0.00 0 0.0</pose>
       </inertial>
     </link>
     <joint name='servo_0' type='revolute'>
       <parent>base_link</parent>
-      <child>left_elevon</child>
+      <child>left_aileron</child>
       <pose>-0.18 0.6 -0.005 0 0 0.265</pose>
       <axis>
         <xyz>0 1 0</xyz>
@@ -541,7 +567,7 @@
     </joint>
     <joint name='servo_1' type='revolute'>
       <parent>base_link</parent>
-      <child>right_elevon</child>
+      <child>right_aileron</child>
       <pose>-0.18 -0.6 -0.005 0 0 -0.265</pose>
       <axis>
         <xyz>0 1 0</xyz>
@@ -590,7 +616,7 @@
       <cda_stall>-0.9233984055</cda_stall>
       <cma_stall>0</cma_stall>
       <cp>-0.05 0.3 0.05</cp>
-      <area>0.50</area>
+      <area>	0.475322 </area>
       <air_density>1.2041</air_density>
       <forward>1 0 0</forward>
       <upward>0 0 1</upward>
@@ -656,9 +682,9 @@
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1500</maxRotVelocity>
-      <motorConstant>2e-05</motorConstant>
-      <momentConstant>0.06</momentConstant>
+      <maxRotVelocity>9500</maxRotVelocity>
+      <motorConstant>0.03230515437788739</motorConstant>
+      <momentConstant>0.016464304457782276</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
       <motorNumber>0</motorNumber>
       <rotorDragCoefficient>0.000106428</rotorDragCoefficient>
