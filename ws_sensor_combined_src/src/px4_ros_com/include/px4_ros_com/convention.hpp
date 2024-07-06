@@ -33,7 +33,7 @@ namespace vtol {
 
     enum State {                     // enum class 타입 안정성 사용
         INIT,
-        READY       =   BIT_READY,              // Before arming
+        READY       =   INIT    | BIT_READY,              // Before arming
         ARMED       =   READY   | BIT_ARMED,      // After arming
         FLY         =   ARMED   | BIT_FLY,    // After takeoff
         TAKEOFF     =   FLY    | BIT_TAKEOFF,    // After takeoff
