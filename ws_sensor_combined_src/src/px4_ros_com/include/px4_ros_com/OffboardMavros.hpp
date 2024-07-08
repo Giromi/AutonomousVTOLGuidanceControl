@@ -87,6 +87,7 @@ private:
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
     void    sendFixedHeadingCommand(void);
+    bool    isGlobalPositionGettingValue(void) const;
 
     /* -- StateCommand Function*/
     void    stateCommandInit(void);
@@ -112,7 +113,6 @@ private:
     void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
-
 
     /* -- Action Functions -- */
     static void	    _actionGoNorth(void);

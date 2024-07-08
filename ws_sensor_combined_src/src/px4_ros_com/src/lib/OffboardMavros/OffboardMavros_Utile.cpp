@@ -20,3 +20,7 @@ void OffboardMavros::printReferenceInput(void) {
         << _local_position[vtol::UP] << "} (North, East, Up)"
         << std::endl;
 }
+
+bool OffboardMavros::isGlobalPositionGettingValue(void) const{
+    return (_global_position[0] >= 0 && _global_position[1] >= 0 && _global_position[2] >= 0);
+}
