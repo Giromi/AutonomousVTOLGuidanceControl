@@ -18,6 +18,7 @@
 #include <nav_msgs/msg/odometry.hpp>
 #include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <functional>
+#include <algorithm>
 #include <array>
 #include "px4_ros_com/convention.hpp"
 #include <limits>
@@ -86,8 +87,17 @@ private:
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
     void    sendFixedHeadingCommand(void);
+
+    /* -- StateCommand Function*/
     void    stateCommandInit(void);
     void    stateCommandReady(void);
+    void    stateCommandArmed (void);
+    void    stateCommandFly (void);
+    void    stateCommandTakeOff (void);
+    void    stateCommandStart (void);
+    void    stateCommandToFixed (void);
+    void    stateCommandToQuad (void);
+    void    stateCommandLand (void);
 
 
     /* -- Callback Functions -- */
@@ -133,6 +143,8 @@ private:
     static void	    _actionInit(void);
     static void	    _actionTransition(void);
 
+
+
     /* -- Utile Functions -- */
     bool            isFiveSecondsPassed();
     void            printSuccessInfo(bool success, const char* msg[]) const;
@@ -170,7 +182,7 @@ private:
     //
 
     //TODO: static 지워서 멤버변수로 변경
-    static unsigned char                                                _cmd_flag;
+    static vtol::State                                               _cmd_flag;
     static std::array<double, 3>		                                _local_position;
     static std::array<float, 3>		                                    _global_position;
     static std::array<double, 6>		                                _local_velocity;

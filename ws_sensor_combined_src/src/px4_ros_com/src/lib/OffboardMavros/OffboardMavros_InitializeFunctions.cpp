@@ -67,14 +67,18 @@ void OffboardMavros::initializeTimers(const int rate_hz) {
 }
 
 void OffboardMavros::initializeVariables(void) {
-
     state_value_array = { 
         vtol::INIT, 
         vtol::READY, 
+        vtol::ARMED,
+        vtol::FLY,
+        vtol::TAKEOFF,
+        vtol::LAND,
+        vtol::START,
+        vtol::TO_FIXED,
+        vtol::TO_QUAD
     };
-
 }
-
 
 void OffboardMavros::initializeStateFuncPointerArray(
     const std::array<std::function <void(void)>, vtol::STATE_SIZE>& input
@@ -87,7 +91,18 @@ void OffboardMavros::initializeStateFuncPointerArray(
 }
 
 void OffboardMavros::initializeFunctionPointerArray(void) {
-    // // stateFunc[0] =
+    initializeStateFuncPointerArray( { std::bind(&OffboardMavros::stateCommandInit, this),
+                                       std::bind(&OffboardMavros::stateCommandReady,this),
+                                       std::bind(&OffboardMavros::stateCommandArmed, this),
+                                       std::bind(&OffboardMavros::stateCommandFly, this),
+                                       std::bind(&OffboardMavros::stateCommandTakeOff, this),
+                                       std::bind(&OffboardMavros::stateCommandLand, this),
+                                       std::bind(&OffboardMavros::stateCommandStart, this),
+                                       std::bind(&OffboardMavros::stateCommandToFixed, this),
+                                       std::bind(&OffboardMavros::stateCommandToQuad, this)
+                                    } );
+
+        // // stateFunc[0] =
     // char str[];
 
     // // str = "hello world"
@@ -98,18 +113,12 @@ void OffboardMavros::initializeFunctionPointerArray(void) {
     //     str[i] = str_tmp[i];
     // }
 
-    initializeStateFuncPointerArray({ 
-        std::bind(&OffboardMavros::stateCommandInit, this),
-        std::bind(&OffboardMavros::stateCommandReady,this),
-    });
-
     // stateFunc[0] = std::bind(&OffboardMavros::stateCommandInit, this);
     // stateFunc[1] = std::bind(&OffboardMavros::stateCommandReady,this);
     // void (*OffboardMavros::stateFunc[])(void) = {
     //     std::bind(&OffboardMavros::stateCommandInit, this),   
     //     std::bind(&OffboardMavros::stateCommandReady,this),
     // };
-
 
 
 }
