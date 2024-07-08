@@ -15,8 +15,7 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
 }
 
 void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
-
-    if (isGlobalPositionGettingValue() == false) {
+    if (isGlobalPositionGettingValue(_init_global_position) == false) {
         _init_global_position[vtol::ALT] = msg->altitude + 5.0f;
         _init_global_position[vtol::LAT] = msg->latitude;
         _init_global_position[vtol::LON] = msg->longitude;
@@ -125,7 +124,7 @@ void OffboardMavros::stateCommandLand (void) {
 
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
-    if (isGlobalPositionGettingValue() == false) {
+    if (isGlobalPositionGettingValue(_global_position) == false) {
         return;
     }
 

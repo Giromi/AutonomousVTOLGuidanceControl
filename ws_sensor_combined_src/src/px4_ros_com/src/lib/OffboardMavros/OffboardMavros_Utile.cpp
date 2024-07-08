@@ -21,6 +21,6 @@ void OffboardMavros::printReferenceInput(void) {
         << std::endl;
 }
 
-bool OffboardMavros::isGlobalPositionGettingValue(void) const{
-    return (_global_position[0] >= 0 && _global_position[1] >= 0 && _global_position[2] >= 0);
+bool OffboardMavros::isGlobalPositionGettingValue(const t_global_position& input_global_position) const{
+    return (input_global_position[0] >= 0 && input_global_position[1] >= 0 && input_global_position[2] >= 0);
 }

@@ -32,7 +32,9 @@ public:
     OffboardMavros(void);
 
 private:
-    typedef std::array<double, 3> t_position;
+    typedef std::array<double, 3>   t_position;
+    typedef std::array<float, 3>    t_global_position;
+
 
 
     /* -- Initialize Functions -- */
@@ -87,7 +89,6 @@ private:
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
     void    sendFixedHeadingCommand(void);
-    bool    isGlobalPositionGettingValue(void) const;
 
     /* -- StateCommand Function*/
     void    stateCommandInit(void);
@@ -149,6 +150,7 @@ private:
     bool            isFiveSecondsPassed();
     void            printSuccessInfo(bool success, const char* msg[]) const;
     static void     printReferenceInput(void); 
+    bool            isGlobalPositionGettingValue(const t_global_position&) const;
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
@@ -177,12 +179,13 @@ private:
     rclcpp::Time                                                        last_request{0, 0, RCL_ROS_TIME};
 
     double yaw_current;
-    std::array<float, 3>		                                        _init_global_position;
+    t_global_position		                                        _init_global_position;
     // static const std::array<std::string, vtol::ACTION_SIZE>        _action_string_array;
     //
 
     //TODO: static 지워서 멤버변수로 변경
-    static vtol::State                                               _cmd_flag;
+
+    static vtol::State                                                  _cmd_flag;
     static std::array<double, 3>		                                _local_position;
     static std::array<float, 3>		                                    _global_position;
     static std::array<double, 6>		                                _local_velocity;
