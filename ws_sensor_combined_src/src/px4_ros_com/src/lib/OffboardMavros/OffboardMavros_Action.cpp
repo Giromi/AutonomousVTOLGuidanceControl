@@ -45,7 +45,8 @@ void OffboardMavros::_actionVelocityPlusZ(void) {
     _local_velocity[2] += _offset;
 }
 
-void OffboardMavros::_actionVelocityMinusX(void) { _local_velocity[0] -= _offset;
+void OffboardMavros::_actionVelocityMinusX(void) { 
+    _local_velocity[0] -= _offset;
 }
 
 void OffboardMavros::_actionVelocityMinusY(void) {
