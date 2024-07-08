@@ -28,7 +28,7 @@ namespace DEBUG {
     template <typename T>
     void printBinary(const std::string& msg, const T& target, const char* color) {
         std::cout << DEBUG_HEADER << color 
-                  << msg << std::bitset<10>(target) << RESET << std::endl;
+                  << msg << std::bitset<9>(target) << RESET << std::endl;
     }
 
     template <typename T>

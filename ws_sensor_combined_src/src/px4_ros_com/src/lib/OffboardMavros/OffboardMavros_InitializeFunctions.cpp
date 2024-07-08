@@ -24,8 +24,8 @@ void OffboardMavros::initializeConstant(void) {
 void OffboardMavros::initializePublishers(void) {
     local_pos_pub = create_publisher<geometry_msgs::msg::PoseStamped>("/mavros/setpoint_position/local", 10);
     local_vel_pub = this->create_publisher<geometry_msgs::msg::Twist>("/mavros/setpoint_velocity/cmd_vel_unstamped", 10);
-    local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("mavros/setpoint_raw/local", 10);
-    att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("mavros/setpoint_attitude/cmd_vel", 10);
+    local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("/mavros/setpoint_raw/local", 10);
+    att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mavros/setpoint_attitude/cmd_vel", 10);
     actuator_control_pub = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
 
     waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", 10);
@@ -33,7 +33,6 @@ void OffboardMavros::initializePublishers(void) {
 
 void OffboardMavros::initializeSubscribers(void) {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
-    
     const std::function<void(const mavros_msgs::msg::State::SharedPtr)> state_bind = std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1);
     const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
 
@@ -78,6 +77,7 @@ void OffboardMavros::initializeVariables(void) {
         vtol::TAKEOFF,
         vtol::LAND,
         vtol::START,
+        vtol::MISSION,
         vtol::TO_FIXED,
         vtol::TO_QUAD
     };
@@ -116,6 +116,7 @@ void OffboardMavros::initializeFunctionPointerArray(void) {
                                        std::bind(&OffboardMavros::stateCommandTakeOff, this),
                                        std::bind(&OffboardMavros::stateCommandLand, this),
                                        std::bind(&OffboardMavros::stateCommandStart, this),
+                                       std::bind(&OffboardMavros::stateCommandMission, this),
                                        std::bind(&OffboardMavros::stateCommandToFixed, this),
                                        std::bind(&OffboardMavros::stateCommandToQuad, this)
                                     } );

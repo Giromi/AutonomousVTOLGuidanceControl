@@ -21,9 +21,9 @@ namespace vtol {
         BIT_TAKEOFF     =	0b000000100,
         BIT_LAND        =	0b000001000,
         BIT_START       =	0b000010000,
-        BIT_MISSION     =	0b000100000,
-        BIT_FIXED       =	0b001000000,
-        BIT_TRANSITION  =	0b010000000,
+        BIT_FIXED       =	0b000100000,
+        BIT_TRANSITION  =	0b001000000,
+        BIT_MISSION     =	0b010000000,
     };
 
     enum Result {
@@ -34,12 +34,12 @@ namespace vtol {
     enum State {                     // enum class 타입 안정성 사용
         INIT,
         READY       =   INIT    | BIT_READY,              // Before arming
+        MISSION     =   READY   | BIT_MISSION,     // Before takeoff
         ARMED       =   READY   | BIT_ARMED,      // After arming
         FLY         =   ARMED   | BIT_FLY,    // After takeoff
         TAKEOFF     =   FLY    | BIT_TAKEOFF,    // After takeoff
         LAND        =   FLY    | BIT_LAND,       // After land
         START       =   FLY    | BIT_START,     // Before takeoff
-        MISSION     =   FLY    | BIT_MISSION,     // Before takeoff
         QUAD        =   FLY,
         FIXED       =   FLY   | BIT_FIXED,      // Before transition
         TO_FIXED    =   QUAD  | BIT_TRANSITION, // Before transition
@@ -74,7 +74,7 @@ namespace vtol {
     };
 
     constexpr size_t   ACTION_SIZE     = 21;
-    constexpr size_t   STATE_SIZE      = 9;
+    constexpr size_t   STATE_SIZE      = 10;
     constexpr char  FCU_ARM[]       = "AUTO.RTL";
     constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";

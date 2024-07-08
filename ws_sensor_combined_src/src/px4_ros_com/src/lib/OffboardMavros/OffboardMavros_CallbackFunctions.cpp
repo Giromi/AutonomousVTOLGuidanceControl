@@ -55,13 +55,19 @@ void OffboardMavros::stateCommandReady(void) {
 
 void OffboardMavros::stateCommandArmed (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Armed >");
-    if (OffboardMavros::_cmd_flag == vtol::ARMED) {
     DEBUG::print("", ">> ARMED <<", BOLDGREEN);
     if (fcu_state.armed != true) {
         updateArmingStatus();
     }
+}
+
+void OffboardMavros::stateCommandMission(void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command Mission >");
+    if (fcu_state.mode != vtol::FCU_MISSION) {
+        updateMissionMode();
     }
 }
+
 
 void OffboardMavros::stateCommandFly (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Fly >");
@@ -88,17 +94,8 @@ void OffboardMavros::stateCommandTakeOff (void){
 
 void OffboardMavros::stateCommandStart (void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command Start >");
-    if (OffboardMavros::_cmd_flag == vtol::START) {
-        if (fcu_state.mode == vtol::FCU_HOLD) {
-            updateOffboardMode();
-        }
-    }
-}
-
-void OffboardMavros::stateCommandMission(void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command Mission >");
     if (fcu_state.mode == vtol::FCU_HOLD) {
-        updateMissionMode();
+        updateOffboardMode();
     }
 }
 
@@ -128,8 +125,6 @@ void OffboardMavros::stateCommandLand (void) {
     }
 }
 
-
-
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
     if (_global_position[0] == -1.0f || _global_position[1] == -1.0f || _global_position[2] == -1.0f) {
@@ -155,7 +150,6 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
         return;
     }
     const size_t i = std::distance(state_value_array.begin(), it);
-    RCLCPP_INFO(this->get_logger(), "State Command : %ld", i);
     stateFunc[i]();
 
 
