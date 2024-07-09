@@ -15,20 +15,20 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
 }
 
 void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
+
      if (msg->status.status >= sensor_msgs::msg::NavSatStatus::STATUS_FIX) {
             gps_locked = true;
         }
 
-    if (init_global_position[0] == -1.0f || init_global_position[1] == -1.0f || init_global_position[2] == -1.0f) {
-        if (_cmd_flag == vtol::READY) {
-            init_global_position[vtol::ALT] = msg->altitude + 5.0f;
-            init_global_position[vtol::LAT] = msg->latitude;
-            init_global_position[vtol::LON] = msg->longitude;
-            DEBUG::print("alt: ", init_global_position[vtol::ALT],BLUE);
-            DEBUG::print("lat: ", init_global_position[vtol::LAT],BLUE);
-            DEBUG::print("lon: ", init_global_position[vtol::LON],BLUE);
-        }
+    if (isGlobalPositionGettingValue(init_global_position) == false) {
+        init_global_position[vtol::ALT] = msg->altitude + 5.0f;
+        init_global_position[vtol::LAT] = msg->latitude;
+        init_global_position[vtol::LON] = msg->longitude;
+        DEBUG::print("alt: ", init_global_position[vtol::ALT],BLUE);
+        DEBUG::print("lat: ", init_global_position[vtol::LAT],BLUE);
+        DEBUG::print("lon: ", init_global_position[vtol::LON],BLUE);
     }
+  
     _global_position[vtol::ALT] = msg->altitude;
     _global_position[vtol::LAT] = msg->latitude;
     _global_position[vtol::LON] = msg->longitude;
@@ -149,8 +149,8 @@ void OffboardMavros::stateCommandLand (void) {
 
 /* -- Callback Functions -- */
 void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
-    if (_global_position[0] == -1.0f || _global_position[1] == -1.0f || _global_position[2] == -1.0f) {
-        return ;
+    if (isGlobalPositionGettingValue(_global_position) == false) {
+        return;
     }
 
     fcu_state = *msg;

@@ -79,7 +79,9 @@ void OffboardMavros::initializeVariables(void) {
         vtol::MISSION,
         vtol::TO_FIXED,
         vtol::TO_QUAD
+
     };
+
 
     // queue는 리스트초기화 안됨
     // deque로 초기화 후 queue로 이동했음
@@ -97,15 +99,14 @@ void OffboardMavros::initializeVariables(void) {
     waypoints = std::queue<vtol::Waypoint>(std::move(input));
 
     init_global_position = {-1.0f, -1.0f, -1.0f};
+
 }
 
 void OffboardMavros::initializeStateFuncPointerArray(
     const std::array<std::function <void(void)>, vtol::STATE_SIZE>& input
     ) {
-
     for (size_t i = 0; i < vtol::STATE_SIZE; ++i) {
         stateFunc[i] = input[i];
-
     }
 }
 

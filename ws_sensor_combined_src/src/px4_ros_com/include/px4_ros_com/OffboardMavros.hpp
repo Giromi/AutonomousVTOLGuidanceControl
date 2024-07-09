@@ -44,7 +44,9 @@ public:
     OffboardMavros(void);
 
 private:
-    typedef std::array<double, 3> t_position;
+    typedef std::array<double, 3>   t_position;
+    typedef std::array<float, 3>    t_global_position;
+
 
 
 
@@ -143,7 +145,6 @@ private:
     void    waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future);
     void    waypointClearResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedFuture future);
 
-
     /* -- Action Functions -- */
     static void	    _actionGoNorth(void);
     static void	    _actionGoEast(void);
@@ -180,6 +181,7 @@ private:
     bool            isFiveSecondsPassed();
     void            printSuccessInfo(bool success, const char* msg[]) const;
     static void     printReferenceInput(void); 
+    bool            isGlobalPositionGettingValue(const t_global_position&) const;
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
@@ -213,12 +215,14 @@ private:
     mavros_msgs::msg::State                                             fcu_state;
     mavros_msgs::msg::WaypointList                                      waypoint_list;
     double yaw_current;
-    std::array<float, 3>		                                        init_global_position;
+    t_global_position		                                        init_global_position;
+  
     // static const std::array<std::string, vtol::ACTION_SIZE>        _action_string_array;
     //
 
     //TODO: static 지워서 멤버변수로 변경
-    static vtol::State                                               _cmd_flag;
+
+    static vtol::State                                                  _cmd_flag;
     static std::array<double, 3>		                                _local_position;
     static std::array<float, 3>		                                    _global_position;
     static std::array<double, 6>		                                _local_velocity;
