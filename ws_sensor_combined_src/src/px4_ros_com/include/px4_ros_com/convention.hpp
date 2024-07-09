@@ -8,7 +8,7 @@ namespace vtol {
     enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
   
     enum Mav {
-        MAV_CMD_CONDITION_YAW = 115,
+        MAV_CMD_CONDITION_YAW   = 115,
     };
   
     enum GlobalFrame {ALT, LAT, LON}; 
@@ -37,13 +37,13 @@ namespace vtol {
         MISSION     =   READY   | BIT_MISSION,     // Before takeoff
         ARMED       =   READY   | BIT_ARMED,      // After arming
         FLY         =   ARMED   | BIT_FLY,    // After takeoff
-        TAKEOFF     =   FLY    | BIT_TAKEOFF,    // After takeoff
-        LAND        =   FLY    | BIT_LAND,       // After land
-        START       =   FLY    | BIT_START,     // Before takeoff
+        TAKEOFF     =   FLY     | BIT_TAKEOFF,    // After takeoff
+        LAND        =   FLY     | BIT_LAND,       // After land
+        START       =   FLY     | BIT_START,     // Before takeoff
         QUAD        =   FLY,
-        FIXED       =   FLY   | BIT_FIXED,      // Before transition
-        TO_FIXED    =   QUAD  | BIT_TRANSITION, // Before transition
-        TO_QUAD     =   FIXED | BIT_TRANSITION, // Before transition
+        FIXED       =   FLY     | BIT_FIXED,      // Before transition
+        TO_FIXED    =   QUAD    | BIT_TRANSITION, // Before transition
+        TO_QUAD     =   FIXED   | BIT_TRANSITION, // Before transition
                                                   //
     };
 
@@ -73,14 +73,15 @@ namespace vtol {
         float yaw;
     };
 
-    constexpr size_t   ACTION_SIZE     = 21;
-    constexpr size_t   STATE_SIZE      = 10;
-    constexpr char  FCU_ARM[]       = "AUTO.RTL";
-    constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
-    constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";
-    constexpr char	FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
-    constexpr char	FCU_LAND[]      = "AUTO.LAND";
-    constexpr char  FCU_MISSION[]   = "AUTO.MISSION";
+    constexpr float     NaN             = std::numeric_limits<float>::quiet_NaN();
+    constexpr size_t    ACTION_SIZE     = 21;
+    constexpr size_t    STATE_SIZE      = 10;
+    constexpr char      FCU_ARM[]       = "AUTO.RTL";
+    constexpr char	    FCU_HOLD[]      = "AUTO.LOITER";
+    constexpr char	    FCU_OFFBOARD[]  = "OFFBOARD";
+    constexpr char	    FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
+    constexpr char	    FCU_LAND[]      = "AUTO.LAND";
+    constexpr char      FCU_MISSION[]   = "AUTO.MISSION";
     constexpr double RAD_2_DEG = 180 / M_PI;
 
 

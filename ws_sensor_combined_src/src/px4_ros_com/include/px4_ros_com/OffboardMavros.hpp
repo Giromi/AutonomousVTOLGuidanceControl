@@ -5,20 +5,28 @@
 # include <rclcpp/rclcpp.hpp>
 # include <geometry_msgs/msg/pose_stamped.hpp>
 # include <geometry_msgs/msg/twist_stamped.hpp>
-# include <mavros_msgs/srv/command_bool.hpp>
+# include <geographic_msgs/msg/geo_pose_stamped.hpp>
 # include <mavros_msgs/msg/state.hpp>
 # include <mavros_msgs/msg/actuator_control.hpp>
 # include <mavros_msgs/msg/override_rc_in.hpp>
 # include <mavros_msgs/msg/position_target.hpp>
+# include <mavros_msgs/msg/extended_state.hpp>
+# include <mavros_msgs/srv/command_bool.hpp>
 # include <mavros_msgs/srv/command_tol.hpp>
 # include <mavros_msgs/srv/command_long.hpp>
-# include <mavros_msgs/srv/command_vtol_transition.hpp>
 # include <mavros_msgs/msg/command_code.hpp>
 # include <mavros_msgs/srv/set_mode.hpp>
 # include <mavros_msgs/msg/waypoint_list.hpp>
+# include <mavros_msgs/msg/waypoint.hpp>
+# include <mavros_msgs/msg/waypoint_reached.hpp>
+# include <mavros_msgs/srv/command_vtol_transition.hpp>
+# include <mavros_msgs/srv/waypoint_push.hpp>
+# include <mavros_msgs/srv/waypoint_clear.hpp>
 # include <std_msgs/msg/string.hpp>
 # include <nav_msgs/msg/odometry.hpp>
 # include <sensor_msgs/msg/nav_sat_fix.hpp>
+# include <mavlink/v2.0/common/common.hpp>
+
 //#include <nav_msgs/msg/odometry.hpp>
 # include <functional>
 # include <algorithm>
@@ -51,8 +59,13 @@ private:
     void        initializeVariables(void);
     void        initializeStateFuncPointerArray(const std::array<std::function <void(void)>, 
                                                 vtol::STATE_SIZE>& input);
-    void        initializeWaypointsVariable(const std::queue<vtol::Waypoint>& input);
-
+    void        initializeWaypoints(void);
+    void        setWaypoint(const uint8_t frame, const uint16_t command, 
+                                 const bool is_current, const bool autocontinue, 
+                                 const std::array<float, 4> param, 
+                                 const std::array<double, 3> pos);
+    void        triangleScenarioMC(const std::array<double, 3>& target_pos);
+    void        triangleScenarioFW(const std::array<double, 3>& target_pos);
 
 
         
@@ -71,6 +84,7 @@ private:
     void    publishLocal(void);
     void    publishLocalFixed(void);
     void    publishWaypoint(void);
+    void    publishGpOrigin(void);
   
     /* -- Update Functions -- */
     void    updateArmingStatus(void); 
@@ -97,6 +111,8 @@ private:
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
     void    sendFixedHeadingCommand(void);
+    void    updateWaypointPush(void);
+    void    updateWaypointClear(void);
 
     /* -- StateCommand Function*/
     void    stateCommandInit(void);
@@ -124,6 +140,8 @@ private:
     void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
+    void    waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future);
+    void    waypointClearResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedFuture future);
 
 
     /* -- Action Functions -- */
@@ -173,6 +191,7 @@ private:
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
     rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
+    rclcpp::Publisher<geographic_msgs::msg::GeoPoseStamped>::SharedPtr  gp_origin_pub;
 
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client;
     rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedPtr             takeoff_client;
@@ -181,17 +200,20 @@ private:
     rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr                set_mode_client;
     rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedPtr            location_client;
     rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client;
+    rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedPtr           waypoint_push_client;
+    rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedPtr          waypoint_clear_client;
+
 
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        gps_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
     rclcpp::TimerBase::SharedPtr                                        timer;
-    mavros_msgs::msg::State                                             fcu_state;
     rclcpp::Time                                                        last_request{0, 0, RCL_ROS_TIME};
-
+    mavros_msgs::msg::State                                             fcu_state;
+    mavros_msgs::msg::WaypointList                                      waypoint_list;
     double yaw_current;
-    std::array<float, 3>		                                        _init_global_position;
+    std::array<float, 3>		                                        init_global_position;
     // static const std::array<std::string, vtol::ACTION_SIZE>        _action_string_array;
     //
 
@@ -209,6 +231,7 @@ private:
     std::array<vtol::State, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
     std::queue<vtol::Waypoint>                                          waypoints;
+    bool                                                                gps_locked{false};
 
 };
 
