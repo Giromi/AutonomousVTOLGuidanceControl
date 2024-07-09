@@ -77,16 +77,16 @@ void OffboardMavros::initializeVariables(void) {
         vtol::START,
         vtol::TO_FIXED,
         vtol::TO_QUAD
+
     };
+    _init_global_position = {-1.0f, -1.0f, -1.0f};
 }
 
 void OffboardMavros::initializeStateFuncPointerArray(
     const std::array<std::function <void(void)>, vtol::STATE_SIZE>& input
     ) {
-
     for (size_t i = 0; i < vtol::STATE_SIZE; ++i) {
         stateFunc[i] = input[i];
-
     }
 }
 
