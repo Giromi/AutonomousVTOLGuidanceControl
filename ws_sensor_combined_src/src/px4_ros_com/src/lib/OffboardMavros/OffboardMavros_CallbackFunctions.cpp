@@ -137,13 +137,11 @@ void OffboardMavros::stateCommandToQuad (void) {
 
 void OffboardMavros::stateCommandLand (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Land >");
-    if (OffboardMavros::_cmd_flag == vtol::LAND) {
-        if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
-            updateLandingStatus();
-        } else if (fcu_state.mode == vtol::FCU_HOLD) {
-            std::cout << "Landing success" << std::endl;
-            OffboardMavros::_cmd_flag = vtol::READY;
-        }
+    if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
+        updateLandingStatus();
+    } else if (fcu_state.mode == vtol::FCU_HOLD) {
+        std::cout << "Landing success" << std::endl;
+        OffboardMavros::_cmd_flag = vtol::READY;
     }
 }
 
