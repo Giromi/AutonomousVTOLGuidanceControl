@@ -26,6 +26,8 @@ OffboardMavros::OffboardMavros(void) : Node("offboard_mavros") {
     DEBUG::print("OffboardMavros Subscribers", true, BOLDGREEN);
     initializeClients();
     DEBUG::print("OffboardMavros Clients", true, BOLDGREEN);
+    initializeWaypoints();
+    DEBUG::print("OffboardMavros Waypoints", true, BOLDGREEN);
     initializeTimers(50); 
     DEBUG::print("OffboardMavros Timers", true, BOLDGREEN);
 }

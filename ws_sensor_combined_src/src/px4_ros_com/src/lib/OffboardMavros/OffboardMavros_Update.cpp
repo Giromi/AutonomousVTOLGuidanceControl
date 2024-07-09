@@ -23,6 +23,8 @@ void OffboardMavros::updateTransitionQuadStatus(void) {
     // request_transition_status_(vtol::MC, &OffboardMavros::transitionResponseCallback);
 }
 
+
+
 void OffboardMavros::sendFixedHeadingCommand(void) {
     auto request = std::make_shared<mavros_msgs::srv::CommandLong::Request>();
     request->command = vtol::MAV_CMD_CONDITION_YAW;
@@ -33,7 +35,7 @@ void OffboardMavros::sendFixedHeadingCommand(void) {
     request->confirmation = 0;
 
     cmd_client->async_send_request(request, std::bind(&OffboardMavros::cmdResponseCallback, this, std::placeholders::_1));
-
+    last_request = this->now();
 }
 
 void OffboardMavros::cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future) {
@@ -118,4 +120,27 @@ void OffboardMavros::updateCustomMode(const std::string& input_mode,
     request->custom_mode = input_mode;
     set_mode_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
     last_request = this->now();
+}
+
+void OffboardMavros::updateWaypointClear(void) {
+    if (!waypoint_clear_client->wait_for_service(std::chrono::seconds(10))) {
+        RCLCPP_ERROR(this->get_logger(), "WaypointClear service not available");
+        return;
+    }
+    auto request = std::make_shared<mavros_msgs::srv::WaypointClear::Request>();
+    waypoint_clear_client->async_send_request(request, std::bind(&OffboardMavros::waypointClearResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
+}
+
+
+void OffboardMavros::updateWaypointPush(void) {
+    if (!waypoint_push_client->wait_for_service(std::chrono::seconds(10))) {
+        RCLCPP_ERROR(this->get_logger(), "WaypointPush service not available");
+        return;
+    }
+    auto request = std::make_shared<mavros_msgs::srv::WaypointPush::Request>();
+    request->waypoints = waypoint_list.waypoints;
+    waypoint_push_client->async_send_request(request, std::bind(&OffboardMavros::waypointPushResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
+
 }
