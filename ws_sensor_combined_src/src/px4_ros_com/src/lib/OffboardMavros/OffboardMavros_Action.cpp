@@ -164,18 +164,18 @@ const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::_action_string_
 };
 
 void (*OffboardMavros::actionFunc[])(void) = {
-    &OffboardMavros::_actionVelocityPlusRoll, // 2
-    &OffboardMavros::_actionVelocityPlusPitch,// 4
-    &OffboardMavros::_actionVelocityPlusYaw,  // 6
-    &OffboardMavros::_actionVelocityMinusRoll,  // 3
-    &OffboardMavros::_actionVelocityMinusPitch,  // 5
-    &OffboardMavros::_actionVelocityMinusYaw,    // 7
-    &OffboardMavros::_actionVelocityMinusY,      // ← south
-    &OffboardMavros::_actionVelocityPlusY,       // → north
-    &OffboardMavros::_actionVelocityPlusX,       // + east
-    &OffboardMavros::_actionVelocityMinusX,      // - west
-    &OffboardMavros::_actionVelocityPlusZ,           // ↑ up
-    &OffboardMavros::_actionVelocityMinusZ,          // ↓ down
+    &OffboardMavros::_actionVelocityPlusRoll,       // 2
+    &OffboardMavros::_actionVelocityPlusPitch,      // 4
+    &OffboardMavros::_actionVelocityPlusYaw,        // 6
+    &OffboardMavros::_actionVelocityMinusRoll,      // 3
+    &OffboardMavros::_actionVelocityMinusPitch,     // 5
+    &OffboardMavros::_actionVelocityMinusYaw,       // 7
+    &OffboardMavros::_actionVelocityMinusY,         // ↑south
+    &OffboardMavros::_actionVelocityPlusY,          // ↓north
+    &OffboardMavros::_actionVelocityPlusX,          // → east
+    &OffboardMavros::_actionVelocityMinusX,         // ← west
+    &OffboardMavros::_actionVelocityPlusZ,          // + up
+    &OffboardMavros::_actionVelocityMinusZ,         // - down
     &OffboardMavros::_actionReturnHome,       // h
     &OffboardMavros::_actionArming,            // a
     &OffboardMavros::_actionDisarming,         // d

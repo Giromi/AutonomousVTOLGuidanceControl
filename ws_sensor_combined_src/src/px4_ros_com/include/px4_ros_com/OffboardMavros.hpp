@@ -18,6 +18,9 @@
 # include <mavros_msgs/srv/set_mode.hpp>
 # include <mavros_msgs/msg/waypoint_list.hpp>
 # include <mavros_msgs/msg/waypoint.hpp>
+# include <mavros_msgs/msg/waypoint.hpp>
+# include <mavros_msgs/msg/manual_control.hpp>
+
 # include <mavros_msgs/msg/waypoint_reached.hpp>
 # include <mavros_msgs/srv/command_vtol_transition.hpp>
 # include <mavros_msgs/srv/waypoint_push.hpp>
@@ -77,6 +80,7 @@ private:
     void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
     void    statusReady(void);
 
+
     /* -- Publish Functions -- */
     void    publish(void);
     void    publishPose(void);
@@ -87,6 +91,8 @@ private:
     void    publishLocalFixed(void);
     void    publishWaypoint(void);
     void    publishGpOrigin(void);
+    void    publishManual(void);
+
   
     /* -- Update Functions -- */
     void    updateArmingStatus(void); 
@@ -108,6 +114,7 @@ private:
     void    updateOffboardMode(void); 
     void    updateMissionMode(void);
 
+    void updatePositionMode(void);
     void    updateCustomMode(const std::string& input_mode,
             void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture));
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
@@ -144,6 +151,8 @@ private:
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future);
     void    waypointClearResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedFuture future);
+    void    positionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
+
 
     /* -- Action Functions -- */
     static void	    _actionGoNorth(void);
@@ -189,6 +198,8 @@ private:
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      local_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      target_local_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
+    rclcpp::Publisher<mavros_msgs::msg::ManualControl>::SharedPtr       vc_manual_pub;
+
   
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
@@ -223,12 +234,14 @@ private:
     //TODO: static 지워서 멤버변수로 변경
 
     static vtol::State                                                  _cmd_flag;
-    static std::array<double, 3>		                                _local_position;
-    static std::array<float, 3>		                                    _global_position;
-    static std::array<double, 6>		                                _local_velocity;
-    static std::array<double, 3>		                                _cur_position;
-    static std::array<double, 3>		                                _prev_position;
-    static const std::string				                            _arrow_string;
+    static std::array<double, 3>		                        _local_position;
+    static std::array<float, 3>		                                _global_position;
+    static std::array<double, 6>		                        _local_velocity;
+    static std::array<double, 3>	                                _cur_position;
+    static std::array<double, 3>		                        _prev_position;
+    static const std::string				                _arrow_string;
+    static std::array<double, 4>                                        _manual_velocity;
+
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);

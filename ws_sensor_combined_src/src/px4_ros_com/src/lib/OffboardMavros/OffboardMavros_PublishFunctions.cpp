@@ -9,6 +9,9 @@ void    OffboardMavros::publish(void) {
     if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
         return ;
     } 
+
+    // publishVelocity();
+    publishManual();
     // if (fcu_state.mode == "AUTO.MISSION") {
     // publishWaypoint();
     // } else {
@@ -16,6 +19,20 @@ void    OffboardMavros::publish(void) {
     // }
 }
 
+void OffboardMavros::publishManual(void) {
+    RCLCPP_INFO(this->get_logger(), "publishing manual");
+    mavros_msgs::msg::ManualControl manual;
+    manual.header.stamp = this->now();
+    manual.header.frame_id = "standard_vtol_0";
+    manual.x = _local_velocity[0];
+    manual.y = _local_velocity[1];
+    manual.z = _local_velocity[2];
+    manual.r = _local_velocity[3];
+    manual.buttons = 2;
+    vc_manual_pub->publish(manual);
+    
+
+}
 
 void OffboardMavros::publishGpOrigin(void) {
     RCLCPP_INFO(this->get_logger(), "publishing origin");

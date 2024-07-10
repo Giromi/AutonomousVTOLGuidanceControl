@@ -21,7 +21,7 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
         }
 
     if (isGlobalPositionGettingValue(init_global_position) == false) {
-        init_global_position[vtol::ALT] = msg->altitude + 5.0f;
+        init_global_position[vtol::ALT] = msg->altitude + 30.0f;
         init_global_position[vtol::LAT] = msg->latitude;
         init_global_position[vtol::LON] = msg->longitude;
         DEBUG::print("alt: ", init_global_position[vtol::ALT],BLUE);
@@ -117,8 +117,11 @@ void OffboardMavros::stateCommandTakeOff (void){
 void OffboardMavros::stateCommandStart (void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command Start >");
     if (fcu_state.mode == vtol::FCU_HOLD) {
-        updateOffboardMode();
+        // updateOffboardMode();
+        updatePositionMode();
     }
+    // if (fcu_state.mode != vtol::FCU_POSITION) {
+    // }
 }
 
 void OffboardMavros::stateCommandToFixed (void) {
@@ -258,6 +261,14 @@ void OffboardMavros::offboardResponseCallback(const rclcpp::Client<mavros_msgs::
     const char* msg[] = {
         "Offboard mode sent successfully", 
         "Failed to send Offboard mode"
+    };
+    printSuccessInfo(future.get()->mode_sent, msg);
+}
+
+void OffboardMavros::positionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
+    const char* msg[] = {
+        "Position mode sent successfully", 
+        "Failed to send Position mode"
     };
     printSuccessInfo(future.get()->mode_sent, msg);
 }
