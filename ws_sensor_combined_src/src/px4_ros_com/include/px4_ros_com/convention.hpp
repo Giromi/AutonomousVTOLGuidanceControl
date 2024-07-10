@@ -8,21 +8,22 @@ namespace vtol {
     enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
   
     enum Mav {
-        MAV_CMD_CONDITION_YAW = 115,
+        MAV_CMD_CONDITION_YAW   = 115,
     };
   
     enum GlobalFrame {ALT, LAT, LON}; 
 
     // disarm 2^0, arm 2^1, takeoff 2^2, land 2^3 
     enum Bit {
-        BIT_READY       =   0b10000000,
-        BIT_ARMED       =	0b00000001,
-        BIT_FLY         =	0b00000010,
-        BIT_TAKEOFF     =	0b00000100,
-        BIT_LAND        =	0b00001000,
-        BIT_START       =	0b00010000,
-        BIT_FIXED       =	0b00100000,
-        BIT_TRANSITION  =	0b01000000,
+        BIT_READY       =   0b100000000,
+        BIT_ARMED       =	0b000000001,
+        BIT_FLY         =	0b000000010,
+        BIT_TAKEOFF     =	0b000000100,
+        BIT_LAND        =	0b000001000,
+        BIT_START       =	0b000010000,
+        BIT_FIXED       =	0b000100000,
+        BIT_TRANSITION  =	0b001000000,
+        BIT_MISSION     =	0b010000000,
     };
 
     enum Result {
@@ -32,17 +33,17 @@ namespace vtol {
 
     enum State {                     // enum class 타입 안정성 사용
         INIT,
-        READY       =   BIT_READY,              // Before arming
+        READY       =   INIT    | BIT_READY,              // Before arming
+        MISSION     =   READY   | BIT_MISSION,     // Before takeoff
         ARMED       =   READY   | BIT_ARMED,      // After arming
         FLY         =   ARMED   | BIT_FLY,    // After takeoff
-        TAKEOFF     =   FLY    | BIT_TAKEOFF,    // After takeoff
-        LAND        =   FLY    | BIT_LAND,       // After land
-        START       =   FLY    | BIT_START,     // Before takeoff
-                                                 //
+        TAKEOFF     =   FLY     | BIT_TAKEOFF,    // After takeoff
+        LAND        =   FLY     | BIT_LAND,       // After land
+        START       =   FLY     | BIT_START,     // Before takeoff
         QUAD        =   FLY,
-        FIXED       =   FLY   | BIT_FIXED,      // Before transition
-        TO_FIXED    =   QUAD  | BIT_TRANSITION, // Before transition
-        TO_QUAD     =   FIXED | BIT_TRANSITION, // Before transition
+        FIXED       =   FLY     | BIT_FIXED,      // Before transition
+        TO_FIXED    =   QUAD    | BIT_TRANSITION, // Before transition
+        TO_QUAD     =   FIXED   | BIT_TRANSITION, // Before transition
                                                   //
     };
 
@@ -72,14 +73,28 @@ namespace vtol {
         float yaw;
     };
 
-    constexpr size_t   ACTION_SIZE     = 20;
-    constexpr size_t   STATE_SIZE      = 9;
-    constexpr char  FCU_ARM[]       = "AUTO.RTL";
-    constexpr char	FCU_HOLD[]      = "AUTO.LOITER";
-    constexpr char	FCU_OFFBOARD[]  = "OFFBOARD";
-    constexpr char	FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
-    constexpr char	FCU_LAND[]      = "AUTO.LAND";
+    constexpr float     NaN             = std::numeric_limits<float>::quiet_NaN();
+    constexpr size_t    ACTION_SIZE     = 21;
+    constexpr size_t    STATE_SIZE      = 10;
+    constexpr char      FCU_ARM[]       = "AUTO.RTL";
+    constexpr char	    FCU_HOLD[]      = "AUTO.LOITER";
+    constexpr char	    FCU_OFFBOARD[]  = "OFFBOARD";
+    constexpr char	    FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
+    constexpr char	    FCU_LAND[]      = "AUTO.LAND";
+    constexpr char      FCU_MISSION[]   = "AUTO.MISSION";
     constexpr double RAD_2_DEG = 180 / M_PI;
+
+
+    struct Waypoint {
+        float x;
+        float y;
+        float z;
+        float yaw;
+
+        Waypoint(float x, float y, float z, float yaw=0.0f) 
+            : x(x), y(y), z(z), yaw(yaw) { }
+    };
+
 }
 
 

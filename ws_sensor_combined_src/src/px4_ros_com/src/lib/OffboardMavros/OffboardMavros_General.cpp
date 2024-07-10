@@ -1,7 +1,7 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
 
-vtol::State                          OffboardMavros::_cmd_flag = vtol::INIT;
+vtol::State                             OffboardMavros::_cmd_flag = vtol::INIT;
 std::array<double, 3>		            OffboardMavros::_local_position{vtol::INIT_NORTH, vtol::INIT_EAST, vtol::INIT_UP};
 std::array<double, 6>		            OffboardMavros::_local_velocity{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};  
 std::array<float, 3>		            OffboardMavros::_global_position{-1.0f, -1.0f, -1.0f}; 
@@ -26,6 +26,8 @@ OffboardMavros::OffboardMavros(void) : Node("offboard_mavros") {
     DEBUG::print("OffboardMavros Subscribers", true, BOLDGREEN);
     initializeClients();
     DEBUG::print("OffboardMavros Clients", true, BOLDGREEN);
+    initializeWaypoints();
+    DEBUG::print("OffboardMavros Waypoints", true, BOLDGREEN);
     initializeTimers(50); 
     DEBUG::print("OffboardMavros Timers", true, BOLDGREEN);
 }

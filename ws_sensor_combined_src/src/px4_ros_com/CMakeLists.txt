@@ -14,7 +14,7 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # add_compile_options(-Wall -Wextra -Wpedantic -Werror -fsanitize=address -g3)
     # add_compile_options(-Wall -Wextra -Wpedantic -Werror -fsanitize=address)
-    add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+    add_compile_options(-Wall -Wextra -Werror)
 endif()
 
 # find dependencies
@@ -28,6 +28,7 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(mavlink REQUIRED)
 
 # pkg-config 지원 활성화
 find_package(PkgConfig REQUIRED)
@@ -70,6 +71,7 @@ function(setup_target target_name)
     std_msgs
     mavros_msgs
     nav_msgs
+    mavlink
   )
 endfunction()
 
