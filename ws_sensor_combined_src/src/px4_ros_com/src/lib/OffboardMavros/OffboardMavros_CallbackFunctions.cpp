@@ -14,20 +14,6 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
 }
 
 /* -- Callback Functions -- */
-void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
-    fcuState_ = *msg;
-
-    const double q1 = msg->pose.orientation.x;
-    const double q2 = msg->pose.orientation.y;
-    const double q3 = msg->pose.orientation.z;
-    const double q4 = msg->pose.orientation.w;
-
-    const double t1 = 2 *(q4*q3+q1*q2);
-    const double t2 = 1 - 2 *(q2*q2+q3*q3);
-
-    yaw_current = atan2(t1,t2) * vtol::RAD_2_DEG;
-    // DEBUG::print("[Pose] Yaw current: ", yaw_current,GREEN);
-}
 
 void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
 
@@ -116,12 +102,6 @@ void OffboardMavros::stateCommandTakeOff (void){
     } else if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
         updateTakeoffStatus();
     }
-    // 순서 중요
-    // if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-    //     updateTakeoffStatus();
-    // } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
-    //     updateArmingStatus();
-    // }
 }
 
 void OffboardMavros::stateCommandFixed (void) {
