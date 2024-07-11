@@ -138,6 +138,13 @@ void OffboardMavros::stateCommandFixed (void) {
     // }
 }
 
+void OffboardMavros::stateCommandFixed (void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command To Fixed >");
+    if (fcu_state.mode != vtol::FCU_POSITION) {
+        updatePositionMode();
+    }
+}
+
 void OffboardMavros::stateCommandStart (void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command Start >");
     if (fcu_state.mode == vtol::FCU_HOLD) {
