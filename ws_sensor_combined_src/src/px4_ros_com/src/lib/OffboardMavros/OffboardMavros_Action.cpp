@@ -114,12 +114,10 @@ void OffboardMavros::_actionTakeoff(void) {
     // if (!(statusFlag & vtol::BIT_FLY)) {
     //     RCLCPP_INFO(this->get_logger(), "Vehicle is NOT ARMED status");
     //     return true;
-    if (OffboardMavros::_cmd_flag == vtol::READY) {
-        std::cout << "Vehicle is NOT ARMED status" << std::endl;
-        return ;
-    } else if (OffboardMavros::_cmd_flag == vtol::ARMED) {
-        std::cout << "Calling takeoff service ..." << std::endl;
-    }
+    // if (OffboardMavros::_cmd_flag == vtol::READY) {
+    //     std::cout << "Vehicle is NOT READY status" << std::endl;
+    //     return ;
+    // }
     OffboardMavros::_cmd_flag = vtol::TAKEOFF;
 }
 
