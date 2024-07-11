@@ -84,7 +84,6 @@ void OffboardMavros::stateCommandMission(void) {
     }
 }
 
-
 void OffboardMavros::stateCommandFly (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Fly >");
     if (fcu_state.mode != vtol::FCU_HOLD) {
@@ -102,6 +101,12 @@ void OffboardMavros::stateCommandTakeOff (void){
     } else if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
         updateTakeoffStatus();
     }
+    // 순서 중요
+    // if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
+    //     updateTakeoffStatus();
+    // } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
+    //     updateArmingStatus();
+    // }
 }
 
 void OffboardMavros::stateCommandFixed (void) {
@@ -109,13 +114,6 @@ void OffboardMavros::stateCommandFixed (void) {
     if (fcu_state.mode != vtol::FCU_POSITION) {
         updatePositionMode();
     }
-
-    // 순서 중요
-    // if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-    //     updateTakeoffStatus();
-    // } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
-    //     updateArmingStatus();
-    // }
 }
 
 void OffboardMavros::stateCommandStart (void) { 
@@ -150,7 +148,6 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     if (isGlobalPositionGettingValue(_global_position) == false) {
         return;
     }
-
     fcu_state = *msg;
 
     DEBUG::msg("\n[DEBUG] ", "-----------------");
@@ -166,77 +163,12 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
 
     const std::array<vtol::State,vtol::STATE_SIZE>::iterator  it = std::find(state_value_array.begin(), state_value_array.end(), _cmd_flag);
 //ros::Time::now() - last_request > ros::Duration(5.0)
-    // TODO: 생성자에서 초기화
     if (it == state_value_array.end()) {
         RCLCPP_ERROR(this->get_logger(), " Invalid State ");
         return;
     }
     const size_t i = std::distance(state_value_array.begin(), it);
     stateFunc[i]();
-
-
-    // if (OffboardMavros::_cmd_flag == vtol::INIT) {
-    //     if (fcu_state.armed == true) {
-    //         updateLandingStatus();
-    //     } else {
-    //         OffboardMavros::_cmd_flag = vtol::READY;
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::READY) {
-    //     if (fcu_state.mode != vtol::FCU_HOLD) {
-    //         updateDisarmingStatus();
-    //         updateHoldMode();
-    //         updateCustomMode(vtol::FCU_HOLD, 
-    //                 &OffboardMavros::holdResponseCallback);
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::ARMED) {
-    //     DEBUG::print("", ">> ARMED <<", BOLDGREEN);
-    //     if (fcu_state.armed != true) {
-    //         updateArmingStatus();
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::FLY) {
-    //     if (fcu_state.mode != vtol::FCU_HOLD) {
-    //         updateHoldMode();
-    //     }
-    //     std::cout << "Flying..." << std::endl;
-    // }
-    // if (OffboardMavros::_cmd_flag == vtol::TAKEOFF) {
-    //     DEBUG::print("", ">> Take Off <<", BOLDGREEN);
-    //     // 순서 중요
-    //     if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-    //         updateTakeoffStatus();
-    //     } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
-    //         updateArmingStatus();
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::START) {
-    //     if (fcu_state.mode == vtol::FCU_HOLD) {
-    //         updateOffboardMode();
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
-    //     updateTransitionFixedStatus();
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::TO_QUAD) {
-    //     updateTransitionQuadStatus();
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::LAND) {
-    //     if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
-    //         updateLandingStatus();
-    //     } else if (fcu_state.mode == vtol::FCU_HOLD) {
-    //         std::cout << "Landing success" << std::endl;
-    //         OffboardMavros::_cmd_flag = vtol::READY;
-    //     }
-    // }
 }
 
 void    OffboardMavros::statusReady(void) {
