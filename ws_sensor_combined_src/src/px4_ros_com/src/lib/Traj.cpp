@@ -7,17 +7,17 @@ Traj::Traj(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, const Eige
 // Setter methods
 void Traj::set_path(const Eigen::Vector3d &start, const Eigen::Vector3d &goal)
 {
-    start_point = start;
-    goal_point = goal;
-    tilde = goal_point - start_point;
+    this->start_point = start;
+    this->goal_point = goal;
+    this->tilde = goal_point - start_point;
 }
 
 void Traj::set_K1(const Eigen::Matrix3d &k1)
 {
-    K1 = k1;
+    this->K1 = k1;
 }
 
 void Traj::set_K2(const Eigen::Matrix3d &k2)
 {
-    K2 = k2;
+    this->K2 = k2;
 }
