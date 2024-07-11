@@ -49,14 +49,21 @@ def generate_launch_description():
         shell=True
     )
 
-    sensor_combined_listener_node = Node(
+    # sensor_combined_listener_node = Node(
+    #     package='px4_ros_com',
+    #     executable='sensor_combined_listener',
+    #     output='screen',
+    #     shell=True,
+    # )
+
+    offboard_mavros_node = Node(
         package='px4_ros_com',
-        executable='sensor_combined_listener',
+        executable='offboard_mavros',
         output='screen',
         shell=True,
     )
-
+    
     return LaunchDescription([
         #micro_ros_agent,
-        sensor_combined_listener_node
+        offboard_mavros_node
     ])
