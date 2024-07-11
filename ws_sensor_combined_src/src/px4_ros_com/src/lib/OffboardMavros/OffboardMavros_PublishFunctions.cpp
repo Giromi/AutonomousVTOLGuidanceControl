@@ -3,13 +3,32 @@
 
 /* -- Publish Functions -- */
 void    OffboardMavros::publish(void) {
-    if (_cmd_flag != vtol::START) {
-        return ;
+    if (_cmd_flag == vtol::INIT) {
+        publishGpOrigin();
     }
-    // publishPose();
-    publishLocal();
-    publishLocalFixed();
+    if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
+        return ;
+    } 
+    // if (fcu_state.mode == "AUTO.MISSION") {
+    // publishWaypoint();
+    // } else {
+    //     publishLocal(); // publishLocalFixed();
+    // }
 }
+
+
+void OffboardMavros::publishGpOrigin(void) {
+    // RCLCPP_INFO(this->get_logger(), "publishing origin");
+    geographic_msgs::msg::GeoPoseStamped origin;
+    origin.header.stamp = this->now();
+    origin.header.frame_id = "standard_vtol_0";
+    origin.pose.position.altitude = 47.6554;
+    origin.pose.position.latitude = 47.3984;
+    origin.pose.position.longitude = 8.54616;
+
+    gp_origin_pub->publish(origin);
+}
+
 void OffboardMavros::publishPose(void) {
     geometry_msgs::msg::PoseStamped pose;
     pose.pose.position.x = _local_position[vtol::EAST];
@@ -92,4 +111,34 @@ void OffboardMavros::publishLocalFixed(void) {
 
     local_pub->publish(local_msg);
 }
+
+
+void OffboardMavros::publishWaypoint(void) {
+    // mavros_msgs::msg::WaypointList  msg_waypoint_list;
+    // if (waypoints.size()) { // 넣을게 없으면 그냥 나가기
+    //     std::cout << "Publishing WaypointList..." << std::endl;
+    //     float_t
+    //     mavros_msgs::msg::Waypoint      msg_waypoint;
+    //     msg_waypoint.frame = mavros_msgs::msg::Waypoint::FRAME_LOCAL_NED;
+    //     msg_waypoint.command = mavros_msgs::msg::CommandCode::NAV_WAYPOINT;
+    //     msg_waypoint.is_current = true;
+    //     msg_waypoint.autocontinue = true;
+    //     msg_waypoint.param1 = 0;
+    //     msg_waypoint.param2 = 0;
+    //     msg_waypoint.param3 = 0;
+    //     msg_waypoint.param4 = 0;
+    //     msg_waypoint.x_lat = waypoints.front().x;
+    //     msg_waypoint.y_long = waypoints.front().y;
+    //     msg_waypoint.z_alt = waypoints.front().z;
+    //
+    //     msg_waypoint_list.waypoints.push_back(msg_waypoint);
+    //     waypoints.pop();
+    // }
+    //
+    // // if (waypoints.size()) { // 넣을게 있으면 publish 나중에 하기
+    // //     return ;
+    // // }
+    // waypoints_pub->publish(msg_waypoint_list);
+}
+
 
