@@ -159,6 +159,13 @@ void OffboardMavros::stateCommandFixed (void) {
     if (fcu_state.mode != vtol::FCU_POSITION) {
         updatePositionMode();
     }
+
+    // 순서 중요
+    // if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
+    //     updateTakeoffStatus();
+    // } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
+    //     updateArmingStatus();
+    // }
 }
 
 void OffboardMavros::stateCommandStart (void) { 
