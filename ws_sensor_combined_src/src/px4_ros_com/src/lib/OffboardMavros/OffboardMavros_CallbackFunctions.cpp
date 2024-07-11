@@ -1,6 +1,21 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
 void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+    const double q1=msg->pose.orientation.x;
+    const double q2=msg->pose.orientation.y;
+    const double q3=msg->pose.orientation.z;
+    const double q4=msg->pose.orientation.w;
+
+    const double t1 = 2 *(q4*q3+q1*q2);
+    const double t2 = 1 - 2 *(q2*q2+q3*q3);
+
+    yaw_current = atan2(t1,t2) * vtol::RAD_2_DEG;
+    // DEBUG::print("[Pose] Yaw current: ", yaw_current,GREEN);
+}
+
+/* -- Callback Functions -- */
+void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
+    fcuState_ = *msg;
 
     const double q1 = msg->pose.orientation.x;
     const double q2 = msg->pose.orientation.y;
@@ -366,6 +381,7 @@ void OffboardMavros::locationResponseCallback(const rclcpp::Client<mavros_msgs::
     printSuccessInfo(future.get()->success, msg);
 }
 
+<<<<<<< HEAD
 void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
     _cur_position = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
     if (_cmd_flag == vtol::TAKEOFF) {
@@ -375,6 +391,18 @@ void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamp
             _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
             DEBUG::print("Landing point North :", _prev_position[vtol::NORTH], BOLDYELLOW);
             DEBUG::print("Landing point East  :", _prev_position[vtol::EAST], BOLDYELLOW);
+=======
+void OffboardMavros::currentpositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+    cur_position_ = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
+
+    if (cmdFlag_ == vtol::TAKEOFF) {
+        if (global_position_[vtol::ALT] > init_global_position[vtol::ALT] - 1) {
+            cmdFlag_ = vtol::FLY;
+            prev_position_[vtol::NORTH] = cur_position_[vtol::NORTH];
+            prev_position_[vtol::EAST] = cur_position_[vtol::EAST];
+            DEBUG::print("Landing point North :", prev_position_[vtol::NORTH], BOLDYELLOW);
+            DEBUG::print("Landing point East  :", prev_position_[vtol::EAST], BOLDYELLOW);
+>>>>>>> 62e6b807 (feat:  절대 좌표계로 일정 고도만큼 상승)
         }
     } else if (_cmd_flag == vtol::TO_FIXED) {
         DEBUG::print("North :", _cur_position[vtol::NORTH], WHITE);
