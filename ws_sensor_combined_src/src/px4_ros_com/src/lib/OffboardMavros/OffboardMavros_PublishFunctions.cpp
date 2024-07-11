@@ -18,7 +18,7 @@ void    OffboardMavros::publish(void) {
 
 
 void OffboardMavros::publishGpOrigin(void) {
-    RCLCPP_INFO(this->get_logger(), "publishing origin");
+    // RCLCPP_INFO(this->get_logger(), "publishing origin");
     geographic_msgs::msg::GeoPoseStamped origin;
     origin.header.stamp = this->now();
     origin.header.frame_id = "standard_vtol_0";
