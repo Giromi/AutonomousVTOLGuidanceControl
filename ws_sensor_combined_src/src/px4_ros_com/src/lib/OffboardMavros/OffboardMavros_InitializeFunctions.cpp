@@ -77,9 +77,9 @@ void OffboardMavros::initializeVariables(void) {
         vtol::LAND,
         vtol::START,
         vtol::MISSION,
+        vtol::FIXED,
         vtol::TO_FIXED,
         vtol::TO_QUAD
-
     };
 
 
@@ -119,6 +119,7 @@ void OffboardMavros::initializeFunctionPointerArray(void) {
                                        std::bind(&OffboardMavros::stateCommandLand, this),
                                        std::bind(&OffboardMavros::stateCommandStart, this),
                                        std::bind(&OffboardMavros::stateCommandMission, this),
+                                       std::bind(&OffboardMavros::stateCommandFixed, this),
                                        std::bind(&OffboardMavros::stateCommandToFixed, this),
                                        std::bind(&OffboardMavros::stateCommandToQuad, this)
                                     } );

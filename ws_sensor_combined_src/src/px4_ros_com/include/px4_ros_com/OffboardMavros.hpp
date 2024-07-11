@@ -107,6 +107,7 @@ private:
     void    updateOffboardMode(void); 
     void    updateMissionMode(void);
 
+    void    updatePositionMode(void);
     void    updateCustomMode(const std::string& input_mode,
             void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture));
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
@@ -123,6 +124,7 @@ private:
     void    stateCommandTakeOff (void);
     void    stateCommandStart (void);
     void    stateCommandMission(void);
+    void    stateCommandFixed (void);
     void    stateCommandToFixed (void);
     void    stateCommandToQuad (void);
     void    stateCommandLand (void);
@@ -143,6 +145,7 @@ private:
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future);
     void    waypointClearResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedFuture future);
+    void    positionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
 
     /* -- Action Functions -- */
     static void	    _actionGoNorth(void);

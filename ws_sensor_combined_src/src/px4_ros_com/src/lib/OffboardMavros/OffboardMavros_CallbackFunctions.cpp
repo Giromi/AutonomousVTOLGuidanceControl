@@ -154,6 +154,13 @@ void OffboardMavros::stateCommandTakeOff (void){
     }
 }
 
+void OffboardMavros::stateCommandFixed (void) {
+    RCLCPP_INFO(this->get_logger(), "< State Command To Fixed >");
+    if (fcu_state.mode != vtol::FCU_POSITION) {
+        updatePositionMode();
+    }
+}
+
 void OffboardMavros::stateCommandStart (void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command Start >");
     if (fcu_state.mode == vtol::FCU_HOLD) {
@@ -294,6 +301,14 @@ void OffboardMavros::offboardResponseCallback(const rclcpp::Client<mavros_msgs::
     const char* msg[] = {
         "Offboard mode sent successfully", 
         "Failed to send Offboard mode"
+    };
+    printSuccessInfo(future.get()->mode_sent, msg);
+}
+
+void OffboardMavros::positionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
+    const char* msg[] = {
+        "Position mode sent successfully", 
+        "Failed to send Position mode"
     };
     printSuccessInfo(future.get()->mode_sent, msg);
 }
