@@ -10,6 +10,7 @@
 # include <mavros_msgs/msg/actuator_control.hpp>
 # include <mavros_msgs/msg/override_rc_in.hpp>
 # include <mavros_msgs/msg/position_target.hpp>
+# include <mavros_msgs/msg/attitude_target.hpp>
 # include <mavros_msgs/msg/extended_state.hpp>
 # include <mavros_msgs/srv/command_bool.hpp>
 # include <mavros_msgs/srv/command_tol.hpp>
@@ -17,9 +18,12 @@
 # include <mavros_msgs/msg/command_code.hpp>
 # include <mavros_msgs/srv/set_mode.hpp>
 # include <mavros_msgs/msg/waypoint_list.hpp>
+
 # include <mavros_msgs/msg/waypoint.hpp>
 # include <mavros_msgs/msg/waypoint.hpp>
 # include <mavros_msgs/msg/manual_control.hpp>
+# include <geometry_msgs/msg/twist_stamped.hpp>
+
 
 # include <mavros_msgs/msg/waypoint_reached.hpp>
 # include <mavros_msgs/srv/command_vtol_transition.hpp>
@@ -87,11 +91,14 @@ private:
     void    publishActuatorControls(void);
     void    publishVelocity(void); 
     void    publishAttitude(void);
-    void    publishLocal(void);
+    void    publishRawLocal(void);
+    void    publishRawAttitude(void);
     void    publishLocalFixed(void);
     void    publishWaypoint(void);
     void    publishGpOrigin(void);
     void    publishManual(void);
+    void    publishCmdVel(void);
+
 
   
     /* -- Update Functions -- */
@@ -197,13 +204,12 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr             local_vel_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      local_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      target_local_pub;
-    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
     rclcpp::Publisher<mavros_msgs::msg::ManualControl>::SharedPtr       vc_manual_pub;
-
-  
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
+    rclcpp::Publisher<mavros_msgs::msg::AttitudeTarget>::SharedPtr      raw_attitude_pub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
     rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      cmd_vel_pub;
     rclcpp::Publisher<geographic_msgs::msg::GeoPoseStamped>::SharedPtr  gp_origin_pub;
 
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client;
@@ -216,7 +222,7 @@ private:
     rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedPtr           waypoint_push_client;
     rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedPtr          waypoint_clear_client;
 
-
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        gps_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;

@@ -26,6 +26,8 @@ void OffboardMavros::initializePublishers(void) {
     vc_manual_pub =this->create_publisher<mavros_msgs::msg::ManualControl>( "/mavros/manual_control/send", default_qos);
     waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", default_qos);
     gp_origin_pub = this->create_publisher<geographic_msgs::msg::GeoPoseStamped>("/mavros/global_position/set_gp_origin", default_qos);
+    cmd_vel_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mavros/setpoint_attitude/cmd_vel", default_qos);
+    raw_attitude_pub = this->create_publisher<mavros_msgs::msg::AttitudeTarget>("/mavros/setpoint_raw/attitude", default_qos);
 }
 
 void OffboardMavros::initializeSubscribers(void) {
