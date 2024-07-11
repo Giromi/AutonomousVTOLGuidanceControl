@@ -9,7 +9,6 @@ std::array<double, 3>		            OffboardMavros::_cur_position{};
 std::array<double, 3>		            OffboardMavros::_prev_position{};
 double                                  OffboardMavros::_offset = 1.0;
 
-
 /**
  * @brief OffboardMavros 생성자
  */

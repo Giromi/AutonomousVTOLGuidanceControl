@@ -87,7 +87,6 @@ private:
     void    publishLocalFixed(void);
     void    publishWaypoint(void);
     void    publishGpOrigin(void);
-  
     /* -- Update Functions -- */
     void    updateArmingStatus(void); 
     void    updateDisarmingStatus(void); 

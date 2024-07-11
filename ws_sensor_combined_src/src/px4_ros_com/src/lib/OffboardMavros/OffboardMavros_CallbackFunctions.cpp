@@ -16,9 +16,49 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
 
 void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
 
+<<<<<<< HEAD
      if (msg->status.status >= sensor_msgs::msg::NavSatStatus::STATUS_FIX) {
             gps_locked = true;
         }
+=======
+    DEBUG::msg("\n[DEBUG] ", "-----------------");
+    DEBUG::print("Mode : ", msg->mode, CYAN);
+    DEBUG::print_bool("Arming : ", msg->armed, RED);
+    DEBUG::print_binary("Command flag : ", cmdFlag_, YELLOW);
+    DEBUG::print("System status : ", fcuState_.system_status, BLUE);
+    DEBUG::print("Yaw current: ", yaw_current, GREEN);
+    DEBUG::printArray("local_velocity_: ", local_velocity_, 3, MAGENTA);
+    DEBUG::msg("[DEBUG] ", "-----------------\n");
+
+    // if ((statusFlag == vtol::LAND) && is_real_arming_status_() && is_five_seconds_passed()) {
+    // if ((statusFlag == vol::TAKEOFF) && is_fcu_arming_status_() && is_five_seconds_passed()) {
+    // }
+    // TODO: status_XXX_() 함수를 만들어서 사용
+
+//ros::Time::now() - last_request > ros::Duration(5.0)
+    // TODO: 생성자에서 초기화
+    if (OffboardMavros::cmdFlag_ == vtol::INIT) {
+        if (fcuState_.armed == true) {
+            update_landing_status();
+        } else {
+            OffboardMavros::cmdFlag_ = vtol::READY;
+        }
+    }
+    if (OffboardMavros::cmdFlag_ == vtol::READY) {
+        if (fcuState_.mode != vtol::FCU_HOLD) {
+            update_disarming_status();
+            update_hold_mode();
+            update_custom_mode(vtol::FCU_HOLD, 
+                    &OffboardMavros::hold_response_callback);
+        }
+    }
+    if (OffboardMavros::cmdFlag_ == vtol::ARMED) {
+        DEBUG::print("", ">> ARMED <<", BOLDGREEN);
+        if (fcuState_.armed != true) {
+            update_arming_status();
+        }
+    }
+>>>>>>> 0262b070 (feat: fixed wing 속도 제어 검증)
 
     if (isGlobalPositionGettingValue(init_global_position) == false) {
         init_global_position[vtol::ALT] = msg->altitude + 5.0f;
