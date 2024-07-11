@@ -24,7 +24,7 @@ namespace vtol {
         BIT_FIXED       =	0b000100000,
         BIT_TRANSITION  =	0b001000000,
         BIT_MISSION     =	0b010000000,
-    };
+   };
 
     enum Result {
         SUCCESS = 0,
