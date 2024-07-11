@@ -123,16 +123,12 @@ void OffboardMavros::stateCommandStart (void) {
 
 void OffboardMavros::stateCommandToFixed (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command To Fixed >");
-    if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
     updateTransitionFixedStatus();
-    }
 }
 
 void OffboardMavros::stateCommandToQuad (void) {
     RCLCPP_INFO(this->get_logger(), "< State Command To Quad >");
-    if (OffboardMavros::_cmd_flag == vtol::TO_QUAD) {
     updateTransitionQuadStatus();
-    }   
 }
 
 void OffboardMavros::stateCommandLand (void) {
