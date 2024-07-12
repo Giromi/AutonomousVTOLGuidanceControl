@@ -81,17 +81,6 @@ void OffboardMavros::stateCommandMission(void) {
         updateWaypointPush();
         updateMissionMode();
     }
-
-    // if (_global_position[vtol::ALT] > _init_global_position[vtol::ALT] - 1) {
-    //     _cmd_flag = vtol::FLY;
-    //     _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
-    //     _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
-    //     DEBUG::print("Landing point North :", _prev_position[vtol::NORTH], BOLDYELLOW);
-    //     DEBUG::print("Landing point East  :", _prev_position[vtol::EAST], BOLDYELLOW);
-    // } else {
-    //     updateTakeoffStatus();
-    //
-    // }
 }
 
 
@@ -106,12 +95,19 @@ void OffboardMavros::stateCommandFly (void) {
 void OffboardMavros::stateCommandTakeOff (void){
     RCLCPP_INFO(this->get_logger(), "< State Command Take Off >");
     DEBUG::print("", ">> Take Off <<", BOLDGREEN);
-    // 순서 중요
-    if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-        updateTakeoffStatus();
-    } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
+
+    if (fcu_state.armed == false) {
         updateArmingStatus();
+    } else if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
+        updateTakeoffStatus();
     }
+
+    // 순서 중요
+    // if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
+    //     updateTakeoffStatus();
+    // } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
+    //     updateArmingStatus();
+    // }
 }
 
 void OffboardMavros::stateCommandStart (void) { 
