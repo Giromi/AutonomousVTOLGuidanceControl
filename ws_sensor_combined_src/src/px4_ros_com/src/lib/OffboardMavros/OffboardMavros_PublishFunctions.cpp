@@ -122,24 +122,28 @@ void OffboardMavros::publishRawLocal(void) {
 }
 
 void OffboardMavros::publishRawAttitude(void) {
-    std::cout << "Publishing Raw Attitude ..." << std::endl;
+    // std::cout << "Publishing Raw Attitude ..." << std::endl;
     mavros_msgs::msg::AttitudeTarget target_msg;
     target_msg.header.stamp = this->now();
     target_msg.header.frame_id = "standard_vtol_0";
-    target_msg.type_mask =  mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE  |
+    target_msg.type_mask =  \
+                            mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE  |
                             mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
                             mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
-                            //   mavros_msgs::msg::AttitudeTarget::IGNORE_ATTITUDE   |
+                            // mavros_msgs::msg::AttitudeTarget::IGNORE_ATTITUDE;
                              // mavros_msgs::msg::AttitudeTarget::IGNORE_THRUST;
 
     tf2::Quaternion q;
     q.setRPY(_local_velocity[3],_local_velocity[4],_local_velocity[5]);
-    target_msg.orientation.w    =  q.w();      //_local_velocity[2]; // Up
-    target_msg.orientation.x    =  q.x();    //_local_velocity[0]; // East
-    target_msg.orientation.y    =  q.y(); // North
-    target_msg.orientation.z    =  q.z();      //_local_velocity[2]; // Up
+    target_msg.orientation.w    =  q.w();      //
+    target_msg.orientation.x    =  q.x();      // roll : 키보드 2, 3  (2 : 반시계, 3 : 시계)
+    target_msg.orientation.y    =  q.y();      //
+    target_msg.orientation.z    =  q.z();      // pitch : 키보드 4, 5 (4 : 하강,   5 : 상승)
+    // target_msg.body_rate.x    =  _local_velocity[3];    
+    // target_msg.body_rate.y    =  _local_velocity[4]; 
+    // target_msg.body_rate.z    =  _local_velocity[5]; 
 
-    target_msg.thrust = 1.0;
+    target_msg.thrust = _local_velocity[2];
     raw_attitude_pub->publish(target_msg);
 }
 
