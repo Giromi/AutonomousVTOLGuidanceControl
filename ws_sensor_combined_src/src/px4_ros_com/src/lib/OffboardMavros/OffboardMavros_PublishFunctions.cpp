@@ -125,8 +125,8 @@ void OffboardMavros::publishRawAttitude(void) {
     // target_msg.type_mask = 0;
     target_msg.type_mask =    mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE  |
                               mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
-    target_msg.type_mask =    mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
-                            \
+                                mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
+                            
                         //    mavros_msgs::msg::AttitudeTarget::IGNORE_ATTITUDE |
                         //    mavros_msgs::msg::AttitudeTarget::IGNORE_THRUST;
 
