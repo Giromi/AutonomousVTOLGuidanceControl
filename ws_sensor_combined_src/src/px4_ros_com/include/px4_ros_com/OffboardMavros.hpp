@@ -142,7 +142,7 @@ private:
     void    takeoffResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
     void    landResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
     void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
-    void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
+    void    localPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future);
     void    waypointClearResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedFuture future);
@@ -193,7 +193,6 @@ private:
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      target_local_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
   
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
     rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
     rclcpp::Publisher<geographic_msgs::msg::GeoPoseStamped>::SharedPtr  gp_origin_pub;
@@ -209,7 +208,8 @@ private:
     rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedPtr          waypoint_clear_client;
 
 
-    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        gps_sub;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    local_position_sub;
+    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        global_posistion_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;

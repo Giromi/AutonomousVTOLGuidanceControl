@@ -34,16 +34,15 @@ void OffboardMavros::initializeSubscribers(void) {
     const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
 
     state_sub = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
-    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
 
-    current_pos_sub = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
-            std::bind(&OffboardMavros::currentPositionCallback, this, std::placeholders::_1
-                ));
+    local_position_sub = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
+            std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1));
+    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
 
     pose_sub = create_subscription<geometry_msgs::msg::PoseStamped>(
             "/mavros/local_position/pose", default_qos, std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1));
 
-    gps_sub =create_subscription<sensor_msgs::msg::NavSatFix>(
+    global_posistion_sub =create_subscription<sensor_msgs::msg::NavSatFix>(
             "/mavros/global_position/global", default_qos, std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1));
 }
 
@@ -55,6 +54,8 @@ void    OffboardMavros::initializeClients(void) {
     location_client = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
     transition_client = this->create_client<mavros_msgs::srv::CommandVtolTransition>("/mavros/cmd/vtol_transition");
     cmd_client = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
+
+    // 이거 사용할 빠에는 QGC로 하는게 나음
     waypoint_push_client = this->create_client<mavros_msgs::srv::WaypointPush>("/mavros/mission/push");
     waypoint_clear_client = this->create_client<mavros_msgs::srv::WaypointClear>("/mavros/mission/clear");
 }
@@ -216,9 +217,25 @@ void OffboardMavros::triangleScenarioFW(const std::array<double, 3>& target_pos)
                 {0, 0, 0, 1.57}, { 0, target_pos[1], target_pos[2]});
 }
 
+const std::array<vtol::Waypoint, 4> square = {{
+    {0.0f, 0.0f, 30.0f},
+    {100.0f, 0.0f, 30.0f},
+    {100.0f, 100.0f, 30.0f},
+    {0.0f, 100.0f, 30.0f},
+}};
+
 void OffboardMavros::initializeWaypoints(void) {
     // WP0
                                                    /*{ 상대, 절대,   절대 } */
     std::array<double, 3> home_alt_global_position = { 20.0, 47.398, 8.54616 };
     triangleScenarioFW(home_alt_global_position);
+
+
+    // Waypoint 1
+
+    //
+
+
+
+    std::cout << "Waypoint list size: " << waypoint_list.waypoints.size() << std::endl;
 }

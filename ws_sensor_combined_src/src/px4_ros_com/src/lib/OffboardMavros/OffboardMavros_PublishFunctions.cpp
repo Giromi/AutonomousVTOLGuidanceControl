@@ -9,6 +9,10 @@ void    OffboardMavros::publish(void) {
     if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
         return ;
     } 
+
+
+    // publishPose();
+    publishLocalFixed();
     // if (fcu_state.mode == "AUTO.MISSION") {
     // publishWaypoint();
     // } else {
@@ -31,9 +35,9 @@ void OffboardMavros::publishGpOrigin(void) {
 
 void OffboardMavros::publishPose(void) {
     geometry_msgs::msg::PoseStamped pose;
-    pose.pose.position.x = _local_position[vtol::EAST];
-    pose.pose.position.y = _local_position[vtol::NORTH];
-    pose.pose.position.z = _local_position[vtol::UP];
+    pose.pose.position.x = _local_velocity[vtol::EAST];
+    pose.pose.position.y = _local_velocity[vtol::NORTH];
+    pose.pose.position.z = _local_velocity[vtol::UP];
     local_pos_pub->publish(pose);
 }
 
@@ -74,9 +78,9 @@ void OffboardMavros::publishLocal(void) {
                           mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
                           mavros_msgs::msg::PositionTarget::IGNORE_AFY	|
                           mavros_msgs::msg::PositionTarget::IGNORE_AFZ  ;
-    local_msg.velocity.x    = _local_velocity[0]; // East
-    local_msg.velocity.y    = _local_velocity[1]; // North
-    local_msg.velocity.z    = _local_velocity[2]; // Up
+    // local_msg.velocity.x    = _local_velocity[0]; // East
+    // local_msg.velocity.y    = _local_velocity[1]; // North
+    // local_msg.velocity.z    = _local_velocity[2]; // Up
     local_msg.yaw           = _local_velocity[4];
     local_msg.yaw_rate      = _local_velocity[5];
     local_pub->publish(local_msg);
@@ -98,17 +102,17 @@ void OffboardMavros::publishLocalFixed(void) {
                           //mavros_msgs::msg::PositionTarget::IGNORE_PX |
                           //mavros_msgs::msg::PositionTarget::IGNORE_PY |
                           //mavros_msgs::msg::PositionTarget::IGNORE_PZ |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFX |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFY |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFZ;
-    //mavros_msgs::msg::PositionTarget::IGNORE_VZ;
-    //mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
-    local_msg.velocity.x = _local_velocity[0]; // EAST
-    local_msg.velocity.y = _local_velocity[1]; // North
-    local_msg.velocity.z = _local_velocity[2]; // UP
-    local_msg.yaw = _local_velocity[4];
-    local_msg.yaw_rate = _local_velocity[5];
-
+                          mavros_msgs::msg::PositionTarget::IGNORE_VX  |
+                          mavros_msgs::msg::PositionTarget::IGNORE_VY  |
+                          mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
+                          mavros_msgs::msg::PositionTarget::IGNORE_AFX |
+                          mavros_msgs::msg::PositionTarget::IGNORE_AFY |
+                          mavros_msgs::msg::PositionTarget::IGNORE_AFZ |   
+                          mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
+                          mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
+    local_msg.position.x = _local_velocity[0]; // East
+    local_msg.position.y = _local_velocity[1]; // North
+    local_msg.position.z = _local_velocity[2]; // Up
     local_pub->publish(local_msg);
 }
 

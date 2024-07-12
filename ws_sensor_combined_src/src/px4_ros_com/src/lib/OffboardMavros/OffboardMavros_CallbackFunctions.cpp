@@ -183,7 +183,24 @@ void    OffboardMavros::statusReady(void) {
     }
 }
 
-void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+// void OffboardMavros::is_arrived(void) {
+//
+//     if (fcu_state.mode != vtol::FCU_HOLD) {
+//         updateHoldMode();
+//     } else {
+//         OffboardMavros::_cmd_flag = vtol::READY;
+//     }
+//
+// }
+//
+// stateCommandLand
+// void OffboardMavros::currentPosition(void) {
+//     if ()
+//
+// }
+//
+
+void OffboardMavros::localPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
     _cur_position = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
     if (_cmd_flag == vtol::TAKEOFF) {
         if (_global_position[vtol::ALT] > init_global_position[vtol::ALT] - 1) {
@@ -212,12 +229,15 @@ void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamp
         }
         _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
         _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
+    } else if (_cmd_flag == vtol::START) {
+
+        if (
+        waypoints.pop();
     }
 }
 
 void OffboardMavros::chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
     RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
-
 
     size_t i = 0;
     for (; i < OffboardMavros::_action_string_array.size() && msg->data != OffboardMavros::_action_string_array[i]; ++i);
