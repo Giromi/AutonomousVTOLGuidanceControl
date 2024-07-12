@@ -3,17 +3,21 @@
 
 /* -- Publish Functions -- */
 void    OffboardMavros::publish(void) {
+
     if (_cmd_flag == vtol::INIT) {
         publishGpOrigin();
     }
     if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
         return ;
     } 
+    publishRawAttitude();
+
     // publishCmdVel();
     // publishVelocity();
     // 
     // publishManual();
-    publishRawAttitude();
+    // publishRawAttitude();
+    // publishRawLocal();
     // if (fcu_state.mode == "AUTO.MISSION") {
     // publishWaypoint();
     // } else {
@@ -32,7 +36,7 @@ void OffboardMavros::publishCmdVel(void) {
     cmd_vel.twist.angular.x = _local_velocity[3];
     cmd_vel.twist.angular.y = _local_velocity[4];
     cmd_vel.twist.angular.z = _local_velocity[5];
-    cmd_vel_pub->publish(cmd_vel);
+    att_pub->publish(cmd_vel);
 
 
 }
@@ -122,26 +126,20 @@ void OffboardMavros::publishRawAttitude(void) {
     mavros_msgs::msg::AttitudeTarget target_msg;
     target_msg.header.stamp = this->now();
     target_msg.header.frame_id = "standard_vtol_0";
-    // target_msg.type_mask = 0;
-    target_msg.type_mask =    mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE  |
-                              mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
-                                mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
-                            
-                        //    mavros_msgs::msg::AttitudeTarget::IGNORE_ATTITUDE |
-                        //    mavros_msgs::msg::AttitudeTarget::IGNORE_THRUST;
+    target_msg.type_mask =  mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE  |
+                            mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
+                            mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
+                            //   mavros_msgs::msg::AttitudeTarget::IGNORE_ATTITUDE   |
+                             // mavros_msgs::msg::AttitudeTarget::IGNORE_THRUST;
 
-                        //   mavros_msgs::msg::PositionTarget::IGNORE_PY	|
-                        //   mavros_msgs::msg::PositionTarget::IGNORE_PZ	|
-                        //   mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
-                        //   mavros_msgs::msg::PositionTarget::IGNORE_AFY	|
-                        //   mavros_msgs::msg::PositionTarget::IGNORE_AFZ  ;
-    // target_msg.body_rate.x    = _local_velocity[0]; // East
-    // target_msg.body_rate.y    = _local_velocity[1]; // North
-    // target_msg.body_rate.z    = _local_velocity[2]; // Up
-    target_msg.orientation.x    = _local_velocity[0]; // East
-    target_msg.orientation.y    = _local_velocity[1]; // North
-    target_msg.orientation.z    = _local_velocity[2]; // Up
-    // target_msg.thrust = 
+    tf2::Quaternion q;
+    q.setRPY(_local_velocity[3],_local_velocity[4],_local_velocity[5]);
+    target_msg.orientation.w    =  q.w();      //_local_velocity[2]; // Up
+    target_msg.orientation.x    =  q.x();    //_local_velocity[0]; // East
+    target_msg.orientation.y    =  q.y(); // North
+    target_msg.orientation.z    =  q.z();      //_local_velocity[2]; // Up
+
+    target_msg.thrust = 1.0;
     raw_attitude_pub->publish(target_msg);
 }
 
@@ -171,7 +169,7 @@ void OffboardMavros::publishLocalFixed(void) {
     local_msg.velocity.x = _local_velocity[0]; // EAST
     local_msg.velocity.y = _local_velocity[1]; // North
     local_msg.velocity.z = _local_velocity[2]; // UP
-    local_msg.yaw = _local_velocity[4];
+    local_msg.yaw =      _local_velocity[4];
     local_msg.yaw_rate = _local_velocity[5];
 
     local_pub->publish(local_msg);

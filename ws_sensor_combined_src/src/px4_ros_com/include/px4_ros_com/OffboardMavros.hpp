@@ -3,6 +3,7 @@
 
 
 # include <rclcpp/rclcpp.hpp>
+# include <tf2/LinearMath/Quaternion.h>
 # include <geometry_msgs/msg/pose_stamped.hpp>
 # include <geometry_msgs/msg/twist_stamped.hpp>
 # include <geographic_msgs/msg/geo_pose_stamped.hpp>
@@ -46,6 +47,9 @@
 # include "px4_ros_com/convention.hpp"
 # include "DEBUG.hpp"
 
+struct Quaternion {
+    double w, x, y, z;
+};
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
@@ -210,6 +214,8 @@ private:
     void            printSuccessInfo(bool success, const char* msg[]) const;
     static void     printReferenceInput(void); 
     bool            isGlobalPositionGettingValue(const t_global_position&) const;
+    const Quaternion rpy_to_quat(const double roll, const double pitch, const double yaw);
+
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
