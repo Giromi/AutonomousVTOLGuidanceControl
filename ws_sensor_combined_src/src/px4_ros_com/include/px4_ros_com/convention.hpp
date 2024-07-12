@@ -24,7 +24,7 @@ namespace vtol {
         BIT_FIXED       =	0b000100000,
         BIT_TRANSITION  =	0b001000000,
         BIT_MISSION     =	0b010000000,
-    };
+   };
 
     enum Result {
         SUCCESS = 0,
@@ -75,13 +75,15 @@ namespace vtol {
 
     constexpr float     NaN             = std::numeric_limits<float>::quiet_NaN();
     constexpr size_t    ACTION_SIZE     = 21;
-    constexpr size_t    STATE_SIZE      = 10;
+    constexpr size_t    STATE_SIZE      = 11;
     constexpr char      FCU_ARM[]       = "AUTO.RTL";
     constexpr char	    FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	    FCU_OFFBOARD[]  = "OFFBOARD";
     constexpr char	    FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
     constexpr char	    FCU_LAND[]      = "AUTO.LAND";
     constexpr char      FCU_MISSION[]   = "AUTO.MISSION";
+    constexpr char      FCU_POSITION[]   = "POSCTL";
+
     constexpr double RAD_2_DEG = 180 / M_PI;
 
 

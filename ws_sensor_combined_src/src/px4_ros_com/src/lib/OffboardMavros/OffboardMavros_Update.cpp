@@ -110,9 +110,14 @@ void OffboardMavros::updateOffboardMode(void) {
     updateCustomMode(vtol::FCU_OFFBOARD, &OffboardMavros::offboardResponseCallback);
 }
 
+void OffboardMavros::updatePositionMode(void) {
+    updateCustomMode(vtol::FCU_POSITION, &OffboardMavros::positionResponseCallback);
+}
+
 void OffboardMavros::updateMissionMode(void) {
     updateCustomMode(vtol::FCU_MISSION, &OffboardMavros::missionResponseCallback);
 }
+
 
 void OffboardMavros::updateCustomMode(const std::string& input_mode,
         void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture)) {

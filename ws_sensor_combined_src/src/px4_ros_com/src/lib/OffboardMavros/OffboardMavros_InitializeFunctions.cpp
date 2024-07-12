@@ -77,9 +77,9 @@ void OffboardMavros::initializeVariables(void) {
         vtol::LAND,
         vtol::START,
         vtol::MISSION,
+        vtol::FIXED,
         vtol::TO_FIXED,
         vtol::TO_QUAD
-
     };
 
 
@@ -119,6 +119,7 @@ void OffboardMavros::initializeFunctionPointerArray(void) {
                                        std::bind(&OffboardMavros::stateCommandLand, this),
                                        std::bind(&OffboardMavros::stateCommandStart, this),
                                        std::bind(&OffboardMavros::stateCommandMission, this),
+                                       std::bind(&OffboardMavros::stateCommandFixed, this),
                                        std::bind(&OffboardMavros::stateCommandToFixed, this),
                                        std::bind(&OffboardMavros::stateCommandToQuad, this)
                                     } );
@@ -211,7 +212,7 @@ void OffboardMavros::triangleScenarioFW(const std::array<double, 3>& target_pos)
                                         target_pos[2] + 0.00090 });
     // Waypoint 2
     setWaypoint(mavros_msgs::msg::Waypoint::FRAME_GLOBAL_REL_ALT,
-                mavros_msgs::msg::CommandCode::NAV_LAND, false, true, 
+                mavros_msgs::msg::CommandCode::NAV_LAND, false, false, 
                 {0, 0, 0, 1.57}, { 0, target_pos[1], target_pos[2]});
 }
 
