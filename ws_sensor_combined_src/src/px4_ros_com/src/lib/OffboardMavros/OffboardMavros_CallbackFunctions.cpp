@@ -14,7 +14,6 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
 }
 
 /* -- Callback Functions -- */
-
 void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
 
      if (msg->status.status >= sensor_msgs::msg::NavSatStatus::STATUS_FIX) {
@@ -57,7 +56,6 @@ void OffboardMavros::stateCommandReady(void) {
         updateHoldMode();
         updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdResponseCallback);
     }
-
 }
 
 void OffboardMavros::stateCommandArmed (void) {
@@ -118,7 +116,8 @@ void OffboardMavros::stateCommandFixed (void) {
 
 void OffboardMavros::stateCommandStart (void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command Start >");
-    if (fcu_state.mode == vtol::FCU_HOLD) {
+    if (fcu_state.mode == vtol::FCU_HOLD
+        || fcu_state.mode == vtol::FCU_POSITION) {
         updateOffboardMode();
     }
 }
@@ -184,6 +183,52 @@ void    OffboardMavros::statusReady(void) {
     }
 }
 
+void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
+    _cur_position = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
+    if (_cmd_flag == vtol::TAKEOFF) {
+        if (_global_position[vtol::ALT] > init_global_position[vtol::ALT] - 1) {
+            _cmd_flag = vtol::FLY;
+            _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
+            _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
+            DEBUG::print("Landing point North :", _prev_position[vtol::NORTH], BOLDYELLOW);
+            DEBUG::print("Landing point East  :", _prev_position[vtol::EAST], BOLDYELLOW);
+        }
+    } else if (_cmd_flag == vtol::TO_FIXED) {
+        DEBUG::print("North :", _cur_position[vtol::NORTH], WHITE);
+        DEBUG::print("East  :", _cur_position[vtol::EAST], WHITE);
+        if (_cur_position[vtol::NORTH] > _prev_position[vtol::NORTH] + 1 
+            || _cur_position[vtol::EAST] > _prev_position[vtol::EAST] + 1) {
+            DEBUG::print("Transition success North :", _cur_position[vtol::NORTH], BOLDYELLOW);
+            DEBUG::print("Transition success East  :", _cur_position[vtol::EAST], BOLDYELLOW);
+            _cmd_flag = vtol::FIXED;
+        }
+    } else if (_cmd_flag == vtol::TO_QUAD) {
+        if (_cur_position[vtol::NORTH] - _prev_position[vtol::NORTH] < 0.1
+            && _cur_position[vtol::EAST] - _prev_position[vtol::EAST] < 0.1) {
+            DEBUG::print("Transition success North :", _cur_position[vtol::NORTH], BOLDYELLOW);
+            DEBUG::print("Transition success East  :", _cur_position[vtol::EAST], BOLDYELLOW);
+            // _cmd_flag &= ~vtol::BIT_TRANSITION;
+            _cmd_flag = vtol::QUAD;
+        }
+        _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
+        _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
+    }
+}
+
+void OffboardMavros::chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
+    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
+
+
+    size_t i = 0;
+    for (; i < OffboardMavros::_action_string_array.size() && msg->data != OffboardMavros::_action_string_array[i]; ++i);
+
+    if (i == OffboardMavros::_action_string_array.size()) {
+        std::cout << "Invalid input" << std::endl;
+        return ;
+    }
+    OffboardMavros::actionFunc[i]();
+    OffboardMavros::printReferenceInput();
+}
 
 /* -- Callback Functions -- */
 void OffboardMavros::offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
@@ -219,21 +264,6 @@ void OffboardMavros::holdResponseCallback(const rclcpp::Client<mavros_msgs::srv:
     printSuccessInfo(future.get()->mode_sent, msg);
 }
 
-void OffboardMavros::chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
-    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
-
-
-    size_t i = 0;
-    for (; i < OffboardMavros::_action_string_array.size() && msg->data != OffboardMavros::_action_string_array[i]; ++i);
-
-    if (i == OffboardMavros::_action_string_array.size()) {
-        std::cout << "Invalid input" << std::endl;
-        return ;
-    }
-    OffboardMavros::actionFunc[i]();
-    OffboardMavros::printReferenceInput();
-}
-
 void OffboardMavros::armingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future) {
     const char* msg[] = {
         "Vehicle armed", 
@@ -258,7 +288,6 @@ void OffboardMavros::transitionResponseCallback(const rclcpp::Client<mavros_msgs
     printSuccessInfo(future.get()->success, msg);
 }
 
-
 void OffboardMavros::takeoffResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future) {
     const bool success = future.get()->success;
     const char* msg[] = {
@@ -277,52 +306,12 @@ void OffboardMavros::landResponseCallback(const rclcpp::Client<mavros_msgs::srv:
     printSuccessInfo(success, msg);
 }
 // shared_future를 사용하는 이유는 비동기로 요청을 보내기 때문에 요청에 대한 응답을 받아야하기 때문이다.
-
-
-
-//return request
-
 void OffboardMavros::locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future) {
     const char* msg[] = {
         "Location command sent successfully", 
         "Failed to send location command"
     };
     printSuccessInfo(future.get()->success, msg);
-}
-
-void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
-    _cur_position = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
-    if (_cmd_flag == vtol::TAKEOFF) {
-        if (_global_position[vtol::ALT] > init_global_position[vtol::ALT] - 1) {
-            _cmd_flag = vtol::FLY;
-            _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
-            _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
-            DEBUG::print("Landing point North :", _prev_position[vtol::NORTH], BOLDYELLOW);
-            DEBUG::print("Landing point East  :", _prev_position[vtol::EAST], BOLDYELLOW);
-        }
-    } else if (_cmd_flag == vtol::TO_FIXED) {
-        DEBUG::print("North :", _cur_position[vtol::NORTH], WHITE);
-        DEBUG::print("East  :", _cur_position[vtol::EAST], WHITE);
-        if (_cur_position[vtol::NORTH] > _prev_position[vtol::NORTH] + 1 
-            || _cur_position[vtol::EAST] > _prev_position[vtol::EAST] + 1) {
-            DEBUG::print("Transition success North :", _cur_position[vtol::NORTH], BOLDYELLOW);
-            DEBUG::print("Transition success East  :", _cur_position[vtol::EAST], BOLDYELLOW);
-            _cmd_flag = vtol::FIXED;
-        }
-    } else if (_cmd_flag == vtol::TO_QUAD) {
-        if (_cur_position[vtol::NORTH] - _prev_position[vtol::NORTH] < 0.1
-            && _cur_position[vtol::EAST] - _prev_position[vtol::EAST] < 0.1) {
-            DEBUG::print("Transition success North :", _cur_position[vtol::NORTH], BOLDYELLOW);
-            DEBUG::print("Transition success East  :", _cur_position[vtol::EAST], BOLDYELLOW);
-            // _cmd_flag &= ~vtol::BIT_TRANSITION;
-            _cmd_flag = vtol::QUAD;
-        }
-        _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
-        _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
-    }
-
-
-
 }
 
 void OffboardMavros::waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future) {
