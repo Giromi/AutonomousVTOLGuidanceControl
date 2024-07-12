@@ -118,6 +118,7 @@ void OffboardMavros::updateMissionMode(void) {
     updateCustomMode(vtol::FCU_MISSION, &OffboardMavros::missionResponseCallback);
 }
 
+
 void OffboardMavros::updateCustomMode(const std::string& input_mode,
         void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture)) {
     auto request = std::make_shared<mavros_msgs::srv::SetMode::Request>();

@@ -7,8 +7,12 @@ std::array<double, 6>		            OffboardMavros::_local_velocity{0.0, 0.0, 0.0
 std::array<float, 3>		            OffboardMavros::_global_position{-1.0f, -1.0f, -1.0f}; 
 std::array<double, 3>		            OffboardMavros::_cur_position{};
 std::array<double, 3>		            OffboardMavros::_prev_position{};
+<<<<<<< HEAD
 double                                  OffboardMavros::_offset = 0.78;
 std::array<double, 4>                   OffboardMavros::_manual_velocity = {10 , 0.0, 0.0, 0.0};
+=======
+double                                  OffboardMavros::_offset = 1.0;
+>>>>>>> 84407366964f02a4e73de2269f47e49f37456bde
 
 /**
  * @brief OffboardMavros 생성자

@@ -205,5 +205,3 @@ void OffboardMavros::publishWaypoint(void) {
     // // }
     // waypoints_pub->publish(msg_waypoint_list);
 }
-
-
