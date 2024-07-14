@@ -3,19 +3,58 @@
 
 /* -- Publish Functions -- */
 void    OffboardMavros::publish(void) {
+
     if (_cmd_flag == vtol::INIT) {
         publishGpOrigin();
     }
     if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
         return ;
     } 
+    publishRawAttitude();
+
+    // publishCmdVel();
+    // publishVelocity();
+    // 
+    // publishManual();
+    // publishRawAttitude();
+    // publishRawLocal();
     // if (fcu_state.mode == "AUTO.MISSION") {
     // publishWaypoint();
     // } else {
-    //     publishLocal(); // publishLocalFixed();
+    //     publishRawLocal(); // publishLocalFixed();
     // }
 }
 
+void OffboardMavros::publishCmdVel(void) {
+    RCLCPP_INFO(this->get_logger(), "publishing cmd_vel");
+    geometry_msgs::msg::TwistStamped cmd_vel;
+    cmd_vel.header.stamp = this->now();
+    cmd_vel.header.frame_id = "standard_vtol_0";
+    cmd_vel.twist.linear.x = _local_velocity[0];
+    cmd_vel.twist.linear.y = _local_velocity[1];
+    cmd_vel.twist.linear.z = _local_velocity[2];
+    cmd_vel.twist.angular.x = _local_velocity[3];
+    cmd_vel.twist.angular.y = _local_velocity[4];
+    cmd_vel.twist.angular.z = _local_velocity[5];
+    att_pub->publish(cmd_vel);
+
+
+}
+
+void OffboardMavros::publishManual(void) {
+    RCLCPP_INFO(this->get_logger(), "publishing manual");
+    mavros_msgs::msg::ManualControl manual;
+    manual.header.stamp = this->now();
+    manual.header.frame_id = "standard_vtol_0";
+    manual.x = _local_velocity[0];
+    manual.y = _local_velocity[1];
+    manual.z = _local_velocity[2];
+    manual.r = _local_velocity[3];
+    manual.buttons = 10;
+    vc_manual_pub->publish(manual);
+    
+
+}
 
 void OffboardMavros::publishGpOrigin(void) {
     // RCLCPP_INFO(this->get_logger(), "publishing origin");
@@ -62,8 +101,8 @@ void OffboardMavros::publishVelocity(void) {
     local_vel_pub->publish(vel);
 }
 
-void OffboardMavros::publishLocal(void) {
-    std::cout << "Publishing local..." << std::endl;
+void OffboardMavros::publishRawLocal(void) {
+    std::cout << "Publishing Raw local..." << std::endl;
     mavros_msgs::msg::PositionTarget local_msg;
     local_msg.header.stamp = this->now();
     local_msg.header.frame_id = "standard_vtol_0";
@@ -81,6 +120,34 @@ void OffboardMavros::publishLocal(void) {
     local_msg.yaw_rate      = _local_velocity[5];
     local_pub->publish(local_msg);
 }
+
+void OffboardMavros::publishRawAttitude(void) {
+    // std::cout << "Publishing Raw Attitude ..." << std::endl;
+    mavros_msgs::msg::AttitudeTarget target_msg;
+    target_msg.header.stamp = this->now();
+    target_msg.header.frame_id = "standard_vtol_0";
+    target_msg.type_mask =  \
+                            mavros_msgs::msg::AttitudeTarget::IGNORE_ROLL_RATE  |
+                            mavros_msgs::msg::AttitudeTarget::IGNORE_PITCH_RATE |
+                            mavros_msgs::msg::AttitudeTarget::IGNORE_YAW_RATE;
+                            // mavros_msgs::msg::AttitudeTarget::IGNORE_ATTITUDE;
+                             // mavros_msgs::msg::AttitudeTarget::IGNORE_THRUST;
+
+    tf2::Quaternion q;
+    q.setRPY(_local_velocity[3],_local_velocity[4],_local_velocity[5]);
+    target_msg.orientation.w    =  q.w();      //
+    target_msg.orientation.x    =  q.x();      // roll : 키보드 2, 3  (2 : 반시계, 3 : 시계)
+    target_msg.orientation.y    =  q.y();      //
+    target_msg.orientation.z    =  q.z();      // pitch : 키보드 4, 5 (4 : 하강,   5 : 상승)
+    // target_msg.body_rate.x    =  _local_velocity[3];    
+    // target_msg.body_rate.y    =  _local_velocity[4]; 
+    // target_msg.body_rate.z    =  _local_velocity[5]; 
+
+    target_msg.thrust = _local_velocity[2];
+    raw_attitude_pub->publish(target_msg);
+}
+
+
 
 
 /**
@@ -106,7 +173,7 @@ void OffboardMavros::publishLocalFixed(void) {
     local_msg.velocity.x = _local_velocity[0]; // EAST
     local_msg.velocity.y = _local_velocity[1]; // North
     local_msg.velocity.z = _local_velocity[2]; // UP
-    local_msg.yaw = _local_velocity[4];
+    local_msg.yaw =      _local_velocity[4];
     local_msg.yaw_rate = _local_velocity[5];
 
     local_pub->publish(local_msg);

@@ -3,6 +3,7 @@
 
 
 # include <rclcpp/rclcpp.hpp>
+# include <tf2/LinearMath/Quaternion.h>
 # include <geometry_msgs/msg/pose_stamped.hpp>
 # include <geometry_msgs/msg/twist_stamped.hpp>
 # include <geographic_msgs/msg/geo_pose_stamped.hpp>
@@ -10,6 +11,7 @@
 # include <mavros_msgs/msg/actuator_control.hpp>
 # include <mavros_msgs/msg/override_rc_in.hpp>
 # include <mavros_msgs/msg/position_target.hpp>
+# include <mavros_msgs/msg/attitude_target.hpp>
 # include <mavros_msgs/msg/extended_state.hpp>
 # include <mavros_msgs/srv/command_bool.hpp>
 # include <mavros_msgs/srv/command_tol.hpp>
@@ -17,7 +19,13 @@
 # include <mavros_msgs/msg/command_code.hpp>
 # include <mavros_msgs/srv/set_mode.hpp>
 # include <mavros_msgs/msg/waypoint_list.hpp>
+
 # include <mavros_msgs/msg/waypoint.hpp>
+# include <mavros_msgs/msg/waypoint.hpp>
+# include <mavros_msgs/msg/manual_control.hpp>
+# include <geometry_msgs/msg/twist_stamped.hpp>
+
+
 # include <mavros_msgs/msg/waypoint_reached.hpp>
 # include <mavros_msgs/srv/command_vtol_transition.hpp>
 # include <mavros_msgs/srv/waypoint_push.hpp>
@@ -39,6 +47,9 @@
 # include "px4_ros_com/convention.hpp"
 # include "DEBUG.hpp"
 
+struct Quaternion {
+    double w, x, y, z;
+};
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
@@ -78,16 +89,22 @@ private:
     void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
     void    statusReady(void);
 
+
     /* -- Publish Functions -- */
     void    publish(void);
     void    publishPose(void);
     void    publishActuatorControls(void);
     void    publishVelocity(void); 
     void    publishAttitude(void);
-    void    publishLocal(void);
+    void    publishRawLocal(void);
+    void    publishRawAttitude(void);
     void    publishLocalFixed(void);
     void    publishWaypoint(void);
     void    publishGpOrigin(void);
+    void    publishCmdVel(void);
+    void    publishManual(void);
+
+
     /* -- Update Functions -- */
     void    updateArmingStatus(void); 
     void    updateDisarmingStatus(void); 
@@ -185,17 +202,20 @@ private:
     void            printSuccessInfo(bool success, const char* msg[]) const;
     static void     printReferenceInput(void); 
     bool            isGlobalPositionGettingValue(const t_global_position&) const;
+    const Quaternion rpy_to_quat(const double roll, const double pitch, const double yaw);
+
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr             local_vel_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      local_pub;
     rclcpp::Publisher<mavros_msgs::msg::PositionTarget>::SharedPtr      target_local_pub;
-    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
-  
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
+    rclcpp::Publisher<mavros_msgs::msg::ManualControl>::SharedPtr       vc_manual_pub;
+    rclcpp::Publisher<mavros_msgs::msg::AttitudeTarget>::SharedPtr      raw_attitude_pub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
     rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      cmd_vel_pub;
     rclcpp::Publisher<geographic_msgs::msg::GeoPoseStamped>::SharedPtr  gp_origin_pub;
 
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client;
@@ -208,7 +228,7 @@ private:
     rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedPtr           waypoint_push_client;
     rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedPtr          waypoint_clear_client;
 
-
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        gps_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
@@ -226,12 +246,14 @@ private:
     //TODO: static 지워서 멤버변수로 변경
 
     static vtol::State                                                  _cmd_flag;
-    static std::array<double, 3>		                                _local_position;
-    static std::array<float, 3>		                                    _global_position;
-    static std::array<double, 6>		                                _local_velocity;
-    static std::array<double, 3>		                                _cur_position;
-    static std::array<double, 3>		                                _prev_position;
-    static const std::string				                            _arrow_string;
+    static std::array<double, 3>		                        _local_position;
+    static std::array<float, 3>		                                _global_position;
+    static std::array<double, 6>		                        _local_velocity;
+    static std::array<double, 3>	                                _cur_position;
+    static std::array<double, 3>		                        _prev_position;
+    static const std::string				                _arrow_string;
+    static std::array<double, 4>                                        _manual_velocity;
+
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
