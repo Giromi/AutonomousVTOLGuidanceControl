@@ -24,7 +24,7 @@ void OffboardMavros::initializePublishers(void) {
     att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mavros/setpoint_attitude/cmd_vel", 10);
     actuator_control_pub = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
 
-    waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", default_qos);
+    // waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", default_qos);
     gp_origin_pub = this->create_publisher<geographic_msgs::msg::GeoPoseStamped>("/mavros/global_position/set_gp_origin", default_qos);
 }
 
@@ -86,7 +86,7 @@ void OffboardMavros::initializeVariables(void) {
 
     // queue는 리스트초기화 안됨
     // deque로 초기화 후 queue로 이동했음
-    const std::deque<vtol::Waypoint> input({ 
+    const std::deque<vtol::ReferenceWaypoint> input({ 
         {0.0f, 0.0f, 0.0f},
         {0.0f, 0.0f, 2.0f},
         {0.0f, 2.0f, 2.0f},
@@ -97,7 +97,7 @@ void OffboardMavros::initializeVariables(void) {
     });
 
     // 이동 시멘틱을 사용하여 operator=으로 std::queue 초기화
-    waypoints = std::queue<vtol::Waypoint>(std::move(input));
+    ref_waypoints = std::queue<vtol::ReferenceWaypoint>(std::move(input));
 
     init_global_position = {-1.0f, -1.0f, -1.0f};
 
@@ -217,25 +217,43 @@ void OffboardMavros::triangleScenarioFW(const std::array<double, 3>& target_pos)
                 {0, 0, 0, 1.57}, { 0, target_pos[1], target_pos[2]});
 }
 
-const std::array<vtol::Waypoint, 4> square = {{
-    {0.0f, 0.0f, 30.0f},
-    {100.0f, 0.0f, 30.0f},
-    {100.0f, 100.0f, 30.0f},
-    {0.0f, 100.0f, 30.0f},
-}};
-
 void OffboardMavros::initializeWaypoints(void) {
     // WP0
                                                    /*{ 상대, 절대,   절대 } */
     std::array<double, 3> home_alt_global_position = { 20.0, 47.398, 8.54616 };
     triangleScenarioFW(home_alt_global_position);
 
-
-    // Waypoint 1
-
-    //
-
-
-
-    std::cout << "Waypoint list size: " << waypoint_list.waypoints.size() << std::endl;
+    // wp_manager.setPath(_star_path);
+    wp_manager.setPath(_square_path);
+    RCLCPP_INFO(this->get_logger(), "Waypoint list size: %u", wp_manager.size());
+    wp_manager.printWaypoints();
 }
+
+const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
+    Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
+    Eigen::Vector4d(200.0,      200.0,	30.0,      1.57),
+    Eigen::Vector4d(  0.0,      200.0,	    30.0,      -1.57),
+    Eigen::Vector4d(  0.0,        0.0,	    30.0,      0.00),
+};
+
+const std::array<Eigen::Vector4d, 4> OffboardMavros::_triangle_path = {
+    Eigen::Vector4d(0, 0, 0, 0),
+    Eigen::Vector4d(0, 10, 0, 0),
+    Eigen::Vector4d(10, 10, 0, 0),
+    Eigen::Vector4d(5, 5, 0, 0),
+};
+
+const std::array<Eigen::Vector4d, 11> OffboardMavros::_star_path = {
+    Eigen::Vector4d(100.0,   0.0,      30.0,  0.0),    // 동쪽
+    Eigen::Vector4d(40.45,  29.39,     30.0,  2.214),  // 북동쪽
+    Eigen::Vector4d(30.9,   95.11,     30.0,  1.57),   // 북쪽
+    Eigen::Vector4d(-15.45, 47.55,     30.0,  1.884),  // 북서쪽
+    Eigen::Vector4d(-80.9,  58.78,     30.0,  2.042),  // 북서쪽
+    Eigen::Vector4d(-50.0,   0.0,      30.0,  3.14),   // 서쪽
+    Eigen::Vector4d(-80.9, -58.78,     30.0, -2.042),  // 남서쪽
+    Eigen::Vector4d(-15.45, -47.55,    30.0, -1.257),  // 남서쪽
+    Eigen::Vector4d(30.9,  -95.11,     30.0, -1.57),   // 남쪽
+    Eigen::Vector4d(40.45, -29.39,     30.0, -2.214),  // 남동쪽
+    Eigen::Vector4d(100.0,   0.0,      30.0,  0.0)     // 동쪽
+};
+
