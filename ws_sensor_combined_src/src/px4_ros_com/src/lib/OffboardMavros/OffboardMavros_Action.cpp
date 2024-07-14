@@ -128,11 +128,10 @@ void OffboardMavros::_actionLanding(void) {
 }
 
 void OffboardMavros::_actionStart(void) {
-    if (OffboardMavros::_cmd_flag == vtol::FLY || OffboardMavros::_cmd_flag == vtol::FIXED) {
-        OffboardMavros::_cmd_flag = vtol::START;
-    } else if (OffboardMavros::_cmd_flag == vtol::START 
-            || OffboardMavros::_cmd_flag == vtol::MISSION) {
-        OffboardMavros::_cmd_flag = vtol::FLY;
+    if (OffboardMavros::_cmd_flag & vtol::BIT_START) {
+        OffboardMavros::_cmd_flag &= ~vtol::BIT_START;
+    } else {
+        OffboardMavros::_cmd_flag |= vtol::BIT_START;
     }
 }
 

@@ -6,10 +6,9 @@ void    OffboardMavros::publish(void) {
     if (_cmd_flag == vtol::INIT) {
         publishGpOrigin();
     }
-    if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
+    if (_cmd_flag == vtol::MC_START || _cmd_flag == vtol::FW_START) {
         return ;
     } 
-
 
     // publishPose();
     publishLocalRaw();
@@ -31,6 +30,8 @@ void OffboardMavros::publishGpOrigin(void) {
     origin.pose.position.longitude = 8.54616;
 
     gp_origin_pub->publish(origin);
+    // DEBUG::print("publishing origin",     mavros_msgs::msg::State::MODE_PX4_MANUAL, BOLDGREEN);
+;
 }
 
 void OffboardMavros::publishPose(void) {
@@ -53,7 +54,6 @@ void OffboardMavros::publishActuatorControls(void) {
     RCLCPP_INFO(this->get_logger(), "publishing actuator controls");
     actuator_control_pub->publish(actuator_control_msg);
 }
-
 
 void OffboardMavros::publishVelocity(void) {
     geometry_msgs::msg::Twist vel;
@@ -97,22 +97,20 @@ void OffboardMavros::publishLocalRaw(void) {
     msg->header.stamp = this->now();
     msg->header.frame_id = "cau_vtol";
     msg->coordinate_frame = mavros_msgs::msg::PositionTarget::FRAME_LOCAL_NED;
-    msg->type_mask = \
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PX |
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PY |
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PZ |
-                          mavros_msgs::msg::PositionTarget::IGNORE_VX  |
-                          mavros_msgs::msg::PositionTarget::IGNORE_VY  |
-                          mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFX |
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFY |
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFZ |   
-                          mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
-                          // mavros_msgs::msg::PositionTarget::IGNORE_YAW |
-                          //
-                          mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
+    msg->type_mask = mavros_msgs::msg::PositionTarget::IGNORE_VX  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_VY  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFX |
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFY |
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFZ |   
+                     mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
 
-    
+    // FW일 때에는 yaw를 무시한다.
+    msg->type_mask |= (_cmd_flag & vtol::BIT_FIXED) 
+                        ? mavros_msgs::msg::PositionTarget::IGNORE_YAW : 0;
+
+    DEBUG::print("type mask: ", msg->type_mask, BOLDWHITE);
     msg->position.x = wp_manager.getTarget()[vtol::EAST]; // East
     msg->position.y = wp_manager.getTarget()[vtol::NORTH]; // North
     msg->position.z = wp_manager.getTarget()[vtol::UP]; // Up

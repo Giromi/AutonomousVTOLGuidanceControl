@@ -24,3 +24,11 @@ void OffboardMavros::printReferenceInput(void) {
 bool OffboardMavros::isGlobalPositionGettingValue(const t_global_position& input_global_position) const{
     return (input_global_position[0] >= 0 && input_global_position[1] >= 0 && input_global_position[2] >= 0);
 }
+
+void OffboardMavros::commandFlagTurnOn(const t_bit& flag) {
+    _cmd_flag |= flag;
+}
+
+void OffboardMavros::commandFlagTurnOff(const t_bit& flag) {
+    _cmd_flag &= ~flag;
+}

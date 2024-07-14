@@ -107,27 +107,33 @@ void OffboardMavros::stateCommandTakeOff (void){
     // }
 }
 
-void OffboardMavros::stateCommandFixed (void) {
+void OffboardMavros::stateCommandFixed(void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Fixed >");
     if (fcu_state.mode != vtol::FCU_POSITION) {
         updatePositionMode();
     }
 }
 
-void OffboardMavros::stateCommandStart (void) { 
+void OffboardMavros::stateCommandStartMC(void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command Start >");
-    if (fcu_state.mode == vtol::FCU_HOLD
-        || fcu_state.mode == vtol::FCU_POSITION) {
+    if (fcu_state.mode == vtol::FCU_HOLD) {
         updateOffboardMode();
     }
 }
 
-void OffboardMavros::stateCommandToFixed (void) {
+void OffboardMavros::stateCommandStartFW(void) { 
+    RCLCPP_INFO(this->get_logger(), "< State Command Start >");
+    if (fcu_state.mode == vtol::FCU_POSITION) {
+        updateOffboardMode();
+    }
+}
+
+void OffboardMavros::stateCommandToFixed(void) {
     RCLCPP_INFO(this->get_logger(), "< State Command To Fixed >");
     updateTransitionFixedStatus();
 }
 
-void OffboardMavros::stateCommandToQuad (void) {
+void OffboardMavros::stateCommandToQuad(void) {
     RCLCPP_INFO(this->get_logger(), "< State Command To Quad >");
     updateTransitionQuadStatus();
 }
@@ -160,7 +166,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     DEBUG::printArray("init_global_position : ", init_global_position, 3, MAGENTA);
     DEBUG::msg("[DEBUG] ", "-----------------\n");
 
-    const std::array<vtol::State,vtol::STATE_SIZE>::iterator  it = std::find(state_value_array.begin(), state_value_array.end(), _cmd_flag);
+    const std::array<t_bit, vtol::STATE_SIZE>::iterator  it = std::find(state_value_array.begin(), state_value_array.end(), _cmd_flag);
 //ros::Time::now() - last_request > ros::Duration(5.0)
     if (it == state_value_array.end()) {
         RCLCPP_ERROR(this->get_logger(), " Invalid State ");
@@ -174,7 +180,6 @@ void    OffboardMavros::statusReady(void) {
     if (OffboardMavros::_cmd_flag != vtol::READY) {
         return ;
     }
-
     if (fcu_state.mode != vtol::FCU_HOLD) {
         OffboardMavros::_cmd_flag = vtol::READY;
         updateCustomMode("AUTO.LOITER",
@@ -231,7 +236,7 @@ void OffboardMavros::localPositionCallback(const geometry_msgs::msg::PoseStamped
         }
         _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
         _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
-    } else if (_cmd_flag == vtol::START) {
+    } else if (_cmd_flag == vtol::MC_START) {
         localPositionCommandStart();
     }
 }

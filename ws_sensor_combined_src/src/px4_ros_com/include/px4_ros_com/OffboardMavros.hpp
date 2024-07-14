@@ -41,14 +41,15 @@
 # include "px4_ros_com/WaypointManager.hpp"
 # include "DEBUG.hpp"
 
+typedef unsigned int            t_bit;
+typedef std::array<double, 3>   t_position;
+typedef std::array<float, 3>    t_global_position;
+
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
 
 private:
-    typedef std::array<double, 3>   t_position;
-    typedef std::array<float, 3>    t_global_position;
-
 
 
 
@@ -125,7 +126,8 @@ private:
     void    stateCommandArmed(void);
     void    stateCommandFly(void);
     void    stateCommandTakeOff(void);
-    void    stateCommandStart(void);
+    void    stateCommandStartMC(void);
+    void    stateCommandStartFW(void);
     void    stateCommandMission(void);
     void    stateCommandFixed(void);
     void    stateCommandToFixed(void);
@@ -190,6 +192,8 @@ private:
     void            printSuccessInfo(bool success, const char* msg[]) const;
     static void     printReferenceInput(void); 
     bool            isGlobalPositionGettingValue(const t_global_position&) const;
+    void            commandFlagTurnOff(const t_bit& flag);
+    void            commandFlagTurnOn(const t_bit& flag);
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
@@ -229,7 +233,7 @@ private:
 
     //TODO: static 지워서 멤버변수로 변경
 
-    static vtol::State                                                  _cmd_flag;
+    static t_bit                                                        _cmd_flag;
     static std::array<double, 3>		                                _local_position;
     static std::array<float, 3>		                                    _global_position;
     static std::array<double, 6>		                                _local_velocity;
@@ -239,7 +243,7 @@ private:
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
-    std::array<vtol::State, vtol::STATE_SIZE>                           state_value_array;
+    std::array<t_bit, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
 
     /* 일바적인 모든 용*/

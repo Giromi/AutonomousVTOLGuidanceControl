@@ -67,22 +67,7 @@ void OffboardMavros::initializeTimers(const int rate_hz) {
             std::bind(&OffboardMavros::publish, this));
 }
 
-
 void OffboardMavros::initializeVariables(void) {
-    state_value_array = { 
-        vtol::INIT, 
-        vtol::READY, 
-        vtol::ARMED,
-        vtol::FLY,
-        vtol::TAKEOFF,
-        vtol::LAND,
-        vtol::START,
-        vtol::MISSION,
-        vtol::FIXED,
-        vtol::TO_FIXED,
-        vtol::TO_QUAD
-    };
-
 
     // queue는 리스트초기화 안됨
     // deque로 초기화 후 queue로 이동했음
@@ -101,6 +86,20 @@ void OffboardMavros::initializeVariables(void) {
 
     init_global_position = {-1.0f, -1.0f, -1.0f};
 
+    state_value_array = { 
+        vtol::INIT, 
+        vtol::READY, 
+        vtol::ARMED,
+        vtol::FLY,
+        vtol::TAKEOFF,
+        vtol::LAND,
+        vtol::MISSION,
+        vtol::FIXED,
+        vtol::TO_FIXED,
+        vtol::TO_QUAD,
+        vtol::MC_START,
+        vtol::FW_START,
+    };
 }
 
 void OffboardMavros::initializeStateFuncPointerArray(
@@ -112,18 +111,20 @@ void OffboardMavros::initializeStateFuncPointerArray(
 }
 
 void OffboardMavros::initializeFunctionPointerArray(void) {
-    initializeStateFuncPointerArray( { std::bind(&OffboardMavros::stateCommandInit, this),
-                                       std::bind(&OffboardMavros::stateCommandReady,this),
-                                       std::bind(&OffboardMavros::stateCommandArmed, this),
-                                       std::bind(&OffboardMavros::stateCommandFly, this),
-                                       std::bind(&OffboardMavros::stateCommandTakeOff, this),
-                                       std::bind(&OffboardMavros::stateCommandLand, this),
-                                       std::bind(&OffboardMavros::stateCommandStart, this),
-                                       std::bind(&OffboardMavros::stateCommandMission, this),
-                                       std::bind(&OffboardMavros::stateCommandFixed, this),
-                                       std::bind(&OffboardMavros::stateCommandToFixed, this),
-                                       std::bind(&OffboardMavros::stateCommandToQuad, this)
-                                    } );
+    initializeStateFuncPointerArray({ 
+            std::bind(&OffboardMavros::stateCommandInit,    this),
+            std::bind(&OffboardMavros::stateCommandReady,   this),
+            std::bind(&OffboardMavros::stateCommandArmed,   this),
+            std::bind(&OffboardMavros::stateCommandFly,     this),
+            std::bind(&OffboardMavros::stateCommandTakeOff, this),
+            std::bind(&OffboardMavros::stateCommandLand,    this),
+            std::bind(&OffboardMavros::stateCommandMission, this),
+            std::bind(&OffboardMavros::stateCommandFixed,   this),
+            std::bind(&OffboardMavros::stateCommandToFixed, this),
+            std::bind(&OffboardMavros::stateCommandToQuad,  this),
+            std::bind(&OffboardMavros::stateCommandStartMC, this),
+            std::bind(&OffboardMavros::stateCommandStartFW, this),
+    });
 }
 
 /**
@@ -219,7 +220,6 @@ void OffboardMavros::triangleScenarioFW(const std::array<double, 3>& target_pos)
 
 void OffboardMavros::initializeWaypoints(void) {
     // WP0
-                                                   /*{ 상대, 절대,   절대 } */
     std::array<double, 3> home_alt_global_position = { 20.0, 47.398, 8.54616 };
     triangleScenarioFW(home_alt_global_position);
 
