@@ -36,7 +36,9 @@
 # include <cstdio>
 # include <queue>
 # include <deque>
+# include <Eigen/Dense>
 # include "px4_ros_com/convention.hpp"
+# include "px4_ros_com/WaypointManager.hpp"
 # include "DEBUG.hpp"
 
 class OffboardMavros : public rclcpp::Node {
@@ -85,7 +87,7 @@ private:
     void    publishVelocity(void); 
     void    publishAttitude(void);
     void    publishLocal(void);
-    void    publishLocalFixed(void);
+    void    publishLocalRaw(void);
     void    publishWaypoint(void);
     void    publishGpOrigin(void);
     /* -- Update Functions -- */
@@ -120,16 +122,19 @@ private:
     /* -- StateCommand Function*/
     void    stateCommandInit(void);
     void    stateCommandReady(void);
-    void    stateCommandArmed (void);
-    void    stateCommandFly (void);
-    void    stateCommandTakeOff (void);
-    void    stateCommandStart (void);
+    void    stateCommandArmed(void);
+    void    stateCommandFly(void);
+    void    stateCommandTakeOff(void);
+    void    stateCommandStart(void);
     void    stateCommandMission(void);
-    void    stateCommandFixed (void);
-    void    stateCommandToFixed (void);
-    void    stateCommandToQuad (void);
-    void    stateCommandLand (void);
+    void    stateCommandFixed(void);
+    void    stateCommandToFixed(void);
+    void    stateCommandToQuad(void);
+    void    stateCommandLand(void);
 
+
+    void    localPositionCommandStart(void);
+    // void    is_arrived_waypoint(const std::array<float, 3> target);
 
     /* -- Callback Functions -- */
     void	offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
@@ -194,7 +199,6 @@ private:
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
   
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
-    rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
     rclcpp::Publisher<geographic_msgs::msg::GeoPoseStamped>::SharedPtr  gp_origin_pub;
 
     rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr            arming_client;
@@ -206,7 +210,7 @@ private:
     rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client;
     rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedPtr           waypoint_push_client;
     rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedPtr          waypoint_clear_client;
-
+    // rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
 
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    local_position_sub;
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        global_posistion_sub;
@@ -237,9 +241,20 @@ private:
     static void                                                         (*actionFunc[])(void);
     std::array<vtol::State, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
-    std::queue<vtol::Waypoint>                                          waypoints;
-    bool                                                                gps_locked{false};
 
+    /* 일바적인 모든 용*/
+
+    /* mavros mission send 용*/
+    std::queue<vtol::ReferenceWaypoint>                                 ref_waypoints;
+    bool                                                                gps_locked{false};
+    
+    WaypointManager<Eigen::Vector4d>                               wp_manager;
+    static const std::array<Eigen::Vector4d, 4>                    _square_path;
+    static const std::array<Eigen::Vector4d, 4>                    _triangle_path;
+    static const std::array<Eigen::Vector4d, 11>                   _star_path;
 };
+
+
+
 
 #endif

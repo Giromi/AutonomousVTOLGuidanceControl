@@ -5,7 +5,7 @@
 
 namespace vtol {
     //숫자로 사용
-    enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
+    enum BodyFrame {EAST, NORTH, UP, YAW};  // enum 의도적 사용
   
     enum Mav {
         MAV_CMD_CONDITION_YAW   = 115,
@@ -87,13 +87,13 @@ namespace vtol {
     constexpr double RAD_2_DEG = 180 / M_PI;
 
 
-    struct Waypoint {
+    struct ReferenceWaypoint {
         float x;
         float y;
         float z;
         float yaw;
 
-        Waypoint(float x, float y, float z, float yaw=0.0f) 
+        ReferenceWaypoint(float x, float y, float z, float yaw=0.0f) 
             : x(x), y(y), z(z), yaw(yaw) { }
     };
 

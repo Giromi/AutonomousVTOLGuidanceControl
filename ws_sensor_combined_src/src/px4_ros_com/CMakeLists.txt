@@ -40,6 +40,7 @@ pkg_check_modules(UUID REQUIRED uuid)
 # Setup targets #
 #################
 include_directories(include)
+include_directories(src/lib)
 
 # Add frame_transforms lib
 add_library(frame_transforms SHARED src/lib/frame_transforms.cpp)
