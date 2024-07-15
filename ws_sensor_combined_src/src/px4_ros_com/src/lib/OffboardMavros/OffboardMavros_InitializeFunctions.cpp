@@ -23,8 +23,9 @@ void OffboardMavros::initializePublishers(void) {
     local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("/mavros/setpoint_raw/local", 10);
     att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mavros/setpoint_attitude/cmd_vel", 10);
     actuator_control_pub = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
+
+    // waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", default_qos);
     vc_manual_pub =this->create_publisher<mavros_msgs::msg::ManualControl>( "/mavros/manual_control/control", default_qos);
-    waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", default_qos);
     gp_origin_pub = this->create_publisher<geographic_msgs::msg::GeoPoseStamped>("/mavros/global_position/set_gp_origin", default_qos);
     raw_attitude_pub = this->create_publisher<mavros_msgs::msg::AttitudeTarget>("/mavros/setpoint_raw/attitude", default_qos);
 }
@@ -35,16 +36,15 @@ void OffboardMavros::initializeSubscribers(void) {
     const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
 
     state_sub = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
-    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
 
-    current_pos_sub = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
-            std::bind(&OffboardMavros::currentPositionCallback, this, std::placeholders::_1
-                ));
+    local_position_sub = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
+            std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1));
+    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
 
     pose_sub = create_subscription<geometry_msgs::msg::PoseStamped>(
             "/mavros/local_position/pose", default_qos, std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1));
 
-    gps_sub =create_subscription<sensor_msgs::msg::NavSatFix>(
+    global_posistion_sub =create_subscription<sensor_msgs::msg::NavSatFix>(
             "/mavros/global_position/global", default_qos, std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1));
 }
 
@@ -56,6 +56,8 @@ void    OffboardMavros::initializeClients(void) {
     location_client = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
     transition_client = this->create_client<mavros_msgs::srv::CommandVtolTransition>("/mavros/cmd/vtol_transition");
     cmd_client = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
+
+    // 이거 사용할 빠에는 QGC로 하는게 나음
     waypoint_push_client = this->create_client<mavros_msgs::srv::WaypointPush>("/mavros/mission/push");
     waypoint_clear_client = this->create_client<mavros_msgs::srv::WaypointClear>("/mavros/mission/clear");
 }
@@ -67,26 +69,11 @@ void OffboardMavros::initializeTimers(const int rate_hz) {
             std::bind(&OffboardMavros::publish, this)); 
 }
 
-
 void OffboardMavros::initializeVariables(void) {
-    state_value_array = { 
-        vtol::INIT, 
-        vtol::READY, 
-        vtol::ARMED,
-        vtol::FLY,
-        vtol::TAKEOFF,
-        vtol::LAND,
-        vtol::START,
-        vtol::MISSION,
-        vtol::FIXED,
-        vtol::TO_FIXED,
-        vtol::TO_QUAD
-    };
-
 
     // queue는 리스트초기화 안됨
     // deque로 초기화 후 queue로 이동했음
-    const std::deque<vtol::Waypoint> input({ 
+    const std::deque<vtol::ReferenceWaypoint> input({ 
         {0.0f, 0.0f, 0.0f},
         {0.0f, 0.0f, 2.0f},
         {0.0f, 2.0f, 2.0f},
@@ -97,10 +84,24 @@ void OffboardMavros::initializeVariables(void) {
     });
 
     // 이동 시멘틱을 사용하여 operator=으로 std::queue 초기화
-    waypoints = std::queue<vtol::Waypoint>(std::move(input));
+    ref_waypoints = std::queue<vtol::ReferenceWaypoint>(std::move(input));
 
     init_global_position = {-1.0f, -1.0f, -1.0f};
 
+    state_value_array = { 
+        vtol::INIT, 
+        vtol::READY, 
+        vtol::ARMED,
+        vtol::FLY,
+        vtol::TAKEOFF,
+        vtol::LAND,
+        vtol::MISSION,
+        vtol::FIXED,
+        vtol::TO_FIXED,
+        vtol::TO_QUAD,
+        vtol::MC_START,
+        vtol::FW_START,
+    };
 }
 
 void OffboardMavros::initializeStateFuncPointerArray(
@@ -112,18 +113,20 @@ void OffboardMavros::initializeStateFuncPointerArray(
 }
 
 void OffboardMavros::initializeFunctionPointerArray(void) {
-    initializeStateFuncPointerArray( { std::bind(&OffboardMavros::stateCommandInit, this),
-                                       std::bind(&OffboardMavros::stateCommandReady,this),
-                                       std::bind(&OffboardMavros::stateCommandArmed, this),
-                                       std::bind(&OffboardMavros::stateCommandFly, this),
-                                       std::bind(&OffboardMavros::stateCommandTakeOff, this),
-                                       std::bind(&OffboardMavros::stateCommandLand, this),
-                                       std::bind(&OffboardMavros::stateCommandStart, this),
-                                       std::bind(&OffboardMavros::stateCommandMission, this),
-                                       std::bind(&OffboardMavros::stateCommandFixed, this),
-                                       std::bind(&OffboardMavros::stateCommandToFixed, this),
-                                       std::bind(&OffboardMavros::stateCommandToQuad, this)
-                                    } );
+    initializeStateFuncPointerArray({ 
+            std::bind(&OffboardMavros::stateCommandInit,    this),
+            std::bind(&OffboardMavros::stateCommandReady,   this),
+            std::bind(&OffboardMavros::stateCommandArmed,   this),
+            std::bind(&OffboardMavros::stateCommandFly,     this),
+            std::bind(&OffboardMavros::stateCommandTakeOff, this),
+            std::bind(&OffboardMavros::stateCommandLand,    this),
+            std::bind(&OffboardMavros::stateCommandMission, this),
+            std::bind(&OffboardMavros::stateCommandFixed,   this),
+            std::bind(&OffboardMavros::stateCommandToFixed, this),
+            std::bind(&OffboardMavros::stateCommandToQuad,  this),
+            std::bind(&OffboardMavros::stateCommandStartMC, this),
+            std::bind(&OffboardMavros::stateCommandStartFW, this),
+    });
 }
 
 /**
@@ -219,7 +222,40 @@ void OffboardMavros::triangleScenarioFW(const std::array<double, 3>& target_pos)
 
 void OffboardMavros::initializeWaypoints(void) {
     // WP0
-                                                   /*{ 상대, 절대,   절대 } */
     std::array<double, 3> home_alt_global_position = { 20.0, 47.398, 8.54616 };
     triangleScenarioFW(home_alt_global_position);
+
+    // wp_manager.setPath(_star_path);
+    wp_manager.setPath(_square_path);
+    RCLCPP_INFO(this->get_logger(), "Waypoint list size: %u", wp_manager.size());
+    wp_manager.printWaypoints();
 }
+
+const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
+    Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
+    Eigen::Vector4d(200.0,      200.0,	30.0,      1.57),
+    Eigen::Vector4d(  0.0,      200.0,	    30.0,      3.14),
+    Eigen::Vector4d(  0.0,        0.0,	    30.0,      -1.57),
+};
+
+const std::array<Eigen::Vector4d, 4> OffboardMavros::_triangle_path = {
+    Eigen::Vector4d(0, 0, 0, 0),
+    Eigen::Vector4d(0, 10, 0, 0),
+    Eigen::Vector4d(10, 10, 0, 0),
+    Eigen::Vector4d(5, 5, 0, 0),
+};
+
+const std::array<Eigen::Vector4d, 11> OffboardMavros::_star_path = {
+    Eigen::Vector4d(100.0,   0.0,      30.0,  0.0),    // 동쪽
+    Eigen::Vector4d(40.45,  29.39,     30.0,  2.214),  // 북동쪽
+    Eigen::Vector4d(30.9,   95.11,     30.0,  1.57),   // 북쪽
+    Eigen::Vector4d(-15.45, 47.55,     30.0,  1.884),  // 북서쪽
+    Eigen::Vector4d(-80.9,  58.78,     30.0,  2.042),  // 북서쪽
+    Eigen::Vector4d(-50.0,   0.0,      30.0,  3.14),   // 서쪽
+    Eigen::Vector4d(-80.9, -58.78,     30.0, -2.042),  // 남서쪽
+    Eigen::Vector4d(-15.45, -47.55,    30.0, -1.257),  // 남서쪽
+    Eigen::Vector4d(30.9,  -95.11,     30.0, -1.57),   // 남쪽
+    Eigen::Vector4d(40.45, -29.39,     30.0, -2.214),  // 남동쪽
+    Eigen::Vector4d(100.0,   0.0,      30.0,  0.0)     // 동쪽
+};
+

@@ -5,7 +5,7 @@
 
 namespace vtol {
     //숫자로 사용
-    enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
+    enum BodyFrame {EAST, NORTH, UP, YAW};  // enum 의도적 사용
   
     enum Mav {
         MAV_CMD_CONDITION_YAW   = 115,
@@ -33,18 +33,18 @@ namespace vtol {
 
     enum State {                     // enum class 타입 안정성 사용
         INIT,
-        READY       =   INIT    | BIT_READY,              // Before arming
-        MISSION     =   READY   | BIT_MISSION,     // Before takeoff
-        ARMED       =   READY   | BIT_ARMED,      // After arming
-        FLY         =   ARMED   | BIT_FLY,    // After takeoff
-        TAKEOFF     =   FLY     | BIT_TAKEOFF,    // After takeoff
-        LAND        =   FLY     | BIT_LAND,       // After land
-        START       =   FLY     | BIT_START,     // Before takeoff
-        QUAD        =   FLY,
-        FIXED       =   FLY     | BIT_FIXED,      // Before transition
-        TO_FIXED    =   QUAD    | BIT_TRANSITION, // Before transition
-        TO_QUAD     =   FIXED   | BIT_TRANSITION, // Before transition
-                                                  //
+        READY           =   INIT    | BIT_READY,              // Before arming
+        MISSION         =   READY   | BIT_MISSION,     // Before takeoff
+        ARMED           =   READY   | BIT_ARMED,      // After arming
+        FLY             =   ARMED   | BIT_FLY,    // After takeoff
+        TAKEOFF         =   FLY     | BIT_TAKEOFF,    // After takeoff
+        LAND            =   FLY     | BIT_LAND,       // After land
+        QUAD            =   FLY,
+        FIXED           =   FLY     | BIT_FIXED,      // Before transition
+        TO_FIXED        =   QUAD    | BIT_TRANSITION, // Before transition
+        TO_QUAD         =   FIXED   | BIT_TRANSITION, // Before transition
+        MC_START        =   QUAD    | BIT_START,     // Before takeoff
+        FW_START        =   FIXED   | BIT_START,      // Before transition
     };
 
     enum Position {
@@ -75,7 +75,7 @@ namespace vtol {
 
     constexpr float     NaN             = std::numeric_limits<float>::quiet_NaN();
     constexpr size_t    ACTION_SIZE     = 21;
-    constexpr size_t    STATE_SIZE      = 11;
+    constexpr size_t    STATE_SIZE      = 12;
     constexpr char      FCU_ARM[]       = "AUTO.RTL";
     constexpr char	    FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	    FCU_OFFBOARD[]  = "OFFBOARD";
@@ -87,13 +87,13 @@ namespace vtol {
     constexpr double RAD_2_DEG = 180 / M_PI;
 
 
-    struct Waypoint {
+    struct ReferenceWaypoint {
         float x;
         float y;
         float z;
         float yaw;
 
-        Waypoint(float x, float y, float z, float yaw=0.0f) 
+        ReferenceWaypoint(float x, float y, float z, float yaw=0.0f) 
             : x(x), y(y), z(z), yaw(yaw) { }
     };
 

@@ -44,20 +44,24 @@
 # include <cstdio>
 # include <queue>
 # include <deque>
+# include <Eigen/Dense>
 # include "px4_ros_com/convention.hpp"
+# include "px4_ros_com/WaypointManager.hpp"
 # include "DEBUG.hpp"
+
+typedef unsigned int            t_bit;
+typedef std::array<double, 3>   t_position;
+typedef std::array<float, 3>    t_global_position;
 
 struct Quaternion {
     double w, x, y, z;
 };
+
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
 
 private:
-    typedef std::array<double, 3>   t_position;
-    typedef std::array<float, 3>    t_global_position;
-
 
 
 
@@ -96,9 +100,10 @@ private:
     void    publishActuatorControls(void);
     void    publishVelocity(void); 
     void    publishAttitude(void);
-    void    publishRawLocal(void);
-    void    publishRawAttitude(void);
-    void    publishLocalFixed(void);
+    void    publishLocal(void);
+    void    publishLocalRaw(void);
+
+
     void    publishWaypoint(void);
     void    publishGpOrigin(void);
     void    publishCmdVel(void);
@@ -137,16 +142,20 @@ private:
     /* -- StateCommand Function*/
     void    stateCommandInit(void);
     void    stateCommandReady(void);
-    void    stateCommandArmed (void);
-    void    stateCommandFly (void);
-    void    stateCommandTakeOff (void);
-    void    stateCommandStart (void);
+    void    stateCommandArmed(void);
+    void    stateCommandFly(void);
+    void    stateCommandTakeOff(void);
+    void    stateCommandStartMC(void);
+    void    stateCommandStartFW(void);
     void    stateCommandMission(void);
-    void    stateCommandFixed (void);
-    void    stateCommandToFixed (void);
-    void    stateCommandToQuad (void);
-    void    stateCommandLand (void);
+    void    stateCommandFixed(void);
+    void    stateCommandToFixed(void);
+    void    stateCommandToQuad(void);
+    void    stateCommandLand(void);
 
+
+    void    localPositionCommandStart(void);
+    // void    is_arrived_waypoint(const std::array<float, 3> target);
 
     /* -- Callback Functions -- */
     void	offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
@@ -159,7 +168,7 @@ private:
     void    takeoffResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
     void    landResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future);
     void    locationResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
-    void    currentPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
+    void    localPositionCallback(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future);
     void    waypointClearResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedFuture future);
@@ -202,8 +211,9 @@ private:
     void            printSuccessInfo(bool success, const char* msg[]) const;
     static void     printReferenceInput(void); 
     bool            isGlobalPositionGettingValue(const t_global_position&) const;
+    void            commandFlagTurnOff(const t_bit& flag);
+    void            commandFlagTurnOn(const t_bit& flag);
     const Quaternion rpy_to_quat(const double roll, const double pitch, const double yaw);
-
 
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
@@ -227,9 +237,10 @@ private:
     rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client;
     rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedPtr           waypoint_push_client;
     rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedPtr          waypoint_clear_client;
+    // rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
 
-    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;
-    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        gps_sub;
+    rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    local_position_sub;
+    rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        global_posistion_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
@@ -245,23 +256,34 @@ private:
 
     //TODO: static 지워서 멤버변수로 변경
 
-    static vtol::State                                                  _cmd_flag;
-    static std::array<double, 3>		                        _local_position;
-    static std::array<float, 3>		                                _global_position;
-    static std::array<double, 6>		                        _local_velocity;
-    static std::array<double, 3>	                                _cur_position;
-    static std::array<double, 3>		                        _prev_position;
-    static const std::string				                _arrow_string;
-    static std::array<double, 4>                                        _manual_velocity;
+    static t_bit                                                _cmd_flag;
+    static std::array<double, 3>		                            _local_position;
+    static std::array<float, 3>		                              _global_position;
+    static std::array<double, 6>		                            _local_velocity;
+    static std::array<double, 3>		                            _cur_position;
+    static std::array<double, 3>		                            _prev_position;
+    static const std::string				                            _arrow_string;
+    static std::array<double, 4>                                _manual_velocity;
 
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
-    std::array<vtol::State, vtol::STATE_SIZE>                           state_value_array;
+    std::array<t_bit, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
-    std::queue<vtol::Waypoint>                                          waypoints;
-    bool                                                                gps_locked{false};
 
+    /* 일바적인 모든 용*/
+
+    /* mavros mission send 용*/
+    std::queue<vtol::ReferenceWaypoint>                                 ref_waypoints;
+    bool                                                                gps_locked{false};
+    
+    WaypointManager<Eigen::Vector4d>                               wp_manager;
+    static const std::array<Eigen::Vector4d, 4>                    _square_path;
+    static const std::array<Eigen::Vector4d, 4>                    _triangle_path;
+    static const std::array<Eigen::Vector4d, 11>                   _star_path;
 };
+
+
+
 
 #endif

@@ -7,10 +7,13 @@ void    OffboardMavros::publish(void) {
     if (_cmd_flag == vtol::INIT) {
         publishGpOrigin();
     }
-    if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
+    if (_cmd_flag != vtol::MC_START 
+        && _cmd_flag != vtol::FW_START) {
         return ;
     } 
-    publishRawAttitude();
+    // publishPose();
+    publishLocalRaw();
+    //publishRawAttitude();
 
     // publishCmdVel();
     // publishVelocity();
@@ -25,6 +28,7 @@ void    OffboardMavros::publish(void) {
     // }
 }
 
+
 void OffboardMavros::publishCmdVel(void) {
     RCLCPP_INFO(this->get_logger(), "publishing cmd_vel");
     geometry_msgs::msg::TwistStamped cmd_vel;
@@ -37,8 +41,6 @@ void OffboardMavros::publishCmdVel(void) {
     cmd_vel.twist.angular.y = _local_velocity[4];
     cmd_vel.twist.angular.z = _local_velocity[5];
     att_pub->publish(cmd_vel);
-
-
 }
 
 void OffboardMavros::publishManual(void) {
@@ -66,6 +68,8 @@ void OffboardMavros::publishGpOrigin(void) {
     origin.pose.position.longitude = 8.54616;
 
     gp_origin_pub->publish(origin);
+    // DEBUG::print("publishing origin",     mavros_msgs::msg::State::MODE_PX4_MANUAL, BOLDGREEN);
+;
 }
 
 void OffboardMavros::publishPose(void) {
@@ -88,7 +92,6 @@ void OffboardMavros::publishActuatorControls(void) {
     RCLCPP_INFO(this->get_logger(), "publishing actuator controls");
     actuator_control_pub->publish(actuator_control_msg);
 }
-
 
 void OffboardMavros::publishVelocity(void) {
     geometry_msgs::msg::Twist vel;
@@ -113,9 +116,9 @@ void OffboardMavros::publishRawLocal(void) {
                           mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
                           mavros_msgs::msg::PositionTarget::IGNORE_AFY	|
                           mavros_msgs::msg::PositionTarget::IGNORE_AFZ  ;
-    local_msg.velocity.x    = _local_velocity[0]; // East
-    local_msg.velocity.y    = _local_velocity[1]; // North
-    local_msg.velocity.z    = _local_velocity[2]; // Up
+    // local_msg.velocity.x    = _local_velocity[0]; // East
+    // local_msg.velocity.y    = _local_velocity[1]; // North
+    // local_msg.velocity.z    = _local_velocity[2]; // Up
     local_msg.yaw           = _local_velocity[4];
     local_msg.yaw_rate      = _local_velocity[5];
     local_pub->publish(local_msg);
@@ -152,58 +155,32 @@ void OffboardMavros::publishRawAttitude(void) {
 
 /**
  * @brief Publish local velocity
- * fixed wing은 velocity로 제어가 불가능해 보임
- * 왜인지 모르겟찌만, 아래처럼 하면 가능하긴 함. 다만 늦음
+ * 
  */
-void OffboardMavros::publishLocalFixed(void) {
-    std::cout << "Publishing local fixed..." << std::endl;
-    mavros_msgs::msg::PositionTarget local_msg;
-    local_msg.header.stamp = this->now();
-    local_msg.header.frame_id = "standard_vtol_0";
-    local_msg.coordinate_frame = mavros_msgs::msg::PositionTarget::FRAME_LOCAL_NED;
-    local_msg.type_mask = \
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PX |
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PY |
-                          //mavros_msgs::msg::PositionTarget::IGNORE_PZ |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFX |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFY |
-        mavros_msgs::msg::PositionTarget::IGNORE_AFZ;
-    //mavros_msgs::msg::PositionTarget::IGNORE_VZ;
-    //mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
-    local_msg.velocity.x = _local_velocity[0]; // EAST
-    local_msg.velocity.y = _local_velocity[1]; // North
-    local_msg.velocity.z = _local_velocity[2]; // UP
-    local_msg.yaw =      _local_velocity[4];
-    local_msg.yaw_rate = _local_velocity[5];
+void OffboardMavros::publishLocalRaw(void) {
+    // DEBUG::msg("Publishing local raw...");
+    auto msg = std::make_shared<mavros_msgs::msg::PositionTarget>();
+    msg->header.stamp = this->now();
+    msg->header.frame_id = "cau_vtol";
+    msg->coordinate_frame = mavros_msgs::msg::PositionTarget::FRAME_LOCAL_NED;
+    msg->type_mask = mavros_msgs::msg::PositionTarget::IGNORE_VX  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_VY  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFX |
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFY |
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFZ |   
+                     mavros_msgs::msg::PositionTarget::IGNORE_VZ  |
+                     mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
+                     
+    // FW일 때에는 yaw를 무시한다.
+    msg->type_mask |= (_cmd_flag & vtol::BIT_FIXED) 
+                                * mavros_msgs::msg::PositionTarget::IGNORE_YAW;
 
-    local_pub->publish(local_msg);
+    DEBUG::print("type mask: ", msg->type_mask, BOLDWHITE);
+    msg->position.x = wp_manager.getTarget()[vtol::EAST]; // East
+    msg->position.y = wp_manager.getTarget()[vtol::NORTH]; // North
+    msg->position.z = wp_manager.getTarget()[vtol::UP]; // Up
+    msg->yaw        = static_cast<float>(wp_manager.getTarget()[vtol::YAW]);
+    local_pub->publish(*msg);
 }
 
-
-void OffboardMavros::publishWaypoint(void) {
-    // mavros_msgs::msg::WaypointList  msg_waypoint_list;
-    // if (waypoints.size()) { // 넣을게 없으면 그냥 나가기
-    //     std::cout << "Publishing WaypointList..." << std::endl;
-    //     float_t
-    //     mavros_msgs::msg::Waypoint      msg_waypoint;
-    //     msg_waypoint.frame = mavros_msgs::msg::Waypoint::FRAME_LOCAL_NED;
-    //     msg_waypoint.command = mavros_msgs::msg::CommandCode::NAV_WAYPOINT;
-    //     msg_waypoint.is_current = true;
-    //     msg_waypoint.autocontinue = true;
-    //     msg_waypoint.param1 = 0;
-    //     msg_waypoint.param2 = 0;
-    //     msg_waypoint.param3 = 0;
-    //     msg_waypoint.param4 = 0;
-    //     msg_waypoint.x_lat = waypoints.front().x;
-    //     msg_waypoint.y_long = waypoints.front().y;
-    //     msg_waypoint.z_alt = waypoints.front().z;
-    //
-    //     msg_waypoint_list.waypoints.push_back(msg_waypoint);
-    //     waypoints.pop();
-    // }
-    //
-    // // if (waypoints.size()) { // 넣을게 있으면 publish 나중에 하기
-    // //     return ;
-    // // }
-    // waypoints_pub->publish(msg_waypoint_list);
-}

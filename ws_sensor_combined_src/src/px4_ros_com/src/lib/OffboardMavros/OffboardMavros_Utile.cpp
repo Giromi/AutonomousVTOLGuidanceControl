@@ -25,6 +25,14 @@ bool OffboardMavros::isGlobalPositionGettingValue(const t_global_position& input
     return (input_global_position[0] >= 0 && input_global_position[1] >= 0 && input_global_position[2] >= 0);
 }
 
+void OffboardMavros::commandFlagTurnOn(const t_bit& flag) {
+    _cmd_flag |= flag;
+}
+
+void OffboardMavros::commandFlagTurnOff(const t_bit& flag) {
+    _cmd_flag &= ~flag;
+}
+
 
 const Quaternion OffboardMavros::rpy_to_quat(const double roll, const double pitch, const double yaw) {
     const double cy = cos(yaw * 0.5);

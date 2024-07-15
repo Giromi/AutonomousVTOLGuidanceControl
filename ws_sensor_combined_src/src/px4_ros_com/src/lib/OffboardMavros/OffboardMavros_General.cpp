@@ -1,7 +1,6 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
-
-vtol::State                             OffboardMavros::_cmd_flag = vtol::INIT;
+t_bit                                   OffboardMavros::_cmd_flag = vtol::INIT;
 std::array<double, 3>		            OffboardMavros::_local_position{vtol::INIT_NORTH, vtol::INIT_EAST, vtol::INIT_UP};
 std::array<double, 6>		            OffboardMavros::_local_velocity{0.0, 0.0, 0.0, 0.0, 0.0, 0.0};  
 std::array<float, 3>		            OffboardMavros::_global_position{-1.0f, -1.0f, -1.0f}; 
