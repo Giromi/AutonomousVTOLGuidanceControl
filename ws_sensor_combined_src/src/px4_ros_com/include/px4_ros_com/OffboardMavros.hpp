@@ -62,10 +62,6 @@ public:
     OffboardMavros(void);
 
 private:
-
-
-
-
     /* -- Initialize Functions -- */
 
     void        initializePublishers(void);
@@ -102,7 +98,8 @@ private:
     void    publishAttitude(void);
     void    publishLocal(void);
     void    publishLocalRaw(void);
-
+    void    publishRawLocal(void);
+    void    publishRawAttitude(void);
 
     void    publishWaypoint(void);
     void    publishGpOrigin(void);

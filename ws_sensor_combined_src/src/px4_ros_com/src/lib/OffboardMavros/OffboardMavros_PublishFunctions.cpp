@@ -11,8 +11,8 @@ void    OffboardMavros::publish(void) {
         && _cmd_flag != vtol::FW_START) {
         return ;
     } 
-    // publishPose();
-    publishLocalRaw();
+    publishPose();
+    // publishLocalRaw();
     //publishRawAttitude();
 
     // publishCmdVel();
@@ -27,7 +27,6 @@ void    OffboardMavros::publish(void) {
     //     publishRawLocal(); // publishLocalFixed();
     // }
 }
-
 
 void OffboardMavros::publishCmdVel(void) {
     RCLCPP_INFO(this->get_logger(), "publishing cmd_vel");
@@ -77,6 +76,9 @@ void OffboardMavros::publishPose(void) {
     pose.pose.position.x = _local_position[vtol::EAST];
     pose.pose.position.y = _local_position[vtol::NORTH];
     pose.pose.position.z = _local_position[vtol::UP];
+    pose.pose.orientation.x = _local_velocity[3];
+    pose.pose.orientation.y = _local_velocity[4];
+    pose.pose.orientation.z = _local_velocity[5];
     local_pos_pub->publish(pose);
 }
 
@@ -124,6 +126,7 @@ void OffboardMavros::publishRawLocal(void) {
     local_pub->publish(local_msg);
 }
 
+
 void OffboardMavros::publishRawAttitude(void) {
     // std::cout << "Publishing Raw Attitude ..." << std::endl;
     mavros_msgs::msg::AttitudeTarget target_msg;
@@ -139,9 +142,11 @@ void OffboardMavros::publishRawAttitude(void) {
     tf2::Quaternion q;
     q.setRPY(_local_velocity[3],_local_velocity[4],_local_velocity[5]);
     target_msg.orientation.w    =  q.w();      //
-    target_msg.orientation.x    =  q.x();      // roll : 키보드 2, 3  (2 : 반시계, 3 : 시계)
+    target_msg.orientation.x    =  q.x();      
+    // roll : 키보드 2, 3  (2 : 반시계, 3 : 시계)
     target_msg.orientation.y    =  q.y();      //
-    target_msg.orientation.z    =  q.z();      // pitch : 키보드 4, 5 (4 : 하강,   5 : 상승)
+    target_msg.orientation.z    =  q.z();      
+    // pitch : 키보드 4, 5 (4 : 하강,   5 : 상승)
     // target_msg.body_rate.x    =  _local_velocity[3];    
     // target_msg.body_rate.y    =  _local_velocity[4]; 
     // target_msg.body_rate.z    =  _local_velocity[5]; 
