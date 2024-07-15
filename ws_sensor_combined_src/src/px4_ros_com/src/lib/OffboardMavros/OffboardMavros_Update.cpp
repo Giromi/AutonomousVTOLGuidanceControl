@@ -38,8 +38,18 @@ void OffboardMavros::sendFixedHeadingCommand(void) {
     last_request = this->now();
 }
 
+void OffboardMavros::sendChangeSpeedCommand(const double& speed) {
+    auto request = std::make_shared<mavros_msgs::srv::CommandLong::Request>();
+    request->command = vtol::MAV_CMD_DO_CHANGE_SPEED;
+    request->param1 = 1;
+    request->param2 = speed;
+    request->param3 = -2;
+    cmd_client->async_send_request(request, std::bind(&OffboardMavros::cmdResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
+}
+
 void OffboardMavros::cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future) {
-    const char* msg[] = {
+    const std::array<const std::string, 2>    msg = {
         "CommandLong command sent successfully",
         "Failed to send CommandLong command"
     };
@@ -54,7 +64,6 @@ void OffboardMavros::requestTransitionStatus(const int input,
     transition_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
     last_request = this->now();
 }
-
 
 void OffboardMavros::requestArmingStatus(const bool& input,
         void (OffboardMavros::*response_callback)
@@ -102,30 +111,70 @@ void OffboardMavros::updateLocation(std::array<double, 3> input) {
     last_request = this->now();
 }
 
+void    OffboardMavros::updateCustomMode(
+    const std::string& input_mode,
+    void (OffboardMavros::*responseCallback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>), 
+    const std::array<const std::string, 2>& msg
+) {
+    auto request = std::make_shared<mavros_msgs::srv::SetMode::Request>();
+    request->custom_mode = input_mode;
+   
+    /*
+    < 1. 이거는 async_send_request 파라미터와 안맞아서 못 찾음 >
+    std::function<void(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>)> wrapped_callback = std::bind(responseCallback, this, std::placeholders::_1, msg);
+
+    < 2. 묵시적 타입 캐스팅으로 오버 헤드가 있을 수 있음>
+    std::function<void(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture)> wrapped_callback = 
+        [this, responseCallback, msg](const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
+            (this->*responseCallback)(future, msg);
+        };
+    */
+
+    auto wrapped_callback = [this, responseCallback, msg](const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
+        (this->*responseCallback)(future, msg);
+    };
+
+    set_mode_client->async_send_request(request, wrapped_callback);
+    last_request = this->now();
+}
+
 void OffboardMavros::updateHoldMode(void) {
-    updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdResponseCallback);
+    const std::array<const std::string, 2> msg = {
+        "Hold mode sent successfully",
+        "Failed to send Hold mode"
+    };
+    updateCustomMode(vtol::FCU_HOLD, 
+                        &OffboardMavros::modeSentResponseCallback, msg);
 }
 
 void OffboardMavros::updateOffboardMode(void) {
-    updateCustomMode(vtol::FCU_OFFBOARD, &OffboardMavros::offboardResponseCallback);
+    const std::array<const std::string, 2> msg = {
+        "Offboard mode sent successfully",
+        "Failed to send Offboard mode"
+    };
+    updateCustomMode(vtol::FCU_OFFBOARD, 
+                        &OffboardMavros::modeSentResponseCallback, msg);
 }
 
 void OffboardMavros::updatePositionMode(void) {
-    updateCustomMode(vtol::FCU_POSITION, &OffboardMavros::positionResponseCallback);
+    const std::array<const std::string, 2> msg = {
+        "Position mode sent successfully",
+        "Failed to send Position mode"
+    };
+    updateCustomMode(vtol::FCU_POSITION,
+                        &OffboardMavros::modeSentResponseCallback, msg);
 }
 
 void OffboardMavros::updateMissionMode(void) {
-    updateCustomMode(vtol::FCU_MISSION, &OffboardMavros::missionResponseCallback);
+    const std::array<const std::string, 2> msg = {
+        "Mission mode sent successfully",
+        "Failed to send Mission mode"
+    };
+    updateCustomMode(vtol::FCU_MISSION, 
+                        &OffboardMavros::modeSentResponseCallback, msg);
 }
 
 
-void OffboardMavros::updateCustomMode(const std::string& input_mode,
-        void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture)) {
-    auto request = std::make_shared<mavros_msgs::srv::SetMode::Request>();
-    request->custom_mode = input_mode;
-    set_mode_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
-    last_request = this->now();
-}
 
 void OffboardMavros::updateWaypointClear(void) {
     if (!waypoint_clear_client->wait_for_service(std::chrono::seconds(10))) {

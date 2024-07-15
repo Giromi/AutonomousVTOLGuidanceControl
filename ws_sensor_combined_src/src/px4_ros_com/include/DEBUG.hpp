@@ -53,7 +53,7 @@ namespace DEBUG {
     }
 
     template <typename T>
-    void msg(const std::string& msg, const T& target, const char* color = BOLDWHITE) {
+    void message(const std::string& msg, const T& target, const char* color) {
         std::cout << color << msg << target << RESET << std::endl;
     }
 

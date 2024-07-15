@@ -21,31 +21,29 @@ void OffboardMavros::initializePublishers(void) {
     local_pos_pub = create_publisher<geometry_msgs::msg::PoseStamped>("/mavros/setpoint_position/local", 10);
     local_vel_pub = this->create_publisher<geometry_msgs::msg::Twist>("/mavros/setpoint_velocity/cmd_vel_unstamped", 10);
     local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("/mavros/setpoint_raw/local", 10);
-    att_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mavros/setpoint_attitude/cmd_vel", 10);
     actuator_control_pub = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
 
     // waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", default_qos);
     vc_manual_pub =this->create_publisher<mavros_msgs::msg::ManualControl>( "/mavros/manual_control/control", default_qos);
     gp_origin_pub = this->create_publisher<geographic_msgs::msg::GeoPoseStamped>("/mavros/global_position/set_gp_origin", default_qos);
     raw_attitude_pub = this->create_publisher<mavros_msgs::msg::AttitudeTarget>("/mavros/setpoint_raw/attitude", default_qos);
+    att_pos_pub = this->create_publisher<geometry_msgs::msg::PoseStamped>("/mavros/setpoint_attitude/attitude", 30);
+    att_vel_pub = this->create_publisher<geometry_msgs::msg::TwistStamped>("/mavros/setpoint_attitude/cmd_vel", 10);
 }
 
 void OffboardMavros::initializeSubscribers(void) {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     const std::function<void(const mavros_msgs::msg::State::SharedPtr)> state_bind = std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1);
     const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
+    const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> local_position_sub_bind = std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1);
+    const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> pose_sub_bind = std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1);
+    const std::function<void(const sensor_msgs::msg::NavSatFix::SharedPtr msg)> global_posistion_sub_bind = std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1);
 
-    state_sub = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
-
-    local_position_sub = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
-            std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1));
-    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
-
-    pose_sub = create_subscription<geometry_msgs::msg::PoseStamped>(
-            "/mavros/local_position/pose", default_qos, std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1));
-
-    global_posistion_sub =create_subscription<sensor_msgs::msg::NavSatFix>(
-            "/mavros/global_position/global", default_qos, std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1));
+    state_sub            = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
+    local_position_sub   = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, local_position_sub_bind);
+    subscription         = create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
+    pose_sub             = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, pose_sub_bind);
+    global_posistion_sub = create_subscription<sensor_msgs::msg::NavSatFix>("/mavros/global_position/global", default_qos, global_posistion_sub_bind);
 }
 
 void    OffboardMavros::initializeClients(void) {
@@ -56,7 +54,6 @@ void    OffboardMavros::initializeClients(void) {
     location_client = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
     transition_client = this->create_client<mavros_msgs::srv::CommandVtolTransition>("/mavros/cmd/vtol_transition");
     cmd_client = this->create_client<mavros_msgs::srv::CommandLong>("/mavros/cmd/command");
-
     // 이거 사용할 빠에는 QGC로 하는게 나음
     waypoint_push_client = this->create_client<mavros_msgs::srv::WaypointPush>("/mavros/mission/push");
     waypoint_clear_client = this->create_client<mavros_msgs::srv::WaypointClear>("/mavros/mission/clear");
@@ -94,13 +91,13 @@ void OffboardMavros::initializeVariables(void) {
         vtol::ARMED,
         vtol::FLY,
         vtol::TAKEOFF,
-        vtol::LAND,
         vtol::MISSION,
         vtol::FIXED,
         vtol::TO_FIXED,
         vtol::TO_QUAD,
         vtol::MC_START,
         vtol::FW_START,
+        vtol::LAND,
     };
 }
 
@@ -119,13 +116,13 @@ void OffboardMavros::initializeFunctionPointerArray(void) {
             std::bind(&OffboardMavros::stateCommandArmed,   this),
             std::bind(&OffboardMavros::stateCommandFly,     this),
             std::bind(&OffboardMavros::stateCommandTakeOff, this),
-            std::bind(&OffboardMavros::stateCommandLand,    this),
             std::bind(&OffboardMavros::stateCommandMission, this),
             std::bind(&OffboardMavros::stateCommandFixed,   this),
             std::bind(&OffboardMavros::stateCommandToFixed, this),
             std::bind(&OffboardMavros::stateCommandToQuad,  this),
             std::bind(&OffboardMavros::stateCommandStartMC, this),
             std::bind(&OffboardMavros::stateCommandStartFW, this),
+            std::bind(&OffboardMavros::stateCommandLand,    this),
     });
 }
 
@@ -233,7 +230,7 @@ void OffboardMavros::initializeWaypoints(void) {
 
 const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
     Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
-    Eigen::Vector4d(200.0,      200.0,	30.0,      1.57),
+    Eigen::Vector4d(200.0,      200.0,	    30.0,      1.57),
     Eigen::Vector4d(  0.0,      200.0,	    30.0,      3.14),
     Eigen::Vector4d(  0.0,        0.0,	    30.0,      -1.57),
 };

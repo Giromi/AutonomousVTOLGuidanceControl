@@ -97,7 +97,7 @@ private:
     void    publishVelocity(void); 
     void    publishAttitude(void);
     void    publishLocal(void);
-    void    publishLocalRaw(void);
+    void    publishRawLocalPosition(void);
     void    publishRawLocal(void);
     void    publishRawAttitude(void);
 
@@ -105,6 +105,7 @@ private:
     void    publishGpOrigin(void);
     void    publishCmdVel(void);
     void    publishManual(void);
+    void    publishAttitudePosition(void);
 
 
     /* -- Update Functions -- */
@@ -121,20 +122,24 @@ private:
             (const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture));
 
     void    updateTakeoffStatus(void);
-    void    updateLandingStatus(void);
-    void    updateLocation(std::array<double, 3> input);
     void    updateHoldMode(void);
     void    updateOffboardMode(void); 
     void    updateMissionMode(void);
-
     void    updatePositionMode(void);
-    void    updateCustomMode(const std::string& input_mode,
-            void (OffboardMavros::*response_callback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture));
+    void    updateCustomMode(
+                const std::string& input_mode,
+                void (OffboardMavros::*responseCallback) (const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>), 
+                const std::array<const std::string, 2>& msg);
+
+    void    updateLandingStatus(void);
+    void    updateLocation(std::array<double, 3> input);
+
     std::shared_ptr<mavros_msgs::srv::CommandTOL::Request>  
             makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input);
     void    sendFixedHeadingCommand(void);
     void    updateWaypointPush(void);
     void    updateWaypointClear(void);
+    void    sendChangeSpeedCommand(const double& speed);
 
     /* -- StateCommand Function*/
     void    stateCommandInit(void);
@@ -155,9 +160,9 @@ private:
     // void    is_arrived_waypoint(const std::array<float, 3> target);
 
     /* -- Callback Functions -- */
-    void	offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
-    void	missionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
-    void	holdResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
+    void   modeSentResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg);
+    // void   successResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg);
+
     void	chatterCallback(const std_msgs::msg::String::SharedPtr msg);
     void	armingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
     void	disarmingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
@@ -169,7 +174,6 @@ private:
     void    cmdResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandLong>::SharedFuture future);
     void    waypointPushResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedFuture future);
     void    waypointClearResponseCallback(const rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedFuture future);
-    void    positionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future);
 
     /* -- Action Functions -- */
     static void	    _actionGoNorth(void);
@@ -204,8 +208,9 @@ private:
 
 
     /* -- Utile Functions -- */
-    bool            isFiveSecondsPassed();
-    void            printSuccessInfo(bool success, const char* msg[]) const;
+    bool            isPassedSeconds(const double timer);
+    void            printSuccessInfo(const bool success, const std::array<const std::string, 2>& msg) const;
+    void            handleCommandFlag(const t_bit flag);
     static void     printReferenceInput(void); 
     bool            isGlobalPositionGettingValue(const t_global_position&) const;
     void            commandFlagTurnOff(const t_bit& flag);
@@ -221,7 +226,8 @@ private:
     rclcpp::Publisher<mavros_msgs::msg::AttitudeTarget>::SharedPtr      raw_attitude_pub;
     rclcpp::Publisher<mavros_msgs::msg::ActuatorControl>::SharedPtr     actuator_control_pub;
     rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
-    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_pub;
+    rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       att_pos_pub;
+    rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      att_vel_pub;
     rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr      cmd_vel_pub;
     rclcpp::Publisher<geographic_msgs::msg::GeoPoseStamped>::SharedPtr  gp_origin_pub;
 
@@ -234,7 +240,6 @@ private:
     rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedPtr  transition_client;
     rclcpp::Client<mavros_msgs::srv::WaypointPush>::SharedPtr           waypoint_push_client;
     rclcpp::Client<mavros_msgs::srv::WaypointClear>::SharedPtr          waypoint_clear_client;
-    // rclcpp::Publisher<mavros_msgs::msg::WaypointList>::SharedPtr        waypoints_pub;
 
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    local_position_sub;
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        global_posistion_sub;
@@ -259,8 +264,8 @@ private:
     static std::array<double, 6>		                            _local_velocity;
     static std::array<double, 3>		                            _cur_position;
     static std::array<double, 3>		                            _prev_position;
-    static const std::string				                            _arrow_string;
-    static std::array<double, 4>                                _manual_velocity;
+    static const std::string				                        _arrow_string;
+    static std::array<double, 4>                                    _manual_velocity;
 
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
