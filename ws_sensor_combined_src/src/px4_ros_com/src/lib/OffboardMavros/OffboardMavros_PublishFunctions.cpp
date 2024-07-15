@@ -6,7 +6,8 @@ void    OffboardMavros::publish(void) {
     if (_cmd_flag == vtol::INIT) {
         publishGpOrigin();
     }
-    if (_cmd_flag == vtol::MC_START || _cmd_flag == vtol::FW_START) {
+    if (_cmd_flag != vtol::MC_START 
+        && _cmd_flag != vtol::FW_START) {
         return ;
     } 
 
@@ -18,7 +19,6 @@ void    OffboardMavros::publish(void) {
     //     publishLocal(); // publishLocalFixed();
     // }
 }
-
 
 void OffboardMavros::publishGpOrigin(void) {
     // RCLCPP_INFO(this->get_logger(), "publishing origin");
@@ -108,7 +108,7 @@ void OffboardMavros::publishLocalRaw(void) {
 
     // FW일 때에는 yaw를 무시한다.
     msg->type_mask |= (_cmd_flag & vtol::BIT_FIXED) 
-                        ? mavros_msgs::msg::PositionTarget::IGNORE_YAW : 0;
+                                * mavros_msgs::msg::PositionTarget::IGNORE_YAW;
 
     DEBUG::print("type mask: ", msg->type_mask, BOLDWHITE);
     msg->position.x = wp_manager.getTarget()[vtol::EAST]; // East

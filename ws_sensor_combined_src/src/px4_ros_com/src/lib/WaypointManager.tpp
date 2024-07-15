@@ -21,10 +21,15 @@ bool WaypointManager<T>::isArrived(const T& current_position) const {
         return false;
     }
 
+    const Eigen::Vector3d cur_position_vector3d = current_position.template head<3>();
     const Eigen::Vector3d position_diff = \
                                   current_position.template head<3>() 
                                     - waypoint_path.front().template head<3>();
-    if (position_diff.norm() < 1.0) {
+    DEBUG::print("Target  position : ", getTarget().transpose(), BOLDGREEN);
+    DEBUG::print("Current position : ", cur_position_vector3d.transpose(), BOLDGREEN);
+    DEBUG::print("Position diff: ", position_diff.norm(), BOLDGREEN);
+    DEBUG::print("Waypoint size    : ", size(), BOLDGREEN);
+    if (position_diff.norm() < 10.0) {
         return true;
     }
     return false;

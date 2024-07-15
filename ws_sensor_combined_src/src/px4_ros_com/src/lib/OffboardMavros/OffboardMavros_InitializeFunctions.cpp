@@ -232,8 +232,8 @@ void OffboardMavros::initializeWaypoints(void) {
 const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
     Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
     Eigen::Vector4d(200.0,      200.0,	30.0,      1.57),
-    Eigen::Vector4d(  0.0,      200.0,	    30.0,      -1.57),
-    Eigen::Vector4d(  0.0,        0.0,	    30.0,      0.00),
+    Eigen::Vector4d(  0.0,      200.0,	    30.0,      3.14),
+    Eigen::Vector4d(  0.0,        0.0,	    30.0,      -1.57),
 };
 
 const std::array<Eigen::Vector4d, 4> OffboardMavros::_triangle_path = {

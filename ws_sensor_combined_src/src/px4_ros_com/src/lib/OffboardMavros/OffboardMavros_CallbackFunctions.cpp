@@ -195,13 +195,14 @@ void    OffboardMavros::statusReady(void) {
 
 void OffboardMavros::localPositionCommandStart(void) {
 
-    const Eigen::Vector4d cur_position_vector3d(_cur_position[0], _cur_position[1], _cur_position[2], 0);
+    const Eigen::Vector4d cur_position_vector3d(
+        _cur_position[0], 
+        _cur_position[1], 
+        _cur_position[2], 
+        vtol::NaN
+    );
 
-    DEBUG::print("Target  position : ", wp_manager.getTarget().transpose(), BOLDGREEN);
-    DEBUG::print("Current position : ", cur_position_vector3d.transpose(), BOLDGREEN);
-    DEBUG::print("Waypoint size    : ", wp_manager.size(), BOLDGREEN);
     if (wp_manager.isArrived(cur_position_vector3d)) {
-        RCLCPP_INFO(this->get_logger(), "Arrived at the waypoint");
         wp_manager.pop();
     }
 }
@@ -236,7 +237,7 @@ void OffboardMavros::localPositionCallback(const geometry_msgs::msg::PoseStamped
         }
         _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
         _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
-    } else if (_cmd_flag == vtol::MC_START) {
+    } else if (_cmd_flag == vtol::MC_START || _cmd_flag == vtol::FW_START) {
         localPositionCommandStart();
     }
 }
