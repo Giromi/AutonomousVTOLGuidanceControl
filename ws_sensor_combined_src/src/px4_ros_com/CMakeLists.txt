@@ -51,10 +51,13 @@ add_library(OffboardMavros SHARED
   src/lib/OffboardMavros/OffboardMavros_General.cpp
   src/lib/OffboardMavros/OffboardMavros_Utile.cpp
   src/lib/OffboardMavros/OffboardMavros_Update.cpp
-  src/lib/OffboardMavros/OffboardMavros_CallbackFunctions.cpp
+  src/lib/OffboardMavros/OffboardMavros_SubscribeCallBack.cpp
   src/lib/OffboardMavros/OffboardMavros_InitializeFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_PublishFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_Action.cpp
+  src/lib/OffboardMavros/OffboardMavros_ResponseCallback.cpp
+  src/lib/OffboardMavros/OffboardMavros_CallbackComand.cpp
+  src/lib/OffboardMavros/OffboardMavros_ResponseCallback.cpp
   )
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
