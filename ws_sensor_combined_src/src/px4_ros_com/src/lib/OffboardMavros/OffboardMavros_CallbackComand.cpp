@@ -1,24 +1,12 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
-void OffboardMavros::statusReady(void) {
-    if (OffboardMavros::_cmd_flag != vtol::READY) {
-        return ;
-    }
-    if (fcu_state.mode != vtol::FCU_HOLD) {
-        OffboardMavros::_cmd_flag = vtol::READY;
-        updateCustomMode("AUTO.LOITER",
-                    &OffboardMavros::holdResponseCallback);
-        updateDisarmingStatus();
-    }
-}
-
 void OffboardMavros::stateCommandInit(void){
     RCLCPP_INFO(this->get_logger(), "< State Command Init >");
     if (fcu_state.armed == true) {
         updateLandingStatus();
     } else {
         updateWaypointClear();
-        OffboardMavros::_cmd_flag = vtol::READY;
+        _cmd_flag = vtol::READY;
     }
 }
 
@@ -27,7 +15,6 @@ void OffboardMavros::stateCommandReady(void) {
     if (fcu_state.mode != vtol::FCU_HOLD) {    
         updateDisarmingStatus();
         updateHoldMode();
-        updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdResponseCallback);
     }
 }
 
@@ -121,17 +108,14 @@ void OffboardMavros::stateCommandLand (void) {
         updateLandingStatus();
     } else if (fcu_state.mode == vtol::FCU_HOLD) {
         std::cout << "Landing success" << std::endl;
-        OffboardMavros::_cmd_flag = vtol::READY;
+        OffboardMavros::_cmd_flag = vtol::INIT;
     }
 }
 
 void OffboardMavros::localPositionCommandStart(void) {
 
     const Eigen::Vector4d cur_position_vector3d(
-        _cur_position[0], 
-        _cur_position[1], 
-        _cur_position[2], 
-        vtol::NaN
+        _cur_position[0], _cur_position[1], _cur_position[2], vtol::NaN
     );
 
     if (wp_manager.isArrived(cur_position_vector3d)) {

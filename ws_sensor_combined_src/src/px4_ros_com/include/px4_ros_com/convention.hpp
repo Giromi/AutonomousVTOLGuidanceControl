@@ -1,6 +1,8 @@
 #ifndef CONVENTION_HPP
 #define CONVENTION_HPP
-#include <cmath>
+# include <cmath>
+# include <rclcpp/rclcpp.hpp>
+# include <mavlink/v2.0/common/common.hpp>
 
 
 namespace vtol {
@@ -73,6 +75,8 @@ namespace vtol {
         float yaw;
     };
 
+    constexpr uint16_t MAV_CMD_DO_CHANGE_SPEED = \
+        static_cast<uint16_t>(mavlink::common::MAV_CMD::DO_CHANGE_SPEED);
     constexpr float     NaN             = std::numeric_limits<float>::quiet_NaN();
     constexpr size_t    ACTION_SIZE     = 21;
     constexpr size_t    STATE_SIZE      = 12;
@@ -83,7 +87,6 @@ namespace vtol {
     constexpr char	    FCU_LAND[]      = "AUTO.LAND";
     constexpr char      FCU_MISSION[]   = "AUTO.MISSION";
     constexpr char      FCU_POSITION[]   = "POSCTL";
-
     constexpr double RAD_2_DEG = 180 / M_PI;
 
 

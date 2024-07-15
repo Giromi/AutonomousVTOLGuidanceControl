@@ -42,7 +42,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     }
     fcu_state = *msg;
 
-    DEBUG::msg("\n[DEBUG] ", "-----------------");
+    DEBUG::message("\n[DEBUG] ", "-----------------", BOLDWHITE);
     DEBUG::print("System status : ", fcu_state.system_status, WHITE);
     DEBUG::print("Mode : ", fcu_state.mode, CYAN);
     DEBUG::printBool("Arming : ", fcu_state.armed, RED);
@@ -51,7 +51,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     DEBUG::printArray("local_velocity: ", _local_velocity, 6, MAGENTA);
     DEBUG::printArray("global_position      : ", _global_position, 3, MAGENTA);
     DEBUG::printArray("init_global_position : ", init_global_position, 3, MAGENTA);
-    DEBUG::msg("[DEBUG] ", "-----------------\n");
+    DEBUG::message("[DEBUG] ", "-----------------\n", BOLDWHITE);
 
     const std::array<t_bit, vtol::STATE_SIZE>::iterator  it = std::find(state_value_array.begin(), state_value_array.end(), _cmd_flag);
 //ros::Time::now() - last_request > ros::Duration(5.0)
