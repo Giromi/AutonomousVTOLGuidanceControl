@@ -34,18 +34,15 @@ void OffboardMavros::initializeSubscribers(void) {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     const std::function<void(const mavros_msgs::msg::State::SharedPtr)> state_bind = std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1);
     const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
+    const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> local_position_sub_bind = std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1);
+    const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> pose_sub_bind = std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1);
+    const std::function<void(const sensor_msgs::msg::NavSatFix::SharedPtr msg)> global_posistion_sub_bind = std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1);
 
-    state_sub = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
-
-    local_position_sub = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos,
-            std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1));
-    subscription = this->create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
-
-    pose_sub = create_subscription<geometry_msgs::msg::PoseStamped>(
-            "/mavros/local_position/pose", default_qos, std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1));
-
-    global_posistion_sub =create_subscription<sensor_msgs::msg::NavSatFix>(
-            "/mavros/global_position/global", default_qos, std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1));
+    state_sub            = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
+    local_position_sub   = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, local_position_sub_bind);
+    subscription         = create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
+    pose_sub             = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, pose_sub_bind);
+    global_posistion_sub = create_subscription<sensor_msgs::msg::NavSatFix>("/mavros/global_position/global", default_qos, global_posistion_sub_bind);
 }
 
 void    OffboardMavros::initializeClients(void) {
