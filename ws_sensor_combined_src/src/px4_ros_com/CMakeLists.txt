@@ -29,6 +29,8 @@ find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(mavlink REQUIRED)
+find_package(tf2 REQUIRED)
+# find_package(tf2_geometry_msgs REQUIRED)
 
 # pkg-config 지원 활성화
 find_package(PkgConfig REQUIRED)
@@ -73,6 +75,7 @@ function(setup_target target_name)
     mavros_msgs
     nav_msgs
     mavlink
+    tf2
   )
 endfunction()
 
@@ -110,7 +113,7 @@ set(EXECUTABLES
   PRACTICE/gripper_servo
   main/offboard_mavros
   main/current_position_sub
-)
+  )
 
 foreach(exec ${EXECUTABLES})
   get_filename_component(exec_name ${exec} NAME)

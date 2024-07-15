@@ -25,7 +25,9 @@ void OffboardMavros::initializePublishers(void) {
     actuator_control_pub = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
 
     // waypoints_pub = this->create_publisher<mavros_msgs::msg::WaypointList>("/mavros/mission/waypoints", default_qos);
+    vc_manual_pub =this->create_publisher<mavros_msgs::msg::ManualControl>( "/mavros/manual_control/control", default_qos);
     gp_origin_pub = this->create_publisher<geographic_msgs::msg::GeoPoseStamped>("/mavros/global_position/set_gp_origin", default_qos);
+    raw_attitude_pub = this->create_publisher<mavros_msgs::msg::AttitudeTarget>("/mavros/setpoint_raw/attitude", default_qos);
 }
 
 void OffboardMavros::initializeSubscribers(void) {
@@ -64,7 +66,7 @@ void OffboardMavros::initializeTimers(const int rate_hz) {
     const int rate_ms = 1000 / rate_hz;
     timer = this->create_wall_timer(
             std::chrono::milliseconds(rate_ms),
-            std::bind(&OffboardMavros::publish, this));
+            std::bind(&OffboardMavros::publish, this)); 
 }
 
 void OffboardMavros::initializeVariables(void) {

@@ -116,9 +116,13 @@ void OffboardMavros::stateCommandFixed(void) {
 
 void OffboardMavros::stateCommandStartMC(void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command Start >");
-    if (fcu_state.mode == vtol::FCU_HOLD) {
+    if (fcu_state.mode == vtol::FCU_HOLD 
+        || fcu_state.mode == vtol::FCU_POSITION) {
         updateOffboardMode();
     }
+    // if (fcu_state.mode != vtol::FCU_POSITION) {
+        // updatePositionMode();
+    // }
 }
 
 void OffboardMavros::stateCommandStartFW(void) { 
@@ -161,7 +165,7 @@ void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg)
     DEBUG::printBool("Arming : ", fcu_state.armed, RED);
     DEBUG::printBinary("Command flag : ", _cmd_flag, YELLOW);
     DEBUG::print("Yaw current: ", yaw_current, GREEN);
-    DEBUG::printArray("local_velocity: ", _local_velocity, 3, MAGENTA);
+    DEBUG::printArray("local_velocity: ", _local_velocity, 6, MAGENTA);
     DEBUG::printArray("global_position      : ", _global_position, 3, MAGENTA);
     DEBUG::printArray("init_global_position : ", init_global_position, 3, MAGENTA);
     DEBUG::msg("[DEBUG] ", "-----------------\n");

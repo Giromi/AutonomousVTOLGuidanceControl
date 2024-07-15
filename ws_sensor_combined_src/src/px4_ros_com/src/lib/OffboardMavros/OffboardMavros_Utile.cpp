@@ -32,3 +32,21 @@ void OffboardMavros::commandFlagTurnOn(const t_bit& flag) {
 void OffboardMavros::commandFlagTurnOff(const t_bit& flag) {
     _cmd_flag &= ~flag;
 }
+
+
+const Quaternion OffboardMavros::rpy_to_quat(const double roll, const double pitch, const double yaw) {
+    const double cy = cos(yaw * 0.5);
+    const double sy = sin(yaw * 0.5);
+    const double cp = cos(pitch * 0.5);
+    const double sp = sin(pitch * 0.5);
+    const double cr = cos(roll * 0.5);
+    const double sr = sin(roll * 0.5);
+
+    Quaternion q;
+    q.w = cr * cp * cy + sr * sp * sy;
+    q.x = sr * cp * cy - cr * sp * sy;
+    q.y = cr * sp * cy + sr * cp * sy;
+    q.z = cr * cp * sy - sr * sp * cy;
+
+    return q;
+}
