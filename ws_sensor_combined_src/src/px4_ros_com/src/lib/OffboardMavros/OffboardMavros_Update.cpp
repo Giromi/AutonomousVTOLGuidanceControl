@@ -9,16 +9,49 @@ void OffboardMavros::updateDisarmingStatus(void) {
     requestArmingStatus(false, &OffboardMavros::disarmingResponseCallback);
 }
 
+void OffboardMavros::requestArmingStatus(const bool& input,
+        void (OffboardMavros::*response_callback)
+        (const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture)) {
+    auto request = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
+    request->value = input;
+    arming_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
+    last_request = this->now();
+}
+
+std::shared_ptr<mavros_msgs::srv::CommandTOL::Request> OffboardMavros::makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input) {
+    auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
+    request->altitude   = input.altitude;
+    request->latitude   = input.latitude;
+    request->longitude  = input.longitude;
+    request->min_pitch  = input.min_pitch;
+    request->yaw        = input.yaw;
+    return request;
+}
+
+void OffboardMavros::updateTakeoffStatus(void) {
+    auto request = makeRequestTakeoffLandMessage(
+            vtol::GeographicCoordinate{vtol::INIT_UP, init_global_position[vtol::LAT], init_global_position[vtol::LON], 0, 0});
+    takeoff_client->async_send_request(request,
+            std::bind(&OffboardMavros::takeoffResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
+}
+
+void OffboardMavros::updateLandingStatus(void) {
+    auto request = makeRequestTakeoffLandMessage(
+            vtol::GeographicCoordinate{0, 0, 0, 0, 0});
+    landing_client->async_send_request(request,
+            std::bind(&OffboardMavros::landResponseCallback, this, std::placeholders::_1));
+    last_request = this->now();
+}
+
 void OffboardMavros::updateTransitionFixedStatus(void) {
-    // if (fcu_state.mode == vtol::MC) {
-    requestTransitionStatus(vtol::FW, &OffboardMavros::transitionResponseCallback);
+    requestTransitionStatus(vtol::FCU_FW, &OffboardMavros::transitionResponseCallback);
     // } else {
     // request_transition_status_(vtol::MC, &OffboardMavros::transitionResponseCallback);
 }
 
 void OffboardMavros::updateTransitionQuadStatus(void) {
-    // if (fcu_state.mode == vtol::MC) {
-    requestTransitionStatus(vtol::MC, &OffboardMavros::transitionResponseCallback);
+    requestTransitionStatus(vtol::FCU_MC, &OffboardMavros::transitionResponseCallback);
     // } else {
     // request_transition_status_(vtol::MC, &OffboardMavros::transitionResponseCallback);
 }
@@ -27,7 +60,7 @@ void OffboardMavros::updateTransitionQuadStatus(void) {
 
 void OffboardMavros::sendFixedHeadingCommand(void) {
     auto request = std::make_shared<mavros_msgs::srv::CommandLong::Request>();
-    request->command = vtol::MAV_CMD_CONDITION_YAW;
+    request->command = vtol::mavlink::MavCommand::CONDITION_YAW;
     request->param1 = yaw_current;  // 목표 yaw 각도
     request->param2 = 0;  // 회전 속도 (0이면 즉시 적용)
     request->param3 = 0;  // 1: CW, -1: CCW, 0: 가장 짧은 방향
@@ -40,7 +73,8 @@ void OffboardMavros::sendFixedHeadingCommand(void) {
 
 void OffboardMavros::sendChangeSpeedCommand(const double& speed) {
     auto request = std::make_shared<mavros_msgs::srv::CommandLong::Request>();
-    request->command = vtol::MAV_CMD_DO_CHANGE_SPEED;
+    request->command = static_cast<uint16_t>(
+                                    vtol::mavlink::MavCommand::DO_CHANGE_SPEED);
     request->param1 = 1;
     request->param2 = speed;
     request->param3 = -2;
@@ -65,41 +99,6 @@ void OffboardMavros::requestTransitionStatus(const int input,
     last_request = this->now();
 }
 
-void OffboardMavros::requestArmingStatus(const bool& input,
-        void (OffboardMavros::*response_callback)
-        (const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture)) {
-    auto request = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
-    request->value = input;
-    arming_client->async_send_request(request, std::bind(response_callback, this, std::placeholders::_1));
-    last_request = this->now();
-}
-
-void OffboardMavros::updateTakeoffStatus(void) {
-    auto request = makeRequestTakeoffLandMessage(
-            vtol::GeographicCoordinate{_global_position[vtol::ALT]+20, _global_position[vtol::LAT], _global_position[vtol::LON], 0, 0});
-    takeoff_client->async_send_request(request,
-            std::bind(&OffboardMavros::takeoffResponseCallback, this, std::placeholders::_1));
-    last_request = this->now();
-}
-
-void OffboardMavros::updateLandingStatus(void) {
-    auto request = makeRequestTakeoffLandMessage(
-            vtol::GeographicCoordinate{0, 0, 0, 0, 0});
-    landing_client->async_send_request(request,
-            std::bind(&OffboardMavros::landResponseCallback, this, std::placeholders::_1));
-    last_request = this->now();
-}
-
-std::shared_ptr<mavros_msgs::srv::CommandTOL::Request> OffboardMavros::makeRequestTakeoffLandMessage(const vtol::GeographicCoordinate& input) {
-    auto request = std::make_shared<mavros_msgs::srv::CommandTOL::Request>();
-    request->altitude   = input.altitude;
-    request->latitude   = input.latitude;
-    request->longitude  = input.longitude;
-    request->min_pitch  = input.min_pitch;
-    request->yaw        = input.yaw;
-    return request;
-}
-
 void OffboardMavros::updateLocation(std::array<double, 3> input) {
     auto request = std::make_shared<mavros_msgs::srv::CommandLong::Request>();
     request->command = 16;
@@ -113,9 +112,10 @@ void OffboardMavros::updateLocation(std::array<double, 3> input) {
 
 void    OffboardMavros::updateCustomMode(
     const std::string& input_mode,
-    void (OffboardMavros::*responseCallback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>), 
+    void (OffboardMavros::*responseCallback)(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>&), 
     const std::array<const std::string, 2>& msg
 ) {
+    if (fcu.state.first == fcu.state.second.header.stamp) return ;
     auto request = std::make_shared<mavros_msgs::srv::SetMode::Request>();
     request->custom_mode = input_mode;
    
@@ -143,8 +143,16 @@ void OffboardMavros::updateHoldMode(void) {
         "Hold mode sent successfully",
         "Failed to send Hold mode"
     };
-    updateCustomMode(vtol::FCU_HOLD, 
-                        &OffboardMavros::modeSentResponseCallback, msg);
+    updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdModeResponseCallback, msg);
+}
+
+void OffboardMavros::updateTakeoffMode(void) {
+    const std::array<const std::string, 2> msg = {
+        "Takeoff mode sent successfully",
+        "Failed to send Takeoff mode"
+    };
+    updateCustomMode(vtol::FCU_TAKEOFF, &OffboardMavros::takeoffModeResponseCallback, msg);
+
 }
 
 void OffboardMavros::updateOffboardMode(void) {
@@ -152,8 +160,7 @@ void OffboardMavros::updateOffboardMode(void) {
         "Offboard mode sent successfully",
         "Failed to send Offboard mode"
     };
-    updateCustomMode(vtol::FCU_OFFBOARD, 
-                        &OffboardMavros::modeSentResponseCallback, msg);
+    updateCustomMode(vtol::FCU_OFFBOARD, &OffboardMavros::offboardModeResponseCallback, msg);
 }
 
 void OffboardMavros::updatePositionMode(void) {
@@ -161,8 +168,7 @@ void OffboardMavros::updatePositionMode(void) {
         "Position mode sent successfully",
         "Failed to send Position mode"
     };
-    updateCustomMode(vtol::FCU_POSITION,
-                        &OffboardMavros::modeSentResponseCallback, msg);
+    updateCustomMode(vtol::FCU_POSITION, &OffboardMavros::positionModeResponseCallback, msg);
 }
 
 void OffboardMavros::updateMissionMode(void) {
@@ -170,11 +176,8 @@ void OffboardMavros::updateMissionMode(void) {
         "Mission mode sent successfully",
         "Failed to send Mission mode"
     };
-    updateCustomMode(vtol::FCU_MISSION, 
-                        &OffboardMavros::modeSentResponseCallback, msg);
+    updateCustomMode(vtol::FCU_MISSION, &OffboardMavros::mavrosMissionModeResponseCallback, msg);
 }
-
-
 
 void OffboardMavros::updateWaypointClear(void) {
     if (!waypoint_clear_client->wait_for_service(std::chrono::seconds(10))) {

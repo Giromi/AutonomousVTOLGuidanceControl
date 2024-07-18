@@ -94,19 +94,19 @@ void OffboardMavros::_actionReturnHome(void) {
 }
 
 void OffboardMavros::_actionArming(void) {
-    if (OffboardMavros::_cmd_flag != vtol::READY) {
+    if (OffboardMavros::_stt_cmd_flag != vtol::READY) {
         std::cout << "Vehicle is NOT READY status" << std::endl;
         // return ;
     }
-    OffboardMavros::_cmd_flag = vtol::ARMED;
+    OffboardMavros::_stt_cmd_flag = vtol::ARMED;
 }
 
 void OffboardMavros::_actionDisarming(void) {
-    if (OffboardMavros::_cmd_flag != vtol::ARMED) {
+    if (OffboardMavros::_stt_cmd_flag != vtol::ARMED) {
         std::cout << "Vehicle is NOT ARMED status" << std::endl;
         return ;
     }
-    OffboardMavros::_cmd_flag = vtol::READY;
+    OffboardMavros::_stt_cmd_flag = vtol::READY;
 }
 
 void OffboardMavros::_actionTakeoff(void) {
@@ -114,52 +114,62 @@ void OffboardMavros::_actionTakeoff(void) {
     // if (!(statusFlag & vtol::BIT_FLY)) {
     //     RCLCPP_INFO(this->get_logger(), "Vehicle is NOT ARMED status");
     //     return true;
-    // if (OffboardMavros::_cmd_flag == vtol::READY) {
+    // if (OffboardMavros::_stt_cmd_flag == vtol::READY) {
     //     std::cout << "Vehicle is NOT ARMED status" << std::endl;
     //     return ;
-    // } else if (OffboardMavros::_cmd_flag == vtol::ARMED) {
+    // } else if (OffboardMavros::_stt_cmd_flag == vtol::ARMED) {
     //     std::cout << "Calling takeoff service ..." << std::endl;
     // }
-    OffboardMavros::_cmd_flag = vtol::TAKEOFF;
+    if (!(_stt_cmd_flag == vtol::ARMED || _stt_cmd_flag == vtol::MC)) {
+        return ;
+    }
+    if (_stt_cmd_flag & vtol::CMD_TAKEOFF_LAND) {
+        _stt_cmd_flag &= ~vtol::CMD_TAKEOFF_LAND;
+    } else {
+        _stt_cmd_flag |= vtol::CMD_TAKEOFF_LAND;
+    }
 }
 
 void OffboardMavros::_actionLanding(void) {
-    OffboardMavros::_cmd_flag = vtol::LAND;
+    OffboardMavros::_stt_cmd_flag = vtol::LANDING;
 }
 
 void OffboardMavros::_actionStart(void) {
-    if (OffboardMavros::_cmd_flag & vtol::BIT_START) {
-        OffboardMavros::_cmd_flag &= ~vtol::BIT_START;
+    if (OffboardMavros::_stt_cmd_flag & vtol::BIT_START) {
+        OffboardMavros::_stt_cmd_flag &= ~vtol::BIT_START;
     } else {
-        OffboardMavros::_cmd_flag |= vtol::BIT_START;
+        OffboardMavros::_stt_cmd_flag |= vtol::BIT_START;
     }
 }
 
 void OffboardMavros::_actionMission(void) {
-    OffboardMavros::_cmd_flag = vtol::MISSION;
+    OffboardMavros::_stt_cmd_flag = vtol::MC_MISSION;
 }
 
-void OffboardMavros::_actionHold(void) {
-    OffboardMavros::_cmd_flag = vtol::FLY;
-}
+// void OffboardMavros::_actionHold(void) {
+//     OffboardMavros::_stt_cmd_flag = vtol::FLY;
+// }
 
 void OffboardMavros::_actionInit(void) {
-    OffboardMavros::_cmd_flag = vtol::INIT;
+    OffboardMavros::_stt_cmd_flag = vtol::STAND_BY;
 }
 
 void OffboardMavros::_actionTransition(void) {
-    if (OffboardMavros::_cmd_flag == vtol::QUAD) {
-        OffboardMavros::_cmd_flag = vtol::TO_FIXED;
-    } else if (OffboardMavros::_cmd_flag == vtol::FIXED) {
-        OffboardMavros::_cmd_flag = vtol::TO_QUAD;
+    if (OffboardMavros::_stt_cmd_flag == vtol::MC) {
+        OffboardMavros::_stt_cmd_flag = vtol::MC_TO_FIXED;
+    } else if (OffboardMavros::_stt_cmd_flag == vtol::FW) {
+        OffboardMavros::_stt_cmd_flag = vtol::FW_TO_QUAD;
     }
 }
 
+void OffboardMavros::_actionCheck(void) {
+    OffboardMavros::_stt_cmd_flag = vtol::CHECK;
+}
 
-const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::_action_string_array = { 
+const std::array<std::string, OffboardMavros::ACTION_SIZE>	OffboardMavros::_action_string_array = { 
     "2", "4", "6", "3", "5", "7", 
     "↑", "↓", "→", "←", "+", "-", 
-    "h", "a", "d", "t", "l", "s", "0", "w", "m",
+    "h", "a", "d", "t", "l", "s", "0", "w", "c"
 };
 
 void (*OffboardMavros::actionFunc[])(void) = {
@@ -183,6 +193,6 @@ void (*OffboardMavros::actionFunc[])(void) = {
     &OffboardMavros::_actionStart,             // s
     &OffboardMavros::_actionInit,              // 0
     &OffboardMavros::_actionTransition,        // w
-    &OffboardMavros::_actionMission,           // m
+    &OffboardMavros::_actionCheck
 };
 

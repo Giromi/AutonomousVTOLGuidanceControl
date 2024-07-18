@@ -33,7 +33,6 @@
 # include <std_msgs/msg/string.hpp>
 # include <nav_msgs/msg/odometry.hpp>
 # include <sensor_msgs/msg/nav_sat_fix.hpp>
-# include <mavlink/v2.0/common/common.hpp>
 
 //#include <nav_msgs/msg/odometry.hpp>
 # include <functional>
@@ -49,7 +48,7 @@
 # include "px4_ros_com/WaypointManager.hpp"
 # include "DEBUG.hpp"
 
-typedef unsigned int            t_bit;
+typedef unsigned short          t_bit;
 typedef std::array<double, 3>   t_position;
 typedef std::array<float, 3>    t_global_position;
 
@@ -57,23 +56,41 @@ struct Quaternion {
     double w, x, y, z;
 };
 
+struct VtolState {
+    std::pair<builtin_interfaces::msg::Time, 
+        mavros_msgs::msg::State>           state;
+    std::pair<builtin_interfaces::msg::Time, 
+        mavros_msgs::msg::ExtendedState>   extended_state;
+    std::pair<builtin_interfaces::msg::Time, 
+        geometry_msgs::msg::PoseStamped>   local_position;
+    std::pair<builtin_interfaces::msg::Time, 
+        sensor_msgs::msg::NavSatFix>       global_position;
+};
+
 class OffboardMavros : public rclcpp::Node {
 public:
     OffboardMavros(void);
 
 private:
+
+    const static size_t    ACTION_SIZE     = 21;
+    const static size_t    STATE_SIZE      = 18;
+    VtolState                               fcu;
+
+    void    vtolCommandCenter(void);
+    void    watchVtolStatus(void);
     /* -- Initialize Functions -- */
 
     void        initializePublishers(void);
     void        initializeSubscribers(void);
     void        initializeClients(void); 
+    void        initialIsConnectionSafe(void);
     void        initializeTimers(const int rate_hz);
     void        initializeConstant(void);
     void        initializeFunctionPointerArray(void);
     void        initializeVariables(void);
-    void        initializeStateFuncPointerArray(const std::array<std::function <void(void)>, 
-                                                vtol::STATE_SIZE>& input);
-    void        initializeWaypoints(void);
+    void        initializeStatusCommandFuncPointerArray(const std::array<std::function <void(void)>, 
+                                                STATE_SIZE>& input); void        initializeWaypoints(void);
     void        setWaypoint(const uint8_t frame, const uint16_t command, 
                                  const bool is_current, const bool autocontinue, 
                                  const std::array<float, 4> param, 
@@ -81,17 +98,23 @@ private:
     void        triangleScenarioMC(const std::array<double, 3>& target_pos);
     void        triangleScenarioFW(const std::array<double, 3>& target_pos);
 
+    /* Bit Handler */
 
+    void    statusCommandBitsHandler(void);
+    void    bitsCommandHandler(void);
+    void    bitsStatusHandlerState(void);
+    void    bitsStatusHandlerExtendedState(void);
         
     /* -- Callback Functions -- */
+    void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
+    void    extendedStateCallBack(const mavros_msgs::msg::ExtendedState::SharedPtr msg);
     void    gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
     void    poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
-    void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
+    void	chatterCallback(const std_msgs::msg::String::SharedPtr msg);
     void    statusReady(void);
 
 
     /* -- Publish Functions -- */
-    void    publish(void);
     void    publishPose(void);
     void    publishActuatorControls(void);
     void    publishVelocity(void); 
@@ -126,9 +149,10 @@ private:
     void    updateOffboardMode(void); 
     void    updateMissionMode(void);
     void    updatePositionMode(void);
+    void    updateTakeoffMode(void);
     void    updateCustomMode(
                 const std::string& input_mode,
-                void (OffboardMavros::*responseCallback) (const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>), 
+                void (OffboardMavros::*responseCallback) (const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>&), 
                 const std::array<const std::string, 2>& msg);
 
     void    updateLandingStatus(void);
@@ -142,28 +166,44 @@ private:
     void    sendChangeSpeedCommand(const double& speed);
 
     /* -- StateCommand Function*/
-    void    stateCommandInit(void);
-    void    stateCommandReady(void);
-    void    stateCommandArmed(void);
-    void    stateCommandFly(void);
-    void    stateCommandTakeOff(void);
-    void    stateCommandStartMC(void);
-    void    stateCommandStartFW(void);
-    void    stateCommandMission(void);
-    void    stateCommandFixed(void);
-    void    stateCommandToFixed(void);
-    void    stateCommandToQuad(void);
-    void    stateCommandLand(void);
+    void    statusCommandStandBy(void);
+    void    statusCommandCheck(void);
+    void    statusCommandReady(void);
+    void    statusCommandArming(void);
+    void    statusCommandArmed(void);
+    void    statusCommandTakingOff(void);
+    // void    statusCommandTakingOffMC(void);
+    void    statusCommandMC(void);
+    void    statusCommandToFixedMC(void);
+    void    statusCommandFW(void);
+    void    statusCommandStartingFW(void);
+    void    statusCommandMissionFW(void);
+    void    statusCommandStopingFW(void);
+    void    statusCommandToQuadFW(void);
+    void    statusCommandStartingMC(void);
+    void    statusCommandMissionMC(void);
+    void    statusCommandStopingMC(void);
+    void    statusCommandLanding(void);
+    void    statusCommandDisarming(void);
 
 
-    void    localPositionCommandStart(void);
+    // void    stateCommandMavrosWaypointsMission(void);
+
+
+    void    localPositionWaypointsMission(void);
     // void    is_arrived_waypoint(const std::array<float, 3> target);
 
+    // void  holdModeSuccessBitHandler(void);
+    // void  holdModeFailureBitHandler(void);
     /* -- Callback Functions -- */
-    void   modeSentResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg);
-    // void   successResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg);
+    void  holdModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
+    void  offboardModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
+    void  positionModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
+    void takeoffModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
+    void  mavrosMissionModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
 
-    void	chatterCallback(const std_msgs::msg::String::SharedPtr msg);
+    //
+    
     void	armingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
     void	disarmingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future);
     void	transitionResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture future);
@@ -204,6 +244,7 @@ private:
     static void	    _actionHold(void);
     static void	    _actionInit(void);
     static void	    _actionTransition(void);
+    static void	    _actionCheck(void);
 
 
 
@@ -216,7 +257,10 @@ private:
     void            commandFlagTurnOff(const t_bit& flag);
     void            commandFlagTurnOn(const t_bit& flag);
     const Quaternion rpy_to_quat(const double roll, const double pitch, const double yaw);
+    bool            ifTimeNotSameInput(builtin_interfaces::msg::Time& first, const builtin_interfaces::msg::Time& second);
+    bool            isConnectionSafe(void);
 
+    
     /* -- Members Variables -- */
     rclcpp::Publisher<geometry_msgs::msg::PoseStamped>::SharedPtr       local_pos_pub;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr             local_vel_pub;
@@ -245,20 +289,19 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        global_posistion_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
+    rclcpp::Subscription<mavros_msgs::msg::ExtendedState>::SharedPtr    extended_state_sub;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
     rclcpp::TimerBase::SharedPtr                                        timer;
     rclcpp::Time                                                        last_request{0, 0, RCL_ROS_TIME};
-    mavros_msgs::msg::State                                             fcu_state;
     mavros_msgs::msg::WaypointList                                      waypoint_list;
     double yaw_current;
     t_global_position		                                        init_global_position;
   
     // static const std::array<std::string, vtol::ACTION_SIZE>        _action_string_array;
-    //
 
     //TODO: static 지워서 멤버변수로 변경
 
-    static t_bit                                                _cmd_flag;
+    static t_bit                                                _stt_cmd_flag;
     static std::array<double, 3>		                            _local_position;
     static std::array<float, 3>		                              _global_position;
     static std::array<double, 6>		                            _local_velocity;
@@ -268,10 +311,10 @@ private:
     static std::array<double, 4>                                    _manual_velocity;
 
     static double                                                       _offset;
-    static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
+    static const std::array<std::string, ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
-    std::array<t_bit, vtol::STATE_SIZE>                           state_value_array;
-    std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
+    std::array<t_bit, STATE_SIZE>                           stt_cmd_value_array;
+    std::array<std::function <void(void)> , STATE_SIZE>            statusCommandFunc;
 
     /* 일바적인 모든 용*/
 
@@ -281,8 +324,10 @@ private:
     
     WaypointManager<Eigen::Vector4d>                               wp_manager;
     static const std::array<Eigen::Vector4d, 4>                    _square_path;
+    static const std::array<Eigen::Vector4d, 8>                    _square_path_twice;
     static const std::array<Eigen::Vector4d, 4>                    _triangle_path;
     static const std::array<Eigen::Vector4d, 11>                   _star_path;
+
 };
 
 

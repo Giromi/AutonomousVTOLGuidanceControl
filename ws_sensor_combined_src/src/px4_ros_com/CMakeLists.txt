@@ -63,8 +63,9 @@ add_library(OffboardMavros SHARED
   src/lib/OffboardMavros/OffboardMavros_ResponseCallback.cpp
   src/lib/OffboardMavros/OffboardMavros_CallbackComand.cpp
   src/lib/OffboardMavros/OffboardMavros_Action.cpp
+  src/lib/OffboardMavros/OffboardMavros_BitsHandler.cpp
   src/lib/OffboardMavros/OffboardMavros_Utile.cpp
-  )
+)
 
 add_library(Dubins SHARED
     src/lib/Dubins.cpp

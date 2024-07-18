@@ -28,8 +28,9 @@ public:
     bool        isArrived(const T& current_position) const;
     const T&    getTarget(void) const;
     void        pop(void);
+    bool        empty(void) const;  
 
-    unsigned int size(void) const;
+    unsigned int getSize(void) const;
 
 private:
     std::queue<T> waypoint_path;

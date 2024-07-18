@@ -1,6 +1,8 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
 bool OffboardMavros::isPassedSeconds(const double timer) {
+    const double clock = (this->now() - last_request).seconds();
+    RCLCPP_INFO(this->get_logger(), "isPassed %lf > %lf Seconds?", clock, timer);
     return (this->now() - last_request).seconds() > timer;
 }
 
@@ -10,7 +12,7 @@ void OffboardMavros::printSuccessInfo(const bool success, const std::array<const
 }
 
 void OffboardMavros::handleCommandFlag(const t_bit flag) {
-    if (_cmd_flag == flag) {
+    if (_stt_cmd_flag == flag) {
         return ;
     }
 }
@@ -30,11 +32,11 @@ bool OffboardMavros::isGlobalPositionGettingValue(const t_global_position& input
 }
 
 void OffboardMavros::commandFlagTurnOn(const t_bit& flag) {
-    _cmd_flag |= flag;
+    _stt_cmd_flag |= flag;
 }
 
 void OffboardMavros::commandFlagTurnOff(const t_bit& flag) {
-    _cmd_flag &= ~flag;
+    _stt_cmd_flag &= ~flag;
 }
 
 const Quaternion OffboardMavros::rpy_to_quat(const double roll, const double pitch, const double yaw) {
@@ -52,4 +54,23 @@ const Quaternion OffboardMavros::rpy_to_quat(const double roll, const double pit
     q.z = cr * cp * sy - sr * sp * cy;
 
     return q;
+}
+
+bool OffboardMavros::ifTimeNotSameInput(builtin_interfaces::msg::Time& t1, const builtin_interfaces::msg::Time& t2) {
+    if (t1.sec == t2.sec && t1.nanosec == t2.nanosec) return true;
+    t1 = t2;
+    return false;
+}
+
+bool    OffboardMavros::isConnectionSafe(void) {
+
+    if (fcu.state.second.header.stamp.sec == 0
+        || fcu.extended_state.second.header.stamp.sec == 0
+        || fcu.local_position.second.header.stamp.sec == 0
+        || fcu.global_position.second.header.stamp.sec == 0
+    ) {
+        DEBUG::message("Subscribe Call back not yet", YELLOW);
+        return false;
+    }
+    return true;
 }

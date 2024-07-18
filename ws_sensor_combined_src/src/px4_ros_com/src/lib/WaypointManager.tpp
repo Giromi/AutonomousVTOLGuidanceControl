@@ -28,7 +28,7 @@ bool WaypointManager<T>::isArrived(const T& current_position) const {
     DEBUG::print("Target  position : ", getTarget().transpose(), BOLDGREEN);
     DEBUG::print("Current position : ", cur_position_vector3d.transpose(), BOLDGREEN);
     DEBUG::print("Position diff: ", position_diff.norm(), BOLDGREEN);
-    DEBUG::print("Waypoint size    : ", size(), BOLDGREEN);
+    DEBUG::print("Waypoint size    : ", getSize(), BOLDGREEN);
     if (position_diff.norm() < 10.0) {
         return true;
     }
@@ -44,7 +44,7 @@ void WaypointManager<T>::setPath(const std::array<T, N>& waypoints) {
 }
 
 template <typename T>
-unsigned int WaypointManager<T>::size(void) const {
+unsigned int WaypointManager<T>::getSize(void) const {
     return waypoint_path.size();
 }
 
@@ -56,6 +56,11 @@ const T& WaypointManager<T>::getTarget(void) const {
 template <typename T>
 void WaypointManager<T>::pop(void) {
     waypoint_path.pop();
+}
+
+template <typename T>
+bool WaypointManager<T>::empty(void) const {
+    return waypoint_path.empty();
 }
 
 #endif // WAYPOINT_MANAGER_TPP

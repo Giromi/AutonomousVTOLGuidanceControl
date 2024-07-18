@@ -19,6 +19,7 @@ void OffboardMavros::initializeConstant(void) {
 void OffboardMavros::initializePublishers(void) {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
     local_pos_pub = create_publisher<geometry_msgs::msg::PoseStamped>("/mavros/setpoint_position/local", 10);
+    // /mavros/global_position/global
     local_vel_pub = this->create_publisher<geometry_msgs::msg::Twist>("/mavros/setpoint_velocity/cmd_vel_unstamped", 10);
     local_pub = this->create_publisher<mavros_msgs::msg::PositionTarget>("/mavros/setpoint_raw/local", 10);
     actuator_control_pub = this->create_publisher<mavros_msgs::msg::ActuatorControl>( "/mavros/actuator_control", 10);
@@ -38,12 +39,14 @@ void OffboardMavros::initializeSubscribers(void) {
     const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> local_position_sub_bind = std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1);
     const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> pose_sub_bind = std::bind(&OffboardMavros::poseCallBack, this, std::placeholders::_1);
     const std::function<void(const sensor_msgs::msg::NavSatFix::SharedPtr msg)> global_posistion_sub_bind = std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1);
+    const std::function<void(const mavros_msgs::msg::ExtendedState::SharedPtr msg)> extended_state_sub_bind = std::bind(&OffboardMavros::extendedStateCallBack, this, std::placeholders::_1);
 
     state_sub            = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
+    extended_state_sub     = create_subscription<mavros_msgs::msg::ExtendedState>("/mavros/extended_state", default_qos, extended_state_sub_bind);
     local_position_sub   = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, local_position_sub_bind);
+    global_posistion_sub = create_subscription<sensor_msgs::msg::NavSatFix>("/mavros/global_position/global", default_qos, global_posistion_sub_bind);
     subscription         = create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
     pose_sub             = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, pose_sub_bind);
-    global_posistion_sub = create_subscription<sensor_msgs::msg::NavSatFix>("/mavros/global_position/global", default_qos, global_posistion_sub_bind);
 }
 
 void    OffboardMavros::initializeClients(void) {
@@ -59,12 +62,27 @@ void    OffboardMavros::initializeClients(void) {
     waypoint_clear_client = this->create_client<mavros_msgs::srv::WaypointClear>("/mavros/mission/clear");
 }
 
+// void    OffboardMavros::initialIsConnectionSafe(void) {
+//     rclcpp::Time last_time = this->now();
+//     while (isConnectionSafe() == false) {
+//         RCLCPP_WARN(this->get_logger(), "FCU is not connected");
+//         rclcpp::sleep_for(std::chrono::seconds(1));
+//         if (last_time + rclcpp::Duration(5, 0) < this->now()) {
+//             rclcpp::shutdown();
+//             std::exit(1);
+//         }
+//     }
+//     RCLCPP_INFO(this->get_logger(), "FCU is connected");
+// }
+
+
 void OffboardMavros::initializeTimers(const int rate_hz) {
     const int rate_ms = 1000 / rate_hz;
     timer = this->create_wall_timer(
             std::chrono::milliseconds(rate_ms),
-            std::bind(&OffboardMavros::publish, this)); 
+            std::bind(&OffboardMavros::vtolCommandCenter, this)); 
 }
+
 
 void OffboardMavros::initializeVariables(void) {
 
@@ -83,47 +101,62 @@ void OffboardMavros::initializeVariables(void) {
     // 이동 시멘틱을 사용하여 operator=으로 std::queue 초기화
     ref_waypoints = std::queue<vtol::ReferenceWaypoint>(std::move(input));
 
-    init_global_position = {-1.0f, -1.0f, -1.0f};
-
-    state_value_array = { 
-        vtol::INIT, 
-        vtol::READY, 
+    stt_cmd_value_array = { 
+        vtol::STAND_BY, 
+        vtol::CHECK,
+        vtol::READY,
+        vtol::ARMING,
         vtol::ARMED,
-        vtol::FLY,
-        vtol::TAKEOFF,
-        vtol::MISSION,
-        vtol::FIXED,
-        vtol::TO_FIXED,
-        vtol::TO_QUAD,
-        vtol::MC_START,
-        vtol::FW_START,
-        vtol::LAND,
+        vtol::DISARMING,
+        vtol::TAKING_OFF,
+        // vtol::MC_TAKING_OFF,
+        vtol::LANDING,
+        vtol::MC,
+        vtol::FW,
+        vtol::MC_TO_FIXED,
+        vtol::FW_TO_QUAD,
+        vtol::MC_STARTING,
+        vtol::FW_STARTING,
+        vtol::MC_MISSION,
+        vtol::FW_MISSION,
+        vtol::MC_STOPPING,
+        vtol::FW_STOPPING,
     };
+
+    init_global_position = {-1.0f, -1.0f, -1.0f};
 }
 
-void OffboardMavros::initializeStateFuncPointerArray(
-    const std::array<std::function <void(void)>, vtol::STATE_SIZE>& input
-    ) {
-    for (size_t i = 0; i < vtol::STATE_SIZE; ++i) {
-        stateFunc[i] = input[i];
-    }
-}
 
 void OffboardMavros::initializeFunctionPointerArray(void) {
-    initializeStateFuncPointerArray({ 
-            std::bind(&OffboardMavros::stateCommandInit,    this),
-            std::bind(&OffboardMavros::stateCommandReady,   this),
-            std::bind(&OffboardMavros::stateCommandArmed,   this),
-            std::bind(&OffboardMavros::stateCommandFly,     this),
-            std::bind(&OffboardMavros::stateCommandTakeOff, this),
-            std::bind(&OffboardMavros::stateCommandMission, this),
-            std::bind(&OffboardMavros::stateCommandFixed,   this),
-            std::bind(&OffboardMavros::stateCommandToFixed, this),
-            std::bind(&OffboardMavros::stateCommandToQuad,  this),
-            std::bind(&OffboardMavros::stateCommandStartMC, this),
-            std::bind(&OffboardMavros::stateCommandStartFW, this),
-            std::bind(&OffboardMavros::stateCommandLand,    this),
+    initializeStatusCommandFuncPointerArray({ 
+            std::bind(&OffboardMavros::statusCommandStandBy,     this),
+            std::bind(&OffboardMavros::statusCommandCheck,       this),
+            std::bind(&OffboardMavros::statusCommandReady,       this),
+            std::bind(&OffboardMavros::statusCommandArming,      this),
+            std::bind(&OffboardMavros::statusCommandArmed,       this),
+            std::bind(&OffboardMavros::statusCommandDisarming,   this),
+            std::bind(&OffboardMavros::statusCommandTakingOff,   this),
+            // std::bind(&OffboardMavros::statusCommandTakingOffMC, this),
+            std::bind(&OffboardMavros::statusCommandLanding,     this),
+            std::bind(&OffboardMavros::statusCommandMC,          this),
+            std::bind(&OffboardMavros::statusCommandFW,          this),
+            std::bind(&OffboardMavros::statusCommandToFixedMC,   this),
+            std::bind(&OffboardMavros::statusCommandToQuadFW,    this),
+            std::bind(&OffboardMavros::statusCommandStartingMC,  this),
+            std::bind(&OffboardMavros::statusCommandStartingFW,  this),
+            std::bind(&OffboardMavros::statusCommandMissionMC,  this),
+            std::bind(&OffboardMavros::statusCommandMissionFW,  this),
+            std::bind(&OffboardMavros::statusCommandStopingMC,  this),
+            std::bind(&OffboardMavros::statusCommandStopingFW,  this),
     });
+}
+
+void OffboardMavros::initializeStatusCommandFuncPointerArray(
+    const std::array<std::function <void(void)>, STATE_SIZE>& input
+    ) {
+    for (size_t i = 0; i < STATE_SIZE; ++i) {
+        statusCommandFunc[i] = input[i];
+    }
 }
 
 /**
@@ -193,6 +226,7 @@ void OffboardMavros::triangleScenarioMC(const std::array<double, 3>& target_pos)
 void OffboardMavros::triangleScenarioFW(const std::array<double, 3>& target_pos) {
     const float VTOL_TRANSITION_HEADING_NEXT_WAYPOINT = static_cast<float>(mavlink::common::VTOL_TRANSITION_HEADING::NEXT_WAYPOINT);
 
+
     // Takeoff
     setWaypoint(mavros_msgs::msg::Waypoint::FRAME_GLOBAL_REL_ALT,
                 mavros_msgs::msg::CommandCode::NAV_VTOL_TAKEOFF, true, true, 
@@ -223,12 +257,23 @@ void OffboardMavros::initializeWaypoints(void) {
     triangleScenarioFW(home_alt_global_position);
 
     // wp_manager.setPath(_star_path);
-    wp_manager.setPath(_square_path);
-    RCLCPP_INFO(this->get_logger(), "Waypoint list size: %u", wp_manager.size());
+    wp_manager.setPath(_square_path_twice);
+    RCLCPP_INFO(this->get_logger(), "Waypoint list size: %u", wp_manager.getSize());
     wp_manager.printWaypoints();
 }
 
 const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
+    Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
+    Eigen::Vector4d(200.0,      200.0,	    30.0,      1.57),
+    Eigen::Vector4d(  0.0,      200.0,	    30.0,      3.14),
+    Eigen::Vector4d(  0.0,        0.0,	    30.0,      -1.57),
+};
+
+const std::array<Eigen::Vector4d, 8> OffboardMavros::_square_path_twice = {
+    Eigen::Vector4d(200.0,        0.0,	    30.0,      vtol::NaN),
+    Eigen::Vector4d(200.0,      200.0,	    30.0,      vtol::NaN),
+    Eigen::Vector4d(  0.0,      200.0,	    30.0,      vtol::NaN),
+    Eigen::Vector4d(  0.0,        0.0,	    30.0,      vtol::NaN),
     Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
     Eigen::Vector4d(200.0,      200.0,	    30.0,      1.57),
     Eigen::Vector4d(  0.0,      200.0,	    30.0,      3.14),
