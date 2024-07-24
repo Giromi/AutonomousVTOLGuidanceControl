@@ -13,6 +13,8 @@ StraightPath::StraightPath(const Eigen::Vector3d &start, const Eigen::Vector3d &
         0.0, 0.0, 1.0;
 }
 
+StraightPath::~StraightPath(void) { }
+
 // Guidance method
 Eigen::Vector3d StraightPath::guidanceControl(const Eigen::Vector3d &UAV_position, float UAV_speed)
 {
@@ -33,10 +35,10 @@ double StraightPath::headingControl(const Eigen::Vector3d &u_prime){
 bool StraightPath::isArrived(const Eigen::Vector3d &UAV_position, float threshold)
 {
     // set the manifold for arrival classification
-    Eigen::Vector3d norm_vec = (goal_point - start_point).normalized();
-
+    
     // Check if the distance is within the threshold
-    return norm_vec.dot(UAV_position - goal_point) >= 0 || (UAV_position- goal_point).norm() < threshold;
+    // return norm_vec.dot(UAV_position - goal_point) >= 0 || (UAV_position- goal_point).norm() < threshold;
+    return (UAV_position - goal_point).norm() <= threshold;
 }
 
 // Calculation methods

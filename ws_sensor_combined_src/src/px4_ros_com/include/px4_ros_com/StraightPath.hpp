@@ -8,7 +8,7 @@ class StraightPath : public Traj
 public:
     // Constructor
     StraightPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal);
-
+    ~StraightPath(void);
     // Guidance method
     Eigen::Vector3d guidanceControl(const Eigen::Vector3d &UAV_position, float UAV_speed);
     double headingControl(const Eigen::Vector3d &u_prime);

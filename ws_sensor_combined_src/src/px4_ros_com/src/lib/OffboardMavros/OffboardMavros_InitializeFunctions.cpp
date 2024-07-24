@@ -228,30 +228,42 @@ void OffboardMavros::initializeWaypoints(void) {
     /* --------------------- */
     Eigen::MatrixXd mat(3, 5);  // 3x5 행렬
     mat <<  0.0, 30.0, 30.0,  0.0,  0.0,
-            0.0,  0.0, 30.0, 30.0,  0.0,
-           20.0, 20.0, 20.0, 20.0, 10.0;
+            0.0,  0.0, 20.0, 20.0,  0.0,
+           20.0, 10.0, 10.0, 10.0, 10.0;
 
-    // 각 열 벡터 받아오기
+    // 각 열 벡터 받아오기`
     Eigen::Vector3d wp0 = mat.col(0);
     Eigen::Vector3d wp1 = mat.col(1);
     Eigen::Vector3d wp2 = mat.col(2);
     Eigen::Vector3d wp3 = mat.col(3);
     Eigen::Vector3d wp4 = mat.col(4);
     
-    StraightPath straight_path_1(wp0, wp1);
-    StraightPath straight_path_2(wp1, wp2);
-    StraightPath straight_path_3(wp2, wp3);
-    StraightPath straight_path_4(wp3, wp4);
+    // StraightPath straight_path_1(wp0, wp1);
+    // CircularPath circular_path_2(wp1, wp2, (wp1 + wp2)/2, 10.0, true);
+    // StraightPath straight_path_3(wp2, wp3);
+    // CircularPath circular_path_4(wp3, wp4, (wp3 + wp4)/2, 10.0, true);
+    // StraightPath straight_path_3(wp2, wp3);
+    // StraightPath straight_path_4(wp3, wp4);
 
-    straight_trajectory.push(straight_path_1);
-    straight_trajectory.push(straight_path_2);
-    straight_trajectory.push(straight_path_3);
-    straight_trajectory.push(straight_path_4);
+    // straight_trajectory.push(straight_path_1);
+    // straight_trajectory.push(straight_path_2);
+    // straight_trajectory.push(straight_path_3);
+    // straight_trajectory.push(straight_path_4);
 
     // CircularPath CircularPath_1();
     // CircularPath CircularPath_2();
     // CircularPath CircularPath_3();
     // CircularPath CircularPath_4();
+
+    reference_trajectory.push(new StraightPath(wp0, wp1));
+    reference_trajectory.push(new StraightPath(wp1, wp2));
+    reference_trajectory.push(new StraightPath(wp2, wp3));
+    reference_trajectory.push(new StraightPath(wp3, wp4));
+
+    // reference_trajectory.push(new StraightPath(wp0, wp1));
+    // reference_trajectory.push(new CircularPath(wp1, wp2, (wp1 + wp2)/2, 10.0, true));
+    // reference_trajectory.push(new StraightPath(wp2, wp3));
+    // reference_trajectory.push(new CircularPath(wp3, wp4, (wp3 + wp4)/2, 10.0, true));
 
     // wp_manager.setPath(_star_path);
     wp_manager.setPath(_square_path);
@@ -260,6 +272,11 @@ void OffboardMavros::initializeWaypoints(void) {
 
 }
 
+/* --------------------- */
+
+
+
+    
 const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
     Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
     Eigen::Vector4d(200.0,      200.0,	    30.0,      1.57),

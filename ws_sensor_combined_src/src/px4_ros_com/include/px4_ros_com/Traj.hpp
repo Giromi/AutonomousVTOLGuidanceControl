@@ -10,6 +10,7 @@ class Traj
 public:
     // Constructor
     Traj(const Eigen::Vector3d &start, const Eigen::Vector3d &goal);
+    virtual ~Traj(void);
 
     // Setter methods
     virtual void setPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal);

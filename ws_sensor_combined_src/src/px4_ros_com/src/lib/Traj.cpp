@@ -5,6 +5,8 @@ Traj::Traj(const Eigen::Vector3d &start, const Eigen::Vector3d &goal)
     : start_point(start), goal_point(goal), tilde(goal - start) { 
     }
 
+Traj::~Traj(void) { }
+
 // Setter methods
 void Traj::setPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal)
 {

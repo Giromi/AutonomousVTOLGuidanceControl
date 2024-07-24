@@ -4,14 +4,16 @@
 CircularPath::CircularPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, const Eigen::Vector3d &center, double radius, bool rotation_dir)
     : Traj(start, goal), center_point(center), radius(radius), rotation_dir(rotation_dir)
 {
-    this->K1 << 1.0, 0.0, 0.0,
-        0.0, 1.0, 0.0,
-        0.0, 0.0, 1.0;
+    this->K1 << 0.001, 0.0, 0.0,
+        0.0, 0.001, 0.0,
+        0.0, 0.0, 0.001;
 
     this->K2 << 1.0, 0.0, 0.0,
         0.0, 1.0, 0.0,
         0.0, 0.0, 1.0;
 }
+
+CircularPath::~CircularPath(void) { }
 
 void CircularPath::setPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, Eigen::Vector3d center, double radius, bool rotation_dir)
 {
@@ -31,7 +33,7 @@ Eigen::Vector3d CircularPath::guidanceControl(const Eigen::Vector3d &UAV_positio
     Eigen::Vector3d u_prime = -K1 * follow_result + K2 * travel_result;
 
     // Normalize and scale by UAV speed
-    return UAV_speed * u_prime / u_prime.norm();
+    return UAV_speed * u_prime.normalized();
 }
 
 double CircularPath::headingControl(const Eigen::Vector3d &u_prime){
@@ -39,33 +41,39 @@ double CircularPath::headingControl(const Eigen::Vector3d &u_prime){
     return 0.0;
 }
 
-bool CircularPath::isArrived(const Eigen::Vector3d &UAV_position)
+bool CircularPath::isArrived(const Eigen::Vector3d &UAV_position, float threshold)
 {
-    Eigen::Vector3d dir_start = (start_point - center_point).normalized();
-    Eigen::Vector3d dir_goal = (goal_point - center_point).normalized();
+    // static_cast<void>(threshold);
+    // Eigen::Vector3d dir_start = (start_point - center_point).normalized();
+    // Eigen::Vector3d dir_goal = (goal_point - center_point).normalized();
 
-    double rad_start = atan2(dir_start(1), dir_start(0));
-    double rad_goal = atan2(dir_goal(1), dir_goal(0));
+    // double rad_start = atan2(dir_start(1), dir_start(0));
+    // double rad_goal = atan2(dir_goal(1), dir_goal(0));
 
-    double req_rad = rad_goal - rad_start;
+    // double req_rad = rad_goal - rad_start;
 
-    Eigen::Vector3d dir_UAV = (UAV_position - center_point).normalized();
-    double rad_UAV = atan2(dir_UAV(1), dir_UAV(0));
-    double tilde_rad = rad_UAV - rad_start;
+    // Eigen::Vector3d dir_UAV = (UAV_position - center_point).normalized();
+    // double rad_UAV = atan2(dir_UAV(1), dir_UAV(0));
+    // double tilde_rad = rad_UAV - rad_start;
 
-    if (rotation_dir)   // CCW Circular Path
-    {
-        if (rad_start > rad_goal) req_rad += 2 * M_PI;
-        if (rad_start > rad_UAV) tilde_rad += 2 * M_PI;
-        return tilde_rad > req_rad;
-    }
-    else                // CW Circular Path
-    {   
-        if (rad_goal > rad_start) req_rad -= 2 * M_PI;
-        if (rad_UAV > rad_start) tilde_rad -= 2 * M_PI;
-        return tilde_rad < req_rad;
-    }
+    // if (rotation_dir)   // CCW Circular Path
+    // {
+    //     if (rad_start > rad_goal) req_rad += 2 * M_PI;
+    //     if (rad_start > rad_UAV) tilde_rad += 2 * M_PI;
+    //     return tilde_rad < req_rad;
+    // }
+    // else                // CW Circular Path
+    // {   
+    //     if (rad_goal > rad_start) req_rad -= 2 * M_PI;
+    //     if (rad_UAV > rad_start) tilde_rad -= 2 * M_PI;
+    //     return tilde_rad > req_rad;
+    // }
+    Eigen::Vector3d norm_vec = (goal_point - start_point).normalized();
+    static_cast<void>(threshold);
 
+    // Check if the distance is within the threshold
+    // return norm_vec.dot(UAV_position - goal_point) >= 0 || (UAV_position- goal_point).norm() < threshold;
+    return norm_vec.dot(UAV_position - goal_point) >= 0;
 }
 
 Eigen::Vector3d CircularPath::pathFollowing(const Eigen::Vector3d &UAV_position)
@@ -85,12 +93,12 @@ Eigen::Vector3d CircularPath::pathTraveling(const Eigen::Vector3d &UAV_position)
     if (rotation_dir)
     {
         // CCW rotation guidance
-        return partial_lat.cross(partial_lon);
+        return (partial_lat.cross(partial_lon)).normalized();
     }
     else
     {
         // CW rotation guidance
-        return partial_lon.cross(partial_lat);
+        return (partial_lon.cross(partial_lat)).normalized();
     }
 }
 
@@ -102,7 +110,7 @@ Eigen::Vector3d CircularPath::calculateLatManifold()
 
 Eigen::Vector3d CircularPath::calculateLonManifold(const Eigen::Vector3d &UAV_position)
 {
-    Eigen::Vector3d partial_lon = UAV_position - center_point;
-    partial_lon.z() = 0.0;
-    return partial_lon * 2;
+    Eigen::Vector3d tilde = UAV_position - center_point;
+    Eigen::Vector3d partial_lon(2*tilde.x(), 2*tilde.y(), 0.0);
+    return partial_lon;
 }

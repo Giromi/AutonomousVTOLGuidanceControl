@@ -115,25 +115,27 @@ void OffboardMavros::stateCommandLand (void) {
 }
 
 void OffboardMavros::localPositionCommandStart(void) {
-    if (straight_trajectory.empty()) {
+    if (reference_trajectory.empty()) {
         _cmd_flag = vtol::LAND;
-
         return;
     }
 
     Eigen::Vector3d UAV_position;
     UAV_position << _cur_position[vtol::EAST], _cur_position[vtol::NORTH], _cur_position[vtol::UP];
     
-    _local_velocity[0] = straight_trajectory.front().guidanceControl(UAV_position, 3.0).x();
-    _local_velocity[1] = straight_trajectory.front().guidanceControl(UAV_position, 3.0).y();
-    _local_velocity[2] = straight_trajectory.front().guidanceControl(UAV_position, 3.0).z();
-    _local_velocity[4] = std::atan2(straight_trajectory.front().guidanceControl(UAV_position, 3.0).y(), straight_trajectory.front().guidanceControl(UAV_position, 3.0).x());
+    _local_velocity[0] = reference_trajectory.front()->guidanceControl(UAV_position, 3.0).x();
+    _local_velocity[1] = reference_trajectory.front()->guidanceControl(UAV_position, 3.0).y();
+    _local_velocity[2] = reference_trajectory.front()->guidanceControl(UAV_position, 3.0).z();
+    _local_velocity[4] = std::atan2(reference_trajectory.front()->guidanceControl(UAV_position, 3.0).y(), reference_trajectory.front()->guidanceControl(UAV_position, 3.0).x());
+    
     DEBUG::printArray("Local Velocity Input : ", _local_velocity, 3, BOLDWHITE);
     DEBUG::printArray("Local Position       : ", _cur_position, 3, BOLDWHITE);
-    DEBUG::print("Trajectory Size      : ", straight_trajectory.size(), BOLDWHITE);
-    const bool check_arr = straight_trajectory.front().isArrived(UAV_position, 3.0);
+    DEBUG::print("Trajectory Size      : ", reference_trajectory.size(), BOLDWHITE);
+    const bool check_arr = reference_trajectory.front()->isArrived(UAV_position, 3.0);
     if (check_arr){
-        straight_trajectory.pop();
+        delete reference_trajectory.front();
+        reference_trajectory.pop();
+        std::cout << "\n\n\n\n\n\n\n\n" << std::endl;
     }
     // const Eigen::Vector4d cur_position_vector3d(
     //     _cur_position[0], _cur_position[1], _cur_position[2], vtol::NaN

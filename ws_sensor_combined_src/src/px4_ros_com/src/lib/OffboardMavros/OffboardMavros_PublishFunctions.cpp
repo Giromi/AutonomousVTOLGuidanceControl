@@ -114,12 +114,12 @@ void OffboardMavros::publishRawLocal(void) {
     msg->header.frame_id = "standard_vtol_0";
     msg->coordinate_frame = mavros_msgs::msg::PositionTarget::FRAME_LOCAL_NED;
     msg->type_mask = mavros_msgs::msg::PositionTarget::IGNORE_PX	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_PY	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_PZ	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFY	|                          
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFZ |
-                          mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
+                     mavros_msgs::msg::PositionTarget::IGNORE_PY	|
+                     mavros_msgs::msg::PositionTarget::IGNORE_PZ	|
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFY	|                          
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFZ |
+                     mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
 
     msg->velocity.x    = _local_velocity[0]; // East
     msg->velocity.y    = _local_velocity[1]; // North

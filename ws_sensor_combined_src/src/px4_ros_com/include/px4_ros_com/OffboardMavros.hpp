@@ -280,6 +280,7 @@ private:
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
     // std::queue<vtol::Waypoint>                                          waypoints;
     std::queue<StraightPath>                                            straight_trajectory;
+    std::queue<Traj*>                                                    reference_trajectory;
 
     bool                                                                gps_locked{false};
     

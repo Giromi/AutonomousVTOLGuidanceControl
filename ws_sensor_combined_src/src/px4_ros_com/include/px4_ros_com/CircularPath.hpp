@@ -9,6 +9,7 @@ class CircularPath : public Traj
 public:
     // Constructor
     CircularPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, const Eigen::Vector3d &center, double radius, bool rotation_dir);
+    ~CircularPath(void);
 
     // Setter methods
     void setPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, Eigen::Vector3d center, double radius, bool rotation_dir);
@@ -17,7 +18,7 @@ public:
     Eigen::Vector3d guidanceControl(const Eigen::Vector3d &UAV_position, float UAV_speed);
     double headingControl(const Eigen::Vector3d &u_prime);
 
-    bool isArrived(const Eigen::Vector3d &UAV_position);
+    bool isArrived(const Eigen::Vector3d &UAV_position, float threshold);
 
 protected:
     // Calculation methods
