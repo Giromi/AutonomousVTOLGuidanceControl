@@ -89,6 +89,7 @@ private:
     void    gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
     void    poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
+    void    extendedStateCallBack(const mavros_msgs::msg::ExtendedState::SharedPtr msg);
     void    statusReady(void);
 
 
@@ -156,7 +157,7 @@ private:
     void    stateCommandToFixed(void);
     void    stateCommandToQuad(void);
     void    stateCommandLand(void);
-
+    
 
     void    localPositionCommandStart(void);
     // void    is_arrived_waypoint(const std::array<float, 3> target);
@@ -247,11 +248,14 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        global_posistion_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
+    rclcpp::Subscription<mavros_msgs::msg::ExtendedState>::SharedPtr    extended_state_sub;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
     rclcpp::TimerBase::SharedPtr                                        timer;
     rclcpp::Time                                                        last_request{0, 0, RCL_ROS_TIME};
     mavros_msgs::msg::State                                             fcu_state;
     mavros_msgs::msg::WaypointList                                      waypoint_list;
+    mavros_msgs::msg::ExtendedState                                     extended_msg;
+    /* 일바적인 모든 용*/
     double yaw_current;
     t_global_position		                                        init_global_position;
   
@@ -274,16 +278,15 @@ private:
     static void                                                         (*actionFunc[])(void);
     std::array<t_bit, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
-    std::queue<vtol::Waypoint>                                          waypoints;
+    // std::queue<vtol::Waypoint>                                          waypoints;
     std::queue<StraightPath>                                            straight_trajectory;
 
     bool                                                                gps_locked{false};
-
-    /* 일바적인 모든 용*/
+    
 
     /* mavros mission send 용*/
     std::queue<vtol::ReferenceWaypoint>                                 ref_waypoints;
-    bool                                                                gps_locked{false};
+    // bool                                                                gps_locked{false};
     
     WaypointManager<Eigen::Vector4d>                               wp_manager;
     static const std::array<Eigen::Vector4d, 4>                    _square_path;

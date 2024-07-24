@@ -12,7 +12,7 @@ void    OffboardMavros::publish(void) {
         return ;
     } 
 
-    publishLocal();
+    publishRawLocal();
     // publishVelocity(); MC 모드에서 Yaw rate 제어는 PD 제어나 1차 LPF 적용 필요
 
 
@@ -121,12 +121,12 @@ void OffboardMavros::publishRawLocal(void) {
                           mavros_msgs::msg::PositionTarget::IGNORE_AFZ |
                           mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
 
-    local_msg.velocity.x    = _local_velocity[0]; // East
-    local_msg.velocity.y    = _local_velocity[1]; // North
-    local_msg.velocity.z    = _local_velocity[2]; // Up
-    local_msg.yaw           = _local_velocity[4];
+    msg->velocity.x    = _local_velocity[0]; // East
+    msg->velocity.y    = _local_velocity[1]; // North
+    msg->velocity.z    = _local_velocity[2]; // Up
+    msg->yaw           = _local_velocity[4];
     // local_msg.yaw_rate      = _local_velocity[5];
-    local_pub->publish(local_msg);
+    local_pub->publish(*msg);
 }
 
 /* Thrust NaN 넣어도 알아서 작동 안됨 */

@@ -33,6 +33,7 @@ void OffboardMavros::initializePublishers(void) {
 
 void OffboardMavros::initializeSubscribers(void) {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
+    const std::function<void(const mavros_msgs::msg::ExtendedState::SharedPtr)> extended_state_bind = std::bind(&OffboardMavros::extendedStateCallBack, this, std::placeholders::_1);
     const std::function<void(const mavros_msgs::msg::State::SharedPtr)> state_bind = std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1);
     const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
     const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> local_position_sub_bind = std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1);
@@ -40,6 +41,7 @@ void OffboardMavros::initializeSubscribers(void) {
     const std::function<void(const sensor_msgs::msg::NavSatFix::SharedPtr msg)> global_posistion_sub_bind = std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1);
 
     state_sub            = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
+    extended_state_sub   = create_subscription<mavros_msgs::msg::ExtendedState>("mavros/extended_state", default_qos, extended_state_bind);
     local_position_sub   = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, local_position_sub_bind);
     subscription         = create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
     pose_sub             = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, pose_sub_bind);
@@ -227,7 +229,7 @@ void OffboardMavros::initializeWaypoints(void) {
     Eigen::MatrixXd mat(3, 5);  // 3x5 행렬
     mat <<  0.0, 30.0, 30.0,  0.0,  0.0,
             0.0,  0.0, 30.0, 30.0,  0.0,
-           10.0, 10.0, 10.0, 10.0, 10.0;
+           20.0, 20.0, 20.0, 20.0, 10.0;
 
     // 각 열 벡터 받아오기
     Eigen::Vector3d wp0 = mat.col(0);

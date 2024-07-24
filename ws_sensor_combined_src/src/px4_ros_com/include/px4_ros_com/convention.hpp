@@ -32,7 +32,7 @@ namespace vtol {
         SUCCESS = 0,
         FAIL = 1
     };
-
+// 100010111
     enum State {                     // enum class 타입 안정성 사용
         INIT,
         READY           =   INIT    | BIT_READY,              // Before arming
@@ -79,7 +79,7 @@ namespace vtol {
         static_cast<uint16_t>(mavlink::common::MAV_CMD::DO_CHANGE_SPEED);
     constexpr float     NaN             = std::numeric_limits<float>::quiet_NaN();
     constexpr size_t    ACTION_SIZE     = 21;
-    constexpr size_t    STATE_SIZE      = 12;
+    constexpr size_t    STATE_SIZE      = 13;
     constexpr char      FCU_ARM[]       = "AUTO.RTL";
     constexpr char	    FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	    FCU_OFFBOARD[]  = "OFFBOARD";
@@ -100,6 +100,10 @@ namespace vtol {
             : x(x), y(y), z(z), yaw(yaw) { }
     };
 
+
+    enum landed_state {
+        LANDED_IN_AIR = 2
+    };
 }
 
 
