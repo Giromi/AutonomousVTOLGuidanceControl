@@ -223,10 +223,14 @@ void OffboardMavros::initializeWaypoints(void) {
     triangleScenarioFW(home_alt_global_position);
 
     // wp_manager.setPath(_star_path);
-    wp_manager.setPath(_square_path);
+    wp_manager.setPath(_simple_path);
     RCLCPP_INFO(this->get_logger(), "Waypoint list size: %u", wp_manager.size());
     wp_manager.printWaypoints();
 }
+
+const std::array<Eigen::Vector4d, 1> OffboardMavros::_simple_path = {
+    Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
+};
 
 const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
     Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
