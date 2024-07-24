@@ -37,6 +37,8 @@
 # include <queue>
 # include <deque>
 # include "px4_ros_com/convention.hpp"
+# include "px4_ros_com/StraightPath.hpp"
+# include "px4_ros_com/CircularPath.hpp"
 # include "DEBUG.hpp"
 
 class OffboardMavros : public rclcpp::Node {
@@ -223,19 +225,22 @@ private:
     //TODO: static 지워서 멤버변수로 변경
 
     static vtol::State                                                  _cmd_flag;
-    static std::array<double, 3>		                                _local_position;
-    static std::array<float, 3>		                                    _global_position;
-    static std::array<double, 6>		                                _local_velocity;
-    static std::array<double, 3>		                                _cur_position;
-    static std::array<double, 3>		                                _prev_position;
-    static const std::string				                            _arrow_string;
+    static std::array<double, 3>		                        _local_position;
+    static std::array<float, 3>		                                _global_position;
+    static std::array<double, 6>		                        _local_velocity;
+    static std::array<double, 3>		                        _cur_position;
+    static std::array<double, 3>		                        _prev_position;
+    static const std::string				                _arrow_string;
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
     std::array<vtol::State, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
     std::queue<vtol::Waypoint>                                          waypoints;
+    std::queue<StraightPath>                                            straight_trajectory;
+
     bool                                                                gps_locked{false};
+    
 
 };
 

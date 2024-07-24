@@ -1,5 +1,6 @@
 #include <rclcpp/rclcpp.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
+#include "px4_ros_com/convention.hpp"
 
 class PostionSubscriber : public rclcpp::Node {
 public: 
@@ -27,9 +28,9 @@ private:
         _set_position = {msg->pose.position.x, msg->pose.position.y, msg->pose.position.z};
         std::cout.precision(2);
         std::cout << "  현재 위치          목표 위치  " << std::endl;
-        std::cout << "EAST  : " << _current_position[0] << "  -----> EAST : " << _set_position[0] << "\n"
-        << "NORTH : " << _current_position[1] << "  -----> NORTH : " << _set_position[1] << "\n"
-        << "UP    : " << _current_position[2] << "   -----> UP : " << _set_position[2] << std::endl;
+        std::cout << "EAST  : " << _current_position[vtol::EAST] << "  -----> EAST : " << _set_position[0] << "\n"
+        << "NORTH : " << _current_position[vtol::NORTH] << "  -----> NORTH : " << _set_position[1] << "\n"
+        << "UP    : " << _current_position[vtol::UP] << "   -----> UP : " << _set_position[2] << std::endl;
     }
 
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    current_pos_sub;

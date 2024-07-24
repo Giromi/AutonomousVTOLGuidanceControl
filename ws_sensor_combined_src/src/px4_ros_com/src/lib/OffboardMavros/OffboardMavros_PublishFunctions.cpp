@@ -9,6 +9,8 @@ void    OffboardMavros::publish(void) {
     if (_cmd_flag != vtol::START && _cmd_flag != vtol::MISSION) {
         return ;
     } 
+    publishLocal();
+    // publishVelocity();
     // if (fcu_state.mode == "AUTO.MISSION") {
     // publishWaypoint();
     // } else {
@@ -73,12 +75,13 @@ void OffboardMavros::publishLocal(void) {
                           mavros_msgs::msg::PositionTarget::IGNORE_PZ	|
                           mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
                           mavros_msgs::msg::PositionTarget::IGNORE_AFY	|
+                          mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE |
                           mavros_msgs::msg::PositionTarget::IGNORE_AFZ  ;
     local_msg.velocity.x    = _local_velocity[0]; // East
     local_msg.velocity.y    = _local_velocity[1]; // North
     local_msg.velocity.z    = _local_velocity[2]; // Up
     local_msg.yaw           = _local_velocity[4];
-    local_msg.yaw_rate      = _local_velocity[5];
+    // local_msg.yaw_rate      = _local_velocity[5];
     local_pub->publish(local_msg);
 }
 

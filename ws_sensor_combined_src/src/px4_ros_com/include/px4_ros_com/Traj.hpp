@@ -1,29 +1,32 @@
-#ifndef PATH_H
-#define PATH_H
+#ifndef TRAJ_H
+#define TRAJ_H
 
-#include <Eigen/Core>
+#include <Eigen/Dense>
+#include "DEBUG.hpp"
+
 
 class Traj
 {
 public:
     // Constructor
-    Traj(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, const Eigen::Matrix3d &k1, const Eigen::Matrix3d &k2);
+    Traj(const Eigen::Vector3d &start, const Eigen::Vector3d &goal);
 
     // Setter methods
-    virtual void set_path(const Eigen::Vector3d &start, const Eigen::Vector3d &goal);
-    void set_K1(const Eigen::Matrix3d &k1);
-    void set_K2(const Eigen::Matrix3d &k2);
+    virtual void setPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal);
+    void setK1(const Eigen::Matrix3d &k1);
+    void setK2(const Eigen::Matrix3d &k2);
 
     // Guidance method
-    virtual Eigen::Vector3d guidance_control(const Eigen::Vector3d &UAV_position, float UAV_speed) = 0;
-    virtual bool is_arrived(const Eigen::Vector3d &UAV_position, float threshold) = 0;
+    virtual Eigen::Vector3d guidanceControl(const Eigen::Vector3d &UAV_position, float UAV_speed);
+    virtual double headingControl(const Eigen::Vector3d &u_prime);
+    virtual bool isArrived(const Eigen::Vector3d &UAV_position, float threshold);
 
 protected:
     // Calculation methods
-    virtual Eigen::Vector3d path_traveling(const Eigen::Vector3d &UAV_position) = 0;
-    virtual Eigen::Vector3d path_following(const Eigen::Vector3d &UAV_position) = 0;
-    virtual Eigen::Vector3d calculate_lon_manifold() = 0;
-    virtual Eigen::Vector3d calculate_lat_manifold() = 0;
+    virtual Eigen::Vector3d pathTraveling(const Eigen::Vector3d &UAV_position);
+    virtual Eigen::Vector3d pathFollowing(const Eigen::Vector3d &UAV_position);
+    virtual Eigen::Vector3d calculateLonManifold(void);
+    virtual Eigen::Vector3d calculateLatManifold(void);
 
     // Member variables
     Eigen::Vector3d start_point;
@@ -33,4 +36,4 @@ protected:
     Eigen::Matrix3d K2;
 };
 
-#endif // Path_H
+#endif

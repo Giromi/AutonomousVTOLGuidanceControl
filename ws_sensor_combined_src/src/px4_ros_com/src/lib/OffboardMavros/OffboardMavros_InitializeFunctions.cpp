@@ -99,7 +99,6 @@ void OffboardMavros::initializeVariables(void) {
     waypoints = std::queue<vtol::Waypoint>(std::move(input));
 
     init_global_position = {-1.0f, -1.0f, -1.0f};
-
 }
 
 void OffboardMavros::initializeStateFuncPointerArray(
@@ -220,4 +219,32 @@ void OffboardMavros::initializeWaypoints(void) {
                                                    /*{ 상대, 절대,   절대 } */
     std::array<double, 3> home_alt_global_position = { 20.0, 47.398, 8.54616 };
     triangleScenarioFW(home_alt_global_position);
+
+    /* --------------------- */
+    Eigen::MatrixXd mat(3, 5);  // 3x5 행렬
+    mat <<  0.0, 30.0, 30.0,  0.0,  0.0,
+            0.0,  0.0, 30.0, 30.0,  0.0,
+           10.0, 10.0, 10.0, 10.0, 10.0;
+
+    // 각 열 벡터 받아오기
+    Eigen::Vector3d wp0 = mat.col(0);
+    Eigen::Vector3d wp1 = mat.col(1);
+    Eigen::Vector3d wp2 = mat.col(2);
+    Eigen::Vector3d wp3 = mat.col(3);
+    Eigen::Vector3d wp4 = mat.col(4);
+    
+    StraightPath straight_path_1(wp0, wp1);
+    StraightPath straight_path_2(wp1, wp2);
+    StraightPath straight_path_3(wp2, wp3);
+    StraightPath straight_path_4(wp3, wp4);
+
+    straight_trajectory.push(straight_path_1);
+    straight_trajectory.push(straight_path_2);
+    straight_trajectory.push(straight_path_3);
+    straight_trajectory.push(straight_path_4);
+
+    // CircularPath CircularPath_1();
+    // CircularPath CircularPath_2();
+    // CircularPath CircularPath_3();
+    // CircularPath CircularPath_4();
 }

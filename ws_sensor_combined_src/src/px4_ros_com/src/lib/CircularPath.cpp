@@ -1,10 +1,20 @@
 #include "px4_ros_com/CircularPath.hpp"
 
 // Constructor
-CircularPath::CircularPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, const Eigen::Matrix3d &k1, const Eigen::Matrix3d &k2, const Eigen::Vector3d &center, double radius, bool rotation_dir)
-    : Path(start, goal, k1, k2), center_point(center), radius(radius), rotation_dir(rotation_dir) {}
+CircularPath::CircularPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, const Eigen::Vector3d &center, double radius, bool rotation_dir)
+    : Traj(start, goal), center_point(center), radius(radius), rotation_dir(rotation_dir)
+{
+    this->K1 << 1.0, 0.0, 0.0,
+        0.0, 1.0, 0.0,
+        0.0, 0.0, 1.0;
 
-void CircularPath::set_path(const Eigen::Vector3d& start, const Eigen::Vector3d& goal, Eigen::Vector3d center, double radius, bool rotation_dir) {
+    this->K2 << 1.0, 0.0, 0.0,
+        0.0, 1.0, 0.0,
+        0.0, 0.0, 1.0;
+}
+
+void CircularPath::setPath(const Eigen::Vector3d &start, const Eigen::Vector3d &goal, Eigen::Vector3d center, double radius, bool rotation_dir)
+{
     this->start_point = start;
     this->goal_point = goal;
     this->tilde = goal - start;
@@ -13,30 +23,65 @@ void CircularPath::set_path(const Eigen::Vector3d& start, const Eigen::Vector3d&
     this->rotation_dir = rotation_dir;
 }
 
-Eigen::Vector3d CircularPath::guidance_control(const Eigen::Vector3d &UAV_position, float UAV_speed){
-    // Combine the results from path_following and path_traveling
-    Eigen::Vector3d follow_result = path_following(UAV_position);
-    Eigen::Vector3d travel_result = path_traveling(UAV_position);
-    Eigen::Vector3d u_prime = - K1 * follow_result + K2 * travel_result;
+Eigen::Vector3d CircularPath::guidanceControl(const Eigen::Vector3d &UAV_position, float UAV_speed)
+{
+    // Combine the results from pathFollowing and pathTraveling
+    Eigen::Vector3d follow_result = pathFollowing(UAV_position);
+    Eigen::Vector3d travel_result = pathTraveling(UAV_position);
+    Eigen::Vector3d u_prime = -K1 * follow_result + K2 * travel_result;
 
     // Normalize and scale by UAV speed
     return UAV_speed * u_prime / u_prime.norm();
 }
 
-Eigen::Vector3d CircularPath::path_following(const Eigen::Vector3d &UAV_position)
+double CircularPath::headingControl(const Eigen::Vector3d &u_prime){
+    static_cast<void>(u_prime);
+    return 0.0;
+}
+
+bool CircularPath::isArrived(const Eigen::Vector3d &UAV_position)
 {
-    Eigen::Vector3d partial_lat = calculate_lat_manifold();
-    Eigen::Vector3d partial_lon = calculate_lon_manifold(UAV_position);
+    Eigen::Vector3d dir_start = (start_point - center_point).normalized();
+    Eigen::Vector3d dir_goal = (goal_point - center_point).normalized();
+
+    double rad_start = atan2(dir_start(1), dir_start(0));
+    double rad_goal = atan2(dir_goal(1), dir_goal(0));
+
+    double req_rad = rad_goal - rad_start;
+
+    Eigen::Vector3d dir_UAV = (UAV_position - center_point).normalized();
+    double rad_UAV = atan2(dir_UAV(1), dir_UAV(0));
+    double tilde_rad = rad_UAV - rad_start;
+
+    if (rotation_dir)   // CCW Circular Path
+    {
+        if (rad_start > rad_goal) req_rad += 2 * M_PI;
+        if (rad_start > rad_UAV) tilde_rad += 2 * M_PI;
+        return tilde_rad > req_rad;
+    }
+    else                // CW Circular Path
+    {   
+        if (rad_goal > rad_start) req_rad -= 2 * M_PI;
+        if (rad_UAV > rad_start) tilde_rad -= 2 * M_PI;
+        return tilde_rad < req_rad;
+    }
+
+}
+
+Eigen::Vector3d CircularPath::pathFollowing(const Eigen::Vector3d &UAV_position)
+{
+    Eigen::Vector3d partial_lat = calculateLatManifold();
+    Eigen::Vector3d partial_lon = calculateLonManifold(UAV_position);
     Eigen::Vector3d follow_result = UAV_position - center_point;
     double scale_lon = pow(follow_result.x(), 2) + pow(follow_result.y(), 2) - pow(radius, 2);
     double scale_lat = follow_result.z();
     return scale_lon * partial_lon + scale_lat * partial_lat;
 }
 
-Eigen::Vector3d CircularPath::path_traveling(const Eigen::Vector3d &UAV_position)
+Eigen::Vector3d CircularPath::pathTraveling(const Eigen::Vector3d &UAV_position)
 {
-    Eigen::Vector3d partial_lat = calculate_lat_manifold();
-    Eigen::Vector3d partial_lon = calculate_lon_manifold(UAV_position);
+    Eigen::Vector3d partial_lat = calculateLatManifold();
+    Eigen::Vector3d partial_lon = calculateLonManifold(UAV_position);
     if (rotation_dir)
     {
         // CCW rotation guidance
@@ -49,13 +94,13 @@ Eigen::Vector3d CircularPath::path_traveling(const Eigen::Vector3d &UAV_position
     }
 }
 
-Eigen::Vector3d CircularPath::calculate_lat_manifold()
+Eigen::Vector3d CircularPath::calculateLatManifold()
 {
     Eigen::Vector3d partial_lat(0.0, 0.0, 1.0);
     return partial_lat;
 }
 
-Eigen::Vector3d CircularPath::calculate_lon_manifold(const Eigen::Vector3d &UAV_position)
+Eigen::Vector3d CircularPath::calculateLonManifold(const Eigen::Vector3d &UAV_position)
 {
     Eigen::Vector3d partial_lon = UAV_position - center_point;
     partial_lon.z() = 0.0;

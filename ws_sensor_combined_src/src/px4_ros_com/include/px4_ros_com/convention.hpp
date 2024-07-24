@@ -5,7 +5,7 @@
 
 namespace vtol {
     //숫자로 사용
-    enum BodyFrame {NORTH, EAST, UP, YAW};  // enum 의도적 사용
+    enum BodyFrame {EAST, NORTH, UP, YAW};  // enum 의도적 사용
   
     enum Mav {
         MAV_CMD_CONDITION_YAW   = 115,
@@ -39,8 +39,8 @@ namespace vtol {
         FLY         =   ARMED   | BIT_FLY,    // After takeoff
         TAKEOFF     =   FLY     | BIT_TAKEOFF,    // After takeoff
         LAND        =   FLY     | BIT_LAND,       // After land
-        START       =   FLY     | BIT_START,     // Before takeoff
-        QUAD        =   FLY,
+        QUAD        =   FLY     ,
+        START       =   QUAD    | BIT_START,       // Before takeoff
         FIXED       =   FLY     | BIT_FIXED,      // Before transition
         TO_FIXED    =   QUAD    | BIT_TRANSITION, // Before transition
         TO_QUAD     =   FIXED   | BIT_TRANSITION, // Before transition

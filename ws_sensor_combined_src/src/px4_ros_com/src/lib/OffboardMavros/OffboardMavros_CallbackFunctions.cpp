@@ -21,7 +21,7 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
         }
 
     if (isGlobalPositionGettingValue(init_global_position) == false) {
-        init_global_position[vtol::ALT] = msg->altitude + 5.0f;
+        init_global_position[vtol::ALT] = msg->altitude + 10.0f;
         init_global_position[vtol::LAT] = msg->latitude;
         init_global_position[vtol::LON] = msg->longitude;
         DEBUG::print("alt: ", init_global_position[vtol::ALT],BLUE);
@@ -377,6 +377,27 @@ void OffboardMavros::currentPositionCallback(const geometry_msgs::msg::PoseStamp
         }
         _prev_position[vtol::NORTH] = _cur_position[vtol::NORTH];
         _prev_position[vtol::EAST] = _cur_position[vtol::EAST];
+    }
+
+    if (straight_trajectory.empty()) {
+        _cmd_flag = vtol::LAND;
+
+        return;
+    }
+
+    Eigen::Vector3d UAV_position;
+    UAV_position << _cur_position[vtol::EAST], _cur_position[vtol::NORTH], _cur_position[vtol::UP];
+    
+    _local_velocity[0] = straight_trajectory.front().guidanceControl(UAV_position, 3.0).x();
+    _local_velocity[1] = straight_trajectory.front().guidanceControl(UAV_position, 3.0).y();
+    _local_velocity[2] = straight_trajectory.front().guidanceControl(UAV_position, 3.0).z();
+    _local_velocity[4] = std::atan2(straight_trajectory.front().guidanceControl(UAV_position, 3.0).y(), straight_trajectory.front().guidanceControl(UAV_position, 3.0).x());
+    DEBUG::printArray("Local Velocity Input : ", _local_velocity, 3, BOLDWHITE);
+    DEBUG::printArray("Local Position       : ", _cur_position, 3, BOLDWHITE);
+    DEBUG::print("Trajectory Size      : ", straight_trajectory.size(), BOLDWHITE);
+    const bool check_arr = straight_trajectory.front().isArrived(UAV_position, 3.0);
+    if (check_arr){
+        straight_trajectory.pop();
     }
 }
 

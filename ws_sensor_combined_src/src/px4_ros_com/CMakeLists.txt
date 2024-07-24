@@ -52,6 +52,9 @@ add_library(OffboardMavros SHARED
   src/lib/OffboardMavros/OffboardMavros_InitializeFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_PublishFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_Action.cpp
+  src/lib/Traj.cpp
+  src/lib/StraightPath.cpp
+  src/lib/CircularPath.cpp
   )
 add_library(Dubins SHARED src/lib/Dubins.cpp)
 add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
