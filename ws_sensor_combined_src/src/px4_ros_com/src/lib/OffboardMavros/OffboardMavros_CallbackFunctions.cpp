@@ -1,5 +1,6 @@
 #include "px4_ros_com/OffboardMavros.hpp"
 
+
 void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg) {
 
     const double q1 = msg->pose.orientation.x;
@@ -37,303 +38,58 @@ void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr ms
     // DEBUG::print("gps_lat: ", _global_position[vtol::LAT], GREEN);
     // DEBUG::print("gps_lon: ", _global_position[vtol::LON], GREEN);
 }
-
     /* -- StateCommand Function*/
-void OffboardMavros::stateCommandInit(void){
-    RCLCPP_INFO(this->get_logger(), "< State Command Init >");
-    if (fcu_state.armed == true) {
-        updateLandingStatus();
-    } else {
-        updateWaypointClear();
-        OffboardMavros::_cmd_flag = vtol::READY;
+
+void OffboardMavros::localPositionCommandStart(void) {
+
+    const Eigen::Vector4d cur_position_vector3d(
+        _cur_position[0], _cur_position[1], _cur_position[2], vtol::NaN
+    );
+
+    if (wp_manager.isArrived(cur_position_vector3d)) {
+        wp_manager.pop();
     }
 }
-
-void OffboardMavros::stateCommandReady(void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command Ready >");
-    if (fcu_state.mode != vtol::FCU_HOLD) {    
-        updateDisarmingStatus();
-        updateHoldMode();
-        updateCustomMode(vtol::FCU_HOLD, &OffboardMavros::holdResponseCallback);
-    }
-
-}
-
-void OffboardMavros::stateCommandArmed (void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command Armed >");
-    DEBUG::print("", ">> ARMED <<", BOLDGREEN);
-    if (fcu_state.armed != true) {
-        updateArmingStatus();
-    } else {
-        OffboardMavros::_cmd_flag = vtol::READY;
-    }
-}
-
-void OffboardMavros::stateCommandMission(void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command Mission >");
-    if (fcu_state.armed == false) {
-        RCLCPP_ERROR(this->get_logger(), "Need to arm Mission mode");
-        _cmd_flag = vtol::READY;
-        return ;
-    }
-
-    if (fcu_state.mode != vtol::FCU_MISSION) {
-        updateWaypointPush();
-        updateMissionMode();
-    }
-}
+//
 
 
-void OffboardMavros::stateCommandFly (void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command Fly >");
-    if (fcu_state.mode != vtol::FCU_HOLD) {
-        updateHoldMode();
-    }
-    std::cout << "Flying..." << std::endl;
-}
-
-void OffboardMavros::stateCommandTakeOff (void){
-    RCLCPP_INFO(this->get_logger(), "< State Command Take Off >");
-    DEBUG::print("", ">> Take Off <<", BOLDGREEN);
-
-    if (fcu_state.armed == false) {
-        updateArmingStatus();
-    } else if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-        updateTakeoffStatus();
-    }
-
-    // 순서 중요
-    // if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-    //     updateTakeoffStatus();
-    // } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
-    //     updateArmingStatus();
-    // }
-}
-
-void OffboardMavros::stateCommandStart (void) { 
-    RCLCPP_INFO(this->get_logger(), "< State Command Start >");
-    if (fcu_state.mode == vtol::FCU_HOLD) {
-        updateOffboardMode();
-    }
-}
-
-void OffboardMavros::stateCommandToFixed (void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command To Fixed >");
-    if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
-    updateTransitionFixedStatus();
-    }
-}
-
-void OffboardMavros::stateCommandToQuad (void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command To Quad >");
-    if (OffboardMavros::_cmd_flag == vtol::TO_QUAD) {
-    updateTransitionQuadStatus();
-    }   
-}
-
-void OffboardMavros::stateCommandLand (void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command Land >");
-    if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
-        updateLandingStatus();
-    } else if (fcu_state.mode == vtol::FCU_HOLD) {
-        std::cout << "Landing success" << std::endl;
-        OffboardMavros::_cmd_flag = vtol::READY;
-    }
-}
-
-/* -- Callback Functions -- */
-void OffboardMavros::stateCallBack(const mavros_msgs::msg::State::SharedPtr msg) {
-    if (isGlobalPositionGettingValue(_global_position) == false) {
-        return;
-    }
-
-    fcu_state = *msg;
-
-    DEBUG::msg("\n[DEBUG] ", "-----------------");
-    DEBUG::print("System status : ", fcu_state.system_status, WHITE);
-    DEBUG::print("Mode : ", fcu_state.mode, CYAN);
-    DEBUG::printBool("Arming : ", fcu_state.armed, RED);
-    DEBUG::printBinary("Command flag : ", _cmd_flag, YELLOW);
-    DEBUG::print("Yaw current: ", yaw_current, GREEN);
-    DEBUG::printArray("local_velocity: ", _local_velocity, 3, MAGENTA);
-    DEBUG::printArray("global_position      : ", _global_position, 3, MAGENTA);
-    DEBUG::printArray("init_global_position : ", init_global_position, 3, MAGENTA);
-    DEBUG::msg("[DEBUG] ", "-----------------\n");
-
-    const std::array<vtol::State,vtol::STATE_SIZE>::iterator  it = std::find(state_value_array.begin(), state_value_array.end(), _cmd_flag);
-//ros::Time::now() - last_request > ros::Duration(5.0)
-    // TODO: 생성자에서 초기화
-    if (it == state_value_array.end()) {
-        RCLCPP_ERROR(this->get_logger(), " Invalid State ");
-        return;
-    }
-    const size_t i = std::distance(state_value_array.begin(), it);
-    stateFunc[i]();
+// /* -- Callback Functions -- */
+// void OffboardMavros::offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg) {
+//     const bool result = future.get()->mode_sent;
+//     printSuccessInfo(result, msg);
+// }
+//
+// void OffboardMavros::positionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg) {
+//     const bool result = future.get()->mode_sent;
+//     printSuccessInfo(result, msg);
+// }
+//
+// void OffboardMavros::missionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg) {
+//     const bool result = future.get()->mode_sent;
+//     printSuccessInfo(result, msg);
+//     if (result == true) {
+//         ;
+//     } else {
+//         ;
+//     }
+// }
+//
+// void	OffboardMavros::holdResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2> msg) {
+//     const bool result = future.get()->mode_sent;
+//     printSuccessInfo(result, msg);
+//     // if (result == true) {
+//     //     ;
+//     // } else {
+//     //     ;
+//     // }
+// }
 
 
-    // if (OffboardMavros::_cmd_flag == vtol::INIT) {
-    //     if (fcu_state.armed == true) {
-    //         updateLandingStatus();
-    //     } else {
-    //         OffboardMavros::_cmd_flag = vtol::READY;
-    //     }
-    // }
+// void OffboardMavros::turnOffBitIfPassedSeconds(const t_bit bit, const double timer) {
+//     last_request = this->now();
+// }
 
-    // if (OffboardMavros::_cmd_flag == vtol::READY) {
-    //     if (fcu_state.mode != vtol::FCU_HOLD) {
-    //         updateDisarmingStatus();
-    //         updateHoldMode();
-    //         updateCustomMode(vtol::FCU_HOLD, 
-    //                 &OffboardMavros::holdResponseCallback);
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::ARMED) {
-    //     DEBUG::print("", ">> ARMED <<", BOLDGREEN);
-    //     if (fcu_state.armed != true) {
-    //         updateArmingStatus();
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::FLY) {
-    //     if (fcu_state.mode != vtol::FCU_HOLD) {
-    //         updateHoldMode();
-    //     }
-    //     std::cout << "Flying..." << std::endl;
-    // }
-    // if (OffboardMavros::_cmd_flag == vtol::TAKEOFF) {
-    //     DEBUG::print("", ">> Take Off <<", BOLDGREEN);
-    //     // 순서 중요
-    //     if (fcu_state.mode != vtol::FCU_TAKEOFF && fcu_state.armed == true) {
-    //         updateTakeoffStatus();
-    //     } else if (fcu_state.mode == vtol::FCU_TAKEOFF && fcu_state.armed == false) {
-    //         updateArmingStatus();
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::START) {
-    //     if (fcu_state.mode == vtol::FCU_HOLD) {
-    //         updateOffboardMode();
-    //     }
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::TO_FIXED) {
-    //     updateTransitionFixedStatus();
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::TO_QUAD) {
-    //     updateTransitionQuadStatus();
-    // }
-
-    // if (OffboardMavros::_cmd_flag == vtol::LAND) {
-    //     if (fcu_state.mode != vtol::FCU_LAND && fcu_state.armed == true) {
-    //         updateLandingStatus();
-    //     } else if (fcu_state.mode == vtol::FCU_HOLD) {
-    //         std::cout << "Landing success" << std::endl;
-    //         OffboardMavros::_cmd_flag = vtol::READY;
-    //     }
-    // }
-}
-
-void    OffboardMavros::statusReady(void) {
-    if (OffboardMavros::_cmd_flag != vtol::READY) {
-        return ;
-    }
-
-    if (fcu_state.mode != vtol::FCU_HOLD) {
-        OffboardMavros::_cmd_flag = vtol::READY;
-        updateCustomMode("AUTO.LOITER",
-                    &OffboardMavros::holdResponseCallback);
-        updateDisarmingStatus();
-    }
-}
-
-
-/* -- Callback Functions -- */
-void OffboardMavros::offboardResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
-    const char* msg[] = {
-        "Offboard mode sent successfully", 
-        "Failed to send Offboard mode"
-    };
-    printSuccessInfo(future.get()->mode_sent, msg);
-}
-
-void OffboardMavros::missionResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
-    const char* msg[] = {
-        "Mission mode sent successfully", 
-        "Failed to send Mission mode"
-    };
-    printSuccessInfo(future.get()->mode_sent, msg);
-}
-
-
-void OffboardMavros::holdResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future) {
-    const char* msg[] = {
-        "Hold mode sent successfully", 
-        "Failed to send Hold mode"
-    };
-    printSuccessInfo(future.get()->mode_sent, msg);
-}
-
-void OffboardMavros::chatterCallback(const std_msgs::msg::String::SharedPtr msg) {
-    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
-
-
-    size_t i = 0;
-    for (; i < OffboardMavros::_action_string_array.size() && msg->data != OffboardMavros::_action_string_array[i]; ++i);
-
-    if (i == OffboardMavros::_action_string_array.size()) {
-        std::cout << "Invalid input" << std::endl;
-        return ;
-    }
-    OffboardMavros::actionFunc[i]();
-    OffboardMavros::printReferenceInput();
-}
-
-void OffboardMavros::armingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future) {
-    const char* msg[] = {
-        "Vehicle armed", 
-        "Arming failed"
-    };
-    printSuccessInfo(future.get()->success, msg);
-}
-
-void OffboardMavros::disarmingResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future) {
-    const char* msg[] = {
-        "Vehicle disarmed", 
-        "Disarming failed"
-    };
-    printSuccessInfo(future.get()->success, msg);
-}
-
-void OffboardMavros::transitionResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandVtolTransition>::SharedFuture future) {
-    const char* msg[] = {
-        "Transition success", 
-        "Transition failed"
-    };
-    printSuccessInfo(future.get()->success, msg);
-}
-
-
-void OffboardMavros::takeoffResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future) {
-    const bool success = future.get()->success;
-    const char* msg[] = {
-        "Takeoff command sent successfully", 
-        "Failed to send Takeoff command"
-    };
-    printSuccessInfo(success, msg);
-}
-
-void OffboardMavros::landResponseCallback(const rclcpp::Client<mavros_msgs::srv::CommandTOL>::SharedFuture future) {
-    const bool success = future.get()->success;
-    const char* msg[] = {
-        "Land command sent successfully", 
-        "Failed to send land command"
-    };
-    printSuccessInfo(success, msg);
-}
 // shared_future를 사용하는 이유는 비동기로 요청을 보내기 때문에 요청에 대한 응답을 받아야하기 때문이다.
-
 
 
 //return request
@@ -416,3 +172,4 @@ void OffboardMavros::waypointClearResponseCallback(const rclcpp::Client<mavros_m
     };
     printSuccessInfo(future.get()->success, msg);
 }
+

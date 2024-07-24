@@ -1,6 +1,8 @@
 #ifndef CONVENTION_HPP
 #define CONVENTION_HPP
-#include <cmath>
+# include <cmath>
+# include <rclcpp/rclcpp.hpp>
+# include <mavlink/v2.0/common/common.hpp>
 
 
 namespace vtol {
@@ -24,7 +26,7 @@ namespace vtol {
         BIT_FIXED       =	0b000100000,
         BIT_TRANSITION  =	0b001000000,
         BIT_MISSION     =	0b010000000,
-    };
+   };
 
     enum Result {
         SUCCESS = 0,
@@ -33,18 +35,18 @@ namespace vtol {
 
     enum State {                     // enum class 타입 안정성 사용
         INIT,
-        READY       =   INIT    | BIT_READY,              // Before arming
-        MISSION     =   READY   | BIT_MISSION,     // Before takeoff
-        ARMED       =   READY   | BIT_ARMED,      // After arming
-        FLY         =   ARMED   | BIT_FLY,    // After takeoff
-        TAKEOFF     =   FLY     | BIT_TAKEOFF,    // After takeoff
-        LAND        =   FLY     | BIT_LAND,       // After land
-        QUAD        =   FLY     ,
-        START       =   QUAD    | BIT_START,       // Before takeoff
-        FIXED       =   FLY     | BIT_FIXED,      // Before transition
-        TO_FIXED    =   QUAD    | BIT_TRANSITION, // Before transition
-        TO_QUAD     =   FIXED   | BIT_TRANSITION, // Before transition
-                                                  //
+        READY           =   INIT    | BIT_READY,              // Before arming
+        MISSION         =   READY   | BIT_MISSION,     // Before takeoff
+        ARMED           =   READY   | BIT_ARMED,      // After arming
+        FLY             =   ARMED   | BIT_FLY,    // After takeoff
+        TAKEOFF         =   FLY     | BIT_TAKEOFF,    // After takeoff
+        LAND            =   FLY     | BIT_LAND,       // After land
+        QUAD            =   FLY,
+        FIXED           =   FLY     | BIT_FIXED,      // Before transition
+        TO_FIXED        =   QUAD    | BIT_TRANSITION, // Before transition
+        TO_QUAD         =   FIXED   | BIT_TRANSITION, // Before transition
+        MC_START        =   QUAD    | BIT_START,     // Before takeoff
+        FW_START        =   FIXED   | BIT_START,      // Before transition
     };
 
     enum Position {
@@ -73,25 +75,28 @@ namespace vtol {
         float yaw;
     };
 
+    constexpr uint16_t MAV_CMD_DO_CHANGE_SPEED = \
+        static_cast<uint16_t>(mavlink::common::MAV_CMD::DO_CHANGE_SPEED);
     constexpr float     NaN             = std::numeric_limits<float>::quiet_NaN();
     constexpr size_t    ACTION_SIZE     = 21;
-    constexpr size_t    STATE_SIZE      = 10;
+    constexpr size_t    STATE_SIZE      = 12;
     constexpr char      FCU_ARM[]       = "AUTO.RTL";
     constexpr char	    FCU_HOLD[]      = "AUTO.LOITER";
     constexpr char	    FCU_OFFBOARD[]  = "OFFBOARD";
     constexpr char	    FCU_TAKEOFF[]   = "AUTO.TAKEOFF";
     constexpr char	    FCU_LAND[]      = "AUTO.LAND";
     constexpr char      FCU_MISSION[]   = "AUTO.MISSION";
+    constexpr char      FCU_POSITION[]   = "POSCTL";
     constexpr double RAD_2_DEG = 180 / M_PI;
 
 
-    struct Waypoint {
+    struct ReferenceWaypoint {
         float x;
         float y;
         float z;
         float yaw;
 
-        Waypoint(float x, float y, float z, float yaw=0.0f) 
+        ReferenceWaypoint(float x, float y, float z, float yaw=0.0f) 
             : x(x), y(y), z(z), yaw(yaw) { }
     };
 

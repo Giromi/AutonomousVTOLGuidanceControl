@@ -115,8 +115,10 @@ void OffboardMavros::_actionTakeoff(void) {
     //     RCLCPP_INFO(this->get_logger(), "Vehicle is NOT ARMED status");
     //     return true;
     // if (OffboardMavros::_cmd_flag == vtol::READY) {
-    //     std::cout << "Vehicle is NOT READY status" << std::endl;
+    //     std::cout << "Vehicle is NOT ARMED status" << std::endl;
     //     return ;
+    // } else if (OffboardMavros::_cmd_flag == vtol::ARMED) {
+    //     std::cout << "Calling takeoff service ..." << std::endl;
     // }
     OffboardMavros::_cmd_flag = vtol::TAKEOFF;
 }
@@ -126,11 +128,10 @@ void OffboardMavros::_actionLanding(void) {
 }
 
 void OffboardMavros::_actionStart(void) {
-    if (OffboardMavros::_cmd_flag == vtol::FLY || OffboardMavros::_cmd_flag == vtol::FIXED) {
-        OffboardMavros::_cmd_flag = vtol::START;
-    } else if (OffboardMavros::_cmd_flag == vtol::START 
-            || OffboardMavros::_cmd_flag == vtol::MISSION) {
-        OffboardMavros::_cmd_flag = vtol::FLY;
+    if (OffboardMavros::_cmd_flag & vtol::BIT_START) {
+        OffboardMavros::_cmd_flag &= ~vtol::BIT_START;
+    } else {
+        OffboardMavros::_cmd_flag |= vtol::BIT_START;
     }
 }
 
@@ -162,18 +163,18 @@ const std::array<std::string, vtol::ACTION_SIZE>	OffboardMavros::_action_string_
 };
 
 void (*OffboardMavros::actionFunc[])(void) = {
-    &OffboardMavros::_actionVelocityPlusRoll, // 2
-    &OffboardMavros::_actionVelocityPlusPitch,// 4
-    &OffboardMavros::_actionVelocityPlusYaw,  // 6
-    &OffboardMavros::_actionVelocityMinusRoll,  // 3
-    &OffboardMavros::_actionVelocityMinusPitch,  // 5
-    &OffboardMavros::_actionVelocityMinusYaw,    // 7
-    &OffboardMavros::_actionVelocityMinusY,      // ← south
-    &OffboardMavros::_actionVelocityPlusY,       // → north
-    &OffboardMavros::_actionVelocityPlusX,       // + east
-    &OffboardMavros::_actionVelocityMinusX,      // - west
-    &OffboardMavros::_actionVelocityPlusZ,           // ↑ up
-    &OffboardMavros::_actionVelocityMinusZ,          // ↓ down
+    &OffboardMavros::_actionVelocityPlusRoll,       // 2
+    &OffboardMavros::_actionVelocityPlusPitch,      // 4
+    &OffboardMavros::_actionVelocityPlusYaw,        // 6
+    &OffboardMavros::_actionVelocityMinusRoll,      // 3
+    &OffboardMavros::_actionVelocityMinusPitch,     // 5
+    &OffboardMavros::_actionVelocityMinusYaw,       // 7
+    &OffboardMavros::_actionVelocityMinusY,         // ↑south
+    &OffboardMavros::_actionVelocityPlusY,          // ↓north
+    &OffboardMavros::_actionVelocityPlusX,          // → east
+    &OffboardMavros::_actionVelocityMinusX,         // ← west
+    &OffboardMavros::_actionVelocityPlusZ,          // + up
+    &OffboardMavros::_actionVelocityMinusZ,         // - down
     &OffboardMavros::_actionReturnHome,       // h
     &OffboardMavros::_actionArming,            // a
     &OffboardMavros::_actionDisarming,         // d
