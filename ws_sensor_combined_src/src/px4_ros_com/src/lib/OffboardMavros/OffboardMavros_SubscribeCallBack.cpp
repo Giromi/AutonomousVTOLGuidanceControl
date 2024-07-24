@@ -4,16 +4,61 @@ void OffboardMavros::stateCallBack(
     const mavros_msgs::msg::State::SharedPtr msg
 ) {
     fcu.state.second = *msg;
+    //
+    // if (isGlobalPositionGettingValue(_global_position) == false) {
+    //     return;
+    // }
+    //
+    // if(msg->system_status != vtol::mavlink::SystemStatus::STANDBY) {
+    //     _stt_cmd_flag = vtol::STAND_BY;
+    // }
 
-    if (isGlobalPositionGettingValue(_global_position) == false) {
-        return;
-    }
+    // stateCallBackModeHandler();
+
 }
-
+//
+// void    OffboardMavros::stateCallBackModeHandler(const std::string& mode) {
+//     switch (mode) {
+//         case State::MODE_PX4_LOITER;
+//             break;
+//         case State::MODE_PX4_TAKEOFF:
+//             break;
+//         case State::MODE_PX4_READY:
+//             break;
+//         case State::MODE_PX4_OFFBOARD;
+//             break;
+//         case State::MODE_PX4_POSITION;
+//             break;
+//         case State::MODE_PX4_STABILIZED:
+//             break;
+//     }
+// }
+//
 void OffboardMavros::extendedStateCallBack(
     const mavros_msgs::msg::ExtendedState::SharedPtr msg
 ) {
     fcu.extended_state.second = *msg; 
+    switch (msg->vtol_state) {
+        case mavros_msgs::msg::ExtendedState::VTOL_STATE_UNDEFINED:
+            break;
+        case mavros_msgs::msg::ExtendedState::VTOL_STATE_TRANSITION_TO_FW:
+            if (_stt_cmd_flag == vtol::MC_TO_FIXED) {
+                _stt_cmd_flag |= vtol::CMD_TRANSITION;
+            }
+            break;
+        case mavros_msgs::msg::ExtendedState::VTOL_STATE_TRANSITION_TO_MC:
+            if (_stt_cmd_flag == vtol::FW_TO_QUAD) {
+                _stt_cmd_flag |= vtol::CMD_TRANSITION;
+            }
+            break;
+        case mavros_msgs::msg::ExtendedState::VTOL_STATE_MC:
+            _stt_cmd_flag &= ~vtol::STT_FIXED;
+            break;
+        case mavros_msgs::msg::ExtendedState::VTOL_STATE_FW:
+            _stt_cmd_flag |= vtol::STT_FIXED;
+            break;
+    }
+
 }
 
 

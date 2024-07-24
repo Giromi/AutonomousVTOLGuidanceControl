@@ -48,14 +48,14 @@ void    OffboardMavros::vtolCommandCenter(void) {
 
 
 void    OffboardMavros::watchVtolStatus(void) {
-    // if (isConnectionSafe() == false) {
-    //     return ;
-    // }
-    // const bool is_state_recv = ifTimeNotSameInput(fcu.state.first, fcu.state.second.header.stamp);
-    // const bool is_ext_state_recv = ifTimeNotSameInput(fcu.extended_state.first, fcu.extended_state.second.header.stamp);
-    // const bool is_local_pos_recv = ifTimeNotSameInput(fcu.local_position.first, fcu.local_position.second.header.stamp);
-    // const bool is_global_pos_recv = ifTimeNotSameInput(fcu.global_position.first, fcu.global_position.second.header.stamp);
-
+    if (isConnectionSafe() == false) {
+        return ;
+    }
+    const bool is_state_recv = ifTimeNotSameInput(fcu.state.first, fcu.state.second.header.stamp);
+    const bool is_ext_state_recv = ifTimeNotSameInput(fcu.extended_state.first, fcu.extended_state.second.header.stamp);
+    const bool is_local_pos_recv = ifTimeNotSameInput(fcu.local_position.first, fcu.local_position.second.header.stamp);
+    const bool is_global_pos_recv = ifTimeNotSameInput(fcu.global_position.first, fcu.global_position.second.header.stamp);
+    //
     DEBUG::message("\n[DEBUG] -----------------", BOLDWHITE);
     DEBUG::printBinary("Command flag    : ", _stt_cmd_flag, BOLDYELLOW);
     DEBUG::message("[DEBUG] -----------------", BOLDWHITE);
@@ -88,6 +88,6 @@ void    OffboardMavros::watchVtolStatus(void) {
     DEBUG::print("Waypoint Size            : ", wp_manager.getSize(), BOLDYELLOW);
     DEBUG::print("Waypoint Target          : ", wp_manager.getTarget().transpose(), BOLDYELLOW);
     DEBUG::message("[DEBUG] -----------------\n", BOLDWHITE);
-    statusCommandBitsHandler();
+    // statusCommandBitsHandler();
 }   
 

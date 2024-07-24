@@ -81,6 +81,17 @@ void OffboardMavros::takeoffModeResponseCallback(const rclcpp::Client<mavros_msg
     }
 }
 
+void OffboardMavros::readyModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg) {
+    const bool result = future.get()->mode_sent;
+    printSuccessInfo(result, msg);
+    if (result == true) {
+        
+    } else {
+        RCLCPP_ERROR(this->get_logger(), "Failed to send mode");
+    }
+
+}
+
 
 /* 안쓰는 함수 */
 void OffboardMavros::mavrosMissionModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg) {

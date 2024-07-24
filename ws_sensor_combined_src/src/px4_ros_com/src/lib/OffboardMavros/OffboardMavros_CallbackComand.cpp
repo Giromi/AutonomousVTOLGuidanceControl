@@ -10,33 +10,33 @@ void OffboardMavros::statusCommandStandBy(void){
 }
 
 void OffboardMavros::statusCommandCheck(void) {
-    RCLCPP_INFO(this->get_logger(), "< State Command Ready >");
-    publishGpOrigin();
-
-
-    if (fcu.extended_state.second.landed_state 
-        == mavros_msgs::msg::ExtendedState::LANDED_STATE_IN_AIR) {
-        updateLandingStatus();
-    } else if (
-        fcu.state.second.system_status 
-            == vtol::mavlink::State::STANDBY
-        && fcu.extended_state.second.landed_state 
-            == mavros_msgs::msg::ExtendedState::LANDED_STATE_ON_GROUND) {
-        updateDisarmingStatus();
-        updateHoldMode();
-        updateWaypointClear();
-    }
+    RCLCPP_INFO(this->get_logger(), "< State Command Check >");
+    // publishGpOrigin();
+    //
+    // if (isCurrentExtendedStateVtol(ExtendedState::LANDED_STATE_IN_AIR)) {
+    //     updateLandingStatus();
+    // } else if (isCurrentStateSystemStatus(vtol::mavlink::State::STANDBY)
+    //     && isCurrentExtendedStateVtol(ExtendedState::LANDED_STATE_ON_GROUND)) {
+    //     updateDisarmingStatus();
+    //     updateHoldMode();
+    //     updateWaypointClear();
+    // }
+    // updateReadyMode();
 }
 
 void OffboardMavros::statusCommandReady(void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Ready >");
     /** system status stand by 이면 Ariming으로 바꿈 */ 
-    updateHoldMode(); 
+    if (isUpdatedStateStamp()) {
+        updateHoldMode(); 
+    }
 }
 
 void OffboardMavros::statusCommandArming(void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Arming >");
-    updateArmingStatus();
+    if (isUpdatedStateStamp()) {
+        updateArmingStatus();
+    }
 }
 
 void OffboardMavros::statusCommandArmed (void) {
@@ -48,9 +48,8 @@ void OffboardMavros::statusCommandArmed (void) {
 void OffboardMavros::statusCommandTakingOff(void) {
     RCLCPP_INFO(this->get_logger(), "< State Command Taking Off >");
 
-    if (fcu.extended_state.second.vtol_state
-            != mavros_msgs::msg::ExtendedState::VTOL_STATE_MC) {
-        DEBUG::message("VTOL_STATE_MC", BOLDGREEN);
+    if (!(isCurrentExtendedStateVtol(ExtendedState::VTOL_STATE_MC))) { 
+        DEBUG::message("Not in the MC mode", BOLDRED);
         return ;
     }
 
@@ -58,14 +57,14 @@ void OffboardMavros::statusCommandTakingOff(void) {
      *  안그럼 다시 t 눌러야 함
      * */
 
-    if (fcu.state.second.armed == false) {
+    if (isCurrentStateArmed(false)) {
         updateArmingStatus();
     }
 
-    if (fcu.state.second.mode
-         != mavros_msgs::msg::State::MODE_PX4_TAKEOFF
-        && fcu.extended_state.second.landed_state 
-         == mavros_msgs::msg::ExtendedState::LANDED_STATE_ON_GROUND) {
+    if () {
+
+            !(isCurrentStateMode(State::MODE_PX4_TAKEOFF))
+        && isCurrentExtendedStateVtol(ExtendedState::LANDED_STATE_ON_GROUND)) {
         updateTakeoffMode();
         updateTakeoffStatus();
     } else if (fcu.extended_state.second.landed_state
@@ -154,7 +153,6 @@ void OffboardMavros::statusCommandStartingFW(void) {
     if (fcu.state.second.mode 
           != mavros_msgs::msg::State::MODE_PX4_OFFBOARD) {
         updateOffboardMode();
-        publishRawLocalPosition();
     } else {
         _stt_cmd_flag = vtol::FW_MISSION;
     }
@@ -165,9 +163,9 @@ void OffboardMavros::statusCommandStartingFW(void) {
 
 void OffboardMavros::statusCommandMissionFW(void) { 
     RCLCPP_INFO(this->get_logger(), "< State Command FW Mission >");
-    // if (fcu.state.second.mode != vtol::FCU_OFFBOARD) {
-    //     DEBUG::message("Not in the offboard mode", BOLDRED);
-    //     return ;
+    if (!(isCurrentStateMode(mavros_msgs::msg::State::MODE_PX4_OFFBOARD))) {
+        updateOffboardMode();
+    }
     // }
     // publishRawLocalPosition();
     // publishPose();
@@ -183,6 +181,7 @@ void OffboardMavros::statusCommandMissionFW(void) {
     //     publishRawLocal(); // publishLocalFixed();
     // }
     // if (std::isnan(wp_manager.getTarget()[vtol::YAW])) {
+    publishRawLocalPosition();
     localPositionWaypointsMission();
     // }
     // } else {
@@ -205,13 +204,10 @@ void OffboardMavros::statusCommandStopingFW(void) {
 
 void OffboardMavros::statusCommandToQuadFW(void) {
     RCLCPP_INFO(this->get_logger(), "< State Command To Quad >");
-    if (fcu.extended_state.second.vtol_state
-         == mavros_msgs::msg::ExtendedState::VTOL_STATE_FW) {
+    if (isCurrentExtendedStateVtol(mavros_msgs::msg::ExtendedState::VTOL_STATE_FW)) {
         DEBUG::message("VTOL_STATE_FW", BOLDGREEN);
         updateTransitionQuadStatus();
-    } else if (
-        fcu.extended_state.second.vtol_state
-         == mavros_msgs::msg::ExtendedState::VTOL_STATE_TRANSITION_TO_MC) {
+    } else if (isCurrentExtendedStateVtol(mavros_msgs::msg::ExtendedState::VTOL_STATE_TRANSITION_TO_MC)) {
         DEBUG::message("VTOL_STATE_TRANSITION_TO_MC", BOLDGREEN);
         updateHoldMode();
     } 

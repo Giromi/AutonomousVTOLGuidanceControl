@@ -48,6 +48,9 @@
 # include "px4_ros_com/WaypointManager.hpp"
 # include "DEBUG.hpp"
 
+
+using namespace mavros_msgs::msg;
+
 typedef unsigned short          t_bit;
 typedef std::array<double, 3>   t_position;
 typedef std::array<float, 3>    t_global_position;
@@ -57,14 +60,10 @@ struct Quaternion {
 };
 
 struct VtolState {
-    std::pair<builtin_interfaces::msg::Time, 
-        mavros_msgs::msg::State>           state;
-    std::pair<builtin_interfaces::msg::Time, 
-        mavros_msgs::msg::ExtendedState>   extended_state;
-    std::pair<builtin_interfaces::msg::Time, 
-        geometry_msgs::msg::PoseStamped>   local_position;
-    std::pair<builtin_interfaces::msg::Time, 
-        sensor_msgs::msg::NavSatFix>       global_position;
+    std::pair<builtin_interfaces::msg::Time, mavros_msgs::msg::State>           state;
+    std::pair<builtin_interfaces::msg::Time, mavros_msgs::msg::ExtendedState>   extended_state;
+    std::pair<builtin_interfaces::msg::Time, geometry_msgs::msg::PoseStamped>   local_position;
+    std::pair<builtin_interfaces::msg::Time, sensor_msgs::msg::NavSatFix>       global_position;
 };
 
 class OffboardMavros : public rclcpp::Node {
@@ -150,6 +149,7 @@ private:
     void    updateMissionMode(void);
     void    updatePositionMode(void);
     void    updateTakeoffMode(void);
+    void    updateReadyMode(void);
     void    updateCustomMode(
                 const std::string& input_mode,
                 void (OffboardMavros::*responseCallback) (const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture, const std::array<const std::string, 2>&), 
@@ -200,6 +200,7 @@ private:
     void  offboardModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
     void  positionModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
     void takeoffModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
+    void readyModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
     void  mavrosMissionModeResponseCallback(const rclcpp::Client<mavros_msgs::srv::SetMode>::SharedFuture future, const std::array<const std::string, 2>& msg);
 
     //
@@ -258,7 +259,15 @@ private:
     void            commandFlagTurnOn(const t_bit& flag);
     const Quaternion rpy_to_quat(const double roll, const double pitch, const double yaw);
     bool            ifTimeNotSameInput(builtin_interfaces::msg::Time& first, const builtin_interfaces::msg::Time& second);
-    bool            isConnectionSafe(void);
+    bool            isConnectionSafe(void) const;
+    bool            isUpdatedStateStamp(void) const;
+    bool            isUpdatedExtendedStateStamp(void) const;
+
+    bool            isCurrentStateMode(const std::string& mode) const;
+    bool            isCurrentExtendedStateVtol(const uint8_t& vtol_state) const;
+    bool            isCurrentStateSystemStatus(const uint8_t& system_status) const;
+
+    bool            isCurrentStateArmed(const bool& armed) const;
 
     
     /* -- Members Variables -- */

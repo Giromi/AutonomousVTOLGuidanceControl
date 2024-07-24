@@ -163,6 +163,16 @@ void OffboardMavros::updateOffboardMode(void) {
     updateCustomMode(vtol::FCU_OFFBOARD, &OffboardMavros::offboardModeResponseCallback, msg);
 }
 
+void OffboardMavros::updateReadyMode(void) {
+    const std::array<const std::string, 2> msg = {
+        "Ready mode sent successfully",
+        "Failed to send Ready mode"
+    };
+
+    updateCustomMode(State::MODE_PX4_READY, &OffboardMavros::readyModeResponseCallback, msg);
+
+}
+
 void OffboardMavros::updatePositionMode(void) {
     const std::array<const std::string, 2> msg = {
         "Position mode sent successfully",

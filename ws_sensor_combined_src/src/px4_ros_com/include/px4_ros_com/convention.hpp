@@ -24,9 +24,11 @@ namespace vtol {
         BIT_MISSION     =	0b010000000,
    };
 
+
+        // DIFFERENET
     enum Result {
-        SUCCESS = 0,
-        FAIL = 1
+        FAIL        = 1,
+        SUCCESS     = 0,
     };
 
     // enum State {                     // enum class 타입 안정성 사용
@@ -146,7 +148,7 @@ namespace vtol {
     namespace mavlink {
 
         // https://mavlink.io/kr/messages/common.html#MAV_STATE
-        enum State {
+        enum SystemStatus {
             UNINIT,
             BOOT,
             CALIBRATING,
@@ -172,7 +174,7 @@ namespace vtol {
 
 #endif
 /*
-string MODE_PX4_MANUAL      = MANUAL
+Tstring MODE_PX4_MANUAL      = MANUAL
 string MODE_PX4_ACRO        = ACRO
 string MODE_PX4_ALTITUDE    = ALTCTL
 string MODE_PX4_POSITION    = POSCTL
@@ -185,6 +187,8 @@ string MODE_PX4_RTL         = AUTO.RTL
 string MODE_PX4_LAND        = AUTO.LAND
 string MODE_PX4_RTGS        = AUTO.RTGS
 string MODE_PX4_READY       = AUTO.READY
+=> WARN  [commander] Unsupported auto mode
+
 string MODE_PX4_TAKEOFF     = AUTO.TAKEOFF
 
 uint8 VTOL_STATE_UNDEFINED = 0

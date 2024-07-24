@@ -42,7 +42,7 @@ void OffboardMavros::initializeSubscribers(void) {
     const std::function<void(const mavros_msgs::msg::ExtendedState::SharedPtr msg)> extended_state_sub_bind = std::bind(&OffboardMavros::extendedStateCallBack, this, std::placeholders::_1);
 
     state_sub            = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
-    extended_state_sub     = create_subscription<mavros_msgs::msg::ExtendedState>("/mavros/extended_state", default_qos, extended_state_sub_bind);
+    extended_state_sub   = create_subscription<mavros_msgs::msg::ExtendedState>("/mavros/extended_state", default_qos, extended_state_sub_bind);
     local_position_sub   = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, local_position_sub_bind);
     global_posistion_sub = create_subscription<sensor_msgs::msg::NavSatFix>("/mavros/global_position/global", default_qos, global_posistion_sub_bind);
     subscription         = create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);

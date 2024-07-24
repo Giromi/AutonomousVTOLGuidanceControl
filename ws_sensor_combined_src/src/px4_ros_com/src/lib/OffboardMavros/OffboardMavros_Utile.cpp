@@ -62,7 +62,7 @@ bool OffboardMavros::ifTimeNotSameInput(builtin_interfaces::msg::Time& t1, const
     return false;
 }
 
-bool    OffboardMavros::isConnectionSafe(void) {
+bool    OffboardMavros::isConnectionSafe(void) const {
 
     if (fcu.state.second.header.stamp.sec == 0
         || fcu.extended_state.second.header.stamp.sec == 0
@@ -70,6 +70,54 @@ bool    OffboardMavros::isConnectionSafe(void) {
         || fcu.global_position.second.header.stamp.sec == 0
     ) {
         DEBUG::message("Subscribe Call back not yet", YELLOW);
+        return false;
+    }
+    return true;
+}
+
+bool    OffboardMavros::isUpdatedStateStamp(void) const {
+    return fcu.state.first != fcu.state.second.header.stamp;
+}
+
+bool    OffboardMavros::isUpdatedExtendedStateStamp(void) const {
+    return fcu.extended_state.first != fcu.extended_state.second.header.stamp;
+}
+
+bool    OffboardMavros::isCurrentStateMode(const std::string& mode) const {
+    if (isUpdatedStateStamp() == false) {
+        return false;
+    } 
+    if (fcu.state.second.mode != mode) {
+        return false;
+    }
+    return true;
+}
+
+bool    OffboardMavros::isCurrentExtendedStateVtol(const uint8_t& vtol_state) const {
+    if (!isUpdatedExtendedStateStamp()) {
+        return false;
+    }
+    if (fcu.extended_state.second.vtol_state != vtol_state) {
+        return false;
+    }
+    return true;
+}
+
+bool    OffboardMavros::isCurrentStateSystemStatus(const uint8_t& system_status) const {
+    if (!isUpdatedStateStamp()) {
+        return false;
+    }
+    if (fcu.state.second.system_status != system_status) {
+        return false;
+    }
+    return true;
+}
+
+bool    OffboardMavros::isCurrentStateArmed(const bool& armed) const {
+    if (!isUpdatedStateStamp()) {
+        return false;
+    }
+    if (fcu.state.second.armed != armed) {
         return false;
     }
     return true;
