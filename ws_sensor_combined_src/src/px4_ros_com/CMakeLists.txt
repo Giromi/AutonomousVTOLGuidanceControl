@@ -14,7 +14,7 @@ endif()
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # add_compile_options(-Wall -Wextra -Wpedantic -Werror -fsanitize=address -g3)
     # add_compile_options(-Wall -Wextra -Wpedantic -Werror -fsanitize=address)
-    add_compile_options(-Wall -Wextra -Wpedantic -Werror)
+    add_compile_options(-Wall -Wextra -Werror)
 endif()
 
 # find dependencies
@@ -28,6 +28,9 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(mavlink REQUIRED)
+find_package(tf2 REQUIRED)
+# find_package(tf2_geometry_msgs REQUIRED)
 
 # pkg-config 지원 활성화
 find_package(PkgConfig REQUIRED)
@@ -38,22 +41,35 @@ pkg_check_modules(UUID REQUIRED uuid)
 #################
 # Setup targets #
 #################
-include_directories(include)
+include_directories(
+  include
+  src/lib
+)
 
-# Add frame_transforms lib
+# Basic libraries
 add_library(frame_transforms SHARED src/lib/frame_transforms.cpp)
-add_library(OffboardControl SHARED src/lib/OffboardControl.cpp)
+add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
+
+# Our libraries
+add_library(OffboardControl SHARED 
+    src/lib/OffboardControl.cpp
+)
 add_library(OffboardMavros SHARED 
   src/lib/OffboardMavros/OffboardMavros_General.cpp
-  src/lib/OffboardMavros/OffboardMavros_Utile.cpp
-  src/lib/OffboardMavros/OffboardMavros_Update.cpp
-  src/lib/OffboardMavros/OffboardMavros_CallbackFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_InitializeFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_PublishFunctions.cpp
+  src/lib/OffboardMavros/OffboardMavros_SubscribeCallBack.cpp
+  src/lib/OffboardMavros/OffboardMavros_Update.cpp
+  src/lib/OffboardMavros/OffboardMavros_ResponseCallback.cpp
+  src/lib/OffboardMavros/OffboardMavros_CallbackComand.cpp
   src/lib/OffboardMavros/OffboardMavros_Action.cpp
+  src/lib/OffboardMavros/OffboardMavros_Utile.cpp
   )
-add_library(Dubins SHARED src/lib/Dubins.cpp)
-add_library(ServoControlPublisher SHARED src/lib/ServoControlPublisher.cpp)
+
+add_library(Dubins SHARED
+    src/lib/Dubins.cpp
+)
+
 add_library(KeyEventPub SHARED 
   src/lib/KeyPublisher.cpp
   src/lib/TerminalMode.cpp
@@ -70,6 +86,8 @@ function(setup_target target_name)
     std_msgs
     mavros_msgs
     nav_msgs
+    mavlink
+    tf2
   )
 endfunction()
 
@@ -107,7 +125,7 @@ set(EXECUTABLES
   PRACTICE/gripper_servo
   main/offboard_mavros
   main/current_position_sub
-)
+  )
 
 foreach(exec ${EXECUTABLES})
   get_filename_component(exec_name ${exec} NAME)
