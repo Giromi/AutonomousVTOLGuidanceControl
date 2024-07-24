@@ -1,7 +1,8 @@
+
 <?xml version="1.0"?>
 <sdf version='1.10'>
   <model name='CAU_vtol'>
-    <pose>0 0 0 0 0 0</pose>
+    <pose>0 0 0.246 0 0 0</pose>
     <include merge='true'>
       <uri>model://OakD-Lite</uri>
       <pose>.12 .03 .242 0 0 0</pose>
@@ -14,13 +15,16 @@
     <link name='base_link'>
       <pose>0 0 0 0 0 0</pose>
       <inertial>
-        <mass>5</mass>
-          <ixx>0.477708333333</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.341666666667</iyy>
-          <iyz>0</iyz>
-          <izz>0.811041666667</izz>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>7</mass>
+        <inertia>
+          <ixx>1.036586375</ixx>
+          <ixy>0.025481228</ixy>
+          <ixz>0.04139701</ixz>
+          <iyy>0.684859918</iyy>
+          <iyz>-0.261749959</iyz>
+          <izz>1.287945506</izz>
+        </inertia>
       </inertial>
       <collision name='base_link_collision'>
         <pose>0 0 -0.07 0 0 0</pose>
@@ -120,6 +124,30 @@
       </sensor>
       <!--
       <sensor name="ms5611" type="altimeter">
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+        <altimeter>
+          <vertical_position>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.0</stddev>
+              <bias_mean>0.0</bias_mean>
+              <bias_stddev>1.0</bias_stddev>
+            </noise>
+          </vertical_position>
+          <vertical_velocity>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.0</stddev>
+              <bias_mean>0.0</bias_mean>
+              <bias_stddev>1.0</bias_stddev>
+            </noise>
+          </vertical_velocity>
+        </altimeter>
+      </sensor>
+      <sensor name="LSM303D" type="magnetometer">
+        <always_on>true</always_on>
+        <update_rate>50</update_rate>
       </sensor>
       -->
       <sensor name="air_pressure_sensor" type="air_pressure">
@@ -155,17 +183,17 @@
       </sensor>
     </link>
     <link name='rotor_0'>
-      <pose>0.35 -0.35 0.07 0 0 0</pose>
+      <pose>0.357 -0.353 0.07 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.005</mass>
+        <mass>0.298</mass>
         <inertia>
-          <ixx>9.75e-07</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.000166704</iyy>
-          <iyz>0</iyz>
-          <izz>0.000167604</izz>
+          <ixx>1.57454637e-04</ixx>
+          <ixy>1.3475028e-05</ixy>
+          <ixz>-2.225054e-06</ixz>
+          <iyy>7.7133057e-05</iyy>
+          <iyz>6.231596e-06</iyz>
+          <izz>1.60905765e-04</izz>
         </inertia>
       </inertial>
       <collision name='rotor_0_collision'>
@@ -218,17 +246,17 @@
       </axis>
     </joint>
     <link name='rotor_1'>
-      <pose>-0.35 0.35 0.07 0 0 0</pose>
+      <pose>-0.35 0.347 0.07 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.005</mass>
+        <mass>0.298</mass>
         <inertia>
-          <ixx>9.75e-07</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.000166704</iyy>
-          <iyz>0</iyz>
-          <izz>0.000167604</izz>
+          <ixx>1.57454637e-04</ixx>
+          <ixy>1.3475028e-05</ixy>
+          <ixz>-2.225054e-06</ixz>
+          <iyy>7.7133057e-05</iyy>
+          <iyz>6.231596e-06</iyz>
+          <izz>1.60905765e-04</izz>
         </inertia>
       </inertial>
       <collision name='rotor_1_collision'>
@@ -281,17 +309,17 @@
       </axis>
     </joint>
     <link name='rotor_2'>
-      <pose>0.35 0.35 0.07 0 0 0</pose>
+      <pose>0.357 0.344 0.07 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.005</mass>
+        <mass>0.298</mass>
         <inertia>
-          <ixx>9.75e-07</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.000166704</iyy>
-          <iyz>0</iyz>
-          <izz>0.000167604</izz>
+          <ixx>1.57454637e-04</ixx>
+          <ixy>1.3475028e-05</ixy>
+          <ixz>-2.225054e-06</ixz>
+          <iyy>7.7133057e-05</iyy>
+          <iyz>6.231596e-06</iyz>
+          <izz>1.60905765e-04</izz>
         </inertia>
       </inertial>
       <collision name='rotor_2_collision'>
@@ -344,17 +372,17 @@
       </axis>
     </joint>
     <link name='rotor_3'>
-      <pose>-0.35 -0.35 0.07 0 0 0</pose>
+      <pose>-0.352 -0.353 0.07 0 0 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.005</mass>
+        <mass>0.298</mass>
         <inertia>
-          <ixx>9.75e-07</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.000166704</iyy>
-          <iyz>0</iyz>
-          <izz>0.000167604</izz>
+          <ixx>1.57454637e-04</ixx>
+          <ixy>1.3475028e-05</ixy>
+          <ixz>-2.225054e-06</ixz>
+          <iyy>7.7133057e-05</iyy>
+          <iyz>6.231596e-06</iyz>
+          <izz>1.60905765e-04</izz>
         </inertia>
       </inertial>
       <collision name='rotor_3_collision'>
@@ -379,7 +407,7 @@
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
-            <uri>model://standard_vtol/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://CAU_vtol/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -408,17 +436,17 @@
     </joint>
 
     <link name='rotor_puller'>
-      <pose>-0.22 0 0.0 0 1.57 0</pose>
+      <pose>0.47 0 0 0 1.57 0</pose>
       <inertial>
         <pose>0 0 0 0 0 0</pose>
-        <mass>0.005</mass>
+        <mass>0.298</mass>
         <inertia>
-          <ixx>9.75e-07</ixx>
-          <ixy>0</ixy>
-          <ixz>0</ixz>
-          <iyy>0.000166704</iyy>
-          <iyz>0</iyz>
-          <izz>0.000167604</izz>
+          <ixx>1.57454637e-04</ixx>
+          <ixy>1.3475028e-05</ixy>
+          <ixz>-2.225054e-06</ixz>
+          <iyy>7.7133057e-05</iyy>
+          <iyz>6.231596e-06</iyz>
+          <izz>1.60905765e-04</izz>
         </inertia>
       </inertial>
       <collision name='rotor_puller_collision'>
@@ -439,11 +467,11 @@
         </surface>
       </collision>
       <visual name='rotor_puller_visual'>
-        <pose>0 0 -0.04 0 0 0</pose>
+        <pose>0.02 0 -0.04 0 0 0</pose>
         <geometry>
           <mesh>
             <scale>0.8 0.8 0.8</scale>
-            <uri>model://standard_vtol/meshes/iris_prop_ccw.dae</uri>
+            <uri>model://CAU_vtol/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
         <material>
@@ -472,77 +500,55 @@
       </axis>
     </joint>
 
-    <link name="left_elevon">
+    <link name="left_aileron">
       <inertial>
-        <mass>0.00000001</mass>
+        <mass>0.01</mass>
         <inertia>
-          <ixx>0.000001</ixx>
-          <ixy>0.0</ixy>
-          <iyy>0.000001</iyy>
-          <ixz>0.0</ixz>
-          <iyz>0.0</iyz>
-          <izz>0.000001</izz>
+          <ixx>1.02071386e-04</ixx>
+          <ixy>5.455779e-06</ixy>
+          <iyy>3.494873e-06</iyy>
+          <ixz>-2.22915e-07</ixz>
+          <iyz>-9.2883e-07</iyz>
+          <izz>1.0353567e-04</izz>
         </inertia>
         <pose>0 0.3 0 0.00 0 0.0</pose>
       </inertial>
-      <!-- <visual name='left_elevon_visual'> -->
-      <!--   <pose>-0.105 0.004 -0.034 1.5707963268 0 3.1415926536</pose> -->
-      <!--   <geometry> -->
-      <!--     <mesh> -->
-      <!--       <scale>0.001 0.001 0.001</scale> -->
-      <!--       <uri>model://C/meshes/x8_elevon_left.dae</uri> -->
-      <!--     </mesh> -->
-      <!--   </geometry> -->
-      <!--   <material> -->
-      <!--     <ambient>0 0 1 1.0</ambient> -->
-      <!--     <diffuse>0 0 1 1.0</diffuse> -->
-      <!--   </material> -->
-      <!-- </visual> -->
+
+
     </link>
-    <link name="right_elevon">
+    <link name="right_aileron">
       <inertial>
-        <mass>0.00000001</mass>
+        <mass>0.01</mass>
         <inertia>
-          <ixx>0.000001</ixx>
-          <ixy>0.0</ixy>
-          <iyy>0.000001</iyy>
-          <ixz>0.0</ixz>
-          <iyz>0.0</iyz>
-          <izz>0.000001</izz>
+          <ixx>1.02071386e-04</ixx>
+          <ixy>5.455779e-06</ixy>
+          <iyy>3.494873e-06</iyy>
+          <ixz>-2.22915e-07</ixz>
+          <iyz>-9.2883e-07</iyz>
+          <izz>1.0353567e-04</izz>
         </inertia>
-        <pose>0 -0.6 0 0.00 0 0.0</pose>
+        <pose>0 0.3 0 0.00 0 0.0</pose>
       </inertial>
-      <!-- <visual name='right_elevon_visual'> -->
-      <!--   <pose>0.281 -1.032 -0.034 1.5707963268 0 3.1415926536</pose> -->
-      <!--   <geometry> -->
-      <!--     <mesh> -->
-      <!--       <scale>0.001 0.001 0.001</scale> -->
-      <!--       <uri>model://standard_vtol/meshes/x8_elevon_right.dae</uri> -->
-      <!--     </mesh> -->
-      <!--   </geometry> -->
-      <!--   <material> -->
-      <!--     <ambient>0 0 1 1.0</ambient> -->
-      <!--     <diffuse>0 0 1 1.0</diffuse> -->
-      <!--   </material> -->
-      <!-- </visual> -->
+
+
     </link>
     <link name="elevator">
       <inertial>
-        <mass>0.00000001</mass>
+        <mass>0.006</mass>
         <inertia>
-          <ixx>0.000001</ixx>
-          <ixy>0.0</ixy>
-          <iyy>0.000001</iyy>
-          <ixz>0.0</ixz>
-          <iyz>0.0</iyz>
-          <izz>0.000001</izz>
+          <ixx>4.5813687e-05</ixx>
+          <ixy>2.0442566e-05</ixy>
+          <iyy>7.4952191e-05</iyy>
+          <ixz>-4.23333e-07</ixz>
+          <iyz>2.12496e-07</iyz>
+          <izz>5.0807083e-05</izz>
         </inertia>
         <pose> -0.5 0 0 0.00 0 0.0</pose>
       </inertial>
     </link>
     <joint name='servo_0' type='revolute'>
       <parent>base_link</parent>
-      <child>left_elevon</child>
+      <child>left_aileron</child>
       <pose>-0.18 0.6 -0.005 0 0 0.265</pose>
       <axis>
         <xyz>0 1 0</xyz>
@@ -562,7 +568,7 @@
     </joint>
     <joint name='servo_1' type='revolute'>
       <parent>base_link</parent>
-      <child>right_elevon</child>
+      <child>right_aileron</child>
       <pose>-0.18 -0.6 -0.005 0 0 -0.265</pose>
       <axis>
         <xyz>0 1 0</xyz>
@@ -611,7 +617,7 @@
       <cda_stall>-0.9233984055</cda_stall>
       <cma_stall>0</cma_stall>
       <cp>-0.05 0.3 0.05</cp>
-      <area>0.50</area>
+      <area>	0.475322 </area>
       <air_density>1.2041</air_density>
       <forward>1 0 0</forward>
       <upward>0 0 1</upward>
@@ -677,9 +683,9 @@
       <turningDirection>ccw</turningDirection>
       <timeConstantUp>0.0125</timeConstantUp>
       <timeConstantDown>0.025</timeConstantDown>
-      <maxRotVelocity>1500</maxRotVelocity>
-      <motorConstant>2e-05</motorConstant>
-      <momentConstant>0.06</momentConstant>
+      <maxRotVelocity>9500</maxRotVelocity>
+      <motorConstant>0.03230515437788739</motorConstant>
+      <momentConstant>0.016464304457782276</momentConstant>
       <commandSubTopic>command/motor_speed</commandSubTopic>
       <motorNumber>0</motorNumber>
       <rotorDragCoefficient>0.000106428</rotorDragCoefficient>
@@ -757,6 +763,7 @@
       <rotorVelocitySlowdownSim>20</rotorVelocitySlowdownSim>
       <motorType>velocity</motorType>
     </plugin>
+
     <static>0</static>
   </model>
 </sdf>
