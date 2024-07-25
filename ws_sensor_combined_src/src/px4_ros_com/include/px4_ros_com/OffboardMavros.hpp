@@ -293,6 +293,7 @@ private:
     static const std::array<Eigen::Vector4d, 4>                    _square_path;
     static const std::array<Eigen::Vector4d, 4>                    _triangle_path;
     static const std::array<Eigen::Vector4d, 11>                   _star_path;
+    static const std::array<Eigen::Vector4d, 1>                   _simple_path;
 };
 
 

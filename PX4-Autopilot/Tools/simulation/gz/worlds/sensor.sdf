@@ -68,53 +68,52 @@
         <real_time_factor>1</real_time_factor>
         <iterations>1</iterations>
       </plugin>
-      <!--
       <plugin name='Entity tree' filename='EntityTree'/>
-      <plugin filename="ImageDisplay" name="Image Display">
-        <gz-gui>
-          <title>Camera</title>
-          <property key="state" type="string">floating</property>
-          <property type="double" key="width">350</property>
-          <property type="double" key="height">315</property>
-        </gz-gui>
-        <topic>camera</topic>
-        <topic_picker>false</topic_picker>
-      </plugin>
-      <plugin filename="ImageDisplay" name="Image Display 2">
-        <gz-gui>
-          <title>Depth Camera</title>
-          <property key="state" type="string">floating</property>
-          <property type="double" key="width">350</property>
-          <property type="double" key="height">315</property>
-          <property type="double" key="x">500</property>
-        </gz-gui>
-        <topic>depth_camera</topic>
-        <topic_picker>false</topic_picker>
-      </plugin>
-      -->
-      <plugin filename="ImageDisplay" name="Image Display 3">
-        <gz-gui>
-          <title>RGBD: image</title>
-          <property key="state" type="string">floating</property>
-          <property type="double" key="width">350</property>
-          <property type="double" key="height">315</property>
-          <property type="double" key="y">320</property>
-        </gz-gui>
-        <topic>rgbd_camera/image</topic>
-        <topic_picker>false</topic_picker>
-      </plugin>
-      <plugin filename="ImageDisplay" name="Image Display 4">
-        <gz-gui>
-          <title>RGBD: depth</title>
-          <property key="state" type="string">floating</property>
-          <property type="double" key="width">350</property>
-          <property type="double" key="height">315</property>
-          <property type="double" key="x">500</property>
-          <property type="double" key="y">320</property>
-        </gz-gui>
-        <topic>rgbd_camera/depth_image</topic>
-        <topic_picker>false</topic_picker>
-      </plugin>
+
+      <!-- <plugin filename="ImageDisplay" name="Image Display"> -->
+      <!--   <gz-gui> -->
+      <!--     <title>Camera</title> -->
+      <!--     <property key="state" type="string">floating</property> -->
+      <!--     <property type="double" key="width">350</property> -->
+      <!--     <property type="double" key="height">315</property> -->
+      <!--   </gz-gui> -->
+      <!--   <topic>camera</topic> -->
+      <!--   <topic_picker>false</topic_picker> -->
+      <!-- </plugin> -->
+      <!-- <plugin filename="ImageDisplay" name="Image Display 2"> -->
+      <!--   <gz-gui> -->
+      <!--     <title>Depth Camera</title> -->
+      <!--     <property key="state" type="string">floating</property> -->
+      <!--     <property type="double" key="width">350</property> -->
+      <!--     <property type="double" key="height">315</property> -->
+      <!--     <property type="double" key="x">500</property> -->
+      <!--   </gz-gui> -->
+      <!--   <topic>depth_camera</topic> -->
+      <!--   <topic_picker>false</topic_picker> -->
+      <!-- </plugin> -->
+      <!-- <plugin filename="ImageDisplay" name="Image Display 3"> -->
+      <!--   <gz-gui> -->
+      <!--     <title>RGBD: image</title> -->
+      <!--     <property key="state" type="string">floating</property> -->
+      <!--     <property type="double" key="width">350</property> -->
+      <!--     <property type="double" key="height">315</property> -->
+      <!--     <property type="double" key="y">320</property> -->
+      <!--   </gz-gui> -->
+      <!--   <topic>rgbd_camera/image</topic> -->
+      <!--   <topic_picker>false</topic_picker> -->
+      <!-- </plugin> -->
+      <!-- <plugin filename="ImageDisplay" name="Image Display 4"> -->
+      <!--   <gz-gui> -->
+      <!--     <title>RGBD: depth</title> -->
+      <!--     <property key="state" type="string">floating</property> -->
+      <!--     <property type="double" key="width">350</property> -->
+      <!--     <property type="double" key="height">315</property> -->
+      <!--     <property type="double" key="x">500</property> -->
+      <!--     <property type="double" key="y">320</property> -->
+      <!--   </gz-gui> -->
+      <!--   <topic>rgbd_camera/depth_image</topic> -->
+      <!--   <topic_picker>false</topic_picker> -->
+      <!-- </plugin> -->
     </gui>
     <gravity>0 0 -9.8</gravity>
     <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
