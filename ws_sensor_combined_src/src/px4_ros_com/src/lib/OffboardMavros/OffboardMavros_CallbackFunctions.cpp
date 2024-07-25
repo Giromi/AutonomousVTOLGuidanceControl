@@ -8,6 +8,10 @@ void OffboardMavros::localPositionCommandStart(void) {
         _cur_position[0], _cur_position[1], _cur_position[2], vtol::NaN
     );
 
+    if (wp_manager.size() == 0) {
+        updatePositionMode();
+    }
+
     if (wp_manager.isArrived(cur_position_vector3d)) {
         wp_manager.pop();
     }

@@ -13,13 +13,17 @@ void OffboardMavros::poseCallBack(const geometry_msgs::msg::PoseStamped::SharedP
     // DEBUG::print("[Pose] Yaw current: ", yaw_current,GREEN);
 }
 
+void OffboardMavros::extendedStateCallBack(const mavros_msgs::msg::ExtendedState::SharedPtr msg) {
+    extended_msg = *msg;
+}
+
 void OffboardMavros::gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
      if (msg->status.status >= sensor_msgs::msg::NavSatStatus::STATUS_FIX) {
             gps_locked = true;
         }
 
     if (isGlobalPositionGettingValue(init_global_position) == false) {
-        init_global_position[vtol::ALT] = msg->altitude + 30.0f;
+        init_global_position[vtol::ALT] = msg->altitude + vtol::INIT_UP;
         init_global_position[vtol::LAT] = msg->latitude;
         init_global_position[vtol::LON] = msg->longitude;
         DEBUG::print("alt: ", init_global_position[vtol::ALT],BLUE);

@@ -33,6 +33,7 @@ void OffboardMavros::initializePublishers(void) {
 
 void OffboardMavros::initializeSubscribers(void) {
     auto default_qos = rclcpp::QoS(rclcpp::SystemDefaultsQoS());
+    const std::function<void(const mavros_msgs::msg::ExtendedState::SharedPtr)> extended_state_bind = std::bind(&OffboardMavros::extendedStateCallBack, this, std::placeholders::_1);
     const std::function<void(const mavros_msgs::msg::State::SharedPtr)> state_bind = std::bind(&OffboardMavros::stateCallBack, this, std::placeholders::_1);
     const std::function<void(const std_msgs::msg::String::SharedPtr)> subscription_bind = std::bind(&OffboardMavros::chatterCallback, this, std::placeholders::_1);
     const std::function<void(const geometry_msgs::msg::PoseStamped::SharedPtr msg)> local_position_sub_bind = std::bind(&OffboardMavros::localPositionCallback, this, std::placeholders::_1);
@@ -40,6 +41,7 @@ void OffboardMavros::initializeSubscribers(void) {
     const std::function<void(const sensor_msgs::msg::NavSatFix::SharedPtr msg)> global_posistion_sub_bind = std::bind(&OffboardMavros::gpsCallBack, this, std::placeholders::_1);
 
     state_sub            = create_subscription<mavros_msgs::msg::State>("mavros/state", default_qos, state_bind);
+    extended_state_sub   = create_subscription<mavros_msgs::msg::ExtendedState>("mavros/extended_state", default_qos, extended_state_bind);
     local_position_sub   = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, local_position_sub_bind);
     subscription         = create_subscription<std_msgs::msg::String>("/chatter", 10, subscription_bind);
     pose_sub             = create_subscription<geometry_msgs::msg::PoseStamped>("/mavros/local_position/pose", default_qos, pose_sub_bind);
@@ -222,11 +224,57 @@ void OffboardMavros::initializeWaypoints(void) {
     std::array<double, 3> home_alt_global_position = { 20.0, 47.398, 8.54616 };
     triangleScenarioFW(home_alt_global_position);
 
+
+    /* --------------------- */
+    Eigen::MatrixXd mat(3, 5);  // 3x5 행렬
+    mat <<  0.0, 30.0, 30.0,  0.0,  0.0,
+            0.0,  0.0, 20.0, 20.0,  0.0,
+           20.0, 10.0, 10.0, 10.0, 10.0;
+
+    // 각 열 벡터 받아오기`
+    Eigen::Vector3d wp0 = mat.col(0);
+    Eigen::Vector3d wp1 = mat.col(1);
+    Eigen::Vector3d wp2 = mat.col(2);
+    Eigen::Vector3d wp3 = mat.col(3);
+    Eigen::Vector3d wp4 = mat.col(4);
+    
+    // StraightPath straight_path_1(wp0, wp1);
+    // CircularPath circular_path_2(wp1, wp2, (wp1 + wp2)/2, 10.0, true);
+    // StraightPath straight_path_3(wp2, wp3);
+    // CircularPath circular_path_4(wp3, wp4, (wp3 + wp4)/2, 10.0, true);
+    // StraightPath straight_path_3(wp2, wp3);
+    // StraightPath straight_path_4(wp3, wp4);
+
+    // straight_trajectory.push(straight_path_1);
+    // straight_trajectory.push(straight_path_2);
+    // straight_trajectory.push(straight_path_3);
+    // straight_trajectory.push(straight_path_4);
+
+    // CircularPath CircularPath_1();
+    // CircularPath CircularPath_2();
+    // CircularPath CircularPath_3();
+    // CircularPath CircularPath_4();
+
+    reference_trajectory.push(new StraightPath(wp0, wp1));
+    reference_trajectory.push(new StraightPath(wp1, wp2));
+    reference_trajectory.push(new StraightPath(wp2, wp3));
+    reference_trajectory.push(new StraightPath(wp3, wp4));
+
+    // reference_trajectory.push(new StraightPath(wp0, wp1));
+    // reference_trajectory.push(new CircularPath(wp1, wp2, (wp1 + wp2)/2, 10.0, true));
+    // reference_trajectory.push(new StraightPath(wp2, wp3));
+    // reference_trajectory.push(new CircularPath(wp3, wp4, (wp3 + wp4)/2, 10.0, true));
+
     // wp_manager.setPath(_star_path);
-    wp_manager.setPath(_square_path);
+    wp_manager.setPath(_simple_path);
     RCLCPP_INFO(this->get_logger(), "Waypoint list size: %u", wp_manager.size());
     wp_manager.printWaypoints();
+
 }
+
+const std::array<Eigen::Vector4d, 1> OffboardMavros::_simple_path = {
+    Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),
+};
 
 const std::array<Eigen::Vector4d, 4> OffboardMavros::_square_path = {
     Eigen::Vector4d(200.0,        0.0,	    30.0,      0.00),

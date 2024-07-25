@@ -76,7 +76,7 @@ void OffboardMavros::requestArmingStatus(const bool& input,
 
 void OffboardMavros::updateTakeoffStatus(void) {
     auto request = makeRequestTakeoffLandMessage(
-            vtol::GeographicCoordinate{_global_position[vtol::ALT]+20, _global_position[vtol::LAT], _global_position[vtol::LON], 0, 0});
+            vtol::GeographicCoordinate{vtol::INIT_UP, _global_position[vtol::LAT], _global_position[vtol::LON], 0, 0});
     takeoff_client->async_send_request(request,
             std::bind(&OffboardMavros::takeoffResponseCallback, this, std::placeholders::_1));
     last_request = this->now();

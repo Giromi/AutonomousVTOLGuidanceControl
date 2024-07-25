@@ -46,6 +46,8 @@
 # include <deque>
 # include <Eigen/Dense>
 # include "px4_ros_com/convention.hpp"
+# include "px4_ros_com/StraightPath.hpp"
+# include "px4_ros_com/CircularPath.hpp"
 # include "px4_ros_com/WaypointManager.hpp"
 # include "DEBUG.hpp"
 
@@ -87,6 +89,7 @@ private:
     void    gpsCallBack(const sensor_msgs::msg::NavSatFix::SharedPtr msg);
     void    poseCallBack(const geometry_msgs::msg::PoseStamped::SharedPtr msg);
     void    stateCallBack(const mavros_msgs::msg::State::SharedPtr msg);
+    void    extendedStateCallBack(const mavros_msgs::msg::ExtendedState::SharedPtr msg);
     void    statusReady(void);
 
 
@@ -154,7 +157,7 @@ private:
     void    stateCommandToFixed(void);
     void    stateCommandToQuad(void);
     void    stateCommandLand(void);
-
+    
 
     void    localPositionCommandStart(void);
     // void    is_arrived_waypoint(const std::array<float, 3> target);
@@ -245,11 +248,14 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr        global_posistion_sub;
     rclcpp::Subscription<geometry_msgs::msg::PoseStamped>::SharedPtr    pose_sub; 
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr            state_sub;
+    rclcpp::Subscription<mavros_msgs::msg::ExtendedState>::SharedPtr    extended_state_sub;
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr              subscription;
     rclcpp::TimerBase::SharedPtr                                        timer;
     rclcpp::Time                                                        last_request{0, 0, RCL_ROS_TIME};
     mavros_msgs::msg::State                                             fcu_state;
     mavros_msgs::msg::WaypointList                                      waypoint_list;
+    mavros_msgs::msg::ExtendedState                                     extended_msg;
+    /* 일바적인 모든 용*/
     double yaw_current;
     t_global_position		                                        init_global_position;
   
@@ -257,6 +263,7 @@ private:
     //
 
     //TODO: static 지워서 멤버변수로 변경
+
 
     static t_bit                                                _cmd_flag;
     static std::array<double, 3>		                            _local_position;
@@ -266,23 +273,27 @@ private:
     static std::array<double, 3>		                            _prev_position;
     static const std::string				                        _arrow_string;
     static std::array<double, 4>                                    _manual_velocity;
-
     static double                                                       _offset;
     static const std::array<std::string, vtol::ACTION_SIZE>             _action_string_array;
     static void                                                         (*actionFunc[])(void);
     std::array<t_bit, vtol::STATE_SIZE>                           state_value_array;
     std::array<std::function <void(void)> ,vtol::STATE_SIZE>            stateFunc;
+    // std::queue<vtol::Waypoint>                                          waypoints;
+    std::queue<StraightPath>                                            straight_trajectory;
+    std::queue<Traj*>                                                    reference_trajectory;
 
-    /* 일바적인 모든 용*/
+    bool                                                                gps_locked{false};
+    
 
     /* mavros mission send 용*/
     std::queue<vtol::ReferenceWaypoint>                                 ref_waypoints;
-    bool                                                                gps_locked{false};
+    // bool                                                                gps_locked{false};
     
     WaypointManager<Eigen::Vector4d>                               wp_manager;
     static const std::array<Eigen::Vector4d, 4>                    _square_path;
     static const std::array<Eigen::Vector4d, 4>                    _triangle_path;
     static const std::array<Eigen::Vector4d, 11>                   _star_path;
+    static const std::array<Eigen::Vector4d, 1>                   _simple_path;
 };
 
 
