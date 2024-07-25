@@ -62,7 +62,11 @@ add_library(OffboardMavros SHARED
   src/lib/OffboardMavros/OffboardMavros_Update.cpp
   src/lib/OffboardMavros/OffboardMavros_ResponseCallback.cpp
   src/lib/OffboardMavros/OffboardMavros_CallbackComand.cpp
+  # src/lib/OffboardMavros/OffboardMavros_CallbackFunctions.cpp
   src/lib/OffboardMavros/OffboardMavros_Action.cpp
+  src/lib/Traj.cpp
+  src/lib/StraightPath.cpp
+  src/lib/CircularPath.cpp
   src/lib/OffboardMavros/OffboardMavros_Utile.cpp
   )
 

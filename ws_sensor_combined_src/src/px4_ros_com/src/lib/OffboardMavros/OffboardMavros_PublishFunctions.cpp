@@ -12,7 +12,11 @@ void    OffboardMavros::publish(void) {
         return ;
     } 
 
-    publishRawLocalPosition();
+    publishRawLocal();
+    // publishVelocity(); MC 모드에서 Yaw rate 제어는 PD 제어나 1차 LPF 적용 필요
+
+
+    //publishRawLocalPosition();
     // publishPose();
     // publishCmdVel();
     // publishVelocity(); // 
@@ -20,6 +24,7 @@ void    OffboardMavros::publish(void) {
     // publishRawAttitude();
     // publishAttitudePosition();
     // publishRawLocal();
+
     // if (fcu_state.mode == "AUTO.MISSION") {
     // publishWaypoint();
     // } else {
@@ -109,16 +114,18 @@ void OffboardMavros::publishRawLocal(void) {
     msg->header.frame_id = "standard_vtol_0";
     msg->coordinate_frame = mavros_msgs::msg::PositionTarget::FRAME_LOCAL_NED;
     msg->type_mask = mavros_msgs::msg::PositionTarget::IGNORE_PX	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_PY	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_PZ	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFY	|
-                          mavros_msgs::msg::PositionTarget::IGNORE_AFZ  ;
-    // msg->velocity.x    = _local_velocity[0]; // East
-    // msg->velocity.y    = _local_velocity[1]; // North
-    // msg->velocity.z    = _local_velocity[2]; // Up
+                     mavros_msgs::msg::PositionTarget::IGNORE_PY	|
+                     mavros_msgs::msg::PositionTarget::IGNORE_PZ	|
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFX	|
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFY	|                          
+                     mavros_msgs::msg::PositionTarget::IGNORE_AFZ |
+                     mavros_msgs::msg::PositionTarget::IGNORE_YAW_RATE;
+
+    msg->velocity.x    = _local_velocity[0]; // East
+    msg->velocity.y    = _local_velocity[1]; // North
+    msg->velocity.z    = _local_velocity[2]; // Up
     msg->yaw           = _local_velocity[4];
-    msg->yaw_rate      = _local_velocity[5];
+    // local_msg.yaw_rate      = _local_velocity[5];
     local_pub->publish(*msg);
 }
 
