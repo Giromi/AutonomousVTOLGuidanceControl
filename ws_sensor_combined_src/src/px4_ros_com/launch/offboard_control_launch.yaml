@@ -1,9 +1,0 @@
-launch:
-
-- node:
-    pkg: "px4_ros_com"
-    exec: "offboard_mavros"
-
-- node:
-    pkg: "px4_ros_com"
-    exec: "current_position_sub"
