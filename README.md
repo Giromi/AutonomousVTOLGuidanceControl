@@ -91,7 +91,13 @@ The onboard electronic architecture integrates flight control hardware, companio
 
 Prototype 2 was developed by improving the limitations identified during the flight tests of Prototype 1. The redesigned airframe enhanced structural reliability, flight stability, and mission performance.
 
+### Key Improvements
 
+- Improved Wing Attachment Mechanism
+- Pusher Propulsion Configuration
+- Redesigned Tail Structure
+- Enhanced Quadrotor Stability
+- Passenger Cabin Integration
 
 # ✈ Control Surface Design and Aerodynamic Analysis
 
@@ -105,13 +111,14 @@ Finally, a 2D servo linkage kinematic analysis was performed to optimize the hor
 
 <img width="1432" height="838" alt="image" src="https://github.com/user-attachments/assets/703aad4e-fa28-467c-bd16-c342d9e146ec" />
 
-### Key Improvements
+Key Contributions
 
-- Improved Wing Attachment Mechanism
-- Pusher Propulsion Configuration
-- Redesigned Tail Structure
-- Enhanced Quadrotor Stability
-- Passenger Cabin Integration
+* Performed aerodynamic analysis using CFD, OpenVSP, and XFLR5
+* Estimated aerodynamic coefficients for control surface sizing
+* Calculated practical control surface deflection limits
+* Optimized neutral servo angle for maximum usable authority
+* Designed servo horn and linkage geometry through 2D kinematic analysis
+* Applied the optimized mechanism to the final VTOL aircraft
 
 ---
 
