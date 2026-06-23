@@ -91,6 +91,20 @@ The onboard electronic architecture integrates flight control hardware, companio
 
 Prototype 2 was developed by improving the limitations identified during the flight tests of Prototype 1. The redesigned airframe enhanced structural reliability, flight stability, and mission performance.
 
+
+
+# ✈ Control Surface Design and Aerodynamic Analysis
+
+The control surface was designed through an integrated workflow combining aerodynamic simulation, analytical modeling, and mechanical linkage analysis.
+
+First, aerodynamic characteristics were evaluated using CFD, OpenVSP, and XFLR5 to estimate lift, drag, and stability derivatives. These results were incorporated into the aircraft dynamic equations to determine the required control authority.
+
+Based on the desired roll and pitch performance, the practical control surface deflection range was calculated and the neutral position was calibrated to maximize usable servo travel while avoiding mechanical saturation.
+
+Finally, a 2D servo linkage kinematic analysis was performed to optimize the horn geometry and linkage ratio before applying the design to the actual aircraft.
+
+<img width="1432" height="838" alt="image" src="https://github.com/user-attachments/assets/703aad4e-fa28-467c-bd16-c342d9e146ec" />
+
 ### Key Improvements
 
 - Improved Wing Attachment Mechanism
