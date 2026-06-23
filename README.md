@@ -232,20 +232,21 @@ The Flight Control Unit (FCU) autonomously manages the complete mission sequence
 ### Mission Sequence
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Takeoff]
-    --> B[Pre-flight Check]
-    --> C[Forward Transition]
-    --> D[Fixed-Wing Mission]
-    --> E[Target Observation]
-    --> F[Target Detection & Communication]
-    --> G[Camera Gimbal Control]
-    --> H[Back Transition]
-    --> I[Multicopter Mission]
-    --> J[Obstacle Detection]
-    --> K[Obstacle Avoidance]
-    --> L[Wind Disturbance Rejection]
-    --> M[Landing]
+    --> B[Forward Transition]
+    --> C[Fixed-Wing Mission]
+    --> D[Target Observation]
+
+    D --> E[Target Detection]
+    E --> F[Camera Gimbal Control]
+
+    F --> G[Back Transition]
+    G --> H[Multicopter Mission]
+
+    H --> I[Obstacle Avoidance]
+    I --> J[Wind Disturbance Rejection]
+    J --> K[Landing]
 ```
 
 ---
