@@ -8,7 +8,15 @@
 |:--------------------:|:---------------------:|:----------------------------:|
 | <img src="https://github.com/user-attachments/assets/9343b1f8-c63b-4d8a-8c1f-4e12d4ea50d6" width="320"> | <img width="320" height="180" alt="KakaoTalk_Video_2026-06-28-23-40-39" src="https://github.com/user-attachments/assets/7ca368d2-fb40-4ce8-889d-c5e0b57f7ffe" /> | <img src="https://github.com/user-attachments/assets/1c41e4a2-a686-4f5f-95e7-2a38c3d0155c" width="320"> |
 
+## Project Focus
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Autonomous%20VTOL-0A66C2?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/ROS2%20%2B%20PX4-2E8B57?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/VTOL%20Transition-6A5ACD?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Vector%20Field%20Guidance-FF8C00?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/System%20Integration-DC143C?style=for-the-badge" />
+</p>
 
 ## Overview
 
@@ -31,7 +39,7 @@ The final system was designed to execute autonomous takeoff, forward transition,
 ---
 
 
-## Project Overview
+## Project Summary
 
 - Designed and built a custom autonomous VTOL aircraft from prototype development to real flight testing.
 - Designed and built a custom autonomous VTOL aircraft.
@@ -250,9 +258,3 @@ flowchart TD
 
 ---
 
-## Keywords
-
-`ROS2` `PX4` `MAVROS` `VTOL` `Vector Field Guidance`
-`Autonomous Flight` `Mission Planning` `Path Following`
-`Flight Control` `Aircraft Design` `Aerodynamic Analysis`
-`Robotics` `Navigation` `System Integration`
