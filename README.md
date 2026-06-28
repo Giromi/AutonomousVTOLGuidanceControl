@@ -3,6 +3,11 @@
 > Design, integration, and validation of an autonomous VTOL aircraft for the **Korean Robot Aircraft Competition (KRAC)** using **ROS2, PX4, MAVROS, vector field guidance, mission management, and autonomous flight control**.
 
 ---
+| ROS2 Gazebo Simulation | Real VTOL Flight Test | Autonomous Waypoint Flight |
+|:--------------------:|:---------------------:|:----------------------------:|
+| <img src="https://github.com/user-attachments/assets/9343b1f8-c63b-4d8a-8c1f-4e12d4ea50d6" width="320"> | <img width="320" height="180" alt="KakaoTalk_Video_2026-06-28-23-40-39" src="https://github.com/user-attachments/assets/7ca368d2-fb40-4ce8-889d-c5e0b57f7ffe" /> | <img src="https://github.com/user-attachments/assets/1c41e4a2-a686-4f5f-95e7-2a38c3d0155c" width="320"> |
+
+
 
 ## 📖 Overview
 
