@@ -1,17 +1,18 @@
-# ✈ KRAC – Autonomous VTOL Aircraft Development
+# KRAC – Autonomous VTOL Aircraft Development
 
 > Design, integration, and validation of an autonomous VTOL aircraft for the **Korean Robot Aircraft Competition (KRAC)** using **ROS2, PX4, MAVROS, vector field guidance, mission management, and autonomous flight control**.
 
----
+## Highlights
+
 | ROS2 Gazebo Simulation | Real VTOL Flight Test | Autonomous Waypoint Flight |
 |:--------------------:|:---------------------:|:----------------------------:|
 | <img src="https://github.com/user-attachments/assets/9343b1f8-c63b-4d8a-8c1f-4e12d4ea50d6" width="320"> | <img width="320" height="180" alt="KakaoTalk_Video_2026-06-28-23-40-39" src="https://github.com/user-attachments/assets/7ca368d2-fb40-4ce8-889d-c5e0b57f7ffe" /> | <img src="https://github.com/user-attachments/assets/1c41e4a2-a686-4f5f-95e7-2a38c3d0155c" width="320"> |
 
 
 
-## 📖 Overview
+## Overview
 
-This project focuses on the complete development of an autonomous VTOL aircraft capable of performing both **Fixed-Wing (FW)** and **Multicopter (MC)** missions.
+This project presents the end-to-end development of an autonomous VTOL aircraft for the Korean Robot Aircraft Competition (KRAC).
 
 The project covered the full engineering workflow, including aircraft design, aerodynamic analysis, onboard electronic integration, autonomous flight software development, guidance and control, mission management, simulation validation, and real flight testing.
 
@@ -19,7 +20,7 @@ The final system was designed to execute autonomous takeoff, forward transition,
 
 ---
 
-## 🛠 Technology Stack
+## Technology Stack
 
 | Flight Control | Robotics | Guidance & Planning | Perception | Programming |
 |:--------------:|:--------:|:-------------------:|:----------:|:-----------:|
@@ -30,19 +31,17 @@ The final system was designed to execute autonomous takeoff, forward transition,
 ---
 
 
-## 📈 Project Highlights
+## Project Overview
 
 - Designed and built a custom autonomous VTOL aircraft from prototype development to real flight testing.
-- Developed ROS2–PX4 autonomous mission software with MAVROS integration.
-- Implemented mission state management for takeoff, transition, fixed-wing flight, back transition, multicopter operation, and landing.
-- Designed and validated vector field guidance for autonomous path following.
-- Performed aerodynamic analysis and control surface optimization using CFD, OpenVSP, and XFLR5.
-- Integrated onboard sensors, telemetry, camera systems, flight control hardware, and companion computing.
-- Validated the autonomous mission workflow through simulation and outdoor flight experiments.
-
+- Designed and built a custom autonomous VTOL aircraft.
+- Developed a ROS2–PX4 autonomous flight framework.
+- Implemented autonomous mission protocols for VTOL operation.
+- Integrated vector field guidance into the flight system.
+- Performed aerodynamic analysis using CFD, OpenVSP, and XFLR5.
+- Validated autonomous missions through simulation and outdoor flight tests.
 ---
 
-## 📷 Project Overview
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/88ef9dce-c37c-408b-b64c-ab47ba33c1c6" width="900"/>
@@ -53,7 +52,7 @@ The KRAC team developed a custom VTOL aircraft capable of autonomously executing
 The project involved the entire engineering workflow, from conceptual aircraft design and aerodynamic analysis to onboard electronics integration, autonomous software development, simulation-based verification, and outdoor flight testing.
 
 ---
-## 👨‍💻 My Contributions
+## My Contributions
 
 ### Autonomous Flight Software
 
@@ -81,14 +80,9 @@ The project involved the entire engineering workflow, from conceptual aircraft d
 
 ---
 
-## 📚 Keywords
 
-`ROS2` `PX4` `MAVROS` `VTOL` `Vector Field Guidance`
-`Autonomous Flight` `Mission Planning` `Path Following`
-`Flight Control` `Aircraft Design` `Aerodynamic Analysis`
-`Robotics` `Navigation` `System Integration`
 
-## 🖥 Simulation Environment
+## Simulation Environment
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/0d5b033d-bf2c-469c-b160-671e2c4b4dd0" width="900"/>
@@ -108,7 +102,7 @@ Before real-world flight experiments, the complete autonomous mission workflow w
 
 ---
 
-## 🛰 Mission System Architecture
+## Mission System Architecture
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6c3bc6b2-d51b-46ea-bb04-972284552dc4" width="900"/>
@@ -129,7 +123,7 @@ The autonomous mission system coordinates flight control, mission management, ob
 
 ---
 
-## ⚡ Electronic System Integration
+## Electronic System Integration
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ee0143b7-8acc-4e3a-a82c-a5a2f0ad457c" width="900"/>
@@ -151,7 +145,7 @@ The onboard electronic architecture integrates flight control hardware, companio
 
 ---
 
-## ✈ Prototype Design Evolution
+## Prototype Design Evolution
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4faf6eac-a8ba-4994-a0c4-1868c2d5e1a4" width="900"/>
@@ -170,7 +164,7 @@ Prototype 2 was developed by improving the limitations identified during the fli
 
 ---
 
-## ✈ Control Surface Design and Aerodynamic Analysis
+## Control Surface Design and Aerodynamic Analysis
 
 The control surface was designed through an integrated workflow combining aerodynamic simulation, analytical modeling, and mechanical linkage analysis.
 
@@ -226,7 +220,7 @@ Key Contributions
 ---
 ---
 
-## 🚀 FCU Mission Workflow
+## FCU Mission Workflow
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/5cb52992-ddb2-4cf4-9bac-25729a7c7c82" width="900"/>
@@ -256,4 +250,9 @@ flowchart TD
 
 ---
 
+## Keywords
 
+`ROS2` `PX4` `MAVROS` `VTOL` `Vector Field Guidance`
+`Autonomous Flight` `Mission Planning` `Path Following`
+`Flight Control` `Aircraft Design` `Aerodynamic Analysis`
+`Robotics` `Navigation` `System Integration`
