@@ -6,7 +6,8 @@
 
 | ROS2 Gazebo Simulation | Real VTOL Flight Test | Autonomous Waypoint Flight |
 |:----------------------:|:---------------------:|:--------------------------:|
-| <img src="https://github.com/user-attachments/assets/9343b1f8-c63b-4d8a-8c1f-4e12d4ea50d6" height="180"> | <img src="https://github.com/user-attachments/assets/9a3b9546-cfa2-4314-ad52-9fcac6e34690" height="180"> | <img src="https://github.com/user-attachments/assets/1c41e4a2-a686-4f5f-95e7-2a38c3d0155c" height="180"> |
+| <img src="https://github.com/user-attachments/assets/9343b1f8-c63b-4d8a-8c1f-4e12d4ea50d6" height="180"> | <img src="https://github.com/user-attachments/assets/4acfac52-118b-4f2f-97c6-a0614b9cfff3" height="180"> | <img src="https://github.com/user-attachments/assets/1c41e4a2-a686-4f5f-95e7-2a38c3d0155c" height="180"> |
+
 
 
 ## Project Focus
