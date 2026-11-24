@@ -2,9 +2,11 @@
 
 > Design, integration, and validation of an autonomous VTOL aircraft for the **Korean Robot Aircraft Competition (KRAC)** using **ROS2, PX4, MAVROS, vector field guidance, mission management, and autonomous flight control**.
 
+> Korea Robot Aircraft Competition (KRAC) · 22nd (2024) and 23rd (2025) · MACH eVTOL team, Chung-Ang University aerospace club (17 members in 2025) · the code in this repo is mainly from the 2024 season
+
 ## Highlights
 
-| ROS2 Gazebo Simulation | Real VTOL Flight Test | Autonomous Waypoint Flight |
+| ROS2 Gazebo Simulation | Real VTOL Takeoff Test | Waypoint Flight (Test Quadcopter) |
 |:----------------------:|:---------------------:|:--------------------------:|
 | <img src="https://github.com/user-attachments/assets/9343b1f8-c63b-4d8a-8c1f-4e12d4ea50d6" height="180"> | <img src="https://github.com/user-attachments/assets/4acfac52-118b-4f2f-97c6-a0614b9cfff3" height="180"> | <img src="https://github.com/user-attachments/assets/1c41e4a2-a686-4f5f-95e7-2a38c3d0155c" height="180"> |
 
@@ -44,17 +46,18 @@ The final system was designed to execute autonomous takeoff, forward transition,
 ## Project Summary
 
 - Designed and built a custom autonomous VTOL aircraft from prototype development to real flight testing.
-- Designed and built a custom autonomous VTOL aircraft.
 - Developed a ROS2–PX4 autonomous flight framework.
 - Implemented autonomous mission protocols for VTOL operation.
 - Integrated vector field guidance into the flight system.
 - Performed aerodynamic analysis using CFD, OpenVSP, and XFLR5.
-- Validated autonomous missions through simulation and outdoor flight tests.
+- Validated the autonomous mission and vector field guidance in PX4 SITL (Gazebo) with the team's own aircraft model.
+- Ran ground thrust tests and outdoor flight tests on the real aircraft; in 2024 the full autonomous mission was tested only in simulation.
+
 ---
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/88ef9dce-c37c-408b-b64c-ab47ba33c1c6" width="900"/>
+  <img src="images/overview/vtol_on_pad.jpg" width="760"/>
 </p>
 
 The KRAC team developed a custom VTOL aircraft capable of autonomously executing competition missions requiring both fixed-wing and multicopter flight.
@@ -92,6 +95,24 @@ The project involved the entire engineering workflow, from conceptual aircraft d
 
 
 
+## Vector Field Guidance
+
+<p align="center">
+  <img src="images/guidance/vector_field_path_following.gif" width="480"/>
+</p>
+<p align="center"><sub>PX4 SITL, multicopter mode: straight-line and circular path following with vector field velocity commands (sped up 8x).</sub></p>
+
+Instead of sending raw waypoints to PX4, the mission node sends velocity commands from a vector field that pulls the aircraft onto the path and moves it along it (based on Gonçalves et al., IEEE T-RO 2010).
+
+- **Path as manifolds:** a 3D path is the intersection of two surfaces. A straight line uses a longitudinal and a lateral plane; a circular path uses a cylinder and a horizontal plane.
+- **Guidance law:** `u = -K1 ∂V/∂r + K2 (∂α1/∂r × ∂α2/∂r)`, where `V = ½(α1² + α2²)`. The first term converges to the path, the second moves along it.
+- **Obstacle avoidance:** an obstacle seen by the RGB-D camera is wrapped in a cylinder manifold, and the aircraft is guided around it.
+- **Crosswind landing:** a vertical path (two planes with N and E normals) keeps the aircraft above the landing point until the final land command.
+
+Code: `StraightPath`, `CircularPath`, `WaypointManager` in `ws_sensor_combined_src/src/px4_ros_com/src/lib/`.
+
+---
+
 ## Simulation Environment
 
 <p align="center">
@@ -99,6 +120,13 @@ The project involved the entire engineering workflow, from conceptual aircraft d
 </p>
 
 Before real-world flight experiments, the complete autonomous mission workflow was validated through a simulation environment.
+
+<p align="center">
+  <img src="images/simulation/takeoff_transition_landing_sitl.gif" width="560"/>
+</p>
+<p align="center"><sub>Gazebo + QGroundControl: takeoff, forward transition, back transition and landing of the team's VTOL model, driven by the ROS2/MAVROS mission node (sped up 7.6x).</sub></p>
+
+The Gazebo model (`CAU_vtol`) uses the team's own mass, inertia and aerodynamic coefficients from CFD, OpenVSP and XFLR5 instead of the stock PX4 VTOL.
 
 ### Simulation Features
 
@@ -131,6 +159,8 @@ The autonomous mission system coordinates flight control, mission management, ob
 - Camera Gimbal Control
 - Telemetry and Communication System
 
+Mission states are stored as a 16-bit status command (bit masks for check, arm, takeoff, transition, mission and land), updated from `/mavros/state` and `/mavros/extended_state`.
+
 ---
 
 ## Electronic System Integration
@@ -143,15 +173,16 @@ The onboard electronic architecture integrates flight control hardware, companio
 
 ### Hardware Components
 
-- Pixhawk Flight Controller
-- Companion Computer
-- GPS Module
+- Pixhawk Cube Orange flight controller
+- Raspberry Pi 4B companion computer in 2024 (Ubuntu 22.04, ROS2 Humble, MAVROS); Jetson Nano in 2025
+- GPS (HERE3, RTK capable)
 - Telemetry Radio
-- Camera
-- Camera Gimbal
+- Pitot tube
+- RGB-D camera
+- 2-axis camera gimbal (servos)
 - ESC
-- Power Distribution Board
-- Battery Management System
+- Power board
+- Main battery and separate mission battery (5V BEC)
 
 ---
 
@@ -224,10 +255,11 @@ Key Contributions
 * Designed servo horn and linkage geometry through 2D kinematic analysis.
 * Applied the optimized control surface mechanism to the final VTOL aircraft.
 
-⸻
+### Ground Test Results
 
+- Thrust tests on a test rig: thrust-to-weight ratio of about 1.5–2 in multicopter mode and about 0.7 in fixed-wing mode, enough to fly.
+- Prototype 1 crashed in 2024 after a power-board capacitor failure; Prototype 2 uses a different power board.
 
----
 ---
 
 ## FCU Mission Workflow
@@ -260,3 +292,21 @@ flowchart TD
 
 ---
 
+## Repository Structure
+
+```text
+.
+├── ws_sensor_combined_src/src/
+│   ├── px4_ros_com/            # mission package
+│   │   ├── src/main/           # offboard_mavros (mission node), key_event_pub, position subscribers
+│   │   ├── src/lib/            # OffboardMavros/, StraightPath, CircularPath, Dubins, WaypointManager
+│   │   ├── include/            # headers
+│   │   └── src/PRACTICE, BACKUP # early tests and old versions
+│   ├── key_event/              # keyboard command node (VTOL shell)
+│   ├── px4_msgs/               # PX4 message definitions
+│   └── px4-ros2-interface-lib/ # PX4 ROS2 interface library
+├── PX4-Autopilot/              # Gazebo models and worlds (CAU_vtol, OakD-Lite camera)
+├── MAVROS/                     # SITL / HILS launch files
+├── Bashes/                     # build and run commands
+└── websocket/                  # Python WebSocket test scripts (server/client)
+```
